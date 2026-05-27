@@ -42,9 +42,9 @@
 }
 
 .server-home {
-    -fx-background-color: linear-gradient(to bottom right, #08080c, #171020 58%, #08080c);
+    -fx-background-color: linear-gradient(to bottom right, #120a06, #2d1810 58%, #120a06);
     -fx-background-radius: 8;
-    -fx-border-color: rgba(139, 45, 255, 0.45);
+    -fx-border-color: rgba(160, 82, 27, 0.55);
     -fx-border-radius: 8;
     -fx-border-width: 1;
 }
@@ -108,7 +108,7 @@
 }
 
 .server-primary-button {
-    -fx-background-color: #8b2dff;
+    -fx-background-color: linear-gradient(to bottom, #b8651f, #8b4513);
 }
 
 .server-secondary-button,
@@ -137,7 +137,7 @@
 }
 
 .server-progress .bar {
-    -fx-background-color: #8b2dff;
+    -fx-background-color: linear-gradient(to right, #d2a679, #a0521b);
     -fx-background-radius: 3;
 }
 
@@ -782,7 +782,7 @@
  ******************************************************************************/
 
 .icon {
-    -fx-fill: #FE774D;
+    -fx-fill: #c08552;
     -fx-padding: 10.0;
     -fx-cursor: hand;
 }
