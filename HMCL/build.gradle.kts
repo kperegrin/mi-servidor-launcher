@@ -22,6 +22,10 @@ plugins {
     alias(libs.plugins.shadow)
 }
 
+base {
+    archivesName.set("MiServidor-Launcher")
+}
+
 val projectConfig = PropertiesUtils.load(rootProject.file("config/project.properties").toPath())
 
 val isOfficial = JenkinsUtils.IS_ON_CI || GitHubActionUtils.IS_ON_OFFICIAL_REPO
@@ -33,9 +37,12 @@ val microsoftAuthId = System.getenv("MICROSOFT_AUTH_ID") ?: ""
 val curseForgeApiKey = System.getenv("CURSEFORGE_API_KEY") ?: ""
 
 val launcherExe = System.getenv("HMCL_LAUNCHER_EXE") ?: ""
+val serverLauncherVersion = System.getenv("MISERVIDOR_LAUNCHER_VERSION") ?: "1.0.0"
 
 val buildNumber = System.getenv("BUILD_NUMBER")?.toInt()
-if (buildNumber != null) {
+if (serverLauncherVersion.isNotBlank()) {
+    version = serverLauncherVersion
+} else if (buildNumber != null) {
     version = if (JenkinsUtils.IS_ON_CI && versionType == "dev") {
         "$versionRoot.0.$buildNumber"
     } else {
@@ -297,7 +304,7 @@ val makeDeb by tasks.registering(CreateDeb::class) {
     version.set(project.version.toString())
     releaseType.set(debChannel)
     appShFile.set(layout.file(provider { artifactFile("sh") }))
-    iconFile.set(layout.projectDirectory.file("image/hmcl.png"))
+    iconFile.set(layout.projectDirectory.file("image/miservidor.png"))
     outputFile.set(debFile)
 
     doLast {

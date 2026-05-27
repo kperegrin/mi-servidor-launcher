@@ -30,6 +30,7 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Cursor;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Tooltip;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseButton;
@@ -45,6 +46,7 @@ import org.jackhuang.hmcl.download.DefaultDependencyManager;
 import org.jackhuang.hmcl.download.DownloadProvider;
 import org.jackhuang.hmcl.download.VersionList;
 import org.jackhuang.hmcl.game.Version;
+import org.jackhuang.hmcl.server.ServerInstanceManager;
 import org.jackhuang.hmcl.setting.DownloadProviders;
 import org.jackhuang.hmcl.setting.Profile;
 import org.jackhuang.hmcl.setting.Profiles;
@@ -60,6 +62,7 @@ import org.jackhuang.hmcl.ui.animation.TransitionPane;
 import org.jackhuang.hmcl.ui.construct.MessageDialogPane;
 import org.jackhuang.hmcl.ui.construct.TwoLineListItem;
 import org.jackhuang.hmcl.ui.decorator.DecoratorPage;
+import org.jackhuang.hmcl.ui.server.ServerHomeController;
 import org.jackhuang.hmcl.ui.versions.GameListPopupMenu;
 import org.jackhuang.hmcl.ui.versions.Versions;
 import org.jackhuang.hmcl.upgrade.RemoteVersion;
@@ -104,7 +107,10 @@ public final class MainPage extends StackPane implements DecoratorPage {
         titleNode.setPadding(new Insets(0, 0, 0, 2));
         titleNode.setAlignment(Pos.CENTER_LEFT);
 
-        ImageView titleIcon = new ImageView(FXUtils.newBuiltinImage("/assets/img/icon-title.png"));
+        ImageView titleIcon = new ImageView(FXUtils.newBuiltinImage("/assets/branding/icon.png"));
+        titleIcon.setFitWidth(24);
+        titleIcon.setFitHeight(24);
+        titleIcon.setPreserveRatio(true);
         Label titleLabel = new Label(Metadata.FULL_TITLE);
         if (I18n.isUpsideDown()) {
             titleIcon.setRotate(180);
@@ -117,6 +123,15 @@ public final class MainPage extends StackPane implements DecoratorPage {
         state.setValue(new State(null, titleNode, false, false, true));
 
         setPadding(new Insets(20));
+        ServerHomeController serverHome = new ServerHomeController();
+        ScrollPane serverHomeScroll = new ScrollPane(serverHome);
+        serverHomeScroll.getStyleClass().add("server-home-scroll");
+        serverHomeScroll.setFitToWidth(true);
+        serverHomeScroll.setFitToHeight(true);
+        serverHomeScroll.setPannable(true);
+        StackPane.setAlignment(serverHomeScroll, Pos.CENTER);
+        getChildren().add(serverHomeScroll);
+        ServerInstanceManager.getOrCreateServerProfile();
 
         if (Metadata.isNightly() || (Metadata.isDev() && !Objects.equals(Metadata.VERSION, config().getShownTips().get(ANNOUNCEMENT)))) {
             String title;
@@ -272,7 +287,7 @@ public final class MainPage extends StackPane implements DecoratorPage {
             launchPane.getChildren().setAll(launchButton, menuButton);
         }
 
-        getChildren().addAll(updatePane, launchPane);
+        getChildren().add(updatePane);
 
     }
 

@@ -189,7 +189,7 @@ public final class EntryPoint {
     private static void initIcon() {
         try {
             if (java.awt.Taskbar.isTaskbarSupported()) {
-                var image = java.awt.Toolkit.getDefaultToolkit().getImage(EntryPoint.class.getResource("/assets/img/icon-mac.png"));
+                var image = java.awt.Toolkit.getDefaultToolkit().getImage(EntryPoint.class.getResource("/assets/branding/icon.png"));
                 java.awt.Taskbar.getTaskbar().setIconImage(image);
             }
         } catch (Throwable e) {

@@ -1136,11 +1136,11 @@ public final class FXUtils {
     public static void setIcon(Stage stage) {
         String icon;
         if (OperatingSystem.CURRENT_OS == OperatingSystem.WINDOWS) {
-            icon = "/assets/img/icon.png";
+            icon = "/assets/branding/icon.png";
         } else if (OperatingSystem.CURRENT_OS == OperatingSystem.MACOS) {
             icon = "/assets/img/icon-mac.png";
         } else {
-            icon = "/assets/img/icon@4x.png";
+            icon = "/assets/branding/icon.png";
         }
         stage.getIcons().add(newBuiltinImage(icon));
     }

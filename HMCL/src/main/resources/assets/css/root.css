@@ -41,6 +41,132 @@
     -fx-text-fill: -monet-on-surface-variant;
 }
 
+.server-home {
+    -fx-background-color: linear-gradient(to bottom right, #08080c, #171020 58%, #08080c);
+    -fx-background-radius: 8;
+    -fx-border-color: rgba(139, 45, 255, 0.45);
+    -fx-border-radius: 8;
+    -fx-border-width: 1;
+}
+
+.server-home-scroll,
+.server-home-scroll > .viewport {
+    -fx-background-color: transparent;
+}
+
+.server-home-scroll {
+    -fx-background: transparent;
+    -fx-padding: 0;
+}
+
+.server-home-hero {
+    -fx-padding: 14 16 14 16;
+    -fx-background-color: rgba(255, 255, 255, 0.055);
+    -fx-background-radius: 8;
+}
+
+.server-home-title {
+    -fx-font-size: 28px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+}
+
+.server-home-subtitle,
+.server-progress-label,
+.server-news-item-body {
+    -fx-text-fill: rgba(255, 255, 255, 0.78);
+}
+
+.server-metric {
+    -fx-min-width: 124;
+    -fx-padding: 9 10 9 10;
+    -fx-background-color: rgba(255, 255, 255, 0.07);
+    -fx-background-radius: 8;
+    -fx-border-color: rgba(255, 255, 255, 0.08);
+    -fx-border-radius: 8;
+}
+
+.server-metric-title {
+    -fx-font-size: 11px;
+    -fx-text-fill: rgba(255, 255, 255, 0.58);
+}
+
+.server-metric-value {
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+}
+
+.server-primary-button,
+.server-secondary-button,
+.server-login-button {
+    -jfx-button-type: RAISED;
+    -fx-min-height: 34;
+    -fx-padding: 7 12 7 12;
+    -fx-background-radius: 6;
+    -fx-font-weight: bold;
+}
+
+.server-primary-button {
+    -fx-background-color: #8b2dff;
+}
+
+.server-secondary-button,
+.server-login-button {
+    -fx-background-color: rgba(255, 255, 255, 0.10);
+    -fx-border-color: rgba(255, 255, 255, 0.12);
+    -fx-border-radius: 6;
+}
+
+.server-primary-button,
+.server-secondary-button,
+.server-login-button,
+.server-primary-button .label,
+.server-secondary-button .label,
+.server-login-button .label,
+.server-primary-button .svg,
+.server-secondary-button .svg,
+.server-login-button .svg {
+    -fx-text-fill: white;
+    -fx-fill: white;
+}
+
+.server-progress .track {
+    -fx-background-color: rgba(255, 255, 255, 0.10);
+    -fx-background-radius: 3;
+}
+
+.server-progress .bar {
+    -fx-background-color: #8b2dff;
+    -fx-background-radius: 3;
+}
+
+.server-news-title {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+}
+
+.server-news-box {
+    -fx-max-width: 760;
+}
+
+.server-news-box .label {
+    -fx-text-fill: rgba(255, 255, 255, 0.78);
+}
+
+.server-news-item {
+    -fx-padding: 10 12 10 12;
+    -fx-background-color: rgba(255, 255, 255, 0.07);
+    -fx-background-radius: 8;
+}
+
+.server-news-item-title {
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+}
+
 .hyperlink {
     -fx-text-fill: -monet-primary;
 }

@@ -33,8 +33,8 @@ public final class Metadata {
     private Metadata() {
     }
 
-    public static final String NAME = "HMCL";
-    public static final String FULL_NAME = "Hello Minecraft! Launcher";
+    public static final String NAME = "MiServidor Launcher";
+    public static final String FULL_NAME = "MiServidor Launcher";
     public static final String VERSION = System.getProperty("hmcl.version.override", JarUtils.getAttribute("hmcl.version", "@develop@"));
 
     public static final String TITLE = NAME + " " + VERSION;
@@ -44,10 +44,10 @@ public final class Metadata {
     public static final int MINIMUM_SUPPORTED_JAVA_VERSION = 17;
     public static final int RECOMMENDED_JAVA_VERSION = 21;
 
-    public static final String PUBLISH_URL = "https://hmcl.huangyuhui.net";
-    public static final String DOWNLOAD_URL = PUBLISH_URL + "/download";
+    public static final String PUBLISH_URL = "https://TU_USUARIO.github.io/mi-servidor-launcher";
+    public static final String DOWNLOAD_URL = "https://github.com/TU_USUARIO/mi-servidor-launcher/releases";
     public static final String HMCL_UPDATE_URL = System.getProperty("hmcl.update_source.override", PUBLISH_URL + "/api/update_link");
-    public static final String MANUAL_UPDATE_URL = "https://github.com/HMCL-dev/HMCL/releases";
+    public static final String MANUAL_UPDATE_URL = "https://github.com/TU_USUARIO/mi-servidor-launcher/releases";
 
     public static final String DOCS_URL = "https://docs.hmcl.net";
     public static final String CONTACT_URL = DOCS_URL + "/help.html";
@@ -70,12 +70,12 @@ public final class Metadata {
             if (OperatingSystem.CURRENT_OS.isLinuxOrBSD()) {
                 String xdgData = System.getenv("XDG_DATA_HOME");
                 if (StringUtils.isNotBlank(xdgData)) {
-                    HMCL_GLOBAL_DIRECTORY = Path.of(xdgData, "hmcl").toAbsolutePath().normalize();
+                    HMCL_GLOBAL_DIRECTORY = Path.of(xdgData, "miservidor-launcher").toAbsolutePath().normalize();
                 } else {
-                    HMCL_GLOBAL_DIRECTORY = Path.of(System.getProperty("user.home"), ".local", "share", "hmcl").toAbsolutePath().normalize();
+                    HMCL_GLOBAL_DIRECTORY = Path.of(System.getProperty("user.home"), ".local", "share", "miservidor-launcher").toAbsolutePath().normalize();
                 }
             } else {
-                HMCL_GLOBAL_DIRECTORY = OperatingSystem.getWorkingDirectory("hmcl");
+                HMCL_GLOBAL_DIRECTORY = OperatingSystem.getWorkingDirectory("miservidor-launcher");
             }
         } else {
             HMCL_GLOBAL_DIRECTORY = Path.of(hmclHome).toAbsolutePath().normalize();
@@ -84,7 +84,7 @@ public final class Metadata {
         String hmclCurrentDir = System.getProperty("hmcl.dir", System.getenv("HMCL_LOCAL_HOME"));
         HMCL_CURRENT_DIRECTORY = StringUtils.isNotBlank(hmclCurrentDir)
                 ? Path.of(hmclCurrentDir).toAbsolutePath().normalize()
-                : CURRENT_DIRECTORY.resolve(".hmcl");
+                : CURRENT_DIRECTORY.resolve(".miservidor").resolve("launcher");
 
         String hmclDependencies = System.getProperty("hmcl.dependencies.dir", System.getenv("HMCL_DEPENDENCIES_DIR"));
         DEPENDENCIES_DIRECTORY = StringUtils.isNotBlank(hmclDependencies)

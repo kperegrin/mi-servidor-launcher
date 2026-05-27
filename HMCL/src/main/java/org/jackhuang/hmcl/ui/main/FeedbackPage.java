@@ -46,7 +46,7 @@ public class FeedbackPage extends SpinnerPane {
         {
             var users = LineButton.createExternalLinkButton(Metadata.GROUPS_URL);
             users.setLargeTitle(true);
-            users.setLeading(FXUtils.newBuiltinImage("/assets/img/icon.png"));
+            users.setLeading(FXUtils.newBuiltinImage("/assets/branding/icon.png"));
             users.setTitle(i18n("contact.chat.qq_group"));
             users.setSubtitle(i18n("contact.chat.qq_group.statement"));
 

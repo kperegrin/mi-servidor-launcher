@@ -53,7 +53,7 @@ public final class AboutPage extends SpinnerPane {
         {
             var launcher = LineButton.createExternalLinkButton(Metadata.PUBLISH_URL);
             launcher.setLargeTitle(true);
-            launcher.setLeading(FXUtils.newBuiltinImage("/assets/img/icon.png"));
+            launcher.setLeading(FXUtils.newBuiltinImage("/assets/branding/icon.png"));
             launcher.setTitle("Hello Minecraft! Launcher");
             launcher.setSubtitle(Metadata.VERSION);
 

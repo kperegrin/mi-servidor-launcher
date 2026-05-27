@@ -105,7 +105,7 @@ public final class GlobalConfig extends ObservableSetting {
     }
 
     @SerializedName("enableOfflineAccount")
-    private final BooleanProperty enableOfflineAccount = new SimpleBooleanProperty(false);
+    private final BooleanProperty enableOfflineAccount = new SimpleBooleanProperty(true);
 
     public BooleanProperty enableOfflineAccountProperty() {
         return enableOfflineAccount;
