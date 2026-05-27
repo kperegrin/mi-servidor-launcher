@@ -49,6 +49,24 @@
     -fx-border-width: 1;
 }
 
+.server-news-panel {
+    -fx-background-color: linear-gradient(to bottom right, #120a06, #2d1810 58%, #120a06);
+    -fx-background-radius: 8;
+    -fx-border-color: rgba(160, 82, 27, 0.55);
+    -fx-border-radius: 8;
+    -fx-border-width: 1;
+}
+
+.server-news-scroll,
+.server-news-scroll > .viewport {
+    -fx-background-color: transparent;
+}
+
+.server-news-scroll {
+    -fx-background: transparent;
+    -fx-padding: 0;
+}
+
 .server-home-scroll,
 .server-home-scroll > .viewport {
     -fx-background-color: transparent;

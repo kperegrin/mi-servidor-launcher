@@ -16,6 +16,7 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.ProgressIndicator;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
@@ -52,7 +53,7 @@ import static org.jackhuang.hmcl.util.logging.Logger.LOG;
 
 /// Server-specific home page embedded in HMCL's main page.
 @NotNullByDefault
-public final class ServerHomeController extends VBox {
+public final class ServerHomeController extends HBox {
     private final Label statusLabel = new Label("Comprobando estado...");
     private final Label playersLabel = new Label("-");
     private final Label versionLabel = new Label(ServerLauncherConfig.MINECRAFT_VERSION);
@@ -72,11 +73,9 @@ public final class ServerHomeController extends VBox {
 
     /// Creates the custom home.
     public ServerHomeController() {
-        getStyleClass().add("server-home");
-        setAlignment(Pos.CENTER);
-        setSpacing(12);
-        setPadding(new Insets(16));
-        setMaxWidth(820);
+        setAlignment(Pos.TOP_CENTER);
+        setSpacing(16);
+        setPadding(new Insets(0));
 
         ImageView logo = new ImageView(FXUtils.newBuiltinImage("/assets/branding/logo.png"));
         logo.setFitWidth(72);
@@ -123,16 +122,41 @@ public final class ServerHomeController extends VBox {
         HBox launcherUpdate = new HBox(10, launcherUpdateLabel, launcherUpdateButton);
         launcherUpdate.setAlignment(Pos.CENTER);
 
+        // Main card (center)
+        VBox mainCard = new VBox(12, hero, status, actions, loginActions, progressBar, progressLabel, launcherUpdate);
+        mainCard.getStyleClass().add("server-home");
+        mainCard.setAlignment(Pos.CENTER);
+        mainCard.setPadding(new Insets(16));
+        mainCard.setPrefWidth(560);
+        mainCard.setMaxWidth(560);
+
+        // News panel (right side)
         Label newsTitle = new Label("Noticias");
         newsTitle.getStyleClass().add("server-news-title");
         newsBox.getStyleClass().add("server-news-box");
-        newsBox.getChildren().setAll(new Label("Pulsa Actualizar archivos para cargar las noticias del manifest."));
+        newsBox.getChildren().setAll(new Label("Cargando noticias..."));
 
-        getChildren().setAll(hero, status, actions, loginActions, progressBar, progressLabel, launcherUpdate, newsTitle, newsBox);
+        ScrollPane newsScroll = new ScrollPane(newsBox);
+        newsScroll.getStyleClass().add("server-news-scroll");
+        newsScroll.setFitToWidth(true);
+        newsScroll.setPannable(false);
+        newsScroll.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
+        VBox.setVgrow(newsScroll, Priority.ALWAYS);
+
+        VBox newsPanel = new VBox(10, newsTitle, newsScroll);
+        newsPanel.getStyleClass().add("server-news-panel");
+        newsPanel.setAlignment(Pos.TOP_LEFT);
+        newsPanel.setPadding(new Insets(16));
+        newsPanel.setPrefWidth(300);
+        newsPanel.setMaxWidth(320);
+        newsPanel.setMinWidth(240);
+
+        getChildren().setAll(mainCard, newsPanel);
 
         Accounts.selectedAccountProperty().addListener((observable, oldValue, newValue) -> updateAccountLabel());
         updateAccountLabel();
         refreshStatus();
+        refreshNews();
         checkLauncherUpdate();
         Platform.runLater(ServerInstanceManager::getOrCreateServerProfile);
     }
@@ -327,9 +351,10 @@ public final class ServerHomeController extends VBox {
             return;
         }
 
-        newsBox.getChildren().setAll(news.stream().limit(4).map(entry -> {
+        newsBox.getChildren().setAll(news.stream().map(entry -> {
             Label title = new Label(entry.getTitle() + (entry.getDate().isBlank() ? "" : " - " + entry.getDate()));
             title.getStyleClass().add("server-news-item-title");
+            title.setWrapText(true);
             Label body = new Label(entry.getBody());
             body.setWrapText(true);
             body.getStyleClass().add("server-news-item-body");
@@ -337,6 +362,25 @@ public final class ServerHomeController extends VBox {
             item.getStyleClass().add("server-news-item");
             return item;
         }).toList());
+    }
+
+    private void refreshNews() {
+        CompletableFuture
+                .supplyAsync(() -> {
+                    try {
+                        return LauncherUpdater.fetchManifest().getNews();
+                    } catch (Exception e) {
+                        LOG.warning("Could not fetch news on startup", e);
+                        return null;
+                    }
+                })
+                .thenAccept(news -> Platform.runLater(() -> {
+                    if (news == null) {
+                        newsBox.getChildren().setAll(new Label("No se pudieron cargar las noticias."));
+                    } else {
+                        updateNews(news);
+                    }
+                }));
     }
 
     private void updateAccountLabel() {
