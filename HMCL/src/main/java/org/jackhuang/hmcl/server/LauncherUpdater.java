@@ -14,6 +14,7 @@ import org.jackhuang.hmcl.game.HMCLGameRepository;
 import org.jackhuang.hmcl.game.Version;
 import org.jackhuang.hmcl.setting.Profile;
 import org.jackhuang.hmcl.task.Task;
+import org.jackhuang.hmcl.task.TaskExecutor;
 import org.jetbrains.annotations.NotNullByDefault;
 
 import java.io.BufferedInputStream;
@@ -129,7 +130,7 @@ public final class LauncherUpdater {
                     .gameVersion(manifest.getMinecraftVersion())
                     .version(ServerLauncherConfig.LOADER, manifest.getLoaderVersion())
                     .buildAsync();
-            installTask.run();
+            runTask(installTask);
             repository.refreshVersions();
             return;
         }
@@ -139,9 +140,20 @@ public final class LauncherUpdater {
             Version current = repository.getVersion(ServerLauncherConfig.INSTANCE_NAME);
             Task<Version> task = profile.getDependency()
                     .installLibraryAsync(manifest.getMinecraftVersion(), current, ServerLauncherConfig.LOADER, manifest.getLoaderVersion());
-            Version updated = task.run();
-            repository.saveAsync(updated).run();
+            runTask(task);
+            Version updated = task.getResult();
+            Task<?> saveTask = repository.saveAsync(updated);
+            runTask(saveTask);
             repository.refreshVersions();
+        }
+    }
+
+    private static void runTask(Task<?> task) throws Exception {
+        TaskExecutor executor = task.executor();
+        if (!executor.test()) {
+            Exception ex = executor.getException();
+            if (ex != null) throw ex;
+            throw new Exception("Task failed: " + task.getName());
         }
     }
 
