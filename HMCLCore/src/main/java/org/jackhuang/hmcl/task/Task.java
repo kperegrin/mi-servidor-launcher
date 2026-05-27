@@ -381,7 +381,14 @@ public abstract class Task<T> {
     protected void updateProgressImmediately(double progress) {
         // assert progress >= 0 && progress <= 1.0;
         if ((double) PENDING_PROGRESS_HANDLE.getAndSet(this, progress) == -1.0) {
-            Platform.runLater(() -> this.progress.set((double) PENDING_PROGRESS_HANDLE.getAndSet(this, -1.0)));
+            Platform.runLater(() -> {
+                double val = (double) PENDING_PROGRESS_HANDLE.getAndSet(this, -1.0);
+                // doSubTask temporarily binds this property to a child task's progress.
+                // If it's already bound, skip the set — the binding propagates the value.
+                if (!this.progress.isBound()) {
+                    this.progress.set(val);
+                }
+            });
         }
     }
 
