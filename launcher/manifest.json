@@ -388,8 +388,8 @@
                       "required":  true
                   },
                   {
-                      "path":  "mods/Failskins 8.22.jar",
-                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/Failskins%208.22.jar",
+                      "path":  "mods/Failskins.8.22.jar",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/Failskins.8.22.jar",
                       "sha256":  "1ecb0f80ea18001d119a8a15368f982ef76b7588c5620cf2fe1ae7b96e3736d9",
                       "size":  19692214,
                       "required":  true
@@ -941,8 +941,8 @@
                       "required":  true
                   },
                   {
-                      "path":  "resourcepacks/Â§2p1kl\u0027s 3D ItemsÂ§rÂ§0.zip",
-                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/%C2%A72p1kl\u0027s%203D%20Items%C2%A7r%C2%A70.zip",
+                      "path":  "resourcepacks/2p1kl.s.3D.Items.r.0.zip",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/2p1kl.s.3D.Items.r.0.zip",
                       "sha256":  "92110cc9ea0e5eed4e256ba6b601f7eff898875500c8a14667be76e9ee7d2746",
                       "size":  1801908,
                       "required":  true
@@ -955,29 +955,29 @@
                       "required":  true
                   },
                   {
-                      "path":  "resourcepacks/-1.21.2 Fresh Moves v3.1 (With Animated Eyes).zip",
-                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/-1.21.2%20Fresh%20Moves%20v3.1%20(With%20Animated%20Eyes).zip",
+                      "path":  "resourcepacks/-1.21.2.Fresh.Moves.v3.1.With.Animated.Eyes.zip",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/-1.21.2.Fresh.Moves.v3.1.With.Animated.Eyes.zip",
                       "sha256":  "c433f3d831e86faa956836bf327ca00151bd813d1a8ab36aa064d518a58790f7",
                       "size":  321871,
                       "required":  true
                   },
                   {
-                      "path":  "resourcepacks/ATM x MSD [v3.5.0].zip",
-                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/ATM%20x%20MSD%20%5Bv3.5.0%5D.zip",
+                      "path":  "resourcepacks/ATM.x.MSD.v3.5.0.zip",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/ATM.x.MSD.v3.5.0.zip",
                       "sha256":  "10e6f9c6bc0048e9504cec8b436b09d5ad4afd923a08e834b8deb6004caaa474",
                       "size":  6018105,
                       "required":  true
                   },
                   {
-                      "path":  "resourcepacks/BattleBond [V1.4].zip",
-                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/BattleBond%20%5BV1.4%5D.zip",
+                      "path":  "resourcepacks/BattleBond.V1.4.zip",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/BattleBond.V1.4.zip",
                       "sha256":  "43277467e633675520b21339d2fbe707f26d52643a97117a043dd00666dcacff",
                       "size":  1868073,
                       "required":  true
                   },
                   {
-                      "path":  "resourcepacks/BottleCaps 1.1.zip",
-                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/BottleCaps%201.1.zip",
+                      "path":  "resourcepacks/BottleCaps.1.1.zip",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/BottleCaps.1.1.zip",
                       "sha256":  "58b980a07aae01cfa915e3182adced924e5342133f8be4a1e9a9337a89701305",
                       "size":  25670,
                       "required":  true
@@ -997,120 +997,120 @@
                       "required":  true
                   },
                   {
-                      "path":  "resourcepacks/Cobblemon 3D PokÃ© Rods 1.0.zip",
-                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/Cobblemon%203D%20Pok%C3%A9%20Rods%201.0.zip",
+                      "path":  "resourcepacks/Cobblemon.3D.Pok.Rods.1.0.zip",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/Cobblemon.3D.Pok.Rods.1.0.zip",
                       "sha256":  "4110f5b2a2959fff1cc03a4b0659cc6e7244ca3fb55700dcd016b422312ec74c",
                       "size":  167706,
                       "required":  true
                   },
                   {
-                      "path":  "resourcepacks/Cobblemon Classic Grass Pack v2.1 MC1.21.1.zip",
-                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/Cobblemon%20Classic%20Grass%20Pack%20v2.1%20MC1.21.1.zip",
+                      "path":  "resourcepacks/Cobblemon.Classic.Grass.Pack.v2.1.MC1.21.1.zip",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/Cobblemon.Classic.Grass.Pack.v2.1.MC1.21.1.zip",
                       "sha256":  "4386b800db3f7710c23f5ead9c911c9f265831a02e74c704f7cc29fcd9070880",
                       "size":  7418,
                       "required":  true
                   },
                   {
-                      "path":  "resourcepacks/Cobblemon improvedmon v1.1.zip",
-                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/Cobblemon%20improvedmon%20v1.1.zip",
+                      "path":  "resourcepacks/Cobblemon.improvedmon.v1.1.zip",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/Cobblemon.improvedmon.v1.1.zip",
                       "sha256":  "ba74e6ad6c52fcf70740e23fef25ab0e26bdd7580c90236c9db2a5478cac5efd",
                       "size":  1407637,
                       "required":  true
                   },
                   {
-                      "path":  "resourcepacks/Cobblemon Interface Modded v1.9.4.zip",
-                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/Cobblemon%20Interface%20Modded%20v1.9.4.zip",
+                      "path":  "resourcepacks/Cobblemon.Interface.Modded.v1.9.4.zip",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/Cobblemon.Interface.Modded.v1.9.4.zip",
                       "sha256":  "3175cde27f4528eb7c2dc6a53b9952d937e0d1ead2b2f0fdbf1809075e9eb7eb",
                       "size":  1053517,
                       "required":  true
                   },
                   {
-                      "path":  "resourcepacks/Cobblemon Interface v1.6.0.zip",
-                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/Cobblemon%20Interface%20v1.6.0.zip",
+                      "path":  "resourcepacks/Cobblemon.Interface.v1.6.0.zip",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/Cobblemon.Interface.v1.6.0.zip",
                       "sha256":  "eb40bd047c2e1443c43731e4d1ef1b9d7d0624476336f540b52a3e8fcb9eb315",
                       "size":  14108266,
                       "required":  true
                   },
                   {
-                      "path":  "resourcepacks/CobblemonInfiniteFusion 1.6.1.zip",
-                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/CobblemonInfiniteFusion%201.6.1.zip",
+                      "path":  "resourcepacks/CobblemonInfiniteFusion.1.6.1.zip",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/CobblemonInfiniteFusion.1.6.1.zip",
                       "sha256":  "ab3f33e2879912935a9708f3a5569ef55acee6485903e34dc500e785d3d696ab",
                       "size":  489027,
                       "required":  true
                   },
                   {
-                      "path":  "resourcepacks/COBBLEVERSE RCTmod RP.zip",
-                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/COBBLEVERSE%20RCTmod%20RP.zip",
+                      "path":  "resourcepacks/COBBLEVERSE.RCTmod.RP.zip",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/COBBLEVERSE.RCTmod.RP.zip",
                       "sha256":  "7b5469ee3551636a4c9ec75878c7f6dac3c74494d219ec0615c005a4951c8f89",
                       "size":  5128482,
                       "required":  true
                   },
                   {
-                      "path":  "resourcepacks/COBBLEVERSE RP [CF].zip",
-                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/COBBLEVERSE%20RP%20%5BCF%5D.zip",
+                      "path":  "resourcepacks/COBBLEVERSE.RP.CF.zip",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/COBBLEVERSE.RP.CF.zip",
                       "sha256":  "887e4b7c11e02ba5633922ee3e01b6721fe3308420b39121ea236c1546f82169",
                       "size":  124000,
                       "required":  true
                   },
                   {
-                      "path":  "resourcepacks/COBBLEVERSE Soundtrack.zip",
-                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/COBBLEVERSE%20Soundtrack.zip",
+                      "path":  "resourcepacks/COBBLEVERSE.Soundtrack.zip",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/COBBLEVERSE.Soundtrack.zip",
                       "sha256":  "8617ef2a4bf872b538823cfddd516b0bda88c6656325f43c614ca7260678e6db",
                       "size":  96474458,
                       "required":  true
                   },
                   {
-                      "path":  "resourcepacks/Comforts Modernized - V1.1.zip",
-                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/Comforts%20Modernized%20-%20V1.1.zip",
+                      "path":  "resourcepacks/Comforts.Modernized.-.V1.1.zip",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/Comforts.Modernized.-.V1.1.zip",
                       "sha256":  "b3050d84c0be41dae853e550c07acb1f768880c41472b44d701c03e9b1bc4734",
                       "size":  72956,
                       "required":  true
                   },
                   {
-                      "path":  "resourcepacks/CurseForge RP.zip",
-                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/CurseForge%20RP.zip",
+                      "path":  "resourcepacks/CurseForge.RP.zip",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/CurseForge.RP.zip",
                       "sha256":  "a2ebd8dc3a03a6580e4262eb6b392c75757778f19b08f491123ad62689f8eed5",
                       "size":  2563280,
                       "required":  true
                   },
                   {
-                      "path":  "resourcepacks/E19 Cobblemon Minimap Icons.zip",
-                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/E19%20Cobblemon%20Minimap%20Icons.zip",
+                      "path":  "resourcepacks/E19.Cobblemon.Minimap.Icons.zip",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/E19.Cobblemon.Minimap.Icons.zip",
                       "sha256":  "8732ecb1ee0b8cceda4ad973ffcf53e0c6689f503652320107d2569c0cd7f9ba",
                       "size":  19398814,
                       "required":  true
                   },
                   {
-                      "path":  "resourcepacks/Extra Eeveelutions 1.2.zip",
-                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/Extra%20Eeveelutions%201.2.zip",
+                      "path":  "resourcepacks/Extra.Eeveelutions.1.2.zip",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/Extra.Eeveelutions.1.2.zip",
                       "sha256":  "2bfad12289e0988dd10212484ca291df5a7dd04c3a95c6b0009f2e0a22f88dec",
                       "size":  287026,
                       "required":  true
                   },
                   {
-                      "path":  "resourcepacks/Extra Paradox Mons 1.7.zip",
-                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/Extra%20Paradox%20Mons%201.7.zip",
+                      "path":  "resourcepacks/Extra.Paradox.Mons.1.7.zip",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/Extra.Paradox.Mons.1.7.zip",
                       "sha256":  "fdc911ccb1b9d9a27a992e6b17016f859799a6bdfbe687221478a5c4aeba2024",
                       "size":  2837920,
                       "required":  true
                   },
                   {
-                      "path":  "resourcepacks/Failskins 8.21.zip",
-                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/Failskins%208.21.zip",
+                      "path":  "resourcepacks/Failskins.8.21.zip",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/Failskins.8.21.zip",
                       "sha256":  "0415cc515a23496a71d055166523d55b5e24aa405b1a8bd738c829c074104973",
                       "size":  6788030,
                       "required":  true
                   },
                   {
-                      "path":  "resourcepacks/Faithful 64x - Release 6.zip",
-                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/Faithful%2064x%20-%20Release%206.zip",
+                      "path":  "resourcepacks/Faithful.64x.-.Release.6.zip",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/Faithful.64x.-.Release.6.zip",
                       "sha256":  "ba28248289cf0ca2b4021cb90de1e1712dc1d7079f2fe1d250cb03b494c5f79f",
                       "size":  16767880,
                       "required":  true
                   },
                   {
-                      "path":  "resourcepacks/Fresh Food.zip",
-                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/Fresh%20Food.zip",
+                      "path":  "resourcepacks/Fresh.Food.zip",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/Fresh.Food.zip",
                       "sha256":  "587d4f0801f7eef594764ed2b155fb6607d3a8b4602dc1a0ff8aef9369851bad",
                       "size":  1428718,
                       "required":  true
@@ -1123,15 +1123,15 @@
                       "required":  true
                   },
                   {
-                      "path":  "resourcepacks/Fully Hisuian Starters 1.1.1.zip",
-                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/Fully%20Hisuian%20Starters%201.1.1.zip",
+                      "path":  "resourcepacks/Fully.Hisuian.Starters.1.1.1.zip",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/Fully.Hisuian.Starters.1.1.1.zip",
                       "sha256":  "a12cbdd26881621404bce13b7ce022aa18872067bdfefaa80d8d1c22bd6fc4b0",
                       "size":  202557,
                       "required":  true
                   },
                   {
-                      "path":  "resourcepacks/Glowing Ores - Borderful Edition (8.0.0v).zip",
-                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/Glowing%20Ores%20-%20Borderful%20Edition%20(8.0.0v).zip",
+                      "path":  "resourcepacks/Glowing.Ores.-.Borderful.Edition.8.0.0v.zip",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/Glowing.Ores.-.Borderful.Edition.8.0.0v.zip",
                       "sha256":  "509d517dc5a43f9f602d0fec9e0899d7e4366d90591cf62da0fc95b193258ad8",
                       "size":  3968744,
                       "required":  true
@@ -1144,8 +1144,8 @@
                       "required":  true
                   },
                   {
-                      "path":  "resourcepacks/Icon Fresh 1.3.zip",
-                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/Icon%20Fresh%201.3.zip",
+                      "path":  "resourcepacks/Icon.Fresh.1.3.zip",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/Icon.Fresh.1.3.zip",
                       "sha256":  "4df876dd775c214e66cb29d9706636025e6f808bff50431abf08cb815c2af255",
                       "size":  852235,
                       "required":  true
@@ -1165,8 +1165,8 @@
                       "required":  true
                   },
                   {
-                      "path":  "resourcepacks/Seavls Bizarremons 1.1.0v.zip",
-                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/Seavls%20Bizarremons%201.1.0v.zip",
+                      "path":  "resourcepacks/Seavls.Bizarremons.1.1.0v.zip",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/Seavls.Bizarremons.1.1.0v.zip",
                       "sha256":  "5ba39474cfd58ba3df03512330dbb2651df6f32d09721ce4435f3baf55bc82a9",
                       "size":  1459112,
                       "required":  true
@@ -1203,7 +1203,34 @@
                    "mods/worldedit-mod-7.3.8 (3).jar",
                    "resourcepacks/CobbleCafe (1).zip",
                    "resourcepacks/Failskins 8.21 (1).zip",
-                   "resourcepacks/pokopia-1.1 (1).zip"
+                   "resourcepacks/pokopia-1.1 (1).zip",
+                   "mods/Failskins 8.22.jar",
+                   "resourcepacks/Â§2p1kl\u0027s 3D ItemsÂ§rÂ§0.zip",
+                   "resourcepacks/-1.21.2 Fresh Moves v3.1 (With Animated Eyes).zip",
+                   "resourcepacks/ATM x MSD [v3.5.0].zip",
+                   "resourcepacks/BattleBond [V1.4].zip",
+                   "resourcepacks/BottleCaps 1.1.zip",
+                   "resourcepacks/Cobblemon 3D PokÃ© Rods 1.0.zip",
+                   "resourcepacks/Cobblemon Classic Grass Pack v2.1 MC1.21.1.zip",
+                   "resourcepacks/Cobblemon improvedmon v1.1.zip",
+                   "resourcepacks/Cobblemon Interface Modded v1.9.4.zip",
+                   "resourcepacks/Cobblemon Interface v1.6.0.zip",
+                   "resourcepacks/CobblemonInfiniteFusion 1.6.1.zip",
+                   "resourcepacks/COBBLEVERSE RCTmod RP.zip",
+                   "resourcepacks/COBBLEVERSE RP [CF].zip",
+                   "resourcepacks/COBBLEVERSE Soundtrack.zip",
+                   "resourcepacks/Comforts Modernized - V1.1.zip",
+                   "resourcepacks/CurseForge RP.zip",
+                   "resourcepacks/E19 Cobblemon Minimap Icons.zip",
+                   "resourcepacks/Extra Eeveelutions 1.2.zip",
+                   "resourcepacks/Extra Paradox Mons 1.7.zip",
+                   "resourcepacks/Failskins 8.21.zip",
+                   "resourcepacks/Faithful 64x - Release 6.zip",
+                   "resourcepacks/Fresh Food.zip",
+                   "resourcepacks/Fully Hisuian Starters 1.1.1.zip",
+                   "resourcepacks/Glowing Ores - Borderful Edition (8.0.0v).zip",
+                   "resourcepacks/Icon Fresh 1.3.zip",
+                   "resourcepacks/Seavls Bizarremons 1.1.0v.zip"
                ],
     "news":  [
                  {
