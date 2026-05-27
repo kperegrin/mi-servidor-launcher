@@ -39,7 +39,7 @@ public final class ServerLauncherConfig {
             "barrilmc.manifest.url",
             System.getenv().getOrDefault(
                     "BARRILMC_MANIFEST_URL",
-                    "https://kperegrin.github.io/mi-servidor-launcher/launcher/manifest.json"));
+                    "https://raw.githubusercontent.com/kperegrin/mi-servidor-launcher/main/launcher/manifest.json"));
 
     private ServerLauncherConfig() {
     }

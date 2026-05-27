@@ -223,21 +223,39 @@ public final class LauncherUpdater {
     }
 
     static InputStream openHttps(String url) throws IOException {
-        if (!url.toLowerCase(Locale.ROOT).startsWith("https://")) {
-            throw new IOException("Only HTTPS URLs are allowed: " + url);
+        String lc = url.toLowerCase(Locale.ROOT);
+        if (!lc.startsWith("https://") && !lc.startsWith("http://")) {
+            throw new IOException("Only HTTP/HTTPS URLs are allowed: " + url);
         }
+        String currentUrl = url;
+        for (int redirects = 0; redirects < 10; redirects++) {
+            String currentLc = currentUrl.toLowerCase(Locale.ROOT);
+            if (!currentLc.startsWith("https://") && !currentLc.startsWith("http://")) {
+                throw new IOException("Redirect to non-HTTP URL: " + currentUrl);
+            }
 
-        HttpURLConnection connection = (HttpURLConnection) URI.create(url).toURL().openConnection();
-        connection.setConnectTimeout(HTTP_TIMEOUT_MILLIS);
-        connection.setReadTimeout(HTTP_TIMEOUT_MILLIS);
-        connection.setInstanceFollowRedirects(true);
-        connection.setRequestProperty("User-Agent", ServerLauncherConfig.LAUNCHER_NAME + "/1.0");
+            HttpURLConnection connection = (HttpURLConnection) URI.create(currentUrl).toURL().openConnection();
+            connection.setConnectTimeout(HTTP_TIMEOUT_MILLIS);
+            connection.setReadTimeout(HTTP_TIMEOUT_MILLIS);
+            connection.setInstanceFollowRedirects(false);
+            connection.setRequestProperty("User-Agent", ServerLauncherConfig.LAUNCHER_NAME + "/1.0");
 
-        int code = connection.getResponseCode();
-        if (code < 200 || code >= 300) {
-            throw new IOException("HTTP " + code + " while downloading " + url);
+            int code = connection.getResponseCode();
+            if (code >= 300 && code < 400) {
+                String location = connection.getHeaderField("Location");
+                connection.disconnect();
+                if (location == null || location.isBlank()) {
+                    throw new IOException("Redirect with no Location from " + currentUrl);
+                }
+                currentUrl = URI.create(currentUrl).resolve(location).toString();
+                continue;
+            }
+            if (code < 200 || code >= 300) {
+                throw new IOException("HTTP " + code + " while downloading " + currentUrl);
+            }
+            return new BufferedInputStream(connection.getInputStream());
         }
-        return new BufferedInputStream(connection.getInputStream());
+        throw new IOException("Too many redirects for " + url);
     }
 
     private static void createBaseDirectories(Path runDirectory) throws IOException {

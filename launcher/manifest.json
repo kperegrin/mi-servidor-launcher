@@ -1,4 +1,4 @@
-{
+﻿{
     "launcherVersion":  "1.0.0",
     "minecraftVersion":  "1.21.1",
     "loader":  "fabric",
@@ -164,8 +164,8 @@
                       "required":  true
                   },
                   {
-                      "path":  "mods/cobblecuisine-2.0.1-1.7-rc1 (2).jar",
-                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/cobblecuisine-2.0.1-1.7-rc1%20(2).jar",
+                      "path":  "mods/cobblecuisine-2.0.1-1.7-rc1.jar",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/cobblecuisine-2.0.1-1.7-rc1.jar",
                       "sha256":  "081d9ba2ddaae3f9b3240c0b4d49b75c4f93ab2b6e9bbb7bb69a3bc05520e1d9",
                       "size":  683115,
                       "required":  true
@@ -276,8 +276,8 @@
                       "required":  true
                   },
                   {
-                      "path":  "mods/CraftTweaker-fabric-1.21.1-21.0.38 (2).jar",
-                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/CraftTweaker-fabric-1.21.1-21.0.38%20(2).jar",
+                      "path":  "mods/CraftTweaker-fabric-1.21.1-21.0.38.jar",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/CraftTweaker-fabric-1.21.1-21.0.38.jar",
                       "sha256":  "0232ca9d69713f366eecec58838772848d969028b6bfe283cde86ac712ede361",
                       "size":  4178419,
                       "required":  true
@@ -388,15 +388,15 @@
                       "required":  true
                   },
                   {
-                      "path":  "mods/Failskins 8.22 (2).jar",
-                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/Failskins%208.22%20(2).jar",
+                      "path":  "mods/Failskins 8.22.jar",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/Failskins%208.22.jar",
                       "sha256":  "1ecb0f80ea18001d119a8a15368f982ef76b7588c5620cf2fe1ae7b96e3736d9",
                       "size":  19692214,
                       "required":  true
                   },
                   {
-                      "path":  "mods/FallingTree-1.21.1-1.21.1.11 (1).jar",
-                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/FallingTree-1.21.1-1.21.1.11%20(1).jar",
+                      "path":  "mods/FallingTree-1.21.1-1.21.1.11.jar",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/FallingTree-1.21.1-1.21.1.11.jar",
                       "sha256":  "b07cb3fe67d1f3bb66daf8836373614153790cfaa8c64fadbf53479d1b33cc54",
                       "size":  496356,
                       "required":  true
@@ -570,8 +570,8 @@
                       "required":  true
                   },
                   {
-                      "path":  "mods/LumyMon-0.6.5 (1).jar",
-                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/LumyMon-0.6.5%20(1).jar",
+                      "path":  "mods/LumyMon-0.6.5.jar",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/LumyMon-0.6.5.jar",
                       "sha256":  "f3f2c91f5f3fddc9e0f97caefa08f8fede1ac72fef8988cedd58beee5eb3e832",
                       "size":  2372128,
                       "required":  true
@@ -689,13 +689,6 @@
                       "required":  true
                   },
                   {
-                      "path":  "mods/placeholder-api-2.4.2+1.21 (2).jar",
-                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/placeholder-api-2.4.2%2B1.21%20(2).jar",
-                      "sha256":  "c0187ee299527ac7a3e0b1e83601dcdc0de631e286fe41e6be1a75958ea8e443",
-                      "size":  232325,
-                      "required":  true
-                  },
-                  {
                       "path":  "mods/placeholder-api-2.4.2+1.21.jar",
                       "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/placeholder-api-2.4.2%2B1.21.jar",
                       "sha256":  "c0187ee299527ac7a3e0b1e83601dcdc0de631e286fe41e6be1a75958ea8e443",
@@ -780,8 +773,8 @@
                       "required":  true
                   },
                   {
-                      "path":  "mods/ShadowCrates-2.3 (1).jar",
-                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/ShadowCrates-2.3%20(1).jar",
+                      "path":  "mods/ShadowCrates-2.3.jar",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/ShadowCrates-2.3.jar",
                       "sha256":  "8d85b0d8d1172649eda36332f98d8d118682986a0edcb911357bb5572af3e9a7",
                       "size":  409775,
                       "required":  true
@@ -826,13 +819,6 @@
                       "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/StackableItems-fabric-1.21.%5B0-1%5D-v1.2.jar",
                       "sha256":  "0c333647c17901582b491047639e579dbfb95223dd2f96733d09b1363180259e",
                       "size":  72184,
-                      "required":  true
-                  },
-                  {
-                      "path":  "mods/starlightfusion-fabric-1.6.1 (1).jar",
-                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/starlightfusion-fabric-1.6.1%20(1).jar",
-                      "sha256":  "cfeeef7a14d01d139029cf4e6b80db4cbd1b42e1f1b0beed2e89f172ef4b50e7",
-                      "size":  1133518,
                       "required":  true
                   },
                   {
@@ -920,8 +906,8 @@
                       "required":  true
                   },
                   {
-                      "path":  "mods/worldedit-mod-7.3.8 (3).jar",
-                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/worldedit-mod-7.3.8%20(3).jar",
+                      "path":  "mods/worldedit-mod-7.3.8.jar",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/worldedit-mod-7.3.8.jar",
                       "sha256":  "5e7752c97876d87411e3760bcc573cc431f43c453722e6959fa7fe54db1b01ca",
                       "size":  6222854,
                       "required":  true
@@ -955,14 +941,14 @@
                       "required":  true
                   },
                   {
-                      "path":  "resourcepacks/§2p1kl\u0027s 3D Items§r§0.zip",
+                      "path":  "resourcepacks/Â§2p1kl\u0027s 3D ItemsÂ§rÂ§0.zip",
                       "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/%C2%A72p1kl\u0027s%203D%20Items%C2%A7r%C2%A70.zip",
                       "sha256":  "92110cc9ea0e5eed4e256ba6b601f7eff898875500c8a14667be76e9ee7d2746",
                       "size":  1801908,
                       "required":  true
                   },
                   {
-                      "path":  "resourcepacks/§6Immersive§8_§6Interfaces§8.zip",
+                      "path":  "resourcepacks/Â§6ImmersiveÂ§8_Â§6InterfacesÂ§8.zip",
                       "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/%C2%A76Immersive%C2%A78_%C2%A76Interfaces%C2%A78.zip",
                       "sha256":  "91e8303b22d921074619252b9b66b9fc2127c97aa7a6d487f39056900c091547",
                       "size":  1197001,
@@ -1004,14 +990,14 @@
                       "required":  true
                   },
                   {
-                      "path":  "resourcepacks/CobbleCafe (1).zip",
-                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/CobbleCafe%20(1).zip",
+                      "path":  "resourcepacks/CobbleCafe.zip",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/CobbleCafe.zip",
                       "sha256":  "27cfda9a581d6c50bb62eaaec3b7d0d06eb46e3724a7997ab55dbd4e4fcca5f0",
                       "size":  1213518,
                       "required":  true
                   },
                   {
-                      "path":  "resourcepacks/Cobblemon 3D Poké Rods 1.0.zip",
+                      "path":  "resourcepacks/Cobblemon 3D PokÃ© Rods 1.0.zip",
                       "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/Cobblemon%203D%20Pok%C3%A9%20Rods%201.0.zip",
                       "sha256":  "4110f5b2a2959fff1cc03a4b0659cc6e7244ca3fb55700dcd016b422312ec74c",
                       "size":  167706,
@@ -1109,8 +1095,8 @@
                       "required":  true
                   },
                   {
-                      "path":  "resourcepacks/Failskins 8.21 (1).zip",
-                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/Failskins%208.21%20(1).zip",
+                      "path":  "resourcepacks/Failskins 8.21.zip",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/Failskins%208.21.zip",
                       "sha256":  "0415cc515a23496a71d055166523d55b5e24aa405b1a8bd738c829c074104973",
                       "size":  6788030,
                       "required":  true
@@ -1165,8 +1151,8 @@
                       "required":  true
                   },
                   {
-                      "path":  "resourcepacks/pokopia-1.1 (1).zip",
-                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/pokopia-1.1%20(1).zip",
+                      "path":  "resourcepacks/pokopia-1.1.zip",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/pokopia-1.1.zip",
                       "sha256":  "59443bc40c324acb06a67312aac4b6073d471c1fc7016afbb13ae66ba9381d6d",
                       "size":  109784,
                       "required":  true
@@ -1205,7 +1191,19 @@
                    "mods/HMI 4.3 - 1.21.(1).jar",
                    "mods/HMI 4.3 - 1.21.(1).jar.disabled",
                    "mods/interactic-0.2.3+1.21.jar",
-                   "mods/interactic-0.2.3+1.21.jar.disabled"
+                   "mods/interactic-0.2.3+1.21.jar.disabled",
+                   "mods/cobblecuisine-2.0.1-1.7-rc1 (2).jar",
+                   "mods/CraftTweaker-fabric-1.21.1-21.0.38 (2).jar",
+                   "mods/Failskins 8.22 (2).jar",
+                   "mods/FallingTree-1.21.1-1.21.1.11 (1).jar",
+                   "mods/LumyMon-0.6.5 (1).jar",
+                   "mods/placeholder-api-2.4.2+1.21 (2).jar",
+                   "mods/ShadowCrates-2.3 (1).jar",
+                   "mods/starlightfusion-fabric-1.6.1 (1).jar",
+                   "mods/worldedit-mod-7.3.8 (3).jar",
+                   "resourcepacks/CobbleCafe (1).zip",
+                   "resourcepacks/Failskins 8.21 (1).zip",
+                   "resourcepacks/pokopia-1.1 (1).zip"
                ],
     "news":  [
                  {
