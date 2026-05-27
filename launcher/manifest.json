@@ -815,8 +815,8 @@
                       "required":  true
                   },
                   {
-                      "path":  "mods/StackableItems-fabric-1.21.[0-1]-v1.2.jar",
-                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/StackableItems-fabric-1.21.%5B0-1%5D-v1.2.jar",
+                      "path":  "mods/StackableItems-fabric-1.21.0-1-v1.2.jar",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/StackableItems-fabric-1.21.0-1-v1.2.jar",
                       "sha256":  "0c333647c17901582b491047639e579dbfb95223dd2f96733d09b1363180259e",
                       "size":  72184,
                       "required":  true
@@ -948,8 +948,8 @@
                       "required":  true
                   },
                   {
-                      "path":  "resourcepacks/Â§6ImmersiveÂ§8_Â§6InterfacesÂ§8.zip",
-                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/%C2%A76Immersive%C2%A78_%C2%A76Interfaces%C2%A78.zip",
+                      "path":  "resourcepacks/6Immersive.8_.6Interfaces.8.zip",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/6Immersive.8_.6Interfaces.8.zip",
                       "sha256":  "91e8303b22d921074619252b9b66b9fc2127c97aa7a6d487f39056900c091547",
                       "size":  1197001,
                       "required":  true
@@ -997,8 +997,8 @@
                       "required":  true
                   },
                   {
-                      "path":  "resourcepacks/Cobblemon.3D.Pok.Rods.1.0.zip",
-                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/Cobblemon.3D.Pok.Rods.1.0.zip",
+                      "path":  "resourcepacks/Cobblemon.3D.Poke.Rods.1.0.zip",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/Cobblemon.3D.Poke.Rods.1.0.zip",
                       "sha256":  "4110f5b2a2959fff1cc03a4b0659cc6e7244ca3fb55700dcd016b422312ec74c",
                       "size":  167706,
                       "required":  true
@@ -1158,8 +1158,8 @@
                       "required":  true
                   },
                   {
-                      "path":  "resourcepacks/qrafty\u0027s-capitalized-font-3.1.zip",
-                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/qrafty\u0027s-capitalized-font-3.1.zip",
+                      "path":  "resourcepacks/qrafty.s-capitalized-font-3.1.zip",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/qrafty.s-capitalized-font-3.1.zip",
                       "sha256":  "cd22df63dd529e052fbf314b3074cf7aa410e1b01a865dfdb718fb8ec8f83c00",
                       "size":  237577,
                       "required":  true
@@ -1230,7 +1230,11 @@
                    "resourcepacks/Fully Hisuian Starters 1.1.1.zip",
                    "resourcepacks/Glowing Ores - Borderful Edition (8.0.0v).zip",
                    "resourcepacks/Icon Fresh 1.3.zip",
-                   "resourcepacks/Seavls Bizarremons 1.1.0v.zip"
+                   "resourcepacks/Seavls Bizarremons 1.1.0v.zip",
+                   "mods/StackableItems-fabric-1.21.[0-1]-v1.2.jar",
+                   "resourcepacks/Â§6ImmersiveÂ§8_Â§6InterfacesÂ§8.zip",
+                   "resourcepacks/Cobblemon.3D.Pok.Rods.1.0.zip",
+                   "resourcepacks/qrafty\u0027s-capitalized-font-3.1.zip"
                ],
     "news":  [
                  {
