@@ -1,6 +1,6 @@
 /*
- * MiServidor Launcher
- * Copyright (C) 2026 MiServidor contributors
+ * BarrilMC Launcher
+ * Copyright (C) 2026 BarrilMC contributors
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,11 +17,11 @@ import java.nio.file.Path;
 @NotNullByDefault
 public final class ServerLauncherConfig {
     /// Launcher display name.
-    public static final String LAUNCHER_NAME = "MiServidor Launcher";
+    public static final String LAUNCHER_NAME = "BarrilMC Launcher";
     /// Server display name and profile name.
-    public static final String SERVER_NAME = "MiServidor";
+    public static final String SERVER_NAME = "BarrilMC Server";
     /// Preconfigured Minecraft instance id.
-    public static final String INSTANCE_NAME = "MiServidor";
+    public static final String INSTANCE_NAME = "BarrilMC Server";
     /// Default Minecraft version. The remote manifest may repeat this value.
     public static final String MINECRAFT_VERSION = "1.21.1";
     /// Loader id used by HMCL's dependency manager.
@@ -29,17 +29,17 @@ public final class ServerLauncherConfig {
     /// Default Fabric loader version. The remote manifest may repeat this value.
     public static final String LOADER_VERSION = "0.18.4";
     /// Default server host.
-    public static final String SERVER_IP = "play.miservidor.com";
+    public static final String SERVER_IP = "impact.dathost.net";
     /// Default server port.
-    public static final int SERVER_PORT = 25565;
+    public static final int SERVER_PORT = 17818;
     /// Default local game directory for this server.
-    public static final Path INSTANCE_DIRECTORY = Path.of(".miservidor");
-    /// Default manifest URL. Override with -Dmiservidor.manifest.url or MISERVIDOR_MANIFEST_URL.
+    public static final Path INSTANCE_DIRECTORY = Path.of(".barrilmc");
+    /// Default manifest URL. Override with -Dbarrilmc.manifest.url or BARRILMC_MANIFEST_URL.
     public static final String MANIFEST_URL = System.getProperty(
-            "miservidor.manifest.url",
+            "barrilmc.manifest.url",
             System.getenv().getOrDefault(
-                    "MISERVIDOR_MANIFEST_URL",
-                    "https://TU_USUARIO.github.io/mi-servidor-launcher/launcher/manifest.json"));
+                    "BARRILMC_MANIFEST_URL",
+                    "https://kperegrin.github.io/mi-servidor-launcher/launcher/manifest.json"));
 
     private ServerLauncherConfig() {
     }

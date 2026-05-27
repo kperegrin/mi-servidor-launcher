@@ -1,17 +1,17 @@
-﻿# MiServidor Launcher
+# BarrilMC Launcher
 
-Launcher personalizado basado en HMCL para `MiServidor`.
+Launcher personalizado basado en HMCL para `BarrilMC Server`.
 
 Valores temporales usados:
 
-- Launcher: `MiServidor Launcher`
-- Servidor: `MiServidor`
-- IP: `play.miservidor.com`
+- Launcher: `BarrilMC Launcher`
+- Servidor: `BarrilMC Server`
+- IP: `play.BarrilMC Server.com`
 - Minecraft: `1.21.1`
 - Loader: `Fabric`
 - Fabric loader: `0.18.4`
-- Carpeta de instancia: `.miservidor`
-- Manifest: `https://TU_USUARIO.github.io/mi-servidor-launcher/launcher/manifest.json`
+- Carpeta de instancia: `.BarrilMC Server`
+- Manifest: `https://kperegrin.github.io/mi-servidor-launcher/launcher/manifest.json`
 - Logo: `HMCL/src/main/resources/assets/branding/logo.png`
 - Icono: `HMCL/src/main/resources/assets/branding/icon.ico`
 
@@ -28,7 +28,7 @@ $env:MICROSOFT_AUTH_ID="TU_CLIENT_ID"
 O en runtime:
 
 ```powershell
-java -Dhmcl.microsoft.auth.id=TU_CLIENT_ID -jar .\HMCL\build\libs\MiServidor-Launcher-1.0.0.jar
+java -Dhmcl.microsoft.auth.id=TU_CLIENT_ID -jar .\HMCL\build\libs\BarrilMC-Launcher-1.0.0.jar
 ```
 
 Redirect URIs que HMCL usa: `http://localhost:29111/auth-response` hasta `http://localhost:29115/auth-response`.
@@ -65,7 +65,7 @@ Puntos tocados o relevantes:
 ## Archivos modificados
 
 - `config/project.properties`: version base `1.0.0`.
-- `HMCL/build.gradle.kts`: nombre de artefacto `MiServidor-Launcher`, version configurable `MISERVIDOR_LAUNCHER_VERSION`, icono deb temporal.
+- `HMCL/build.gradle.kts`: nombre de artefacto `BarrilMC-Launcher`, version configurable `BarrilMC Server_LAUNCHER_VERSION`, icono deb temporal.
 - `HMCL/src/main/java/org/jackhuang/hmcl/Metadata.java`: nombre, URLs y carpetas de datos.
 - `HMCL/src/main/java/org/jackhuang/hmcl/theme/ThemeColor.java`: morado por defecto.
 - `HMCL/src/main/java/org/jackhuang/hmcl/setting/Config.java`: tema oscuro por defecto.
@@ -92,7 +92,7 @@ Puntos tocados o relevantes:
 - `HMCL/src/main/resources/assets/branding/logo.png`
 - `HMCL/src/main/resources/assets/branding/icon.png`
 - `HMCL/src/main/resources/assets/branding/icon.ico`
-- `HMCL/image/miservidor.png`
+- `HMCL/image/BarrilMC Server.png`
 - `launcher/manifest.json`
 - `launcher/news.json`
 - `launcher/version.json`
@@ -102,18 +102,18 @@ Puntos tocados o relevantes:
 Branding central:
 
 ```java
-public static final String NAME = "MiServidor Launcher";
-public static final String FULL_NAME = "MiServidor Launcher";
+public static final String NAME = "BarrilMC Launcher";
+public static final String FULL_NAME = "BarrilMC Launcher";
 ```
 
 Manifest remoto:
 
 ```java
 public static final String MANIFEST_URL = System.getProperty(
-        "miservidor.manifest.url",
+        "BarrilMC Server.manifest.url",
         System.getenv().getOrDefault(
-                "MISERVIDOR_MANIFEST_URL",
-                "https://TU_USUARIO.github.io/mi-servidor-launcher/launcher/manifest.json"));
+                "BarrilMC Server_MANIFEST_URL",
+                "https://kperegrin.github.io/mi-servidor-launcher/launcher/manifest.json"));
 ```
 
 Fabric automatico:
@@ -167,7 +167,7 @@ Cambiar logo:
 1. Sustituye `HMCL/src/main/resources/assets/branding/logo.png`.
 2. Sustituye `HMCL/src/main/resources/assets/branding/icon.png`.
 3. Sustituye `HMCL/src/main/resources/assets/branding/icon.ico`.
-4. Sustituye `HMCL/image/miservidor.png` si quieres icono en paquetes Linux/deb.
+4. Sustituye `HMCL/image/BarrilMC Server.png` si quieres icono en paquetes Linux/deb.
 
 Colores principales en `root.css`:
 
@@ -186,14 +186,14 @@ Base en `launcher/manifest.json`:
   "loader": "fabric",
   "loaderVersion": "0.18.4",
   "server": {
-    "name": "MiServidor",
-    "ip": "play.miservidor.com",
-    "port": 25565
+    "name": "BarrilMC Server",
+    "ip": "play.BarrilMC Server.com",
+    "port": 17818
   },
   "files": [
     {
       "path": "mods/example.jar",
-      "url": "https://github.com/TU_USUARIO/mi-servidor-launcher/releases/download/v1.0/example.jar",
+      "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/example.jar",
       "sha256": "HASH_AQUI",
       "size": 123456,
       "required": true
@@ -226,18 +226,18 @@ El updater:
 
 ## FASE 4: instancia Fabric preconfigurada
 
-Al abrir la home se crea perfil `MiServidor` con carpeta `.miservidor`.
+Al abrir la home se crea perfil `BarrilMC Server` con carpeta `.BarrilMC Server`.
 
 Al actualizar/jugar crea:
 
-- `.miservidor/mods`
-- `.miservidor/resourcepacks`
-- `.miservidor/shaderpacks`
-- `.miservidor/config`
-- `.miservidor/options.txt`
-- `.miservidor/servers.dat`
+- `.BarrilMC Server/mods`
+- `.BarrilMC Server/resourcepacks`
+- `.BarrilMC Server/shaderpacks`
+- `.BarrilMC Server/config`
+- `.BarrilMC Server/options.txt`
+- `.BarrilMC Server/servers.dat`
 
-La instancia se llama `MiServidor`, usa Minecraft `1.21.1` y Fabric `0.18.4`.
+La instancia se llama `BarrilMC Server`, usa Minecraft `1.21.1` y Fabric `0.18.4`.
 
 ## FASE 5: pantalla principal personalizada
 
@@ -261,22 +261,22 @@ Incluye:
 
 Flujo:
 
-1. Obtiene o crea el perfil `MiServidor`.
+1. Obtiene o crea el perfil `BarrilMC Server`.
 2. Descarga manifest remoto.
 3. Carga `news.json` si existe.
 4. Verifica y sincroniza archivos.
 5. Borra obsoletos.
 6. Instala Minecraft + Fabric si falta.
 7. Aplica `serverIp` para quick play.
-8. Lanza `MiServidor`.
+8. Lanza `BarrilMC Server`.
 
 En paralelo, la home comprueba `version.json`. Si `latest` es mayor que `Metadata.VERSION`, muestra `Actualizar launcher`; al pulsarlo descarga el asset de GitHub Releases, valida SHA-256 y lo deja junto al launcher actual.
 
 Para cambiar el manifest sin recompilar:
 
 ```powershell
-$env:MISERVIDOR_MANIFEST_URL="https://TU_USUARIO.github.io/mi-servidor-launcher/launcher/manifest.json"
-.\HMCL\build\libs\MiServidor-Launcher-1.0.0.exe
+$env:BarrilMC Server_MANIFEST_URL="https://kperegrin.github.io/mi-servidor-launcher/launcher/manifest.json"
+.\HMCL\build\libs\BarrilMC-Launcher-1.0.0.exe
 ```
 
 ## FASE 7: login premium/offline
@@ -302,15 +302,15 @@ Compilar EXE:
 cd G:\launcher\HMCL
 $env:GRADLE_USER_HOME="G:\launcher\HMCL\.gradle-user-home"
 $env:MICROSOFT_AUTH_ID="TU_CLIENT_ID"
-$env:MISERVIDOR_LAUNCHER_VERSION="1.0.0"
+$env:BarrilMC Server_LAUNCHER_VERSION="1.0.0"
 .\gradlew.bat -g .gradle-user-home :HMCL:clean :HMCL:makeExecutables --no-daemon --stacktrace
 ```
 
 Artefactos:
 
-- `HMCL/build/libs/MiServidor-Launcher-1.0.0.exe`
-- `HMCL/build/libs/MiServidor-Launcher-1.0.0.jar`
-- `HMCL/build/libs/MiServidor-Launcher-1.0.0.exe.sha256`
+- `HMCL/build/libs/BarrilMC-Launcher-1.0.0.exe`
+- `HMCL/build/libs/BarrilMC-Launcher-1.0.0.jar`
+- `HMCL/build/libs/BarrilMC-Launcher-1.0.0.exe.sha256`
 
 Hash actual de esta build:
 
@@ -321,26 +321,26 @@ b79ea02c3f6bde02cf78556e986b734f5978a1e0332792c5f00aff4f08fc3bd1
 Probar JAR:
 
 ```powershell
-java -jar .\HMCL\build\libs\MiServidor-Launcher-1.0.0.jar
+java -jar .\HMCL\build\libs\BarrilMC-Launcher-1.0.0.jar
 ```
 
 Probar EXE:
 
 ```powershell
-.\HMCL\build\libs\MiServidor-Launcher-1.0.0.exe
+.\HMCL\build\libs\BarrilMC-Launcher-1.0.0.exe
 ```
 
 ## FASE 9: pruebas
 
 Checklist:
 
-- Abre ventana con titulo `MiServidor Launcher`.
+- Abre ventana con titulo `BarrilMC Launcher`.
 - Home muestra logo, estado, botones y noticias.
 - `Offline` crea cuenta offline.
 - `Microsoft` abre OAuth oficial si hay Client ID valido.
 - `Actualizar archivos` falla claramente si el manifest tiene `HASH_AQUI`.
 - Con hashes reales, descarga mods/configs/shaders.
-- Se crea `.miservidor/servers.dat`.
+- Se crea `.BarrilMC Server/servers.dat`.
 - Se instala Fabric si no existe.
 - `Jugar servidor` lanza Minecraft y pasa quick play al servidor.
 
@@ -350,7 +350,7 @@ Crear repo:
 
 ```powershell
 cd G:\launcher\HMCL
-git remote add origin https://github.com/TU_USUARIO/mi-servidor-launcher.git
+git remote add origin https://github.com/kperegrin/mi-servidor-launcher.git
 git add launcher
 git commit -m "Add launcher hosting files"
 git push -u origin main
@@ -367,9 +367,9 @@ Activar Pages:
 
 URLs:
 
-- `https://TU_USUARIO.github.io/mi-servidor-launcher/launcher/manifest.json`
-- `https://TU_USUARIO.github.io/mi-servidor-launcher/launcher/news.json`
-- `https://TU_USUARIO.github.io/mi-servidor-launcher/launcher/version.json`
+- `https://kperegrin.github.io/mi-servidor-launcher/launcher/manifest.json`
+- `https://kperegrin.github.io/mi-servidor-launcher/launcher/news.json`
+- `https://kperegrin.github.io/mi-servidor-launcher/launcher/version.json`
 
 ## GitHub Releases gratis
 
@@ -384,7 +384,7 @@ Subir archivos grandes:
 URL directa:
 
 ```text
-https://github.com/TU_USUARIO/mi-servidor-launcher/releases/download/v1.0/example.jar
+https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/example.jar
 ```
 
 ## Hashes y sizes
@@ -406,7 +406,7 @@ Actualizar entrada del manifest:
 ```json
 {
   "path": "mods/example.jar",
-  "url": "https://github.com/TU_USUARIO/mi-servidor-launcher/releases/download/v1.0/example.jar",
+  "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/example.jar",
   "sha256": "PEGA_EL_HASH_SHA256",
   "size": 123456,
   "required": true
@@ -452,7 +452,7 @@ Commit y push. El launcher lo lee en la proxima actualizacion.
 1. Cambia version:
 
 ```powershell
-$env:MISERVIDOR_LAUNCHER_VERSION="1.0.1"
+$env:BarrilMC Server_LAUNCHER_VERSION="1.0.1"
 ```
 
 2. Compila:
@@ -461,13 +461,13 @@ $env:MISERVIDOR_LAUNCHER_VERSION="1.0.1"
 .\gradlew.bat -g .gradle-user-home :HMCL:clean :HMCL:makeExecutables --no-daemon --stacktrace
 ```
 
-3. Sube `MiServidor-Launcher-1.0.1.exe` a GitHub Releases.
+3. Sube `BarrilMC-Launcher-1.0.1.exe` a GitHub Releases.
 4. Edita `launcher/version.json`:
 
 ```json
 {
   "latest": "1.0.1",
-  "downloadUrl": "https://github.com/TU_USUARIO/mi-servidor-launcher/releases/download/v1.0.1/MiServidor-Launcher-1.0.1.exe",
+  "downloadUrl": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0.1/BarrilMC-Launcher-1.0.1.exe",
   "sha256": "HASH_DEL_EXE",
   "notes": "Actualizacion del launcher."
 }

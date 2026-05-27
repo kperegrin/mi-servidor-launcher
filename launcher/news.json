@@ -1,7 +1,7 @@
 [
-  {
-    "title": "Bienvenido",
-    "body": "MiServidor Launcher ya puede verificar mods, resource packs, configs y shaders desde GitHub Pages y GitHub Releases.",
-    "date": "2026-05-27"
-  }
+    {
+        "title":  "BarrilMC listo",
+        "body":  "BarrilMC Launcher ya puede sincronizar mods y resource packs automaticamente antes de entrar al servidor.",
+        "date":  "2026-05-27"
+    }
 ]

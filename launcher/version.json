@@ -1,6 +1,6 @@
 {
-  "latest": "1.0.0",
-  "downloadUrl": "https://github.com/TU_USUARIO/mi-servidor-launcher/releases/download/v1.0/MiServidor-Launcher-1.0.0.exe",
-  "sha256": "b79ea02c3f6bde02cf78556e986b734f5978a1e0332792c5f00aff4f08fc3bd1",
-  "notes": "Primera version personalizada basada en HMCL."
+    "latest":  "1.0.0",
+    "downloadUrl":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/BarrilMC-Launcher-1.0.0.exe",
+    "sha256":  "4163c7dc1d29eef5d1494bc5d8426cc2f77bef06a4c6058f2bfe56b452b451fe",
+    "notes":  "BarrilMC Launcher con Fabric 1.21.1 y pack sincronizado."
 }

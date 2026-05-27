@@ -1,30 +1,1217 @@
 {
-  "launcherVersion": "1.0.0",
-  "minecraftVersion": "1.21.1",
-  "loader": "fabric",
-  "loaderVersion": "0.18.4",
-  "server": {
-    "name": "MiServidor",
-    "ip": "play.miservidor.com",
-    "port": 25565
-  },
-  "files": [
-    {
-      "path": "mods/example.jar",
-      "url": "https://github.com/TU_USUARIO/mi-servidor-launcher/releases/download/v1.0/example.jar",
-      "sha256": "HASH_AQUI",
-      "size": 123456,
-      "required": true
-    }
-  ],
-  "delete": [
-    "mods/mod-viejo.jar"
-  ],
-  "news": [
-    {
-      "title": "Bienvenido",
-      "body": "Nueva version del servidor disponible.",
-      "date": "2026-05-27"
-    }
-  ]
+    "launcherVersion":  "1.0.0",
+    "minecraftVersion":  "1.21.1",
+    "loader":  "fabric",
+    "loaderVersion":  "0.18.4",
+    "server":  {
+                   "name":  "BarrilMC Server",
+                   "ip":  "impact.dathost.net",
+                   "port":  17818
+               },
+    "files":  [
+                  {
+                      "path":  "mods/accessories-fabric-1.1.0-beta.53+1.21.1.jar",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/accessories-fabric-1.1.0-beta.53%2B1.21.1.jar",
+                      "sha256":  "51e6f6d52cb2523199ad36e5bc04802230f86904c35ac3dbf36e59c86b2c30d1",
+                      "size":  1095802,
+                      "required":  true
+                  },
+                  {
+                      "path":  "mods/AdvancementPlaques-1.21.1-fabric-1.6.8.jar",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/AdvancementPlaques-1.21.1-fabric-1.6.8.jar",
+                      "sha256":  "dda6cc159edd450d05b9ff15832747b951dacd068c601018c219bca833ce5bef",
+                      "size":  195505,
+                      "required":  true
+                  },
+                  {
+                      "path":  "mods/architectury-13.0.8-fabric.jar",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/architectury-13.0.8-fabric.jar",
+                      "sha256":  "10cbbb6f5f96a2f1853b0cc68428424cec8903409517b299ff02350756b6399d",
+                      "size":  600915,
+                      "required":  true
+                  },
+                  {
+                      "path":  "mods/athena-fabric-1.21-4.0.2.jar",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/athena-fabric-1.21-4.0.2.jar",
+                      "sha256":  "998c92dc8e01999f3e6870c94102aa73d755dc56f17a7d36c67f79178f836ffb",
+                      "size":  82788,
+                      "required":  true
+                  },
+                  {
+                      "path":  "mods/badgebox-fabric-1.3.0.jar",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/badgebox-fabric-1.3.0.jar",
+                      "sha256":  "1c9a964eab0ed773842569d5de6d9e4b8c1aef4f99d672770290c191f33858a6",
+                      "size":  74534,
+                      "required":  true
+                  },
+                  {
+                      "path":  "mods/BadOptimizations-2.4.1-1.21.1.jar",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/BadOptimizations-2.4.1-1.21.1.jar",
+                      "sha256":  "22e2467892d3706f43d1cf2aa637785bb8601c20b0098a82ab956e6a8fc4d2ba",
+                      "size":  283566,
+                      "required":  true
+                  },
+                  {
+                      "path":  "mods/balm-fabric-1.21.1-21.0.56.jar",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/balm-fabric-1.21.1-21.0.56.jar",
+                      "sha256":  "928f71d90b0064ba450e31211273c87491af13f820b3c1992b26811e0bd22d38",
+                      "size":  773504,
+                      "required":  true
+                  },
+                  {
+                      "path":  "mods/barrilcomplements-25demayo.jar",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/barrilcomplements-25demayo.jar",
+                      "sha256":  "17cf040a522b3e39ca6de1c09dd8908bd88361b0fd6ad9019dd65105fd45d7d0",
+                      "size":  339585,
+                      "required":  true
+                  },
+                  {
+                      "path":  "mods/beautify-2.0.0+1.21.1.jar",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/beautify-2.0.0%2B1.21.1.jar",
+                      "sha256":  "134da1a8e3841f0a14004e839bd1e0a9d091cc5769a82b0052cebda2804ac4fd",
+                      "size":  837607,
+                      "required":  true
+                  },
+                  {
+                      "path":  "mods/betterbeds-fabric-1.4.0.jar",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/betterbeds-fabric-1.4.0.jar",
+                      "sha256":  "d707f5df1c45150eb18b3135380519e74dd9103673a71032ef3de2b9038424aa",
+                      "size":  39918,
+                      "required":  true
+                  },
+                  {
+                      "path":  "mods/BetterF3-11.0.3-Fabric-1.21.1.jar",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/BetterF3-11.0.3-Fabric-1.21.1.jar",
+                      "sha256":  "e0e4bb25fbe23b16b7574474ee9fde5cdc9757d05885bc43978f4ea5e8e258ad",
+                      "size":  1810710,
+                      "required":  true
+                  },
+                  {
+                      "path":  "mods/BetterThirdPerson-Fabric-1.21-1.9.0.jar",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/BetterThirdPerson-Fabric-1.21-1.9.0.jar",
+                      "sha256":  "f9ec9dc6508b20d32a3c770ecc77641e8f87c98e298d58e2757a6ef14abbb457",
+                      "size":  52188,
+                      "required":  true
+                  },
+                  {
+                      "path":  "mods/biomereplacer-2.1-hippo-fabric.jar",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/biomereplacer-2.1-hippo-fabric.jar",
+                      "sha256":  "ec6eeda3d4d32d9740c3e6f24177db3fcfa06866f73e341c0ad4ea090d0055ac",
+                      "size":  138694,
+                      "required":  true
+                  },
+                  {
+                      "path":  "mods/BiomesOPlenty-fabric-1.21.1-21.1.0.13.jar",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/BiomesOPlenty-fabric-1.21.1-21.1.0.13.jar",
+                      "sha256":  "a0ee4d84365d88b3f549923b4de06888a3c981af463a86875dea6ec6567a0ae2",
+                      "size":  22349734,
+                      "required":  true
+                  },
+                  {
+                      "path":  "mods/bobby-5.2.4+mc1.21.jar",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/bobby-5.2.4%2Bmc1.21.jar",
+                      "sha256":  "abf66c25c5738f15528ed8a2787e9df4ce73cd84258fba5264fb049d9e591655",
+                      "size":  863192,
+                      "required":  true
+                  },
+                  {
+                      "path":  "mods/brb-1.10.0-rc5+1.21.jar",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/brb-1.10.0-rc5%2B1.21.jar",
+                      "sha256":  "7ddc4761bf5ca59c34703d9586e6edaf6c7a7a3939ed7cdb6c103ab9fec6707b",
+                      "size":  1213168,
+                      "required":  true
+                  },
+                  {
+                      "path":  "mods/c2me-fabric-mc1.21.1-0.3.0+alpha.0.362.jar",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/c2me-fabric-mc1.21.1-0.3.0%2Balpha.0.362.jar",
+                      "sha256":  "e1f47def8294fbbd75270e17cbc1bfcfed295049c7daca3d52dd73af2749b296",
+                      "size":  4701117,
+                      "required":  true
+                  },
+                  {
+                      "path":  "mods/capturexp-fabric-1.7.3-1.3.0.jar",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/capturexp-fabric-1.7.3-1.3.0.jar",
+                      "sha256":  "8f5ab9ce3ea2957f75033f3adc8a6195d303a96c3a8c1eebd1d5ee254bf88cf7",
+                      "size":  22848,
+                      "required":  true
+                  },
+                  {
+                      "path":  "mods/cardinal-components-api-6.1.3.jar",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/cardinal-components-api-6.1.3.jar",
+                      "sha256":  "302a8a4bc2e34cbffaf61af75ab5de47c06bfa159436665870ae61092b0f69a2",
+                      "size":  229645,
+                      "required":  true
+                  },
+                  {
+                      "path":  "mods/chipped-fabric-1.21.1-4.0.2.jar",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/chipped-fabric-1.21.1-4.0.2.jar",
+                      "sha256":  "1721c94365fd8d2d3c3fdcac7efbfd7e605daa7dfb8adc4c126c5bbde2820c79",
+                      "size":  15016830,
+                      "required":  true
+                  },
+                  {
+                      "path":  "mods/citresewn-1.2.2+1.21.jar",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/citresewn-1.2.2%2B1.21.jar",
+                      "sha256":  "27f960a57597539cb8dfdd7a926268a123177322b14bea113415a56825c01776",
+                      "size":  396723,
+                      "required":  true
+                  },
+                  {
+                      "path":  "mods/cloth-config-15.0.140-fabric.jar",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/cloth-config-15.0.140-fabric.jar",
+                      "sha256":  "33894e95da3af59014b39d126586d5241e07ea39f8618763e30dab637405f95f",
+                      "size":  1157166,
+                      "required":  true
+                  },
+                  {
+                      "path":  "mods/cobblecuisine-2.0.1-1.7-rc1 (2).jar",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/cobblecuisine-2.0.1-1.7-rc1%20(2).jar",
+                      "sha256":  "081d9ba2ddaae3f9b3240c0b4d49b75c4f93ab2b6e9bbb7bb69a3bc05520e1d9",
+                      "size":  683115,
+                      "required":  true
+                  },
+                  {
+                      "path":  "mods/cobbledgacha-fabric-1.21.1-3.0.3.jar",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/cobbledgacha-fabric-1.21.1-3.0.3.jar",
+                      "sha256":  "1eea99f3433331f667adac58af51401b9866cccaa30286dbd56031358f888838",
+                      "size":  1148291,
+                      "required":  true
+                  },
+                  {
+                      "path":  "mods/CobbleDollars-fabric-2.0.0+Beta-5.1+1.21.1.jar",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/CobbleDollars-fabric-2.0.0%2BBeta-5.1%2B1.21.1.jar",
+                      "sha256":  "5d8690980ecc79b5f33005dd274d148d0b9b7713ff5e8223c7011aa8bb08401a",
+                      "size":  369528,
+                      "required":  true
+                  },
+                  {
+                      "path":  "mods/CobbleFurnies-fabric-1.0.jar",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/CobbleFurnies-fabric-1.0.jar",
+                      "sha256":  "8d96608dc90c0c7d933ed0c1fa4159a30580edf550cc8c8ea2b42bfbde7bfd81",
+                      "size":  2319618,
+                      "required":  true
+                  },
+                  {
+                      "path":  "mods/cobble-gacha-machine-1.4.5.jar",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/cobble-gacha-machine-1.4.5.jar",
+                      "sha256":  "8a8d491c61760dcdb78bd08ecef9a79d6e002ad5ed1eacefb96dc91400625143",
+                      "size":  285253,
+                      "required":  true
+                  },
+                  {
+                      "path":  "mods/cobblemonalphas-1.4.1.jar",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/cobblemonalphas-1.4.1.jar",
+                      "sha256":  "c62be4d3ee441084a51b3cd6d6a40f2fd674f16c2412afbd328b0c50feac30d5",
+                      "size":  510732,
+                      "required":  true
+                  },
+                  {
+                      "path":  "mods/cobblemonarmory-1.4.4-fabric-1.21.1.jar",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/cobblemonarmory-1.4.4-fabric-1.21.1.jar",
+                      "sha256":  "199a06d1c867732a5c0735f76f8ab1973c0363c2ad797e9df2fe7901753ef215",
+                      "size":  513795,
+                      "required":  true
+                  },
+                  {
+                      "path":  "mods/cobblemonboxlink-fabric-1.21.1-1.0.6.jar",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/cobblemonboxlink-fabric-1.21.1-1.0.6.jar",
+                      "sha256":  "3edc87470f160fb795c3b8949d58a7d242d656aac1acd34b8b694b0e3a29a4aa",
+                      "size":  56073,
+                      "required":  true
+                  },
+                  {
+                      "path":  "mods/Cobblemon-fabric-1.7.3+1.21.1.jar",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/Cobblemon-fabric-1.7.3%2B1.21.1.jar",
+                      "sha256":  "f7c25955176badc444ad6211fc556514fedbdba776227f105fe899f8819d74e3",
+                      "size":  135801550,
+                      "required":  true
+                  },
+                  {
+                      "path":  "mods/cobblemonraiddens-fabric-0.10.1+1.21.1.jar",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/cobblemonraiddens-fabric-0.10.1%2B1.21.1.jar",
+                      "sha256":  "52df6b2813e1d351771ec9ee45df0481b2547fc083afe17f16cdb3b0f6511801",
+                      "size":  2666458,
+                      "required":  true
+                  },
+                  {
+                      "path":  "mods/cobblemon-synchro-machine-1.0.9.jar",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/cobblemon-synchro-machine-1.0.9.jar",
+                      "sha256":  "0dca88ceb8e7cc453e18dd67e01de57a2bbe8e4f9db3d1d23c9acb736d36f493",
+                      "size":  127458,
+                      "required":  true
+                  },
+                  {
+                      "path":  "mods/cobblenav-fabric-2.3.2.jar",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/cobblenav-fabric-2.3.2.jar",
+                      "sha256":  "7ec2b92fb621d92a815c45324a84fc7009a45e99292b84819d0cf130eb0b9b11",
+                      "size":  1078068,
+                      "required":  true
+                  },
+                  {
+                      "path":  "mods/CobbleverseBadges-1.3.jar",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/CobbleverseBadges-1.3.jar",
+                      "sha256":  "d215d075d4ae80a4ed5e20cb5caf442bb3f3607d2a41dc134ebad035f6a8da77",
+                      "size":  137015,
+                      "required":  true
+                  },
+                  {
+                      "path":  "mods/Cobbreeding-fabric-2.2.1.jar",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/Cobbreeding-fabric-2.2.1.jar",
+                      "sha256":  "c34567d7e536d097df9afca68dc3d893056266064a920e781cacbcaf1517f8f1",
+                      "size":  475204,
+                      "required":  true
+                  },
+                  {
+                      "path":  "mods/comforts-fabric-9.0.5+1.21.1.jar",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/comforts-fabric-9.0.5%2B1.21.1.jar",
+                      "sha256":  "73ff17028967a2e30731ea79aee2e18dd8e2d59a5dcd075facd6491cae1b2231",
+                      "size":  914494,
+                      "required":  true
+                  },
+                  {
+                      "path":  "mods/continuity-3.0.0+1.21.jar",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/continuity-3.0.0%2B1.21.jar",
+                      "sha256":  "99fd46b834874d167ea2349a9a72947cbfa7192f927aa99bbeb4b0637aa208d4",
+                      "size":  1014044,
+                      "required":  true
+                  },
+                  {
+                      "path":  "mods/CraftTweaker-fabric-1.21.1-21.0.38 (2).jar",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/CraftTweaker-fabric-1.21.1-21.0.38%20(2).jar",
+                      "sha256":  "0232ca9d69713f366eecec58838772848d969028b6bfe283cde86ac712ede361",
+                      "size":  4178419,
+                      "required":  true
+                  },
+                  {
+                      "path":  "mods/cwb-fabric-3.0.0+mc1.21.jar",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/cwb-fabric-3.0.0%2Bmc1.21.jar",
+                      "sha256":  "5a04b0616632f74ca2f0406d8b73bca8639b8f8f67836621d19502d7e5d660cc",
+                      "size":  81288,
+                      "required":  true
+                  },
+                  {
+                      "path":  "mods/Debugify-1.21.1+1.0.jar",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/Debugify-1.21.1%2B1.0.jar",
+                      "sha256":  "e61e83875190150337a2366d9374f04865654de7bdf83e6ab29d9915899f8d7a",
+                      "size":  292202,
+                      "required":  true
+                  },
+                  {
+                      "path":  "mods/defaultoptions-fabric-1.21.1-21.1.5.jar",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/defaultoptions-fabric-1.21.1-21.1.5.jar",
+                      "sha256":  "51b3c58c56db995e40d2bff33e865b2de31e470a7fe403c1fc4ca98bfeadb53a",
+                      "size":  98232,
+                      "required":  true
+                  },
+                  {
+                      "path":  "mods/easy_npc_bundle-fabric-1.21.1-6.11.0.jar",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/easy_npc_bundle-fabric-1.21.1-6.11.0.jar",
+                      "sha256":  "de26a8f0be3386cdc926e7876dc2a87cdcb046c8f0705f58ea050e7481617189",
+                      "size":  25262,
+                      "required":  true
+                  },
+                  {
+                      "path":  "mods/easy_npc_config_ui-fabric-1.21.1-6.11.0.jar",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/easy_npc_config_ui-fabric-1.21.1-6.11.0.jar",
+                      "sha256":  "1c141fc7588cb5f0669037fad0b859801194d8c8cc562425c852561d0b938aa7",
+                      "size":  775581,
+                      "required":  true
+                  },
+                  {
+                      "path":  "mods/easy_npc-fabric-1.21.1-6.11.0.jar",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/easy_npc-fabric-1.21.1-6.11.0.jar",
+                      "sha256":  "da25abc811a262b9cf7b46d11e6cd707406fce2bca3a34234892dcbf593806d6",
+                      "size":  1989964,
+                      "required":  true
+                  },
+                  {
+                      "path":  "mods/enhancedblockentities-0.10.2+1.21.jar",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/enhancedblockentities-0.10.2%2B1.21.jar",
+                      "sha256":  "61396ddd5990ae8177165492067c4b02e2ebacbd7be3e97eb37a46aae13c9679",
+                      "size":  201157,
+                      "required":  true
+                  },
+                  {
+                      "path":  "mods/entity_model_features-3.2.4-1.21-fabric.jar",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/entity_model_features-3.2.4-1.21-fabric.jar",
+                      "sha256":  "3c3f800b4bf911a158435c36dac0cf4176bec36d837c0696fdfae39d7ec5f976",
+                      "size":  565280,
+                      "required":  true
+                  },
+                  {
+                      "path":  "mods/entity_texture_features_1.21-fabric-7.1.jar",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/entity_texture_features_1.21-fabric-7.1.jar",
+                      "sha256":  "d1b54ad6fd34eaf7187fb62556f2c5cacdc2ea3023a6217e3b2d823285aea148",
+                      "size":  745421,
+                      "required":  true
+                  },
+                  {
+                      "path":  "mods/entityculling-fabric-1.10.1-mc1.21.1.jar",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/entityculling-fabric-1.10.1-mc1.21.1.jar",
+                      "sha256":  "5ba051e8d9110ba14e619fbc2dfe5b91eb013792727532a93711368211c6fd1e",
+                      "size":  1574328,
+                      "required":  true
+                  },
+                  {
+                      "path":  "mods/ExplorersCompass-1.21.1-2.2.5-fabric.jar",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/ExplorersCompass-1.21.1-2.2.5-fabric.jar",
+                      "sha256":  "c1cf034aed2d44cbb44add44b2f0f543143fcee5b019bd783de2e0adf00d3bce",
+                      "size":  164587,
+                      "required":  true
+                  },
+                  {
+                      "path":  "mods/explosive-enhancement-1.3.2-1.21-1.21.1.jar",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/explosive-enhancement-1.3.2-1.21-1.21.1.jar",
+                      "sha256":  "65467fdb249a6c87150cdc90ffd6bda3e06ee5a68aef0bdf004ddea920207eb1",
+                      "size":  114621,
+                      "required":  true
+                  },
+                  {
+                      "path":  "mods/fabric-1.20.2_1.21.11.jar",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/fabric-1.20.2_1.21.11.jar",
+                      "sha256":  "9c83e9635df10c409644c0078d8bafec62e552fe54389918dea4954581c072f5",
+                      "size":  6976,
+                      "required":  true
+                  },
+                  {
+                      "path":  "mods/fabric-api-0.116.10+1.21.1.jar",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/fabric-api-0.116.10%2B1.21.1.jar",
+                      "sha256":  "af0eb792940568fdb1f37bb65a2599773bc47d2010aedf5ec5ed0bd3b6fc40e6",
+                      "size":  2425988,
+                      "required":  true
+                  },
+                  {
+                      "path":  "mods/fabric-language-kotlin-1.13.10+kotlin.2.3.20.jar",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/fabric-language-kotlin-1.13.10%2Bkotlin.2.3.20.jar",
+                      "sha256":  "f288f0273fa9d592b07869fa2bbd7bdca274998a38b87eb8485c109420921e2a",
+                      "size":  7796348,
+                      "required":  true
+                  },
+                  {
+                      "path":  "mods/Failskins 8.22 (2).jar",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/Failskins%208.22%20(2).jar",
+                      "sha256":  "1ecb0f80ea18001d119a8a15368f982ef76b7588c5620cf2fe1ae7b96e3736d9",
+                      "size":  19692214,
+                      "required":  true
+                  },
+                  {
+                      "path":  "mods/FallingTree-1.21.1-1.21.1.11 (1).jar",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/FallingTree-1.21.1-1.21.1.11%20(1).jar",
+                      "sha256":  "b07cb3fe67d1f3bb66daf8836373614153790cfaa8c64fadbf53479d1b33cc54",
+                      "size":  496356,
+                      "required":  true
+                  },
+                  {
+                      "path":  "mods/fast-ip-ping-v1.0.11-mc1.21.1-fabric.jar",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/fast-ip-ping-v1.0.11-mc1.21.1-fabric.jar",
+                      "sha256":  "c9d7c5e8d94536476b7c098c74a14cbbe20b2edcb6e73559d3de1b3a8ec4df55",
+                      "size":  10198,
+                      "required":  true
+                  },
+                  {
+                      "path":  "mods/ferritecore-7.0.3-fabric.jar",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/ferritecore-7.0.3-fabric.jar",
+                      "sha256":  "98c3ab1d5aab8f14b5d082d3f1a467727fd335f02d124555c94339761c4c18f2",
+                      "size":  123450,
+                      "required":  true
+                  },
+                  {
+                      "path":  "mods/fightorflight-fabric-0.10.7.jar",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/fightorflight-fabric-0.10.7.jar",
+                      "sha256":  "28b05dd0665cbaf24ace09305ac162758ef8a832f55b9965088645b487a4d070",
+                      "size":  1415149,
+                      "required":  true
+                  },
+                  {
+                      "path":  "mods/ForgeConfigAPIPort-v21.1.6-1.21.1-Fabric.jar",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/ForgeConfigAPIPort-v21.1.6-1.21.1-Fabric.jar",
+                      "sha256":  "2e3a8f0e3bda85a7d722720e7ce879cbd9d028d9395c6fc224d329b3c982d9b1",
+                      "size":  633065,
+                      "required":  true
+                  },
+                  {
+                      "path":  "mods/forgified-fabric-api-0.116.7+2.2.4+1.21.1.jar",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/forgified-fabric-api-0.116.7%2B2.2.4%2B1.21.1.jar",
+                      "sha256":  "68abf2864e957df26ac0cc3bd5352ee67880e052b47a80f22f28556c1179f18d",
+                      "size":  5569793,
+                      "required":  true
+                  },
+                  {
+                      "path":  "mods/fzzy_config-0.7.6+1.21.jar",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/fzzy_config-0.7.6%2B1.21.jar",
+                      "sha256":  "323dc065cc3aaeb7f908be7e5d31070a25d4188b433ed770a79700ef8f5e8f7d",
+                      "size":  2365335,
+                      "required":  true
+                  },
+                  {
+                      "path":  "mods/geckolib-fabric-1.21.1-4.8.4.jar",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/geckolib-fabric-1.21.1-4.8.4.jar",
+                      "sha256":  "905df8858ed4aa3a5c2a845b7c83bf1e3274c348d8e623269e7e245a3e2e647d",
+                      "size":  653722,
+                      "required":  true
+                  },
+                  {
+                      "path":  "mods/GlitchCore-fabric-1.21.1-2.1.0.0.jar",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/GlitchCore-fabric-1.21.1-2.1.0.0.jar",
+                      "sha256":  "8ded94d33f1f1bdae9a845c35c3e4358528d71e2c45ad5642acfa9280e53fb47",
+                      "size":  329188,
+                      "required":  true
+                  },
+                  {
+                      "path":  "mods/Gts-2.5.1-fabric.jar",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/Gts-2.5.1-fabric.jar",
+                      "sha256":  "b92db15cdf2ed9bccd44a08f4d0b849ba96e861f7041e415361ecca93c9fc920",
+                      "size":  1386494,
+                      "required":  true
+                  },
+                  {
+                      "path":  "mods/handcrafted-fabric-1.21.1-4.0.3.jar",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/handcrafted-fabric-1.21.1-4.0.3.jar",
+                      "sha256":  "9609c27e2eeaed4c633ade2d68ad980cfbed0442a10239846a67e9c62bc1b230",
+                      "size":  7127377,
+                      "required":  true
+                  },
+                  {
+                      "path":  "mods/huge-structure-blocks-fabric-1.1.6.jar",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/huge-structure-blocks-fabric-1.1.6.jar",
+                      "sha256":  "759071bd7b1db4367f232db35872ce6a30e8adee57a8543d0967d0b39b37819d",
+                      "size":  100230,
+                      "required":  true
+                  },
+                  {
+                      "path":  "mods/Iceberg-1.21.1-fabric-1.3.2.jar",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/Iceberg-1.21.1-fabric-1.3.2.jar",
+                      "sha256":  "9214790af6fb75c19ef6b95e0e47999addf018e8c7a1630a5118c4252e6d8d36",
+                      "size":  413302,
+                      "required":  true
+                  },
+                  {
+                      "path":  "mods/ImmediatelyFast-Fabric-1.6.10+1.21.1.jar",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/ImmediatelyFast-Fabric-1.6.10%2B1.21.1.jar",
+                      "sha256":  "211a6784185e9a5e7f631c38de35c580a8b88b2f30eb6850216497bbaefc7cf9",
+                      "size":  342770,
+                      "required":  true
+                  },
+                  {
+                      "path":  "mods/Impactor-Fabric-5.3.5+1.21.1.jar",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/Impactor-Fabric-5.3.5%2B1.21.1.jar",
+                      "sha256":  "02312d1b101e67f9d2a0476ad6aafabb0b4cabab787f85ecf871ffce8d59f8a9",
+                      "size":  19673493,
+                      "required":  true
+                  },
+                  {
+                      "path":  "mods/InvView-1.4.15-1.20.5+.jar",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/InvView-1.4.15-1.20.5%2B.jar",
+                      "sha256":  "7ec1148dec321ca560ff44497294dd9740a5592463dc0a54f10bfe0312056491",
+                      "size":  161830,
+                      "required":  true
+                  },
+                  {
+                      "path":  "mods/iris-fabric-1.8.8+mc1.21.1.jar",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/iris-fabric-1.8.8%2Bmc1.21.1.jar",
+                      "sha256":  "b5ad39a6cb113ca0a1765f06689f9f4b29ccd0c81247de90b06c42f5da1092f5",
+                      "size":  2690177,
+                      "required":  true
+                  },
+                  {
+                      "path":  "mods/jei-1.21.1-fabric-19.27.0.336.jar",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/jei-1.21.1-fabric-19.27.0.336.jar",
+                      "sha256":  "1d47dab86cee6d68e0887ec5e14deee125d3e2ea92c5ecedbb57f8f60aafa709",
+                      "size":  1561528,
+                      "required":  true
+                  },
+                  {
+                      "path":  "mods/krypton-0.2.8.jar",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/krypton-0.2.8.jar",
+                      "sha256":  "94f195819b24e5da64effdc9da15cdd84836cc75e8ff0fd098bab6bc2f49e3fe",
+                      "size":  161045,
+                      "required":  true
+                  },
+                  {
+                      "path":  "mods/LegendaryMonuments-7.8.jar",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/LegendaryMonuments-7.8.jar",
+                      "sha256":  "5507d1f3f5c9d4afe1db3aac7ae20f88b491daaeb3aa7edc150cca8ad6fefcfc",
+                      "size":  14683519,
+                      "required":  true
+                  },
+                  {
+                      "path":  "mods/lenientdeath-1.2.5+1.21.1.jar",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/lenientdeath-1.2.5%2B1.21.1.jar",
+                      "sha256":  "117175de6d7a8cc9cf36d48fd55a8460183dd30f4d25c0e7230ba8fe470f79b4",
+                      "size":  920915,
+                      "required":  true
+                  },
+                  {
+                      "path":  "mods/libjf-3.17.5.jar",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/libjf-3.17.5.jar",
+                      "sha256":  "93789892f45d03bec95894ab644f9f909868e84f1a0755a61bdf22ae378629f5",
+                      "size":  1282450,
+                      "required":  true
+                  },
+                  {
+                      "path":  "mods/lithium-fabric-0.15.3+mc1.21.1.jar",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/lithium-fabric-0.15.3%2Bmc1.21.1.jar",
+                      "sha256":  "a1eb3b150b559b0c0976f628ffd5f791458b98891634211b2727ff7857d157b8",
+                      "size":  797398,
+                      "required":  true
+                  },
+                  {
+                      "path":  "mods/loadsupport-fabric-1.21.1-1.2.1.jar",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/loadsupport-fabric-1.21.1-1.2.1.jar",
+                      "sha256":  "9b69d62b85c8892b47b2965f6c3b110e041eb1a41156de61aa246ebab48f5313",
+                      "size":  24080,
+                      "required":  true
+                  },
+                  {
+                      "path":  "mods/Luckys-Cozyhome-Refurnished-1.1.20.jar",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/Luckys-Cozyhome-Refurnished-1.1.20.jar",
+                      "sha256":  "0915e3e54c12fe40622cab94005418d32cbde011fa9c2d7c27756eb7d5313a66",
+                      "size":  3121070,
+                      "required":  true
+                  },
+                  {
+                      "path":  "mods/LumyMon-0.6.5 (1).jar",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/LumyMon-0.6.5%20(1).jar",
+                      "sha256":  "f3f2c91f5f3fddc9e0f97caefa08f8fede1ac72fef8988cedd58beee5eb3e832",
+                      "size":  2372128,
+                      "required":  true
+                  },
+                  {
+                      "path":  "mods/mega_showdown-fabric-1.7.3+1.7.3+1.21.1.jar",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/mega_showdown-fabric-1.7.3%2B1.7.3%2B1.21.1.jar",
+                      "sha256":  "321165207465478b8d7aaa52d01f305c6cbd85ea7db00d32255fd990583f69b0",
+                      "size":  16947666,
+                      "required":  true
+                  },
+                  {
+                      "path":  "mods/midnightlib-fabric-1.9.2+1.21.1.jar",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/midnightlib-fabric-1.9.2%2B1.21.1.jar",
+                      "sha256":  "8bb0239ae90ae97c37e5c6d2530e4a6fb718714aa14254aff9f1677bed83628a",
+                      "size":  57958,
+                      "required":  true
+                  },
+                  {
+                      "path":  "mods/MobsBeGone-0.0.7.jar",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/MobsBeGone-0.0.7.jar",
+                      "sha256":  "ad45c9c1bfe8c018d372f9fb6eb3e95507d6252b6cb4204478d04653d9634e98",
+                      "size":  9837,
+                      "required":  true
+                  },
+                  {
+                      "path":  "mods/modefite_item_definitions-1.0.1+1.21.1.jar",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/modefite_item_definitions-1.0.1%2B1.21.1.jar",
+                      "sha256":  "5fe579484a578347a1d7fdab683854322c4a5e878b780206a1aa754b4c970a1b",
+                      "size":  156157,
+                      "required":  true
+                  },
+                  {
+                      "path":  "mods/modelfix-1.21-1.6-fabric.jar",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/modelfix-1.21-1.6-fabric.jar",
+                      "sha256":  "53a0701f3583e2b794825858d2e4b7613df8b2dd22c277544c4b55f4bd08537a",
+                      "size":  62761,
+                      "required":  true
+                  },
+                  {
+                      "path":  "mods/modernfix-fabric-5.25.1+mc1.21.1.jar",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/modernfix-fabric-5.25.1%2Bmc1.21.1.jar",
+                      "sha256":  "3ce5a9ce75066961b7fa5382692bb1387cc3536cc984b064ab7d70b97f3c674c",
+                      "size":  471258,
+                      "required":  true
+                  },
+                  {
+                      "path":  "mods/modmenu-11.0.4.jar",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/modmenu-11.0.4.jar",
+                      "sha256":  "a88e0d67c82b0434cbf56776c482587c275ed660f635d33f53ba485dfa30dcc3",
+                      "size":  973059,
+                      "required":  true
+                  },
+                  {
+                      "path":  "mods/MoreCobblemonTweaks-fabric-1.3.3.jar",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/MoreCobblemonTweaks-fabric-1.3.3.jar",
+                      "sha256":  "8adee1d12c9dd86626e5472d6e1bbcb70b08ed62fea5bdd09db9180cc8411cae",
+                      "size":  137626,
+                      "required":  true
+                  },
+                  {
+                      "path":  "mods/nethermap-4.0.0-1.21.1.jar",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/nethermap-4.0.0-1.21.1.jar",
+                      "sha256":  "5d5243434984d64c904d21397530f2c7817105ca091bf409aa23f3842b9f3634",
+                      "size":  21464,
+                      "required":  true
+                  },
+                  {
+                      "path":  "mods/netherportalfix-fabric-1.21.1-21.1.3.jar",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/netherportalfix-fabric-1.21.1-21.1.3.jar",
+                      "sha256":  "c6589e3a95ee6dbced2442682caeec53789999bc6a2883f9919e039b1bee98c6",
+                      "size":  213294,
+                      "required":  true
+                  },
+                  {
+                      "path":  "mods/noisium-fabric-2.7.0+mc1.21-1.21.1.jar",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/noisium-fabric-2.7.0%2Bmc1.21-1.21.1.jar",
+                      "sha256":  "d7e471aae3fc221f3fc31104b996b2b6f2dd592a5a9c79da4a8ef310efbea315",
+                      "size":  216393,
+                      "required":  true
+                  },
+                  {
+                      "path":  "mods/notenoughcrashes-fabric-4.4.9+1.21.1.jar",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/notenoughcrashes-fabric-4.4.9%2B1.21.1.jar",
+                      "sha256":  "1a3a0ec9e7bb60f9c15938ca4287beaf5e49e81183ac273d1a02d734aa327a74",
+                      "size":  601087,
+                      "required":  true
+                  },
+                  {
+                      "path":  "mods/owo-lib-0.12.15.4+1.21.jar",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/owo-lib-0.12.15.4%2B1.21.jar",
+                      "sha256":  "825180ce17bc012fb450653b14df9f32479dcdd073fc3f133bb47462f5a63cec",
+                      "size":  1183559,
+                      "required":  true
+                  },
+                  {
+                      "path":  "mods/packetfixer-3.3.1-1.20.5-1.21.X-merged.jar",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/packetfixer-3.3.1-1.20.5-1.21.X-merged.jar",
+                      "sha256":  "2979a8a3f44e5d5df4f9f6315d18c220f3debf736bb8a2c2740acdfb13bd820f",
+                      "size":  46623,
+                      "required":  true
+                  },
+                  {
+                      "path":  "mods/particle_core-0.3.3+1.21.jar",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/particle_core-0.3.3%2B1.21.jar",
+                      "sha256":  "e7cfef3eb16d5b73c00915a5f2b820d66555c23d13e0636125d7b07384a443e4",
+                      "size":  147812,
+                      "required":  true
+                  },
+                  {
+                      "path":  "mods/pastureLoot-1.0.5+1.21.1.jar",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/pastureLoot-1.0.5%2B1.21.1.jar",
+                      "sha256":  "48a705eb70a3f129d64af565ff79cfe164d0e59fe2bbc20a903024d0cc844b8f",
+                      "size":  45871,
+                      "required":  true
+                  },
+                  {
+                      "path":  "mods/placeholder-api-2.4.2+1.21 (2).jar",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/placeholder-api-2.4.2%2B1.21%20(2).jar",
+                      "sha256":  "c0187ee299527ac7a3e0b1e83601dcdc0de631e286fe41e6be1a75958ea8e443",
+                      "size":  232325,
+                      "required":  true
+                  },
+                  {
+                      "path":  "mods/placeholder-api-2.4.2+1.21.jar",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/placeholder-api-2.4.2%2B1.21.jar",
+                      "sha256":  "c0187ee299527ac7a3e0b1e83601dcdc0de631e286fe41e6be1a75958ea8e443",
+                      "size":  232325,
+                      "required":  true
+                  },
+                  {
+                      "path":  "mods/playerxp-fabric-1.0.8+1.21.1.jar",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/playerxp-fabric-1.0.8%2B1.21.1.jar",
+                      "sha256":  "98feb0b3e77bae3d76e0bb1d2b23bfd6ec5e4be18fce1c49249392570a0504d3",
+                      "size":  9964,
+                      "required":  true
+                  },
+                  {
+                      "path":  "mods/pokeblocks-1.5.0-1.21.1.jar",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/pokeblocks-1.5.0-1.21.1.jar",
+                      "sha256":  "0cd1ce19b16efe7477cfd4501d1ee3e7c575af113e72ac2ed0f540740eb6a43c",
+                      "size":  1775159,
+                      "required":  true
+                  },
+                  {
+                      "path":  "mods/rctapi-fabric-1.21.1-0.15.0-beta.jar",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/rctapi-fabric-1.21.1-0.15.0-beta.jar",
+                      "sha256":  "65adeb9355b6bea23ddfe2cbdfdbd0af3072e8cb3ec5ba3e6fef176ad6475cc7",
+                      "size":  233126,
+                      "required":  true
+                  },
+                  {
+                      "path":  "mods/rctmod-fabric-1.21.1-0.17.7-beta.jar",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/rctmod-fabric-1.21.1-0.17.7-beta.jar",
+                      "sha256":  "95d9398d8fc96c37602282a48fb6e3ca56abbed439a42d93565e1ab2a6b252fe",
+                      "size":  4762456,
+                      "required":  true
+                  },
+                  {
+                      "path":  "mods/reeses-sodium-options-fabric-1.8.3+mc1.21.4.jar",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/reeses-sodium-options-fabric-1.8.3%2Bmc1.21.4.jar",
+                      "sha256":  "b42fc0424050f076c8e1f77b7549e48ec6e07605fbf868ed5d0ef47848665dd2",
+                      "size":  81067,
+                      "required":  true
+                  },
+                  {
+                      "path":  "mods/repurposed_structures-7.5.18+1.21.1-fabric.jar",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/repurposed_structures-7.5.18%2B1.21.1-fabric.jar",
+                      "sha256":  "1db2c94518e5f8dc088cd0d190a16bc4cee9b43510b6c17d5b8f8d27eb91a80d",
+                      "size":  8195855,
+                      "required":  true
+                  },
+                  {
+                      "path":  "mods/resourcefullib-fabric-1.21-3.0.12.jar",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/resourcefullib-fabric-1.21-3.0.12.jar",
+                      "sha256":  "93064c5aff85bf5e6385470f311fd1c7de172f58b02fefb1d2920db76f8cd8b5",
+                      "size":  485586,
+                      "required":  true
+                  },
+                  {
+                      "path":  "mods/ResourcePackOverrides-v21.1.0-1.21.1-Fabric.jar",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/ResourcePackOverrides-v21.1.0-1.21.1-Fabric.jar",
+                      "sha256":  "5db1e3d3f07947ceb893ccd823a7660f62f8f794e2bf9a5b721a3c3d32dcbc59",
+                      "size":  80827,
+                      "required":  true
+                  },
+                  {
+                      "path":  "mods/respackopts-4.14.0+1.21.1.4.jar",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/respackopts-4.14.0%2B1.21.1.4.jar",
+                      "sha256":  "8c38228c14841a01034e6371fada5754754a0abf13de843eea1e1d41dc8257f3",
+                      "size":  557358,
+                      "required":  true
+                  },
+                  {
+                      "path":  "mods/SafePastures-1.1.1+1.21.1.jar",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/SafePastures-1.1.1%2B1.21.1.jar",
+                      "sha256":  "41d1c286db3e02a3249346a5efda6f95799ab895aa40c03a87cdcd81a95e4b45",
+                      "size":  16518,
+                      "required":  true
+                  },
+                  {
+                      "path":  "mods/Searchables-fabric-1.21.1-1.0.2.jar",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/Searchables-fabric-1.21.1-1.0.2.jar",
+                      "sha256":  "0b58a40a41db4a4af4ef84475b0ea330be3b18fdcac2eca68ede46d9f4df3d76",
+                      "size":  79531,
+                      "required":  true
+                  },
+                  {
+                      "path":  "mods/ShadowCrates-2.3 (1).jar",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/ShadowCrates-2.3%20(1).jar",
+                      "sha256":  "8d85b0d8d1172649eda36332f98d8d118682986a0edcb911357bb5572af3e9a7",
+                      "size":  409775,
+                      "required":  true
+                  },
+                  {
+                      "path":  "mods/SimpleTMs-fabric-2.3.3.jar",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/SimpleTMs-fabric-2.3.3.jar",
+                      "sha256":  "c5baa07f405433f62218fc3916360d4cda37558d01d493df7a618ac7d78d22c1",
+                      "size":  821382,
+                      "required":  true
+                  },
+                  {
+                      "path":  "mods/sodium-extra-fabric-0.6.0+mc1.21.1.jar",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/sodium-extra-fabric-0.6.0%2Bmc1.21.1.jar",
+                      "sha256":  "1a7434e444c851d82efbe3d5a8fd2dbb142e9bdf0012d7c6a0e4741c641b1a2d",
+                      "size":  373661,
+                      "required":  true
+                  },
+                  {
+                      "path":  "mods/sodiumextras-fabric-1.0.8-1.21.1.jar",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/sodiumextras-fabric-1.0.8-1.21.1.jar",
+                      "sha256":  "f919c512fa7c774e14e7a96502fb7a7e19bb7843df7275390e6fa8e7e090004c",
+                      "size":  876916,
+                      "required":  true
+                  },
+                  {
+                      "path":  "mods/sodium-fabric-0.6.13+mc1.21.1.jar",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/sodium-fabric-0.6.13%2Bmc1.21.1.jar",
+                      "sha256":  "e04599514d88e41765f710eeba59e3814909833396bc11b977f48fc2e7e50353",
+                      "size":  1297761,
+                      "required":  true
+                  },
+                  {
+                      "path":  "mods/sodiumoptionsapi-fabric-1.0.10-1.21.1.jar",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/sodiumoptionsapi-fabric-1.0.10-1.21.1.jar",
+                      "sha256":  "59b8de5a85b964b9fb9ff83042240ca8842ea77e430d89c69af57dfdff1acc29",
+                      "size":  903592,
+                      "required":  true
+                  },
+                  {
+                      "path":  "mods/StackableItems-fabric-1.21.[0-1]-v1.2.jar",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/StackableItems-fabric-1.21.%5B0-1%5D-v1.2.jar",
+                      "sha256":  "0c333647c17901582b491047639e579dbfb95223dd2f96733d09b1363180259e",
+                      "size":  72184,
+                      "required":  true
+                  },
+                  {
+                      "path":  "mods/starlightfusion-fabric-1.6.1 (1).jar",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/starlightfusion-fabric-1.6.1%20(1).jar",
+                      "sha256":  "cfeeef7a14d01d139029cf4e6b80db4cbd1b42e1f1b0beed2e89f172ef4b50e7",
+                      "size":  1133518,
+                      "required":  true
+                  },
+                  {
+                      "path":  "mods/starlightfusion-fabric-1.6.1.jar",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/starlightfusion-fabric-1.6.1.jar",
+                      "sha256":  "cfeeef7a14d01d139029cf4e6b80db4cbd1b42e1f1b0beed2e89f172ef4b50e7",
+                      "size":  1133518,
+                      "required":  true
+                  },
+                  {
+                      "path":  "mods/tbcs-fabric-1.21.1-0.14.1-beta.jar",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/tbcs-fabric-1.21.1-0.14.1-beta.jar",
+                      "sha256":  "44664d5d6cc711eab645133b85306e0ccbbd59a6c98f6b3464c9f9cd8b4fbef7",
+                      "size":  57031,
+                      "required":  true
+                  },
+                  {
+                      "path":  "mods/teleport_commands-1.21.1-v1.3.4.jar",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/teleport_commands-1.21.1-v1.3.4.jar",
+                      "sha256":  "9d5263099ffe124a1b7d0e2abfb0702f03b7c38928ae9db2e8a2626ad936d92a",
+                      "size":  148684,
+                      "required":  true
+                  },
+                  {
+                      "path":  "mods/TerraBlender-fabric-1.21.1-4.1.0.8.jar",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/TerraBlender-fabric-1.21.1-4.1.0.8.jar",
+                      "sha256":  "5f2d25306abfed8c6c6291e8904ae1a9f6a8ab4f1bf5f3a21f7e263a5bf217a6",
+                      "size":  337989,
+                      "required":  true
+                  },
+                  {
+                      "path":  "mods/Terralith_1.21.x_v2.5.8.jar",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/Terralith_1.21.x_v2.5.8.jar",
+                      "sha256":  "00333a130ac38b7b9ca93700098d5e02e0612bdc2d3522aada2f36e5600621bf",
+                      "size":  3115385,
+                      "required":  true
+                  },
+                  {
+                      "path":  "mods/threadtweak-fabric-0.1.5+mc1.21.1.jar",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/threadtweak-fabric-0.1.5%2Bmc1.21.1.jar",
+                      "sha256":  "d5c0b0f5014b2ab729b820ad17acab7ce7f51b6dd72a5655839b31f6a2394682",
+                      "size":  144270,
+                      "required":  true
+                  },
+                  {
+                      "path":  "mods/timcore-fabric-1.7.3-1.31.0.jar",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/timcore-fabric-1.7.3-1.31.0.jar",
+                      "sha256":  "95c14e7ea6f64abd89e145d23f2d2b55fbc9d1c1c93d5233655d79bf9891b02b",
+                      "size":  297587,
+                      "required":  true
+                  },
+                  {
+                      "path":  "mods/travelersbackpack-fabric-1.21.1-10.1.34.jar",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/travelersbackpack-fabric-1.21.1-10.1.34.jar",
+                      "sha256":  "e833f58c5f13fe9abc4ee0c8cadfa9f2f117d55a61552f1b197f71e53c85c467",
+                      "size":  1474495,
+                      "required":  true
+                  },
+                  {
+                      "path":  "mods/trinkets-3.10.0.jar",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/trinkets-3.10.0.jar",
+                      "sha256":  "349fd2aa8930b232050ee5304db55e4ef738b017971afe7c84acd589a95fda2f",
+                      "size":  272944,
+                      "required":  true
+                  },
+                  {
+                      "path":  "mods/villagerconfig-fabric-4.5.2+1.21.1.jar",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/villagerconfig-fabric-4.5.2%2B1.21.1.jar",
+                      "sha256":  "9d0b2c07a123f4a7643c946a30ef4fb5a23fa762735376200c1b9e797652b895",
+                      "size":  355221,
+                      "required":  true
+                  },
+                  {
+                      "path":  "mods/vmp-fabric-mc1.21.1-0.2.0+beta.7.172-all.jar",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/vmp-fabric-mc1.21.1-0.2.0%2Bbeta.7.172-all.jar",
+                      "sha256":  "97a35a4388b1e7cd5325983b1e3f5f72fe7460367ef5755ae9fc9785c2930803",
+                      "size":  433667,
+                      "required":  true
+                  },
+                  {
+                      "path":  "mods/waystones-fabric-1.21.1-21.1.29.jar",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/waystones-fabric-1.21.1-21.1.29.jar",
+                      "sha256":  "f08e2e630c567d1a082c5f8fadee61af0922e811aa4f05881618e02af0a87991",
+                      "size":  898551,
+                      "required":  true
+                  },
+                  {
+                      "path":  "mods/worldedit-mod-7.3.8 (3).jar",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/worldedit-mod-7.3.8%20(3).jar",
+                      "sha256":  "5e7752c97876d87411e3760bcc573cc431f43c453722e6959fa7fe54db1b01ca",
+                      "size":  6222854,
+                      "required":  true
+                  },
+                  {
+                      "path":  "mods/xaerominimap-fabric-1.21.1-25.3.10.jar",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/xaerominimap-fabric-1.21.1-25.3.10.jar",
+                      "sha256":  "51e52058f947323fcf2d6cd495dbdc42e9937beb916a1d976f78a702fb08aaef",
+                      "size":  2177333,
+                      "required":  true
+                  },
+                  {
+                      "path":  "mods/xaeroworldmap-fabric-1.21.1-1.40.11.jar",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/xaeroworldmap-fabric-1.21.1-1.40.11.jar",
+                      "sha256":  "57861a4496fd5c714cf67d53539c8612dbd88543605c7e4b9b23ecc819c0a601",
+                      "size":  1413973,
+                      "required":  true
+                  },
+                  {
+                      "path":  "mods/yet_another_config_lib_v3-3.8.2+1.21.1-fabric.jar",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/yet_another_config_lib_v3-3.8.2%2B1.21.1-fabric.jar",
+                      "sha256":  "6ab420b7d1326fc9851b96a8967504bd644da421ed6438ceb9a9d9c993a408b1",
+                      "size":  1131265,
+                      "required":  true
+                  },
+                  {
+                      "path":  "mods/zamega-fabric-1.7.1.jar",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/zamega-fabric-1.7.1.jar",
+                      "sha256":  "be421ae24743a33100fe0db1579142aa99620f5bbea3f27beba86121a4e13353",
+                      "size":  2374842,
+                      "required":  true
+                  },
+                  {
+                      "path":  "resourcepacks/§2p1kl\u0027s 3D Items§r§0.zip",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/%C2%A72p1kl\u0027s%203D%20Items%C2%A7r%C2%A70.zip",
+                      "sha256":  "92110cc9ea0e5eed4e256ba6b601f7eff898875500c8a14667be76e9ee7d2746",
+                      "size":  1801908,
+                      "required":  true
+                  },
+                  {
+                      "path":  "resourcepacks/§6Immersive§8_§6Interfaces§8.zip",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/%C2%A76Immersive%C2%A78_%C2%A76Interfaces%C2%A78.zip",
+                      "sha256":  "91e8303b22d921074619252b9b66b9fc2127c97aa7a6d487f39056900c091547",
+                      "size":  1197001,
+                      "required":  true
+                  },
+                  {
+                      "path":  "resourcepacks/-1.21.2 Fresh Moves v3.1 (With Animated Eyes).zip",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/-1.21.2%20Fresh%20Moves%20v3.1%20(With%20Animated%20Eyes).zip",
+                      "sha256":  "c433f3d831e86faa956836bf327ca00151bd813d1a8ab36aa064d518a58790f7",
+                      "size":  321871,
+                      "required":  true
+                  },
+                  {
+                      "path":  "resourcepacks/ATM x MSD [v3.5.0].zip",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/ATM%20x%20MSD%20%5Bv3.5.0%5D.zip",
+                      "sha256":  "10e6f9c6bc0048e9504cec8b436b09d5ad4afd923a08e834b8deb6004caaa474",
+                      "size":  6018105,
+                      "required":  true
+                  },
+                  {
+                      "path":  "resourcepacks/BattleBond [V1.4].zip",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/BattleBond%20%5BV1.4%5D.zip",
+                      "sha256":  "43277467e633675520b21339d2fbe707f26d52643a97117a043dd00666dcacff",
+                      "size":  1868073,
+                      "required":  true
+                  },
+                  {
+                      "path":  "resourcepacks/BottleCaps 1.1.zip",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/BottleCaps%201.1.zip",
+                      "sha256":  "58b980a07aae01cfa915e3182adced924e5342133f8be4a1e9a9337a89701305",
+                      "size":  25670,
+                      "required":  true
+                  },
+                  {
+                      "path":  "resourcepacks/CCC_2.0.1.zip",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/CCC_2.0.1.zip",
+                      "sha256":  "685a4654e5ac78d25df187aa061969dbb809674e82e99262cfabbec16c0b0a63",
+                      "size":  18752217,
+                      "required":  true
+                  },
+                  {
+                      "path":  "resourcepacks/CobbleCafe (1).zip",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/CobbleCafe%20(1).zip",
+                      "sha256":  "27cfda9a581d6c50bb62eaaec3b7d0d06eb46e3724a7997ab55dbd4e4fcca5f0",
+                      "size":  1213518,
+                      "required":  true
+                  },
+                  {
+                      "path":  "resourcepacks/Cobblemon 3D Poké Rods 1.0.zip",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/Cobblemon%203D%20Pok%C3%A9%20Rods%201.0.zip",
+                      "sha256":  "4110f5b2a2959fff1cc03a4b0659cc6e7244ca3fb55700dcd016b422312ec74c",
+                      "size":  167706,
+                      "required":  true
+                  },
+                  {
+                      "path":  "resourcepacks/Cobblemon Classic Grass Pack v2.1 MC1.21.1.zip",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/Cobblemon%20Classic%20Grass%20Pack%20v2.1%20MC1.21.1.zip",
+                      "sha256":  "4386b800db3f7710c23f5ead9c911c9f265831a02e74c704f7cc29fcd9070880",
+                      "size":  7418,
+                      "required":  true
+                  },
+                  {
+                      "path":  "resourcepacks/Cobblemon improvedmon v1.1.zip",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/Cobblemon%20improvedmon%20v1.1.zip",
+                      "sha256":  "ba74e6ad6c52fcf70740e23fef25ab0e26bdd7580c90236c9db2a5478cac5efd",
+                      "size":  1407637,
+                      "required":  true
+                  },
+                  {
+                      "path":  "resourcepacks/Cobblemon Interface Modded v1.9.4.zip",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/Cobblemon%20Interface%20Modded%20v1.9.4.zip",
+                      "sha256":  "3175cde27f4528eb7c2dc6a53b9952d937e0d1ead2b2f0fdbf1809075e9eb7eb",
+                      "size":  1053517,
+                      "required":  true
+                  },
+                  {
+                      "path":  "resourcepacks/Cobblemon Interface v1.6.0.zip",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/Cobblemon%20Interface%20v1.6.0.zip",
+                      "sha256":  "eb40bd047c2e1443c43731e4d1ef1b9d7d0624476336f540b52a3e8fcb9eb315",
+                      "size":  14108266,
+                      "required":  true
+                  },
+                  {
+                      "path":  "resourcepacks/CobblemonInfiniteFusion 1.6.1.zip",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/CobblemonInfiniteFusion%201.6.1.zip",
+                      "sha256":  "ab3f33e2879912935a9708f3a5569ef55acee6485903e34dc500e785d3d696ab",
+                      "size":  489027,
+                      "required":  true
+                  },
+                  {
+                      "path":  "resourcepacks/COBBLEVERSE RCTmod RP.zip",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/COBBLEVERSE%20RCTmod%20RP.zip",
+                      "sha256":  "7b5469ee3551636a4c9ec75878c7f6dac3c74494d219ec0615c005a4951c8f89",
+                      "size":  5128482,
+                      "required":  true
+                  },
+                  {
+                      "path":  "resourcepacks/COBBLEVERSE RP [CF].zip",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/COBBLEVERSE%20RP%20%5BCF%5D.zip",
+                      "sha256":  "887e4b7c11e02ba5633922ee3e01b6721fe3308420b39121ea236c1546f82169",
+                      "size":  124000,
+                      "required":  true
+                  },
+                  {
+                      "path":  "resourcepacks/COBBLEVERSE Soundtrack.zip",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/COBBLEVERSE%20Soundtrack.zip",
+                      "sha256":  "8617ef2a4bf872b538823cfddd516b0bda88c6656325f43c614ca7260678e6db",
+                      "size":  96474458,
+                      "required":  true
+                  },
+                  {
+                      "path":  "resourcepacks/Comforts Modernized - V1.1.zip",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/Comforts%20Modernized%20-%20V1.1.zip",
+                      "sha256":  "b3050d84c0be41dae853e550c07acb1f768880c41472b44d701c03e9b1bc4734",
+                      "size":  72956,
+                      "required":  true
+                  },
+                  {
+                      "path":  "resourcepacks/CurseForge RP.zip",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/CurseForge%20RP.zip",
+                      "sha256":  "a2ebd8dc3a03a6580e4262eb6b392c75757778f19b08f491123ad62689f8eed5",
+                      "size":  2563280,
+                      "required":  true
+                  },
+                  {
+                      "path":  "resourcepacks/E19 Cobblemon Minimap Icons.zip",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/E19%20Cobblemon%20Minimap%20Icons.zip",
+                      "sha256":  "8732ecb1ee0b8cceda4ad973ffcf53e0c6689f503652320107d2569c0cd7f9ba",
+                      "size":  19398814,
+                      "required":  true
+                  },
+                  {
+                      "path":  "resourcepacks/Extra Eeveelutions 1.2.zip",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/Extra%20Eeveelutions%201.2.zip",
+                      "sha256":  "2bfad12289e0988dd10212484ca291df5a7dd04c3a95c6b0009f2e0a22f88dec",
+                      "size":  287026,
+                      "required":  true
+                  },
+                  {
+                      "path":  "resourcepacks/Extra Paradox Mons 1.7.zip",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/Extra%20Paradox%20Mons%201.7.zip",
+                      "sha256":  "fdc911ccb1b9d9a27a992e6b17016f859799a6bdfbe687221478a5c4aeba2024",
+                      "size":  2837920,
+                      "required":  true
+                  },
+                  {
+                      "path":  "resourcepacks/Failskins 8.21 (1).zip",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/Failskins%208.21%20(1).zip",
+                      "sha256":  "0415cc515a23496a71d055166523d55b5e24aa405b1a8bd738c829c074104973",
+                      "size":  6788030,
+                      "required":  true
+                  },
+                  {
+                      "path":  "resourcepacks/Faithful 64x - Release 6.zip",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/Faithful%2064x%20-%20Release%206.zip",
+                      "sha256":  "ba28248289cf0ca2b4021cb90de1e1712dc1d7079f2fe1d250cb03b494c5f79f",
+                      "size":  16767880,
+                      "required":  true
+                  },
+                  {
+                      "path":  "resourcepacks/Fresh Food.zip",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/Fresh%20Food.zip",
+                      "sha256":  "587d4f0801f7eef594764ed2b155fb6607d3a8b4602dc1a0ff8aef9369851bad",
+                      "size":  1428718,
+                      "required":  true
+                  },
+                  {
+                      "path":  "resourcepacks/FreshAnimations_v1.10.1.zip",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/FreshAnimations_v1.10.1.zip",
+                      "sha256":  "2e2f0152469fcaac19c46f2959e0232f9b2c12a255e0481d85f845ecba003692",
+                      "size":  815824,
+                      "required":  true
+                  },
+                  {
+                      "path":  "resourcepacks/Fully Hisuian Starters 1.1.1.zip",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/Fully%20Hisuian%20Starters%201.1.1.zip",
+                      "sha256":  "a12cbdd26881621404bce13b7ce022aa18872067bdfefaa80d8d1c22bd6fc4b0",
+                      "size":  202557,
+                      "required":  true
+                  },
+                  {
+                      "path":  "resourcepacks/Glowing Ores - Borderful Edition (8.0.0v).zip",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/Glowing%20Ores%20-%20Borderful%20Edition%20(8.0.0v).zip",
+                      "sha256":  "509d517dc5a43f9f602d0fec9e0899d7e4366d90591cf62da0fc95b193258ad8",
+                      "size":  3968744,
+                      "required":  true
+                  },
+                  {
+                      "path":  "resourcepacks/golurk_barriliano_pack.zip",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/golurk_barriliano_pack.zip",
+                      "sha256":  "e9490fc853c0baa10d60142d356a9d44c75168694f230afe9001e0d54a508b72",
+                      "size":  531579,
+                      "required":  true
+                  },
+                  {
+                      "path":  "resourcepacks/Icon Fresh 1.3.zip",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/Icon%20Fresh%201.3.zip",
+                      "sha256":  "4df876dd775c214e66cb29d9706636025e6f808bff50431abf08cb815c2af255",
+                      "size":  852235,
+                      "required":  true
+                  },
+                  {
+                      "path":  "resourcepacks/pokopia-1.1 (1).zip",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/pokopia-1.1%20(1).zip",
+                      "sha256":  "59443bc40c324acb06a67312aac4b6073d471c1fc7016afbb13ae66ba9381d6d",
+                      "size":  109784,
+                      "required":  true
+                  },
+                  {
+                      "path":  "resourcepacks/qrafty\u0027s-capitalized-font-3.1.zip",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/qrafty\u0027s-capitalized-font-3.1.zip",
+                      "sha256":  "cd22df63dd529e052fbf314b3074cf7aa410e1b01a865dfdb718fb8ec8f83c00",
+                      "size":  237577,
+                      "required":  true
+                  },
+                  {
+                      "path":  "resourcepacks/Seavls Bizarremons 1.1.0v.zip",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/Seavls%20Bizarremons%201.1.0v.zip",
+                      "sha256":  "5ba39474cfd58ba3df03512330dbb2651df6f32d09721ce4435f3baf55bc82a9",
+                      "size":  1459112,
+                      "required":  true
+                  }
+              ],
+    "delete":  [
+                   "mods/example.jar",
+                   "mods/barrilcomplements-1.0.78.jar",
+                   "mods/barrilcomplements-1.0.78.jar.disabled",
+                   "mods/barrilcomplements-1.0.79.jar",
+                   "mods/barrilcomplements-1.0.79.jar.disabled",
+                   "mods/barrilcomplements-1.0.81.jar",
+                   "mods/barrilcomplements-1.0.81.jar.disabled",
+                   "mods/barrilcomplements-1.0.82.jar",
+                   "mods/barrilcomplements-1.0.82.jar.disabled",
+                   "mods/barrilcomplements-1.0.84.jar",
+                   "mods/barrilcomplements-1.0.84.jar.disabled",
+                   "mods/barrilcomplements-17demayo.jar",
+                   "mods/barrilcomplements-17demayo.jar.disabled",
+                   "mods/cobble_ranked-0.1.0.jar",
+                   "mods/cobble_ranked-0.1.0.jar.disabled",
+                   "mods/HMI 4.3 - 1.21.(1).jar",
+                   "mods/HMI 4.3 - 1.21.(1).jar.disabled",
+                   "mods/interactic-0.2.3+1.21.jar",
+                   "mods/interactic-0.2.3+1.21.jar.disabled"
+               ],
+    "news":  [
+                 {
+                     "title":  "BarrilMC listo",
+                     "body":  "Pack Fabric 1.21.1 sincronizado automaticamente desde GitHub Releases.",
+                     "date":  "2026-05-27"
+                 }
+             ]
 }

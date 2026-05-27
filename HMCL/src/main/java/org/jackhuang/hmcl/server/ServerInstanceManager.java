@@ -1,6 +1,6 @@
 /*
- * MiServidor Launcher
- * Copyright (C) 2026 MiServidor contributors
+ * BarrilMC Launcher
+ * Copyright (C) 2026 BarrilMC contributors
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -21,7 +21,7 @@ import org.jetbrains.annotations.NotNullByDefault;
 import java.nio.file.Path;
 import java.util.Optional;
 
-/// Creates and configures the dedicated MiServidor profile and instance.
+/// Creates and configures the dedicated BarrilMC profile and instance.
 @NotNullByDefault
 public final class ServerInstanceManager {
     private ServerInstanceManager() {

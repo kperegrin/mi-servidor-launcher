@@ -23,7 +23,7 @@ plugins {
 }
 
 base {
-    archivesName.set("MiServidor-Launcher")
+    archivesName.set("BarrilMC-Launcher")
 }
 
 val projectConfig = PropertiesUtils.load(rootProject.file("config/project.properties").toPath())
@@ -37,7 +37,7 @@ val microsoftAuthId = System.getenv("MICROSOFT_AUTH_ID") ?: ""
 val curseForgeApiKey = System.getenv("CURSEFORGE_API_KEY") ?: ""
 
 val launcherExe = System.getenv("HMCL_LAUNCHER_EXE") ?: ""
-val serverLauncherVersion = System.getenv("MISERVIDOR_LAUNCHER_VERSION") ?: "1.0.0"
+val serverLauncherVersion = System.getenv("BARRILMC_LAUNCHER_VERSION") ?: "1.0.0"
 
 val buildNumber = System.getenv("BUILD_NUMBER")?.toInt()
 if (serverLauncherVersion.isNotBlank()) {
