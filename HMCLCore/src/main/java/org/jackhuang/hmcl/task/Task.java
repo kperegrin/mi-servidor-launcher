@@ -396,11 +396,14 @@ public abstract class Task<T> {
         if (getSignificance().shouldLog())
             LOG.trace("Executing task: " + getName());
 
+        preExecute();
         for (Task<?> task : getDependents())
             doSubTask(task);
         execute();
         for (Task<?> task : getDependencies())
             doSubTask(task);
+        if (doPostExecute())
+            postExecute();
         fireDoneEvent(this, false);
 
         return getResult();
