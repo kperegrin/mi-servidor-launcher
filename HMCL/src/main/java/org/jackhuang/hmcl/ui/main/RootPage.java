@@ -81,8 +81,14 @@ public class RootPage extends DecoratorAnimatedPage implements DecoratorPage {
         if (profile != null && profile.getRepository().isLoaded())
             onRefreshedVersions(Profiles.selectedProfileProperty().get().getRepository());
 
+        // Full-window background (extends behind sidebar too).
+        getStyleClass().add("server-root-bg");
         getStyleClass().remove("gray-background");
-        getLeft().getStyleClass().add("gray-background");
+        // Replace the generic gray-background on the left panel with the
+        // server-specific sidebar style that uses a dark semi-transparent tint
+        // so the background image shows through subtly.
+        getLeft().getStyleClass().remove("gray-background");
+        getLeft().getStyleClass().add("server-sidebar");
     }
 
     @Override
@@ -241,6 +247,9 @@ public class RootPage extends DecoratorAnimatedPage implements DecoratorPage {
                         Controllers.getSettingsPage().showFeedback();
                         Controllers.navigate(Controllers.getSettingsPage());
                     });
+
+            // Style the sidebar with the server dark-glass theme.
+            sideBar.getStyleClass().add("server-sidebar");
 
             // the root page, with the sidebar in left, navigator in center.
             setLeft(sideBar);

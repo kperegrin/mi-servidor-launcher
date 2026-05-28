@@ -10,6 +10,10 @@
 package org.jackhuang.hmcl.ui.server;
 
 import com.jfoenix.controls.JFXButton;
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.animation.ScaleTransition;
+import javafx.animation.Timeline;
 import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -19,12 +23,17 @@ import javafx.scene.control.ProgressBar;
 import javafx.scene.control.ProgressIndicator;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Separator;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
+import javafx.util.Duration;
 import org.jackhuang.hmcl.auth.Account;
 import org.jackhuang.hmcl.auth.microsoft.MicrosoftAccount;
 import org.jackhuang.hmcl.auth.offline.OfflineAccount;
@@ -84,9 +93,19 @@ public final class ServerHomeController extends FlowPane {
         setPadding(new Insets(24));
 
         ImageView logo = new ImageView(FXUtils.newBuiltinImage("/assets/branding/logo.png"));
-        logo.setFitWidth(92);
-        logo.setFitHeight(92);
+        logo.setFitWidth(88);
+        logo.setFitHeight(88);
         logo.setPreserveRatio(true);
+        // Rounded corners via pixel clip
+        Rectangle logoClip = new Rectangle(88, 88);
+        logoClip.setArcWidth(20);
+        logoClip.setArcHeight(20);
+        logo.setClip(logoClip);
+        // Wrapper with orange glow border (styled in CSS via .server-logo-container)
+        StackPane logoWrapper = new StackPane(logo);
+        logoWrapper.getStyleClass().add("server-logo-container");
+        logoWrapper.setMinSize(90, 90);
+        logoWrapper.setMaxSize(90, 90);
 
         Label title = new Label(ServerLauncherConfig.SERVER_NAME);
         title.getStyleClass().add("server-home-title");
@@ -98,7 +117,7 @@ public final class ServerHomeController extends FlowPane {
         VBox titleBox = new VBox(4, title, subtitle);
         titleBox.setAlignment(Pos.CENTER_LEFT);
 
-        HBox hero = new HBox(14, logo, titleBox);
+        HBox hero = new HBox(14, logoWrapper, titleBox);
         hero.setAlignment(Pos.CENTER_LEFT);
         hero.getStyleClass().add("server-home-hero");
 
@@ -154,6 +173,9 @@ public final class ServerHomeController extends FlowPane {
         refreshYouTubePosts();
         checkLauncherUpdate();
         Platform.runLater(ServerInstanceManager::getOrCreateServerProfile);
+
+        // Start orange glow pulse on the play button
+        startPlayButtonGlow();
     }
 
     private VBox buildSidePanel() {
@@ -475,6 +497,7 @@ public final class ServerHomeController extends FlowPane {
         card.getChildren().addAll(textLabel, timeLabel);
         card.setCursor(Cursor.HAND);
         card.setOnMouseClicked(e -> FXUtils.openLink(entry.getUrl()));
+        addCardHoverAnimation(card);
         return card;
     }
 
@@ -499,7 +522,45 @@ public final class ServerHomeController extends FlowPane {
         card.getStyleClass().add("server-news-item");
         card.setCursor(Cursor.HAND);
         card.setOnMouseClicked(e -> FXUtils.openLink(entry.getUrl()));
+        addCardHoverAnimation(card);
         return card;
+    }
+
+    /// Smooth scale-up on mouse enter, scale-back on exit.
+    private static void addCardHoverAnimation(VBox card) {
+        ScaleTransition zoomIn = new ScaleTransition(Duration.millis(140), card);
+        zoomIn.setToX(1.025);
+        zoomIn.setToY(1.025);
+
+        ScaleTransition zoomOut = new ScaleTransition(Duration.millis(140), card);
+        zoomOut.setToX(1.0);
+        zoomOut.setToY(1.0);
+
+        card.setOnMouseEntered(e -> { zoomOut.stop(); zoomIn.playFromStart(); });
+        card.setOnMouseExited(e -> { zoomIn.stop(); zoomOut.playFromStart(); });
+    }
+
+    /// Pulsing orange glow on the play button so it draws the eye.
+    private void startPlayButtonGlow() {
+        DropShadow glow = new DropShadow();
+        glow.setColor(Color.web("#ff9000", 0.62));
+        glow.setRadius(10);
+        glow.setSpread(0.05);
+        playButton.setEffect(glow);
+
+        Timeline pulse = new Timeline(
+            new KeyFrame(Duration.ZERO,
+                new KeyValue(glow.radiusProperty(),  8.0),
+                new KeyValue(glow.spreadProperty(), 0.04)),
+            new KeyFrame(Duration.millis(1600),
+                new KeyValue(glow.radiusProperty(), 22.0),
+                new KeyValue(glow.spreadProperty(), 0.13)),
+            new KeyFrame(Duration.millis(3200),
+                new KeyValue(glow.radiusProperty(),  8.0),
+                new KeyValue(glow.spreadProperty(), 0.04))
+        );
+        pulse.setCycleCount(Timeline.INDEFINITE);
+        pulse.play();
     }
 
     private void updateAccountLabel() {

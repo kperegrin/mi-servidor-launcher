@@ -189,7 +189,13 @@ public final class LegacyMicrosoftLoginPane extends JFXDialogLayout implements D
             lastClipboardContent = trimmed;
             if (trimmed.contains("oauth20_desktop.srf") && trimmed.contains("code=")) {
                 pasteField.setText(trimmed);
-                statusLabel.setText("URL detectada en el portapapeles. Iniciando sesión...");
+                // Immediately wipe the clipboard so the auth code is not
+                // accessible to other apps after we've captured it.
+                try {
+                    Clipboard.getSystemClipboard().clear();
+                } catch (Exception ignored) {
+                }
+                statusLabel.setText("URL detectada y borrada del portapapeles. Iniciando sesión...");
                 stopClipboardPolling();
                 submitCode();
             }
