@@ -146,8 +146,13 @@ public final class Launcher extends Application {
                 // Splash auto-closes after the update check (or a short minimum) and then opens the main window.
                 SplashScreen splash = new SplashScreen();
                 splash.runSequence(() -> {
-                    primaryStage.setMaximized(true);
                     primaryStage.show();
+                    primaryStage.setMaximized(true);
+                    primaryStage.toFront();
+                    // Windows focus workaround: briefly flip alwaysOnTop to
+                    // steal the foreground even if another window has focus.
+                    primaryStage.setAlwaysOnTop(true);
+                    primaryStage.setAlwaysOnTop(false);
                 });
             });
         } catch (Throwable e) {

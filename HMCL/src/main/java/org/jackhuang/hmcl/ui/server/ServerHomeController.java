@@ -34,6 +34,7 @@ import org.jackhuang.hmcl.server.LauncherVersionInfo;
 import org.jackhuang.hmcl.server.ServerInstanceManager;
 import org.jackhuang.hmcl.server.ServerLauncherConfig;
 import org.jackhuang.hmcl.server.YouTubeFeedService;
+import org.jackhuang.hmcl.server.YouTubePostsService;
 import org.jackhuang.hmcl.server.ServerStatusService;
 import org.jackhuang.hmcl.setting.Accounts;
 import org.jackhuang.hmcl.setting.Profile;
@@ -63,6 +64,7 @@ public final class ServerHomeController extends HBox {
     private final Label launcherUpdateLabel = new Label();
     private final ProgressBar progressBar = new ProgressBar(0);
     private final VBox videoListBox = new VBox(8);
+    private final VBox postsListBox = new VBox(8);
     private final JFXButton playButton = new JFXButton("Jugar servidor");
     private final JFXButton updateButton = new JFXButton("Actualizar archivos");
     private final JFXButton settingsButton = new JFXButton("Configuracion");
@@ -140,6 +142,7 @@ public final class ServerHomeController extends HBox {
         updateAccountLabel();
         refreshStatus();
         refreshYouTubeVideos();
+        refreshYouTubePosts();
         checkLauncherUpdate();
         Platform.runLater(ServerInstanceManager::getOrCreateServerProfile);
     }
@@ -173,15 +176,25 @@ public final class ServerHomeController extends HBox {
         Label postsTitle = new Label("Publicaciones de BarrilMC");
         postsTitle.getStyleClass().add("server-news-title");
 
-        JFXButton postsButton = new JFXButton("Ver publicaciones");
-        postsButton.getStyleClass().add("server-secondary-button");
-        postsButton.setMaxWidth(Double.MAX_VALUE);
-        postsButton.setOnAction(e -> FXUtils.openLink(ServerLauncherConfig.YOUTUBE_POSTS_URL));
+        postsListBox.getStyleClass().add("server-news-box");
+        postsListBox.getChildren().setAll(new Label("Cargando publicaciones..."));
+
+        ScrollPane postsScroll = new ScrollPane(postsListBox);
+        postsScroll.getStyleClass().add("server-news-scroll");
+        postsScroll.setFitToWidth(true);
+        postsScroll.setPannable(false);
+        postsScroll.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
+        postsScroll.setMaxHeight(240);
+
+        JFXButton seeAllPosts = new JFXButton("Ver más publicaciones →");
+        seeAllPosts.getStyleClass().add("server-secondary-button");
+        seeAllPosts.setMaxWidth(Double.MAX_VALUE);
+        seeAllPosts.setOnAction(e -> FXUtils.openLink(ServerLauncherConfig.YOUTUBE_POSTS_URL));
 
         VBox sidePanel = new VBox(10,
                 videosTitle, videosScroll, seeAllVideos,
                 sep,
-                postsTitle, postsButton);
+                postsTitle, postsScroll, seeAllPosts);
         sidePanel.getStyleClass().add("server-news-panel");
         sidePanel.setAlignment(Pos.TOP_LEFT);
         sidePanel.setPadding(new Insets(16));
@@ -393,6 +406,42 @@ public final class ServerHomeController extends HBox {
                             videos.stream().limit(8).map(this::buildVideoCard).toList()
                     );
                 }));
+    }
+
+    private void refreshYouTubePosts() {
+        CompletableFuture
+                .supplyAsync(() -> {
+                    try {
+                        return YouTubePostsService.fetchPosts(ServerLauncherConfig.YOUTUBE_CHANNEL_HANDLE);
+                    } catch (Exception e) {
+                        LOG.warning("Could not fetch YouTube posts", e);
+                        return null;
+                    }
+                })
+                .thenAccept(posts -> Platform.runLater(() -> {
+                    if (posts == null || posts.isEmpty()) {
+                        postsListBox.getChildren().setAll(new Label("No se pudieron cargar las publicaciones."));
+                        return;
+                    }
+                    postsListBox.getChildren().setAll(
+                            posts.stream().limit(6).map(this::buildPostCard).toList()
+                    );
+                }));
+    }
+
+    private VBox buildPostCard(YouTubePostsService.PostEntry entry) {
+        Label textLabel = new Label(entry.getSnippet());
+        textLabel.getStyleClass().add("server-news-item-title");
+        textLabel.setWrapText(true);
+
+        Label timeLabel = new Label(entry.getPublishedTime());
+        timeLabel.getStyleClass().add("server-news-item-body");
+
+        VBox card = new VBox(4, textLabel, timeLabel);
+        card.getStyleClass().add("server-news-item");
+        card.setCursor(Cursor.HAND);
+        card.setOnMouseClicked(e -> FXUtils.openLink(entry.getUrl()));
+        return card;
     }
 
     private VBox buildVideoCard(YouTubeFeedService.VideoEntry entry) {
