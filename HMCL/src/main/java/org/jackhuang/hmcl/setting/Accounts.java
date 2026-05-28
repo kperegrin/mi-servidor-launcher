@@ -414,10 +414,18 @@ public final class Accounts {
         if (exception instanceof NoCharacterException) {
             return i18n("account.failed.no_character");
         } else if (exception instanceof ServerDisconnectException) {
-            // HTTP 429: rate limited by Minecraft API — stop retrying and wait
-            if (exception.getCause() instanceof ResponseCodeException
-                    && ((ResponseCodeException) exception.getCause()).getResponseCode() == 429) {
-                return "Demasiados intentos de inicio de sesión. Espera al menos 30 minutos sin intentar iniciar sesión y vuelve a intentarlo.";
+            // HTTP-specific Minecraft API errors
+            if (exception.getCause() instanceof ResponseCodeException) {
+                int code = ((ResponseCodeException) exception.getCause()).getResponseCode();
+                if (code == 429) {
+                    return "Demasiados intentos de inicio de sesión. Espera al menos 30 minutos sin intentar iniciar sesión y vuelve a intentarlo.";
+                }
+                if (code == 403) {
+                    // "Invalid app registration" — the Azure app isn't approved by Microsoft for Minecraft API
+                    return "El ID de aplicación de Azure no está aprobado por Microsoft para acceder a Minecraft. "
+                            + "El propietario del launcher debe rellenar el formulario en https://aka.ms/mce-reviewappid "
+                            + "para que Microsoft autorice esta aplicación.";
+                }
             }
             if (exception.getCause() instanceof SSLException) {
                 if (exception.getCause().getMessage() != null && exception.getCause().getMessage().contains("Remote host terminated")) {
