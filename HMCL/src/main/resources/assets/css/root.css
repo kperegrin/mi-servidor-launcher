@@ -174,7 +174,7 @@
 }
 
 .server-news-item {
-    -fx-padding: 10 12 10 12;
+    -fx-padding: 0 0 10 0;
     -fx-background-color: rgba(255, 255, 255, 0.07);
     -fx-background-radius: 8;
 }
@@ -183,6 +183,15 @@
     -fx-font-size: 13px;
     -fx-font-weight: bold;
     -fx-text-fill: white;
+    -fx-padding: 0 12 0 12;
+}
+
+.server-news-item-body {
+    -fx-padding: 0 12 0 12;
+}
+
+.server-video-thumb {
+    -fx-background-radius: 8 8 0 0;
 }
 
 .hyperlink {

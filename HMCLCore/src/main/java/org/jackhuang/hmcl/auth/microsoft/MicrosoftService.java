@@ -151,11 +151,11 @@ public class MicrosoftService {
 
         getUhs(minecraftXstsResponse, uhs);
 
-        // Authenticate with Minecraft
+        // Authenticate with Minecraft — do NOT retry: a 429 here means rate-limited,
+        // and each extra attempt extends the lockout period.
         MinecraftLoginWithXBoxResponse minecraftResponse = HttpRequest
                 .POST("https://api.minecraftservices.com/authentication/login_with_xbox")
                 .json(mapOf(pair("identityToken", "XBL3.0 x=" + uhs + ";" + minecraftXstsResponse.token)))
-                .retry(5)
                 .accept("application/json").getJson(MinecraftLoginWithXBoxResponse.class);
 
         long notAfter = minecraftResponse.expiresIn * 1000L + System.currentTimeMillis();

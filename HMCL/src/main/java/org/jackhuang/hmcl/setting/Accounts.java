@@ -37,6 +37,7 @@ import org.jackhuang.hmcl.game.OAuthServer;
 import org.jackhuang.hmcl.task.Schedulers;
 import org.jackhuang.hmcl.util.FileSaver;
 import org.jackhuang.hmcl.util.io.JarUtils;
+import org.jackhuang.hmcl.util.io.ResponseCodeException;
 import org.jackhuang.hmcl.util.skin.InvalidSkinException;
 
 import javax.net.ssl.SSLException;
@@ -413,6 +414,11 @@ public final class Accounts {
         if (exception instanceof NoCharacterException) {
             return i18n("account.failed.no_character");
         } else if (exception instanceof ServerDisconnectException) {
+            // HTTP 429: rate limited by Minecraft API — stop retrying and wait
+            if (exception.getCause() instanceof ResponseCodeException
+                    && ((ResponseCodeException) exception.getCause()).getResponseCode() == 429) {
+                return "Demasiados intentos de inicio de sesión. Espera al menos 30 minutos sin intentar iniciar sesión y vuelve a intentarlo.";
+            }
             if (exception.getCause() instanceof SSLException) {
                 if (exception.getCause().getMessage() != null && exception.getCause().getMessage().contains("Remote host terminated")) {
                     return i18n("account.failed.connect_authentication_server");

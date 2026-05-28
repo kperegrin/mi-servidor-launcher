@@ -19,6 +19,7 @@ import javafx.scene.control.ProgressBar;
 import javafx.scene.control.ProgressIndicator;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Separator;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
@@ -378,7 +379,7 @@ public final class ServerHomeController extends HBox {
         CompletableFuture
                 .supplyAsync(() -> {
                     try {
-                        return YouTubeFeedService.fetchVideos(ServerLauncherConfig.YOUTUBE_CHANNEL_ID);
+                        return YouTubeFeedService.fetchVideosByHandle(ServerLauncherConfig.YOUTUBE_CHANNEL_HANDLE);
                     } catch (Exception e) {
                         LOG.warning("Could not fetch YouTube videos", e);
                         return null;
@@ -396,6 +397,15 @@ public final class ServerHomeController extends HBox {
     }
 
     private VBox buildVideoCard(YouTubeFeedService.VideoEntry entry) {
+        // Thumbnail — loaded in the background so the UI doesn't block
+        Image thumb = new Image(entry.getThumbnailUrl(), 268, 151, true, true, true);
+        ImageView thumbView = new ImageView(thumb);
+        thumbView.setFitWidth(268);
+        thumbView.setFitHeight(151);
+        thumbView.setPreserveRatio(true);
+        thumbView.setSmooth(true);
+        thumbView.getStyleClass().add("server-video-thumb");
+
         Label titleLabel = new Label(entry.getTitle());
         titleLabel.getStyleClass().add("server-news-item-title");
         titleLabel.setWrapText(true);
@@ -403,7 +413,7 @@ public final class ServerHomeController extends HBox {
         Label dateLabel = new Label(entry.getFormattedDate());
         dateLabel.getStyleClass().add("server-news-item-body");
 
-        VBox card = new VBox(4, titleLabel, dateLabel);
+        VBox card = new VBox(6, thumbView, titleLabel, dateLabel);
         card.getStyleClass().add("server-news-item");
         card.setCursor(Cursor.HAND);
         card.setOnMouseClicked(e -> FXUtils.openLink(entry.getUrl()));

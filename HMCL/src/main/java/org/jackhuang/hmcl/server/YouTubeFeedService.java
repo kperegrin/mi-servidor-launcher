@@ -26,6 +26,8 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /// Fetches and parses the YouTube Atom RSS feed for a given channel.
 public final class YouTubeFeedService {
@@ -35,6 +37,10 @@ public final class YouTubeFeedService {
 
     private static final String FEED_URL =
             "https://www.youtube.com/feeds/videos.xml?channel_id=";
+
+    /// Regex to extract a UC… channel ID from a YouTube page's embedded JSON.
+    private static final Pattern CHANNEL_ID_PATTERN =
+            Pattern.compile("\"(?:channelId|externalId)\"\\s*:\\s*\"(UC[\\w-]{22})\"");
 
     /// A single video entry from the YouTube RSS feed.
     public static final class VideoEntry {
@@ -61,6 +67,11 @@ public final class YouTubeFeedService {
             return "https://www.youtube.com/watch?v=" + videoId;
         }
 
+        /// Medium-quality thumbnail URL (320 × 180 px).
+        public String getThumbnailUrl() {
+            return "https://i.ytimg.com/vi/" + videoId + "/mqdefault.jpg";
+        }
+
         /// Date formatted as "d MMM yyyy", e.g. "3 Jan 2025".
         public String getFormattedDate() {
             try {
@@ -72,10 +83,39 @@ public final class YouTubeFeedService {
         }
     }
 
+    /// Fetches the latest videos using a channel handle like "@barrilmc".
+    /// Resolves the handle to a channel ID by scraping the channel page, then
+    /// fetches the RSS feed.
+    public static List<VideoEntry> fetchVideosByHandle(String handle) throws IOException {
+        String channelId = resolveChannelId(handle);
+        return fetchVideos(channelId);
+    }
+
     /// Fetches the latest videos for the given channel ID from the YouTube Atom feed.
     public static List<VideoEntry> fetchVideos(String channelId) throws IOException {
         String xml = HttpRequest.GET(FEED_URL + channelId).getString();
         return parseAtomFeed(xml);
+    }
+
+    /// Resolves a YouTube handle (e.g. "@barrilmc") to a UC… channel ID.
+    private static String resolveChannelId(String handle) throws IOException {
+        String url = "https://www.youtube.com/" + handle;
+        String html = HttpRequest.GET(url)
+                // Accept-Language en-US avoids GDPR consent redirects on many IPs
+                .header("Accept-Language", "en-US,en;q=0.9")
+                .header("User-Agent",
+                        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
+                        + "(KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36")
+                // SOCS cookie bypasses YouTube's consent/cookie banner
+                .header("Cookie", "SOCS=CAI; CONSENT=YES+cb.20210328-17-p0.en+FX+")
+                .getString();
+
+        Matcher m = CHANNEL_ID_PATTERN.matcher(html);
+        if (m.find()) {
+            return m.group(1);
+        }
+        throw new IOException("Could not resolve channel ID from YouTube handle: " + handle
+                + " (consent page may have been served)");
     }
 
     private static List<VideoEntry> parseAtomFeed(String xml) throws IOException {
