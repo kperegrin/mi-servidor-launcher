@@ -41,7 +41,6 @@ import org.jackhuang.hmcl.ui.Controllers;
 import org.jackhuang.hmcl.ui.FXUtils;
 import org.jackhuang.hmcl.ui.SVG;
 import org.jackhuang.hmcl.ui.account.CreateAccountPane;
-import org.jackhuang.hmcl.ui.account.MicrosoftAccountLoginPane;
 import org.jackhuang.hmcl.ui.construct.MessageDialogPane;
 import org.jackhuang.hmcl.ui.versions.Versions;
 import org.jackhuang.hmcl.util.StringUtils;
@@ -226,7 +225,7 @@ public final class ServerHomeController extends HBox {
 
         microsoftButton.getStyleClass().add("server-login-button");
         microsoftButton.setGraphic(SVG.MICROSOFT.createIcon(18));
-        microsoftButton.setOnAction(event -> Controllers.dialog(new MicrosoftAccountLoginPane()));
+        microsoftButton.setOnAction(event -> Controllers.dialog(new LegacyMicrosoftLoginPane()));
 
         offlineButton.getStyleClass().add("server-login-button");
         offlineButton.setGraphic(SVG.PERSON.createIcon(18));

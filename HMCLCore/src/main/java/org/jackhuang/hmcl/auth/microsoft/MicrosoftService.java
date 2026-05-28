@@ -113,7 +113,26 @@ public class MicrosoftService {
         return uhs;
     }
 
+    /// Builds a MicrosoftAccount from a pre-obtained MicrosoftSession (used by
+    /// the BarrilMC legacy MSA flow where the OAuth step happens outside this service).
+    public MicrosoftAccount createAccountFromSession(MicrosoftSession session) {
+        return new MicrosoftAccount(this, session);
+    }
+
+    /// Runs the Xbox Live → XSTS → Minecraft auth chain using a pre-obtained
+    /// Live access token. Default `d=` prefix is for tokens issued under the
+    /// `XboxLive.signin` OAuth scope; the BarrilMC legacy flow uses MBI_SSL
+    /// which requires `t=` instead — pass useMBISSL=true in that case.
+    public MicrosoftSession authenticateWithToken(String liveAccessToken, String liveRefreshToken, boolean useMBISSL)
+            throws IOException, JsonParseException, AuthenticationException {
+        return authenticateViaLiveAccessToken(liveAccessToken, liveRefreshToken, useMBISSL ? "t=" : "d=");
+    }
+
     private MicrosoftSession authenticateViaLiveAccessToken(String liveAccessToken, String liveRefreshToken) throws IOException, JsonParseException, AuthenticationException {
+        return authenticateViaLiveAccessToken(liveAccessToken, liveRefreshToken, "d=");
+    }
+
+    private MicrosoftSession authenticateViaLiveAccessToken(String liveAccessToken, String liveRefreshToken, String rpsPrefix) throws IOException, JsonParseException, AuthenticationException {
         String uhs;
         XBoxLiveAuthenticationResponse xboxResponse, minecraftXstsResponse;
         try {
@@ -123,7 +142,7 @@ public class MicrosoftService {
                     .json(mapOf(
                             pair("Properties",
                                     mapOf(pair("AuthMethod", "RPS"), pair("SiteName", "user.auth.xboxlive.com"),
-                                            pair("RpsTicket", "d=" + liveAccessToken))),
+                                            pair("RpsTicket", rpsPrefix + liveAccessToken))),
                             pair("RelyingParty", "http://auth.xboxlive.com"), pair("TokenType", "JWT")))
                     .retry(5)
                     .accept("application/json")
