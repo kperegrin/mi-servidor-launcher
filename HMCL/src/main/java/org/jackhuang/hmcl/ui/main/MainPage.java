@@ -115,15 +115,24 @@ public final class MainPage extends StackPane implements DecoratorPage {
 
         state.setValue(new State(null, titleNode, false, false, true));
 
-        setPadding(new Insets(20));
+        setPadding(Insets.EMPTY);
         ServerHomeController serverHome = new ServerHomeController();
+        serverHome.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
         ScrollPane serverHomeScroll = new ScrollPane(serverHome);
         serverHomeScroll.getStyleClass().add("server-home-scroll");
         serverHomeScroll.setFitToWidth(true);
         serverHomeScroll.setFitToHeight(true);
         serverHomeScroll.setPannable(false);
         StackPane.setAlignment(serverHomeScroll, Pos.CENTER);
-        getChildren().add(serverHomeScroll);
+
+        StackPane serverShellTint = new StackPane();
+        serverShellTint.getStyleClass().add("server-shell-tint");
+        serverShellTint.setMouseTransparent(true);
+
+        StackPane serverShell = new StackPane(serverShellTint, serverHomeScroll);
+        serverShell.getStyleClass().add("server-shell");
+        serverShell.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
+        getChildren().add(serverShell);
         ServerInstanceManager.getOrCreateServerProfile();
 
 

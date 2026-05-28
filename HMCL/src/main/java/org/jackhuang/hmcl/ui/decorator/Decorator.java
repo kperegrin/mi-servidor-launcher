@@ -262,6 +262,10 @@ public class Decorator extends Control {
         }
     }
 
+    public void toggleMaximized() {
+        primaryStage.setMaximized(!primaryStage.isMaximized());
+    }
+
     public void close() {
         if (AnimationUtils.playWindowAnimation()) {
             Timeline timeline = new Timeline(

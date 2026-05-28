@@ -43,11 +43,13 @@ public final class YouTubePostsService {
         private final String postId;
         private final String text;
         private final String publishedTime;
+        private final String imageUrl;
 
-        public PostEntry(String postId, String text, String publishedTime) {
+        public PostEntry(String postId, String text, String publishedTime, String imageUrl) {
             this.postId = postId;
             this.text = text;
             this.publishedTime = publishedTime;
+            this.imageUrl = imageUrl;
         }
 
         public String getPostId() {
@@ -62,12 +64,16 @@ public final class YouTubePostsService {
             return publishedTime;
         }
 
+        public String getImageUrl() {
+            return imageUrl;
+        }
+
         /// Full URL to the post on YouTube.
         public String getUrl() {
             return "https://www.youtube.com/post/" + postId;
         }
 
-        /// Text truncated to ≤ 160 chars for display in a card.
+        /// Text truncated to 160 chars for display in a card.
         public String getSnippet() {
             String trimmed = text.trim();
             if (trimmed.length() <= 160) return trimmed;
@@ -187,7 +193,7 @@ public final class YouTubePostsService {
         if (!renderer.has("postId")) return null;
         String postId = renderer.get("postId").getAsString();
 
-        // contentText.runs[].text — concatenate all text runs
+        // contentText.runs[].text - concatenate all text runs
         StringBuilder text = new StringBuilder();
         if (renderer.has("contentText")) {
             JsonObject contentText = renderer.getAsJsonObject("contentText");
@@ -200,7 +206,7 @@ public final class YouTubePostsService {
             }
         }
 
-        // publishedTimeText.simpleText — relative time like "hace 2 días"
+        // publishedTimeText.simpleText - relative time like "hace 2 dias"
         String time = "";
         if (renderer.has("publishedTimeText")) {
             JsonObject timeObj = renderer.getAsJsonObject("publishedTimeText");
@@ -209,9 +215,77 @@ public final class YouTubePostsService {
             }
         }
 
+        String imageUrl = extractImageUrl(renderer);
         String postText = text.toString().trim();
-        if (postText.isEmpty()) return null; // Skip image-only or empty posts
+        if (postText.isEmpty() && imageUrl == null) return null;
+        if (postText.isEmpty()) postText = "Publicacion con imagen";
 
-        return new PostEntry(postId, postText, time);
+        return new PostEntry(postId, postText, time, imageUrl);
+    }
+
+    private static String extractImageUrl(JsonObject renderer) {
+        if (renderer.has("backstageAttachment")) {
+            String url = findLargestThumbnailUrl(renderer.get("backstageAttachment"));
+            if (url != null) return normalizeImageUrl(url);
+        }
+        if (renderer.has("attachment")) {
+            String url = findLargestThumbnailUrl(renderer.get("attachment"));
+            if (url != null) return normalizeImageUrl(url);
+        }
+        return null;
+    }
+
+    private static String findLargestThumbnailUrl(JsonElement root) {
+        Deque<JsonElement> stack = new ArrayDeque<>();
+        stack.push(root);
+
+        String bestUrl = null;
+        int bestArea = -1;
+
+        while (!stack.isEmpty()) {
+            JsonElement element = stack.pop();
+            if (element == null || element.isJsonNull() || element.isJsonPrimitive()) {
+                continue;
+            }
+
+            if (element.isJsonArray()) {
+                JsonArray arr = element.getAsJsonArray();
+                for (int i = arr.size() - 1; i >= 0; i--) {
+                    stack.push(arr.get(i));
+                }
+                continue;
+            }
+
+            JsonObject obj = element.getAsJsonObject();
+            if (obj.has("thumbnails") && obj.get("thumbnails").isJsonArray()) {
+                for (JsonElement thumbElement : obj.getAsJsonArray("thumbnails")) {
+                    if (!thumbElement.isJsonObject()) continue;
+
+                    JsonObject thumb = thumbElement.getAsJsonObject();
+                    if (!thumb.has("url")) continue;
+
+                    int width = thumb.has("width") ? thumb.get("width").getAsInt() : 0;
+                    int height = thumb.has("height") ? thumb.get("height").getAsInt() : 0;
+                    int area = width * height;
+                    if (area > bestArea) {
+                        bestArea = area;
+                        bestUrl = thumb.get("url").getAsString();
+                    }
+                }
+            }
+
+            for (Map.Entry<String, JsonElement> field : obj.entrySet()) {
+                stack.push(field.getValue());
+            }
+        }
+
+        return bestArea >= 10000 ? bestUrl : null;
+    }
+
+    private static String normalizeImageUrl(String url) {
+        if (url.startsWith("//")) {
+            return "https:" + url;
+        }
+        return url;
     }
 }

@@ -55,7 +55,7 @@ import static org.jackhuang.hmcl.util.logging.Logger.LOG;
 
 /// Server-specific home page embedded in HMCL's main page.
 @NotNullByDefault
-public final class ServerHomeController extends HBox {
+public final class ServerHomeController extends FlowPane {
     private final Label statusLabel = new Label("Comprobando estado...");
     private final Label playersLabel = new Label("-");
     private final Label versionLabel = new Label(ServerLauncherConfig.MINECRAFT_VERSION);
@@ -76,13 +76,16 @@ public final class ServerHomeController extends HBox {
 
     /// Creates the custom home.
     public ServerHomeController() {
+        getStyleClass().add("server-home-root");
         setAlignment(Pos.TOP_CENTER);
-        setSpacing(16);
-        setPadding(new Insets(0));
+        setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
+        setHgap(18);
+        setVgap(18);
+        setPadding(new Insets(24));
 
         ImageView logo = new ImageView(FXUtils.newBuiltinImage("/assets/branding/logo.png"));
-        logo.setFitWidth(72);
-        logo.setFitHeight(72);
+        logo.setFitWidth(92);
+        logo.setFitHeight(92);
         logo.setPreserveRatio(true);
 
         Label title = new Label(ServerLauncherConfig.SERVER_NAME);
@@ -105,13 +108,16 @@ public final class ServerHomeController extends HBox {
                 metric("Version", versionLabel),
                 metric("Cuenta", accountLabel));
         status.setAlignment(Pos.CENTER);
+        status.setPrefWrapLength(720);
 
         configureButtons();
         FlowPane actions = new FlowPane(10, 10, playButton, updateButton, settingsButton);
         actions.setAlignment(Pos.CENTER);
+        actions.setPrefWrapLength(720);
 
         FlowPane loginActions = new FlowPane(10, 10, microsoftButton, offlineButton);
         loginActions.setAlignment(Pos.CENTER);
+        loginActions.setPrefWrapLength(720);
 
         progressBar.setMaxWidth(Double.MAX_VALUE);
         progressBar.getStyleClass().add("server-progress");
@@ -130,11 +136,14 @@ public final class ServerHomeController extends HBox {
         mainCard.getStyleClass().add("server-home");
         mainCard.setAlignment(Pos.CENTER);
         mainCard.setPadding(new Insets(16));
-        mainCard.setPrefWidth(560);
-        mainCard.setMaxWidth(560);
+        mainCard.setMinWidth(360);
+        mainCard.setPrefWidth(760);
+        mainCard.setMaxWidth(Double.MAX_VALUE);
+        HBox.setHgrow(mainCard, Priority.ALWAYS);
 
         // Side panel: latest videos + posts
         VBox sidePanel = buildSidePanel();
+        HBox.setHgrow(sidePanel, Priority.SOMETIMES);
 
         getChildren().setAll(mainCard, sidePanel);
 
@@ -149,7 +158,7 @@ public final class ServerHomeController extends HBox {
 
     private VBox buildSidePanel() {
         // --- Videos section ---
-        Label videosTitle = new Label("Últimos videos");
+        Label videosTitle = new Label("Ultimos videos");
         videosTitle.getStyleClass().add("server-news-title");
 
         videoListBox.getStyleClass().add("server-news-box");
@@ -164,7 +173,7 @@ public final class ServerHomeController extends HBox {
         VBox.setVgrow(videosScroll, Priority.ALWAYS);
 
         // "See all" link button
-        JFXButton seeAllVideos = new JFXButton("Ver canal en YouTube →");
+        JFXButton seeAllVideos = new JFXButton("Ver canal en YouTube");
         seeAllVideos.getStyleClass().add("server-secondary-button");
         seeAllVideos.setMaxWidth(Double.MAX_VALUE);
         seeAllVideos.setOnAction(e -> FXUtils.openLink(ServerLauncherConfig.YOUTUBE_CHANNEL_URL));
@@ -184,9 +193,9 @@ public final class ServerHomeController extends HBox {
         postsScroll.setFitToWidth(true);
         postsScroll.setPannable(false);
         postsScroll.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
-        postsScroll.setMaxHeight(240);
+        postsScroll.setMaxHeight(320);
 
-        JFXButton seeAllPosts = new JFXButton("Ver más publicaciones →");
+        JFXButton seeAllPosts = new JFXButton("Ver mas publicaciones");
         seeAllPosts.getStyleClass().add("server-secondary-button");
         seeAllPosts.setMaxWidth(Double.MAX_VALUE);
         seeAllPosts.setOnAction(e -> FXUtils.openLink(ServerLauncherConfig.YOUTUBE_POSTS_URL));
@@ -194,14 +203,28 @@ public final class ServerHomeController extends HBox {
         VBox sidePanel = new VBox(10,
                 videosTitle, videosScroll, seeAllVideos,
                 sep,
-                postsTitle, postsScroll, seeAllPosts);
+                postsTitle, postsScroll, seeAllPosts,
+                buildRightsCard());
         sidePanel.getStyleClass().add("server-news-panel");
         sidePanel.setAlignment(Pos.TOP_LEFT);
         sidePanel.setPadding(new Insets(16));
-        sidePanel.setPrefWidth(300);
-        sidePanel.setMaxWidth(320);
-        sidePanel.setMinWidth(240);
+        sidePanel.setPrefWidth(360);
+        sidePanel.setMaxWidth(420);
+        sidePanel.setMinWidth(336);
         return sidePanel;
+    }
+
+    private VBox buildRightsCard() {
+        Label title = new Label("Derechos de ElKimiZG");
+        title.getStyleClass().add("server-rights-title");
+
+        Label body = new Label("Representacion de BarrilMC");
+        body.getStyleClass().add("server-rights-body");
+        body.setWrapText(true);
+
+        VBox card = new VBox(4, title, body);
+        card.getStyleClass().add("server-rights-card");
+        return card;
     }
 
     private VBox metric(String title, Label value) {
@@ -437,19 +460,30 @@ public final class ServerHomeController extends HBox {
         Label timeLabel = new Label(entry.getPublishedTime());
         timeLabel.getStyleClass().add("server-news-item-body");
 
-        VBox card = new VBox(4, textLabel, timeLabel);
-        card.getStyleClass().add("server-news-item");
+        VBox card = new VBox(6);
+        card.getStyleClass().addAll("server-news-item", "server-post-card");
+        if (entry.getImageUrl() != null && !entry.getImageUrl().isBlank()) {
+            Image image = new Image(entry.getImageUrl(), 300, 169, true, true, true);
+            ImageView imageView = new ImageView(image);
+            imageView.setFitWidth(300);
+            imageView.setFitHeight(169);
+            imageView.setPreserveRatio(true);
+            imageView.setSmooth(true);
+            imageView.getStyleClass().add("server-post-image");
+            card.getChildren().add(imageView);
+        }
+        card.getChildren().addAll(textLabel, timeLabel);
         card.setCursor(Cursor.HAND);
         card.setOnMouseClicked(e -> FXUtils.openLink(entry.getUrl()));
         return card;
     }
 
     private VBox buildVideoCard(YouTubeFeedService.VideoEntry entry) {
-        // Thumbnail — loaded in the background so the UI doesn't block
-        Image thumb = new Image(entry.getThumbnailUrl(), 268, 151, true, true, true);
+        // Thumbnail loaded in the background so the UI doesn't block.
+        Image thumb = new Image(entry.getThumbnailUrl(), 300, 169, true, true, true);
         ImageView thumbView = new ImageView(thumb);
-        thumbView.setFitWidth(268);
-        thumbView.setFitHeight(151);
+        thumbView.setFitWidth(300);
+        thumbView.setFitHeight(169);
         thumbView.setPreserveRatio(true);
         thumbView.setSmooth(true);
         thumbView.getStyleClass().add("server-video-thumb");

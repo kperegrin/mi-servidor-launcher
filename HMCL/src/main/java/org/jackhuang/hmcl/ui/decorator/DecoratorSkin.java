@@ -82,7 +82,8 @@ public class DecoratorSkin extends SkinBase<Decorator> {
 
         StackPane shadowContainer = new StackPane();
         shadowContainer.getStyleClass().add("body");
-        shadowContainer.setEffect(new DropShadow(BlurType.ONE_PASS_BOX, Color.rgb(0, 0, 0, 0.4), 10, 0.3, 0.0, 0.0));
+        DropShadow windowShadow = new DropShadow(BlurType.ONE_PASS_BOX, Color.rgb(0, 0, 0, 0.4), 10, 0.3, 0.0, 0.0);
+        shadowContainer.setEffect(windowShadow);
 
         parent = new StackPane();
         Rectangle clip = new Rectangle();
@@ -101,7 +102,22 @@ public class DecoratorSkin extends SkinBase<Decorator> {
         // https://github.com/HMCL-dev/HMCL/issues/4290
         if (OperatingSystem.CURRENT_OS != OperatingSystem.MACOS) {
             onWindowsStatusChange = observable -> {
-                if (primaryStage.isIconified() || primaryStage.isFullScreen() || primaryStage.isMaximized()) {
+                boolean edgeToEdge = primaryStage.isFullScreen() || primaryStage.isMaximized();
+                if (edgeToEdge) {
+                    if (!root.getStyleClass().contains("window-edge-to-edge")) {
+                        root.getStyleClass().add("window-edge-to-edge");
+                    }
+                    shadowContainer.setEffect(null);
+                    clip.setArcWidth(0);
+                    clip.setArcHeight(0);
+                } else {
+                    root.getStyleClass().remove("window-edge-to-edge");
+                    shadowContainer.setEffect(windowShadow);
+                    clip.setArcWidth(8);
+                    clip.setArcHeight(8);
+                }
+
+                if (primaryStage.isIconified() || edgeToEdge) {
                     root.removeEventFilter(MouseEvent.MOUSE_RELEASED, onMouseReleased);
                     root.removeEventFilter(MouseEvent.MOUSE_DRAGGED, onMouseDragged);
                     root.removeEventFilter(MouseEvent.MOUSE_MOVED, onMouseMoved);
@@ -243,13 +259,19 @@ public class DecoratorSkin extends SkinBase<Decorator> {
                 btnMin.getStyleClass().add("jfx-decorator-button");
                 btnMin.setOnAction(e -> skinnable.minimize());
 
+                JFXButton btnMax = new JFXButton();
+                btnMax.setFocusTraversable(false);
+                btnMax.setGraphic(SVG.MAXIMIZE.createIcon(Themes.titleFillProperty()));
+                btnMax.getStyleClass().add("jfx-decorator-button");
+                btnMax.setOnAction(e -> skinnable.toggleMaximized());
+
                 JFXButton btnClose = new JFXButton();
                 btnClose.setFocusTraversable(false);
                 btnClose.setGraphic(SVG.CLOSE.createIcon(Themes.titleFillProperty()));
                 btnClose.getStyleClass().add("jfx-decorator-button");
                 btnClose.setOnAction(e -> skinnable.close());
 
-                buttonsContainer.getChildren().setAll(btnHelp, btnMin, btnClose);
+                buttonsContainer.getChildren().setAll(btnHelp, btnMin, btnMax, btnClose);
             }
             AnchorPane layer = new AnchorPane();
             layer.setPickOnBounds(false);
