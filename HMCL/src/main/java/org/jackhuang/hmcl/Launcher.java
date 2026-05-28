@@ -33,6 +33,7 @@ import javafx.scene.input.DataFormat;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import org.jackhuang.hmcl.server.SplashScreen;
 import org.jackhuang.hmcl.setting.ConfigHolder;
 import org.jackhuang.hmcl.setting.SambaException;
 import org.jackhuang.hmcl.task.AsyncTaskExecutor;
@@ -141,8 +142,13 @@ public final class Launcher extends Application {
 
                 UpdateChecker.init();
 
-                primaryStage.setMaximized(true);
-                primaryStage.show();
+                // Show the BarrilMC splash first: "Buscando actualizaciones..." → "Todo correcto, continuando..."
+                // Splash auto-closes after the update check (or a short minimum) and then opens the main window.
+                SplashScreen splash = new SplashScreen();
+                splash.runSequence(() -> {
+                    primaryStage.setMaximized(true);
+                    primaryStage.show();
+                });
             });
         } catch (Throwable e) {
             CRASH_REPORTER.uncaughtException(Thread.currentThread(), e);
