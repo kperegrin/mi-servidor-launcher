@@ -277,7 +277,7 @@ public class CreateAccountPane extends JFXDialogLayout implements DialogAware {
         }
 
         if (factory == Accounts.FACTORY_MICROSOFT) {
-            detailsPane = new MicrosoftAccountLoginPane(true);
+            detailsPane = new org.jackhuang.hmcl.ui.server.LegacyMicrosoftLoginPane(true);
             setActions();
         } else {
             detailsPane = new AccountDetailsInputPane(factory, btnAccept::fire);

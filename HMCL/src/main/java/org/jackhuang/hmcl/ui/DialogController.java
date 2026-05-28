@@ -19,7 +19,7 @@ package org.jackhuang.hmcl.ui;
 
 import org.jackhuang.hmcl.auth.*;
 import org.jackhuang.hmcl.ui.account.ClassicAccountLoginDialog;
-import org.jackhuang.hmcl.ui.account.MicrosoftAccountLoginPane;
+import org.jackhuang.hmcl.ui.server.LegacyMicrosoftLoginPane;
 
 import java.util.Optional;
 import java.util.concurrent.CancellationException;
@@ -49,7 +49,7 @@ public final class DialogController {
             CountDownLatch latch = new CountDownLatch(1);
             AtomicReference<AuthInfo> res = new AtomicReference<>(null);
             runInFX(() -> {
-                MicrosoftAccountLoginPane pane = new MicrosoftAccountLoginPane(account, it -> {
+                LegacyMicrosoftLoginPane pane = new LegacyMicrosoftLoginPane(account, it -> {
                     res.set(it);
                     latch.countDown();
                 }, latch::countDown, false);

@@ -17,6 +17,7 @@
  */
 package org.jackhuang.hmcl.ui.account;
 
+import org.jackhuang.hmcl.ui.server.LegacyMicrosoftLoginPane;
 import javafx.beans.binding.Bindings;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.ListProperty;
@@ -130,7 +131,7 @@ public final class AccountListPage extends DecoratorAnimatedPage implements Deco
                     microsoftItem.getStyleClass().add("navigation-drawer-item");
                     microsoftItem.setTitle(i18n("account.methods.microsoft"));
                     microsoftItem.setLeftIcon(SVG.MICROSOFT);
-                    microsoftItem.setOnAction(e -> Controllers.dialog(new MicrosoftAccountLoginPane()));
+                    microsoftItem.setOnAction(e -> Controllers.dialog(new LegacyMicrosoftLoginPane()));
 
                     AdvancedListItem offlineItem = new AdvancedListItem();
                     offlineItem.getStyleClass().add("navigation-drawer-item");
