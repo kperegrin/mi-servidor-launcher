@@ -84,7 +84,7 @@ public final class Metadata {
         String hmclCurrentDir = System.getProperty("hmcl.dir", System.getenv("HMCL_LOCAL_HOME"));
         HMCL_CURRENT_DIRECTORY = StringUtils.isNotBlank(hmclCurrentDir)
                 ? Path.of(hmclCurrentDir).toAbsolutePath().normalize()
-                : CURRENT_DIRECTORY.resolve(".barrilmc").resolve("launcher");
+                : getBarrilMCLauncherDirectory().resolve(".barrilmc").resolve("launcher");
 
         String hmclDependencies = System.getProperty("hmcl.dependencies.dir", System.getenv("HMCL_DEPENDENCIES_DIR"));
         DEPENDENCIES_DIRECTORY = StringUtils.isNotBlank(hmclDependencies)
@@ -94,6 +94,20 @@ public final class Metadata {
 
     public static boolean isStable() {
         return "stable".equals(BUILD_CHANNEL);
+    }
+
+    private static Path getBarrilMCLauncherDirectory() {
+        String override = System.getProperty("barrilmc.launcher.dir", System.getenv("BARRILMC_LAUNCHER_DIR"));
+        if (StringUtils.isNotBlank(override)) {
+            return Path.of(override).toAbsolutePath().normalize();
+        }
+
+        String appData = System.getenv("APPDATA");
+        if (StringUtils.isNotBlank(appData)) {
+            return Path.of(appData, "BarrilMCLauncher").toAbsolutePath().normalize();
+        }
+
+        return Path.of(System.getProperty("user.home"), "BarrilMCLauncher").toAbsolutePath().normalize();
     }
 
     public static boolean isDev() {

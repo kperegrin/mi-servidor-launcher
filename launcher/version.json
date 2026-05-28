@@ -1,6 +1,6 @@
 {
     "latest":  "1.0.0",
     "downloadUrl":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/BarrilMC-Launcher-1.0.0.exe",
-    "sha256":  "0b5d0e1d0395cda61c5f7de3d6fb080266d6633acb4f3042c928cb4280008985",
+    "sha256":  "39eaf2e80cdce1ec16a6ab9e097bd44636acc5cacd6b6ce119d1ad0e0e0e93b7",
     "notes":  "BarrilMC Launcher con Fabric 1.21.1 y pack sincronizado."
 }

@@ -32,8 +32,10 @@ public final class ServerLauncherConfig {
     public static final String SERVER_IP = "impact.dathost.net";
     /// Default server port.
     public static final int SERVER_PORT = 17818;
+    /// Base directory used by the BarrilMC launcher on this PC.
+    public static final Path LAUNCHER_DIRECTORY = resolveLauncherDirectory();
     /// Default local game directory for this server.
-    public static final Path INSTANCE_DIRECTORY = Path.of(".barrilmc");
+    public static final Path INSTANCE_DIRECTORY = LAUNCHER_DIRECTORY.resolve(".barrilmc");
     /// Default manifest URL. Override with -Dbarrilmc.manifest.url or BARRILMC_MANIFEST_URL.
     public static final String MANIFEST_URL = System.getProperty(
             "barrilmc.manifest.url",
@@ -49,5 +51,19 @@ public final class ServerLauncherConfig {
     public static final String YOUTUBE_POSTS_URL = "https://www.youtube.com/@barrilmc/posts";
 
     private ServerLauncherConfig() {
+    }
+
+    private static Path resolveLauncherDirectory() {
+        String override = System.getProperty("barrilmc.launcher.dir", System.getenv("BARRILMC_LAUNCHER_DIR"));
+        if (override != null && !override.isBlank()) {
+            return Path.of(override).toAbsolutePath().normalize();
+        }
+
+        String appData = System.getenv("APPDATA");
+        if (appData != null && !appData.isBlank()) {
+            return Path.of(appData, "BarrilMCLauncher").toAbsolutePath().normalize();
+        }
+
+        return Path.of(System.getProperty("user.home"), "BarrilMCLauncher").toAbsolutePath().normalize();
     }
 }
