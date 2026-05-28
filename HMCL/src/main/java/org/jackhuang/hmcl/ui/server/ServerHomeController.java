@@ -56,6 +56,10 @@ import org.jackhuang.hmcl.ui.versions.Versions;
 import org.jackhuang.hmcl.util.StringUtils;
 import org.jetbrains.annotations.NotNullByDefault;
 
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.nio.file.Path;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CompletionException;
@@ -150,15 +154,14 @@ public final class ServerHomeController extends FlowPane {
         HBox launcherUpdate = new HBox(10, launcherUpdateLabel, launcherUpdateButton);
         launcherUpdate.setAlignment(Pos.CENTER);
 
-        // Main card (center)
+        // Main card (center) — width adapts to content, not the full window.
         VBox mainCard = new VBox(12, hero, status, actions, loginActions, progressBar, progressLabel, launcherUpdate);
         mainCard.getStyleClass().add("server-home");
         mainCard.setAlignment(Pos.CENTER);
         mainCard.setPadding(new Insets(16));
-        mainCard.setMinWidth(360);
-        mainCard.setPrefWidth(760);
-        mainCard.setMaxWidth(Double.MAX_VALUE);
-        HBox.setHgrow(mainCard, Priority.ALWAYS);
+        mainCard.setMinWidth(340);
+        mainCard.setPrefWidth(560);
+        mainCard.setMaxWidth(660);
 
         // Side panel: latest videos + posts
         VBox sidePanel = buildSidePanel();
@@ -485,40 +488,45 @@ public final class ServerHomeController extends FlowPane {
 
         VBox card = new VBox(6);
         card.getStyleClass().addAll("server-news-item", "server-post-card");
-        if (entry.getImageUrl() != null && !entry.getImageUrl().isBlank()) {
-            // Load at natural size; ImageView handles display scaling.
-            // Start hidden — show only when the image loads successfully so we
-            // never display an empty dark rectangle on load failure.
-            Image image = new Image(entry.getImageUrl(), true);
-            ImageView imageView = new ImageView(image);
-            imageView.setFitWidth(300);
-            imageView.setFitHeight(169);
-            imageView.setPreserveRatio(true);
-            imageView.setSmooth(true);
-            imageView.getStyleClass().add("server-post-image");
-            imageView.setVisible(false);
-            imageView.setManaged(false);
-            image.progressProperty().addListener((obs, oldVal, newVal) -> {
-                if (newVal.doubleValue() >= 1.0) {
-                    Platform.runLater(() -> {
-                        if (!image.isError()) {
-                            imageView.setVisible(true);
-                            imageView.setManaged(true);
-                        }
-                    });
-                }
-            });
-            // Immediate show if already in cache
-            if (image.getProgress() >= 1.0 && !image.isError()) {
-                imageView.setVisible(true);
-                imageView.setManaged(true);
-            }
-            card.getChildren().add(imageView);
-        }
         card.getChildren().addAll(textLabel, timeLabel);
         card.setCursor(Cursor.HAND);
         card.setOnMouseClicked(e -> FXUtils.openLink(entry.getUrl()));
         addCardHoverAnimation(card);
+
+        // Download the image with proper browser headers (JavaFX Image class does
+        // not send a User-Agent and some Google CDN URLs silently refuse it).
+        if (entry.getImageUrl() != null && !entry.getImageUrl().isBlank()) {
+            final String imgUrl = entry.getImageUrl();
+            CompletableFuture.supplyAsync(() -> {
+                try {
+                    HttpURLConnection conn = (HttpURLConnection) new URL(imgUrl).openConnection();
+                    conn.setRequestProperty("User-Agent",
+                            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+                            + "AppleWebKit/537.36 (KHTML, like Gecko) "
+                            + "Chrome/124.0.0.0 Safari/537.36");
+                    conn.setRequestProperty("Referer", "https://www.youtube.com/");
+                    conn.setConnectTimeout(8_000);
+                    conn.setReadTimeout(12_000);
+                    try (InputStream is = conn.getInputStream()) {
+                        byte[] bytes = is.readAllBytes();
+                        return new Image(new ByteArrayInputStream(bytes));
+                    }
+                } catch (Exception e) {
+                    LOG.warning("Failed to load post image: " + imgUrl, e);
+                    return null;
+                }
+            }).thenAccept(image -> Platform.runLater(() -> {
+                if (image != null && !image.isError()) {
+                    ImageView imageView = new ImageView(image);
+                    imageView.setFitWidth(300);
+                    imageView.setFitHeight(169);
+                    imageView.setPreserveRatio(true);
+                    imageView.setSmooth(true);
+                    imageView.getStyleClass().add("server-post-image");
+                    card.getChildren().add(0, imageView);
+                }
+            }));
+        }
         return card;
     }
 
