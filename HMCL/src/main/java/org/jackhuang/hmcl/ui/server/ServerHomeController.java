@@ -86,7 +86,7 @@ public final class ServerHomeController extends FlowPane {
     /// Creates the custom home.
     public ServerHomeController() {
         getStyleClass().add("server-home-root");
-        setAlignment(Pos.TOP_CENTER);
+        setAlignment(Pos.CENTER);
         setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
         setHgap(18);
         setVgap(18);

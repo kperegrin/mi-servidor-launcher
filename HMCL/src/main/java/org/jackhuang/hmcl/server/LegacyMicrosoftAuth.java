@@ -108,14 +108,35 @@ public final class LegacyMicrosoftAuth {
         return null;
     }
 
+    /// Builds the authorize URL using a custom redirect URI (e.g. a localhost callback).
+    public static String buildAuthorizeUrlWithRedirect(String redirectUri) {
+        Map<String, String> params = new LinkedHashMap<>();
+        params.put("client_id", CLIENT_ID);
+        params.put("response_type", "code");
+        params.put("scope", SCOPE);
+        params.put("redirect_uri", redirectUri);
+        params.put("prompt", "select_account");
+        params.put("lw", "1");
+        params.put("fl", "dob,easi2");
+        params.put("xsup", "1");
+        params.put("nopa", "2");
+        return NetworkUtils.withQuery(AUTHORIZE_URL, params);
+    }
+
     /// Exchanges an auth code for an access + refresh token at oauth20_token.srf.
     public static TokenResponse exchangeCodeForToken(String code) throws IOException {
+        return exchangeCodeForTokenWithRedirect(code, REDIRECT_URI);
+    }
+
+    /// Exchanges an auth code obtained with a custom redirect URI.
+    /// The {@code redirectUri} must exactly match the one used in the authorize request.
+    public static TokenResponse exchangeCodeForTokenWithRedirect(String code, String redirectUri) throws IOException {
         return HttpRequest.POST(TOKEN_URL)
                 .form(mapOf(
                         pair("client_id", CLIENT_ID),
                         pair("code", code),
                         pair("grant_type", "authorization_code"),
-                        pair("redirect_uri", REDIRECT_URI),
+                        pair("redirect_uri", redirectUri),
                         pair("scope", SCOPE)
                 ))
                 .accept("application/json")

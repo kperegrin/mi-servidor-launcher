@@ -9,7 +9,10 @@
  */
 package org.jackhuang.hmcl.server;
 
+import javafx.animation.Animation;
+import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
+import javafx.animation.RotateTransition;
 import javafx.animation.Timeline;
 import javafx.application.Platform;
 import javafx.geometry.Insets;
@@ -62,6 +65,12 @@ public final class SplashScreen {
         logo.setFitHeight(96);
         logo.setPreserveRatio(true);
         logo.setSmooth(true);
+        // Spin the barrel while loading — one full rotation every 2 s.
+        RotateTransition spin = new RotateTransition(Duration.seconds(2), logo);
+        spin.setByAngle(360);
+        spin.setCycleCount(Animation.INDEFINITE);
+        spin.setInterpolator(Interpolator.LINEAR);
+        spin.play();
 
         Label title = new Label(ServerLauncherConfig.SERVER_NAME);
         title.getStyleClass().add("splash-title");

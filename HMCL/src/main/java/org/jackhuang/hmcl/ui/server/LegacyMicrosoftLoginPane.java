@@ -11,17 +11,11 @@ package org.jackhuang.hmcl.ui.server;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDialogLayout;
-import com.jfoenix.controls.JFXTextArea;
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
 import javafx.application.Platform;
 import javafx.css.PseudoClass;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
-import javafx.scene.input.Clipboard;
-import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
-import javafx.util.Duration;
 import org.jackhuang.hmcl.auth.Account;
 import org.jackhuang.hmcl.auth.AuthInfo;
 import org.jackhuang.hmcl.auth.AuthenticationException;
@@ -29,34 +23,35 @@ import org.jackhuang.hmcl.auth.microsoft.MicrosoftAccount;
 import org.jackhuang.hmcl.auth.microsoft.MicrosoftService;
 import org.jackhuang.hmcl.auth.microsoft.MicrosoftSession;
 import org.jackhuang.hmcl.server.LegacyMicrosoftAuth;
+import org.jackhuang.hmcl.server.LocalOAuthCallbackServer;
 import org.jackhuang.hmcl.setting.Accounts;
 import org.jackhuang.hmcl.task.Schedulers;
 import org.jackhuang.hmcl.task.Task;
 import org.jackhuang.hmcl.task.TaskExecutor;
+import org.jackhuang.hmcl.ui.FXUtils;
 import org.jackhuang.hmcl.ui.construct.DialogAware;
 import org.jackhuang.hmcl.ui.construct.DialogCloseEvent;
 import org.jackhuang.hmcl.ui.construct.SpinnerPane;
 
+import java.io.IOException;
 import java.util.concurrent.CancellationException;
 import java.util.function.Consumer;
 
 import static org.jackhuang.hmcl.ui.FXUtils.onEscPressed;
 import static org.jackhuang.hmcl.util.logging.Logger.LOG;
 
-/// Microsoft login using the official Minecraft launcher's public credentials
-/// (client ID 00000000402b5328 + login.live.com/oauth20_desktop.srf redirect).
+/// Microsoft login using a localhost OAuth callback — fully automatic.
 ///
-/// Because the redirect URI isn't on localhost, we can't auto-capture the
-/// callback. The user opens the browser, copies the URL of the blank
-/// `oauth20_desktop.srf` page (which has `?code=...`), and pastes it back.
+/// Flow:
+///   1. User clicks "Iniciar sesión con Microsoft".
+///   2. A free port is reserved on 127.0.0.1 and a background thread listens.
+///   3. The system browser opens with the OAuth URL pointing at that local server.
+///   4. User logs in.  Microsoft redirects the browser to 127.0.0.1:PORT/callback?code=...
+///   5. The launcher catches the code and exchanges it for tokens — no copy/paste needed.
 ///
-/// Supports the same constructor shapes as `MicrosoftAccountLoginPane` so all
-/// call sites in HMCL (initial login, re-login, embedded in CreateAccountPane)
-/// can use it as a drop-in replacement.
+/// Falls back to a manual paste field if the local server cannot be started.
 public final class LegacyMicrosoftLoginPane extends JFXDialogLayout implements DialogAware {
 
-    // MicrosoftService is constructed locally; the OAuth callback it carries is
-    // only used by the OAuth flow we bypass, so a stub is safe.
     private final MicrosoftService service = new MicrosoftService(Accounts.OAUTH_CALLBACK);
 
     private final Account accountToRelogin;
@@ -64,17 +59,18 @@ public final class LegacyMicrosoftLoginPane extends JFXDialogLayout implements D
     private final Runnable cancelCallback;
 
     private final JFXButton btnOpenBrowser;
-    private final JFXButton btnContinue;
     private final JFXButton btnCancel;
-    private final JFXTextArea pasteField;
     private final Label statusLabel;
     private final SpinnerPane continueSpinner;
 
+    private LocalOAuthCallbackServer callbackServer;
+    private String usedRedirectUri;
     private TaskExecutor loginTask;
-    private Timeline clipboardPoller;
-    private String lastClipboardContent = null;
-    private boolean browserOpened = false;
     private boolean submitInFlight = false;
+
+    // -------------------------------------------------------------------------
+    // Constructors — same shapes as MicrosoftAccountLoginPane for drop-in use
+    // -------------------------------------------------------------------------
 
     public LegacyMicrosoftLoginPane() {
         this(null, null, null, false);
@@ -84,147 +80,116 @@ public final class LegacyMicrosoftLoginPane extends JFXDialogLayout implements D
         this(null, null, null, bodyonly);
     }
 
-    public LegacyMicrosoftLoginPane(Account account, Consumer<AuthInfo> callback, Runnable onCancel, boolean bodyonly) {
+    public LegacyMicrosoftLoginPane(Account account, Consumer<AuthInfo> callback,
+                                     Runnable onCancel, boolean bodyonly) {
         this.accountToRelogin = account;
-        this.loginCallback = callback;
-        this.cancelCallback = onCancel;
+        this.loginCallback    = callback;
+        this.cancelCallback   = onCancel;
 
         getStyleClass().add("microsoft-login-dialog");
         if (bodyonly) {
-            this.pseudoClassStateChanged(PseudoClass.getPseudoClass("bodyonly"), true);
+            pseudoClassStateChanged(PseudoClass.getPseudoClass("bodyonly"), true);
         } else {
-            String headingText = accountToRelogin != null ? "Refrescar cuenta Microsoft" : "Añadir una cuenta Microsoft";
-            Label heading = new Label(headingText);
-            heading.getStyleClass().add("header-label");
-            setHeading(heading);
+            String heading = accountToRelogin != null
+                    ? "Refrescar cuenta Microsoft"
+                    : "Añadir una cuenta Microsoft";
+            Label headingLabel = new Label(heading);
+            headingLabel.getStyleClass().add("header-label");
+            setHeading(headingLabel);
         }
-        this.setMaxWidth(650);
+        setMaxWidth(560);
 
-        Label step1 = new Label("1. Pulsa el botón y se abrirá tu navegador para iniciar sesión.");
-        step1.setWrapText(true);
-        Label step2 = new Label("2. Después de iniciar sesión verás una página en blanco. Pulsa Ctrl+L y luego Ctrl+C en el navegador para copiar la URL.");
-        step2.setWrapText(true);
-        Label step3 = new Label("3. El launcher detectará la URL automáticamente desde el portapapeles. Si no, pégala manualmente abajo.");
-        step3.setWrapText(true);
+        Label desc = new Label(
+                "Pulsa el botón y el navegador se abrirá automáticamente. " +
+                "Inicia sesión con tu cuenta de Microsoft y el launcher " +
+                "completará el proceso solo — no tienes que copiar nada.");
+        desc.setWrapText(true);
+        desc.setStyle("-fx-text-fill: rgba(215,225,255,0.75); -fx-font-size: 13px;");
 
-        btnOpenBrowser = new JFXButton("Abrir navegador para iniciar sesión");
+        btnOpenBrowser = new JFXButton("Iniciar sesión con Microsoft");
         btnOpenBrowser.getStyleClass().add("dialog-accept");
+        btnOpenBrowser.setStyle("-fx-text-fill: white; -fx-font-size: 13px;");
+        btnOpenBrowser.setMaxWidth(Double.MAX_VALUE);
         btnOpenBrowser.setOnAction(e -> openBrowser());
-
-        pasteField = new JFXTextArea();
-        pasteField.setPromptText("Pega aquí la URL de la página en blanco (https://login.live.com/oauth20_desktop.srf?code=...)");
-        pasteField.setWrapText(true);
-        pasteField.setPrefRowCount(3);
-        pasteField.setDisable(true);
 
         statusLabel = new Label();
         statusLabel.setWrapText(true);
         statusLabel.getStyleClass().add("server-progress-label");
 
-        VBox body = new VBox(10, step1, step2, step3, btnOpenBrowser, pasteField, statusLabel);
+        VBox body = new VBox(14, desc, btnOpenBrowser, statusLabel);
         body.setAlignment(Pos.TOP_LEFT);
-        VBox.setVgrow(pasteField, Priority.ALWAYS);
         setBody(body);
 
-        btnContinue = new JFXButton("Continuar");
-        btnContinue.getStyleClass().add("dialog-accept");
-        btnContinue.setDisable(true);
-        btnContinue.setOnAction(e -> submitCode());
-
+        // Actions row: [spinner] [Cancelar]
         continueSpinner = new SpinnerPane();
         continueSpinner.getStyleClass().add("small-spinner-pane");
-        continueSpinner.setContent(btnContinue);
 
         btnCancel = new JFXButton("Cancelar");
         btnCancel.getStyleClass().add("dialog-cancel");
         btnCancel.setOnAction(e -> onCancel());
 
         setActions(continueSpinner, btnCancel);
-
-        pasteField.textProperty().addListener((obs, oldV, newV) ->
-                btnContinue.setDisable(!browserOpened || newV == null || newV.trim().isEmpty()));
-
         onEscPressed(this, this::onCancel);
     }
 
+    // -------------------------------------------------------------------------
+    // Browser flow
+    // -------------------------------------------------------------------------
+
     private void openBrowser() {
-        String url = LegacyMicrosoftAuth.buildAuthorizeUrl();
-        try {
-            org.jackhuang.hmcl.ui.FXUtils.openLink(url);
-        } catch (Exception e) {
-            LOG.warning("Failed to open browser for legacy Microsoft login", e);
-        }
-        browserOpened = true;
-        pasteField.setDisable(false);
-        statusLabel.setText("Esperando a que copies la URL desde el navegador... (Ctrl+L → Ctrl+C). Se detectará automáticamente.");
-        btnContinue.setDisable(pasteField.getText() == null || pasteField.getText().trim().isEmpty());
-        // Snapshot current clipboard so we don't immediately react to whatever
-        // the user happened to have copied before clicking the button.
-        try {
-            lastClipboardContent = Clipboard.getSystemClipboard().getString();
-        } catch (Exception ignored) {
-        }
-        startClipboardPolling();
-    }
-
-    /// Polls the system clipboard every second looking for a freshly copied
-    /// `oauth20_desktop.srf?code=...` URL. When found, auto-fills the paste
-    /// field and submits, so the user never has to switch back to the launcher.
-    /// Stops after 5 minutes or when login succeeds/cancels.
-    private void startClipboardPolling() {
-        stopClipboardPolling();
-        clipboardPoller = new Timeline(new KeyFrame(Duration.seconds(1), e -> tickClipboard()));
-        clipboardPoller.setCycleCount(300); // ~5 min
-        clipboardPoller.play();
-    }
-
-    private void tickClipboard() {
         if (submitInFlight) return;
+
+        // Try to start the local callback server.
         try {
-            String content = Clipboard.getSystemClipboard().getString();
-            if (content == null) return;
-            String trimmed = content.trim();
-            // Only react to NEW clipboard content (not whatever was there before).
-            if (trimmed.equals(lastClipboardContent)) return;
-            lastClipboardContent = trimmed;
-            if (trimmed.contains("oauth20_desktop.srf") && trimmed.contains("code=")) {
-                pasteField.setText(trimmed);
-                // Immediately wipe the clipboard so the auth code is not
-                // accessible to other apps after we've captured it.
-                try {
-                    Clipboard.getSystemClipboard().clear();
-                } catch (Exception ignored) {
-                }
-                statusLabel.setText("URL detectada y borrada del portapapeles. Iniciando sesión...");
-                stopClipboardPolling();
-                submitCode();
-            }
-        } catch (Exception ignored) {
-            // Some platforms throw if the clipboard owner crashes etc — just retry next tick.
-        }
-    }
-
-    private void stopClipboardPolling() {
-        if (clipboardPoller != null) {
-            clipboardPoller.stop();
-            clipboardPoller = null;
-        }
-    }
-
-    private void submitCode() {
-        String code = LegacyMicrosoftAuth.extractCode(pasteField.getText());
-        if (code == null) {
-            statusLabel.setText("No se ha encontrado un código en lo que has pegado. Copia la URL completa de la barra de direcciones del navegador (debe contener \"?code=\").");
+            callbackServer = new LocalOAuthCallbackServer();
+            usedRedirectUri = callbackServer.getRedirectUri();
+        } catch (IOException e) {
+            LOG.warning("Could not start local OAuth callback server — this should not happen", e);
+            statusLabel.setText("Error interno: no se pudo iniciar el servidor local (" + e.getMessage() + ").");
             return;
         }
 
+        String authUrl = LegacyMicrosoftAuth.buildAuthorizeUrlWithRedirect(usedRedirectUri);
+        try {
+            FXUtils.openLink(authUrl);
+        } catch (Exception e) {
+            LOG.warning("Failed to open browser for Microsoft login", e);
+            statusLabel.setText("No se pudo abrir el navegador automáticamente. URL: " + authUrl);
+        }
+
+        btnOpenBrowser.setDisable(true);
+        statusLabel.setText("Esperando que inicies sesión en el navegador…");
+        continueSpinner.setLoading(true);
+
+        // When the callback server receives the code, complete the login.
+        callbackServer.getCodeFuture().whenComplete((code, throwable) ->
+                Platform.runLater(() -> {
+                    if (throwable != null) {
+                        if (throwable instanceof CancellationException) return; // dialog was cancelled
+                        handleLoginError(throwable instanceof Exception
+                                ? (Exception) throwable
+                                : new RuntimeException(throwable));
+                        return;
+                    }
+                    statusLabel.setText("Código recibido. Completando inicio de sesión…");
+                    exchangeCode(code);
+                }));
+    }
+
+    // -------------------------------------------------------------------------
+    // Token exchange & account creation
+    // -------------------------------------------------------------------------
+
+    private void exchangeCode(String code) {
+        if (submitInFlight) return;
         submitInFlight = true;
-        stopClipboardPolling();
-        setBusy(true);
-        statusLabel.setText("Iniciando sesión...");
+
+        final String redirectUri = usedRedirectUri;
 
         loginTask = Task.supplyAsync(() -> {
-            LegacyMicrosoftAuth.TokenResponse token = LegacyMicrosoftAuth.exchangeCodeForToken(code);
+            LegacyMicrosoftAuth.TokenResponse token =
+                    LegacyMicrosoftAuth.exchangeCodeForTokenWithRedirect(code, redirectUri);
+
             if (token.error != null) {
                 throw new RuntimeException("Microsoft devolvió un error: " + token.error
                         + (token.errorDescription != null ? " — " + token.errorDescription : ""));
@@ -232,6 +197,7 @@ public final class LegacyMicrosoftLoginPane extends JFXDialogLayout implements D
             if (token.accessToken == null) {
                 throw new RuntimeException("Microsoft no devolvió un access_token");
             }
+
             MicrosoftSession session = service.authenticateWithToken(
                     token.accessToken, token.refreshToken, true);
             return service.createAccountFromSession(session);
@@ -239,8 +205,9 @@ public final class LegacyMicrosoftLoginPane extends JFXDialogLayout implements D
     }
 
     private void onLoginCompleted(MicrosoftAccount account, Exception exception) {
-        setBusy(false);
+        continueSpinner.setLoading(false);
         submitInFlight = false;
+
         if (exception == null) {
             if (accountToRelogin != null) Accounts.getAccounts().remove(accountToRelogin);
 
@@ -264,25 +231,34 @@ public final class LegacyMicrosoftLoginPane extends JFXDialogLayout implements D
             fireEvent(new DialogCloseEvent());
             return;
         }
-        if (exception instanceof CancellationException) {
-            return;
-        }
-        LOG.warning("Legacy Microsoft login failed", exception);
-        statusLabel.setText("Error: " + Accounts.localizeErrorMessage(
-                exception instanceof Exception ? (Exception) exception : new RuntimeException(exception)));
-        // Allow retry: resume clipboard watching so the user can try again with a new code.
-        if (browserOpened) startClipboardPolling();
+
+        if (exception instanceof CancellationException) return;
+
+        handleLoginError(exception);
     }
 
-    private void setBusy(boolean busy) {
-        btnOpenBrowser.setDisable(busy);
-        btnCancel.setDisable(busy);
-        pasteField.setDisable(busy);
-        continueSpinner.setLoading(busy);
+    private void handleLoginError(Throwable e) {
+        continueSpinner.setLoading(false);
+        LOG.warning("Microsoft login failed", e);
+        statusLabel.setText("Error: " + Accounts.localizeErrorMessage(
+                e instanceof Exception ? (Exception) e : new RuntimeException(e)));
+        btnOpenBrowser.setDisable(false);
+        // Close old server so port is freed; a retry starts a fresh one.
+        if (callbackServer != null) {
+            callbackServer.close();
+            callbackServer = null;
+        }
     }
+
+    // -------------------------------------------------------------------------
+    // Cancel
+    // -------------------------------------------------------------------------
 
     private void onCancel() {
-        stopClipboardPolling();
+        if (callbackServer != null) {
+            callbackServer.close();
+            callbackServer = null;
+        }
         if (loginTask != null) loginTask.cancel();
         if (cancelCallback != null) cancelCallback.run();
         fireEvent(new DialogCloseEvent());

@@ -350,6 +350,55 @@
     -fx-background-radius: 8;
 }
 
+/* =================================================================
+   Task executor dialog (Iniciar Minecraft, etc.) — BarrilMC orange theme
+   ================================================================= */
+
+.task-executor-dialog-layout {
+    -fx-background-color: rgba(7, 11, 22, 0.98);
+    -fx-border-color: rgba(255, 140, 0, 0.30);
+    -fx-border-width: 1;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.65), 36, 0.18, 0, 10);
+}
+
+/* Title bar inside the dialog */
+.task-executor-dialog-layout > .center > .label {
+    -fx-text-fill: white;
+}
+
+/* Task list items */
+.task-executor-dialog-layout .jfx-list-view {
+    -fx-background-color: transparent;
+}
+
+.task-executor-dialog-layout .jfx-list-view .list-cell {
+    -fx-background-color: transparent;
+    -fx-text-fill: rgba(215, 225, 255, 0.82);
+}
+
+/* Current-task arrow → orange */
+.task-executor-dialog-layout .jfx-list-view .list-cell .svg {
+    -fx-fill: #ffaa22;
+}
+
+/* Speed/progress text at bottom */
+.task-executor-dialog-layout .label {
+    -fx-text-fill: rgba(200, 215, 255, 0.62);
+}
+
+/* Progress bar */
+.task-executor-dialog-layout .jfx-progress-bar > .bar,
+.task-executor-dialog-layout .progress-bar > .bar {
+    -fx-background-color: linear-gradient(to right, #ffaa22, #e05500);
+    -fx-background-radius: 4;
+}
+
+.task-executor-dialog-layout .jfx-progress-bar > .track,
+.task-executor-dialog-layout .progress-bar > .track {
+    -fx-background-color: rgba(255, 255, 255, 0.11);
+    -fx-background-radius: 4;
+}
+
 .hyperlink {
     -fx-text-fill: -monet-primary;
 }
