@@ -337,14 +337,7 @@ public class CreateAccountPane extends JFXDialogLayout implements DialogAware {
 
             int rowIndex = 0;
 
-            if (!IntegrityChecker.isOfficial() && !(factory instanceof OfflineAccountFactory)) {
-                HintPane hintPane = new HintPane(MessageDialogPane.MessageType.WARNING);
-                hintPane.setSegment(i18n("unofficial.hint"));
-                GridPane.setColumnSpan(hintPane, 2);
-                add(hintPane, 0, rowIndex);
-
-                rowIndex++;
-            }
+            // Unofficial-build warning removed for BarrilMC custom build.
 
             if (factory instanceof BoundAuthlibInjectorAccountFactory) {
                 this.server = ((BoundAuthlibInjectorAccountFactory) factory).getServer();

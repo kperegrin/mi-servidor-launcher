@@ -14,14 +14,25 @@ if (-not (Get-Command gh -ErrorAction SilentlyContinue)) {
 
 gh auth status | Out-Host
 
-if (-not (gh release view $Tag --repo $Repo 2>$null)) {
+$releaseExists = $true
+
+try {
+    gh release view $Tag --repo $Repo *> $null
+}
+catch {
+    $releaseExists = $false
+}
+
+if (-not $releaseExists) {
     gh release create $Tag --repo $Repo --title "BarrilMC assets v1.0" --notes "Assets del pack BarrilMC Fabric 1.21.1."
 }
 
 $assets = @()
+
 $assets += Get-ChildItem -LiteralPath $ModsDir -File |
     Where-Object { $_.Name -notmatch '\.disabled$' -and $_.Extension -ieq '.jar' } |
     Sort-Object Name
+
 $assets += Get-ChildItem -LiteralPath $ResourcepacksDir -File |
     Where-Object { $_.Extension -ieq '.zip' } |
     Sort-Object Name
