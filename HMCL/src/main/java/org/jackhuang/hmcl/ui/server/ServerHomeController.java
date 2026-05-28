@@ -262,6 +262,7 @@ public final class ServerHomeController extends FlowPane {
 
     private void configureButtons() {
         playButton.getStyleClass().addAll("server-primary-button", "dialog-accept");
+        playButton.setStyle("-fx-text-fill: white;");
         playButton.setGraphic(SVG.ROCKET_LAUNCH.createIcon(18));
         playButton.setOnAction(event -> runUpdate(true));
 
@@ -485,13 +486,33 @@ public final class ServerHomeController extends FlowPane {
         VBox card = new VBox(6);
         card.getStyleClass().addAll("server-news-item", "server-post-card");
         if (entry.getImageUrl() != null && !entry.getImageUrl().isBlank()) {
-            Image image = new Image(entry.getImageUrl(), 300, 169, true, true, true);
+            // Load at natural size; ImageView handles display scaling.
+            // Start hidden — show only when the image loads successfully so we
+            // never display an empty dark rectangle on load failure.
+            Image image = new Image(entry.getImageUrl(), true);
             ImageView imageView = new ImageView(image);
             imageView.setFitWidth(300);
             imageView.setFitHeight(169);
             imageView.setPreserveRatio(true);
             imageView.setSmooth(true);
             imageView.getStyleClass().add("server-post-image");
+            imageView.setVisible(false);
+            imageView.setManaged(false);
+            image.progressProperty().addListener((obs, oldVal, newVal) -> {
+                if (newVal.doubleValue() >= 1.0) {
+                    Platform.runLater(() -> {
+                        if (!image.isError()) {
+                            imageView.setVisible(true);
+                            imageView.setManaged(true);
+                        }
+                    });
+                }
+            });
+            // Immediate show if already in cache
+            if (image.getProgress() >= 1.0 && !image.isError()) {
+                imageView.setVisible(true);
+                imageView.setManaged(true);
+            }
             card.getChildren().add(imageView);
         }
         card.getChildren().addAll(textLabel, timeLabel);
