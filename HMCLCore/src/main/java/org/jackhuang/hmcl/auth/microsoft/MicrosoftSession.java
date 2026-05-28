@@ -18,6 +18,7 @@
 package org.jackhuang.hmcl.auth.microsoft;
 
 import org.jackhuang.hmcl.auth.AuthInfo;
+import org.jackhuang.hmcl.auth.TokenCrypto;
 import org.jackhuang.hmcl.util.gson.UUIDTypeAdapter;
 import org.jackhuang.hmcl.util.logging.Logger;
 
@@ -83,10 +84,19 @@ public class MicrosoftSession {
                 .orElseThrow(() -> new IllegalArgumentException("displayName is missing"));
         String tokenType = tryCast(storage.get("tokenType"), String.class)
                 .orElseThrow(() -> new IllegalArgumentException("tokenType is missing"));
-        String accessToken = tryCast(storage.get("accessToken"), String.class)
+        String rawAccess = tryCast(storage.get("accessToken"), String.class)
                 .orElseThrow(() -> new IllegalArgumentException("accessToken is missing"));
-        String refreshToken = tryCast(storage.get("refreshToken"), String.class)
+        String rawRefresh = tryCast(storage.get("refreshToken"), String.class)
                 .orElseThrow(() -> new IllegalArgumentException("refreshToken is missing"));
+        // Tokens may be stored encrypted (enc:v1:…) or as legacy plaintext.
+        // TokenCrypto.decrypt() handles both. Returns null if the file was
+        // moved to a different machine — caller will see a refresh failure
+        // and prompt the user to re-login, which is the desired behavior.
+        String accessToken = TokenCrypto.decrypt(rawAccess);
+        String refreshToken = TokenCrypto.decrypt(rawRefresh);
+        if (accessToken == null || refreshToken == null) {
+            throw new IllegalArgumentException("token decryption failed (machine changed?)");
+        }
         Long notAfter = tryCast(storage.get("notAfter"), Number.class).map(Number::longValue).orElse(0L);
         String userId = tryCast(storage.get("userid"), String.class)
                 .orElseThrow(() -> new IllegalArgumentException("userid is missing"));
@@ -97,12 +107,15 @@ public class MicrosoftSession {
         requireNonNull(profile);
         requireNonNull(user);
 
+        // Encrypt sensitive tokens with a machine-bound key before writing to
+        // accounts.json. Defeats backup/sync leaks, USB theft, accidental
+        // folder sharing — the file is useless on any other machine.
         return mapOf(
                 pair("uuid", UUIDTypeAdapter.fromUUID(profile.getId())),
                 pair("displayName", profile.getName()),
                 pair("tokenType", tokenType),
-                pair("accessToken", accessToken),
-                pair("refreshToken", refreshToken),
+                pair("accessToken", TokenCrypto.encrypt(accessToken)),
+                pair("refreshToken", TokenCrypto.encrypt(refreshToken)),
                 pair("notAfter", notAfter),
                 pair("userid", user.id));
     }
