@@ -123,13 +123,9 @@ public class MicrosoftAccountLoginPane extends JFXDialogLayout implements Dialog
                 step.set(new Step.WaitForScanQrCode(event.getUserCode(), event.getVerificationUri()));
         }));
 
-        // Use device code flow by default — the embedded client ID (PrismLauncher's,
-        // approved by Microsoft for Minecraft API) doesn't allow http://localhost
-        // redirect URIs, so the authorization code flow with a local callback fails.
-        // Device code asks the user to enter a code on microsoft.com/link instead.
         this.step.set(Accounts.OAUTH_CALLBACK.getClientId().isEmpty()
                 ? new Step.Init()
-                : new Step.StartDeviceCodeLogin());
+                : new Step.StartAuthorizationCodeLogin());
         FXUtils.onChangeAndOperate(step, this::onStep);
     }
 
