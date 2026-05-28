@@ -141,6 +141,7 @@ public final class Launcher extends Application {
 
                 UpdateChecker.init();
 
+                primaryStage.setMaximized(true);
                 primaryStage.show();
             });
         } catch (Throwable e) {

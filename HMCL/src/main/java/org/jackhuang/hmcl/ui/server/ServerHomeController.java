@@ -1,6 +1,6 @@
 /*
- * MiServidor Launcher
- * Copyright (C) 2026 MiServidor contributors
+ * BarrilMC Launcher
+ * Copyright (C) 2026 BarrilMC contributors
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -13,10 +13,12 @@ import com.jfoenix.controls.JFXButton;
 import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Cursor;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.ProgressIndicator;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.Separator;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
@@ -30,7 +32,7 @@ import org.jackhuang.hmcl.server.LauncherUpdater;
 import org.jackhuang.hmcl.server.LauncherVersionInfo;
 import org.jackhuang.hmcl.server.ServerInstanceManager;
 import org.jackhuang.hmcl.server.ServerLauncherConfig;
-import org.jackhuang.hmcl.server.ServerManifest;
+import org.jackhuang.hmcl.server.YouTubeFeedService;
 import org.jackhuang.hmcl.server.ServerStatusService;
 import org.jackhuang.hmcl.setting.Accounts;
 import org.jackhuang.hmcl.setting.Profile;
@@ -45,7 +47,6 @@ import org.jackhuang.hmcl.util.StringUtils;
 import org.jetbrains.annotations.NotNullByDefault;
 
 import java.nio.file.Path;
-import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CompletionException;
 
@@ -61,7 +62,7 @@ public final class ServerHomeController extends HBox {
     private final Label progressLabel = new Label("Listo");
     private final Label launcherUpdateLabel = new Label();
     private final ProgressBar progressBar = new ProgressBar(0);
-    private final VBox newsBox = new VBox(8);
+    private final VBox videoListBox = new VBox(8);
     private final JFXButton playButton = new JFXButton("Jugar servidor");
     private final JFXButton updateButton = new JFXButton("Actualizar archivos");
     private final JFXButton settingsButton = new JFXButton("Configuracion");
@@ -130,35 +131,64 @@ public final class ServerHomeController extends HBox {
         mainCard.setPrefWidth(560);
         mainCard.setMaxWidth(560);
 
-        // News panel (right side)
-        Label newsTitle = new Label("Noticias");
-        newsTitle.getStyleClass().add("server-news-title");
-        newsBox.getStyleClass().add("server-news-box");
-        newsBox.getChildren().setAll(new Label("Cargando noticias..."));
+        // Side panel: latest videos + posts
+        VBox sidePanel = buildSidePanel();
 
-        ScrollPane newsScroll = new ScrollPane(newsBox);
-        newsScroll.getStyleClass().add("server-news-scroll");
-        newsScroll.setFitToWidth(true);
-        newsScroll.setPannable(false);
-        newsScroll.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
-        VBox.setVgrow(newsScroll, Priority.ALWAYS);
-
-        VBox newsPanel = new VBox(10, newsTitle, newsScroll);
-        newsPanel.getStyleClass().add("server-news-panel");
-        newsPanel.setAlignment(Pos.TOP_LEFT);
-        newsPanel.setPadding(new Insets(16));
-        newsPanel.setPrefWidth(300);
-        newsPanel.setMaxWidth(320);
-        newsPanel.setMinWidth(240);
-
-        getChildren().setAll(mainCard, newsPanel);
+        getChildren().setAll(mainCard, sidePanel);
 
         Accounts.selectedAccountProperty().addListener((observable, oldValue, newValue) -> updateAccountLabel());
         updateAccountLabel();
         refreshStatus();
-        refreshNews();
+        refreshYouTubeVideos();
         checkLauncherUpdate();
         Platform.runLater(ServerInstanceManager::getOrCreateServerProfile);
+    }
+
+    private VBox buildSidePanel() {
+        // --- Videos section ---
+        Label videosTitle = new Label("Últimos videos");
+        videosTitle.getStyleClass().add("server-news-title");
+
+        videoListBox.getStyleClass().add("server-news-box");
+        videoListBox.getChildren().setAll(new Label("Cargando videos..."));
+
+        ScrollPane videosScroll = new ScrollPane(videoListBox);
+        videosScroll.getStyleClass().add("server-news-scroll");
+        videosScroll.setFitToWidth(true);
+        videosScroll.setPannable(false);
+        videosScroll.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
+        videosScroll.setMaxHeight(320);
+        VBox.setVgrow(videosScroll, Priority.ALWAYS);
+
+        // "See all" link button
+        JFXButton seeAllVideos = new JFXButton("Ver canal en YouTube →");
+        seeAllVideos.getStyleClass().add("server-secondary-button");
+        seeAllVideos.setMaxWidth(Double.MAX_VALUE);
+        seeAllVideos.setOnAction(e -> FXUtils.openLink(ServerLauncherConfig.YOUTUBE_CHANNEL_URL));
+
+        // --- Posts section ---
+        Separator sep = new Separator();
+        sep.setOpacity(0.25);
+
+        Label postsTitle = new Label("Publicaciones de BarrilMC");
+        postsTitle.getStyleClass().add("server-news-title");
+
+        JFXButton postsButton = new JFXButton("Ver publicaciones");
+        postsButton.getStyleClass().add("server-secondary-button");
+        postsButton.setMaxWidth(Double.MAX_VALUE);
+        postsButton.setOnAction(e -> FXUtils.openLink(ServerLauncherConfig.YOUTUBE_POSTS_URL));
+
+        VBox sidePanel = new VBox(10,
+                videosTitle, videosScroll, seeAllVideos,
+                sep,
+                postsTitle, postsButton);
+        sidePanel.getStyleClass().add("server-news-panel");
+        sidePanel.setAlignment(Pos.TOP_LEFT);
+        sidePanel.setPadding(new Insets(16));
+        sidePanel.setPrefWidth(300);
+        sidePanel.setMaxWidth(320);
+        sidePanel.setMinWidth(240);
+        return sidePanel;
     }
 
     private VBox metric(String title, Label value) {
@@ -229,7 +259,6 @@ public final class ServerHomeController extends HBox {
                     }
 
                     ServerInstanceManager.applyLaunchSettings(profile, manifest);
-                    updateNews(manifest.getNews());
                     versionLabel.setText(manifest.getMinecraftVersion() + " / Fabric " + manifest.getLoaderVersion());
                     progressLabel.setText("Archivos verificados");
                     refreshStatus();
@@ -345,42 +374,40 @@ public final class ServerHomeController extends HBox {
                 }));
     }
 
-    private void updateNews(List<ServerManifest.NewsEntry> news) {
-        if (news.isEmpty()) {
-            newsBox.getChildren().setAll(new Label("Sin noticias publicadas."));
-            return;
-        }
-
-        newsBox.getChildren().setAll(news.stream().map(entry -> {
-            Label title = new Label(entry.getTitle() + (entry.getDate().isBlank() ? "" : " - " + entry.getDate()));
-            title.getStyleClass().add("server-news-item-title");
-            title.setWrapText(true);
-            Label body = new Label(entry.getBody());
-            body.setWrapText(true);
-            body.getStyleClass().add("server-news-item-body");
-            VBox item = new VBox(4, title, body);
-            item.getStyleClass().add("server-news-item");
-            return item;
-        }).toList());
-    }
-
-    private void refreshNews() {
+    private void refreshYouTubeVideos() {
         CompletableFuture
                 .supplyAsync(() -> {
                     try {
-                        return LauncherUpdater.fetchManifest().getNews();
+                        return YouTubeFeedService.fetchVideos(ServerLauncherConfig.YOUTUBE_CHANNEL_ID);
                     } catch (Exception e) {
-                        LOG.warning("Could not fetch news on startup", e);
+                        LOG.warning("Could not fetch YouTube videos", e);
                         return null;
                     }
                 })
-                .thenAccept(news -> Platform.runLater(() -> {
-                    if (news == null) {
-                        newsBox.getChildren().setAll(new Label("No se pudieron cargar las noticias."));
-                    } else {
-                        updateNews(news);
+                .thenAccept(videos -> Platform.runLater(() -> {
+                    if (videos == null || videos.isEmpty()) {
+                        videoListBox.getChildren().setAll(new Label("No se pudieron cargar los videos."));
+                        return;
                     }
+                    videoListBox.getChildren().setAll(
+                            videos.stream().limit(8).map(this::buildVideoCard).toList()
+                    );
                 }));
+    }
+
+    private VBox buildVideoCard(YouTubeFeedService.VideoEntry entry) {
+        Label titleLabel = new Label(entry.getTitle());
+        titleLabel.getStyleClass().add("server-news-item-title");
+        titleLabel.setWrapText(true);
+
+        Label dateLabel = new Label(entry.getFormattedDate());
+        dateLabel.getStyleClass().add("server-news-item-body");
+
+        VBox card = new VBox(4, titleLabel, dateLabel);
+        card.getStyleClass().add("server-news-item");
+        card.setCursor(Cursor.HAND);
+        card.setOnMouseClicked(e -> FXUtils.openLink(entry.getUrl()));
+        return card;
     }
 
     private void updateAccountLabel() {

@@ -11,6 +11,7 @@ package org.jackhuang.hmcl.server;
 
 import org.jackhuang.hmcl.game.GameDirectoryType;
 import org.jackhuang.hmcl.game.HMCLGameRepository;
+import org.jackhuang.hmcl.setting.LauncherVisibility;
 import org.jackhuang.hmcl.setting.Profile;
 import org.jackhuang.hmcl.setting.Profiles;
 import org.jackhuang.hmcl.setting.VersionIconType;
@@ -70,6 +71,17 @@ public final class ServerInstanceManager {
             setting.setGameDirType(GameDirectoryType.ROOT_FOLDER);
             setting.setServerIp(manifest.getServer().getAddress());
             setting.setVersionIcon(VersionIconType.FABRIC);
+            setting.setLauncherVisibility(LauncherVisibility.HIDE_AND_REOPEN);
+            // Aikar's G1GC flags for better FPS and lower GC pauses
+            setting.setJavaArgs(
+                    "-XX:+UseG1GC -XX:+ParallelRefProcEnabled -XX:MaxGCPauseMillis=200" +
+                    " -XX:+UnlockExperimentalVMOptions -XX:+DisableExplicitGC -XX:+AlwaysPreTouch" +
+                    " -XX:G1NewSizePercent=30 -XX:G1MaxNewSizePercent=40 -XX:G1HeapRegionSize=8M" +
+                    " -XX:G1ReservePercent=20 -XX:G1HeapWastePercent=5 -XX:G1MixedGCCountTarget=4" +
+                    " -XX:InitiatingHeapOccupancyPercent=15 -XX:G1MixedGCLiveThresholdPercent=90" +
+                    " -XX:G1RSetUpdatingPauseTimePercent=5 -XX:SurvivorRatio=32" +
+                    " -XX:+PerfDisableSharedMem -XX:MaxTenuringThreshold=1"
+            );
             repository.saveVersionSetting(ServerLauncherConfig.INSTANCE_NAME);
         }
 

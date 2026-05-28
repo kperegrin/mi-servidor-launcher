@@ -41,6 +41,13 @@ public final class ServerLauncherConfig {
                     "BARRILMC_MANIFEST_URL",
                     "https://raw.githubusercontent.com/kperegrin/mi-servidor-launcher/main/launcher/manifest.json"));
 
+    /// YouTube channel ID for the BarrilMC channel (@barrilmc).
+    public static final String YOUTUBE_CHANNEL_ID = "UCCgBy63IgdEoJ7lR9Ku0HQQ";
+    /// YouTube channel base URL.
+    public static final String YOUTUBE_CHANNEL_URL = "https://www.youtube.com/@barrilmc";
+    /// YouTube channel community posts URL.
+    public static final String YOUTUBE_POSTS_URL = "https://www.youtube.com/@barrilmc/posts";
+
     private ServerLauncherConfig() {
     }
 }
