@@ -1236,13 +1236,18 @@
                    "mods/StackableItems-fabric-1.21.[0-1]-v1.2.jar",
                    "resourcepacks/Â§6ImmersiveÂ§8_Â§6InterfacesÂ§8.zip",
                    "resourcepacks/Cobblemon.3D.Pok.Rods.1.0.zip",
-                   "resourcepacks/qrafty\u0027s-capitalized-font-3.1.zip"
+                   "resourcepacks/qrafty\u0027s-capitalized-font-3.1.zip",
+                   "resourcepacks/Golurk Barriliano Pack.zip",
+                   "resourcepacks/Golurk_Barriliano_Pack.zip",
+                   "resourcepacks/golurk-barriliano-pack.zip",
+                   "resourcepacks/golurk_barriliano_pack (1).zip",
+                   "resourcepacks/golurk barriliano pack.zip"
                ],
     "news":  [
                  {
-                     "title":  "BarrilMC listo",
-                     "body":  "Pack Fabric 1.21.1 sincronizado automaticamente desde GitHub Releases.",
-                     "date":  "2026-05-27"
+                     "title":  "Resource pack actualizado",
+                     "body":  "golurk_barriliano_pack.zip se sincroniza automaticamente desde GitHub Releases y se limpian nombres antiguos del pack.",
+                     "date":  "2026-05-31"
                  }
              ]
 }
