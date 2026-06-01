@@ -59,10 +59,10 @@
                       "required":  true
                   },
                   {
-                      "path":  "mods/barrilcomplements-31demayo.jar",
-                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/barrilcomplements-31demayo.jar",
-                      "sha256":  "1a8ebf896435f7bba589721b45a6a1c621e8164b7aa8505b19f1996f836f5a2f",
-                      "size":  365903,
+                      "path":  "mods/barrilcomplements-1dejunio.jar",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/barrilcomplements-1dejunio.jar",
+                      "sha256":  "65a59d3eff7c1d86b4f0d8248e003a9a1789d6be9f999a8255f640a287d952de",
+                      "size":  365987,
                       "required":  true
                   },
                   {
@@ -1241,13 +1241,15 @@
                    "resourcepacks/Golurk_Barriliano_Pack.zip",
                    "resourcepacks/golurk-barriliano-pack.zip",
                    "resourcepacks/golurk_barriliano_pack (1).zip",
-                   "resourcepacks/golurk barriliano pack.zip"
+                   "resourcepacks/golurk barriliano pack.zip",
+                   "mods/barrilcomplements-31demayo.jar",
+                   "mods/barrilcomplements-31demayo.jar.disabled"
                ],
     "news":  [
                  {
-                     "title":  "Resource pack actualizado",
-                     "body":  "golurk_barriliano_pack.zip se sincroniza automaticamente desde GitHub Releases y se limpian nombres antiguos del pack.",
-                     "date":  "2026-05-31"
+                     "title":  "Barrilcomplements actualizado",
+                     "body":  "Se instala barrilcomplements-1dejunio.jar y se elimina barrilcomplements-31demayo.jar al actualizar.",
+                     "date":  "2026-06-01"
                  }
              ]
 }
