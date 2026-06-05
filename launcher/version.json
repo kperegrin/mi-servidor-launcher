@@ -1,6 +1,6 @@
 {
-    "latest":  "1.0.6",
+    "latest":  "1.0.7",
     "downloadUrl":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/BarrilMC-Launcher.exe",
-    "sha256":  "0f6e7245b72a6035c2e32ed96d99191296da22c405582164935087d48a17df15",
-    "notes":  "El instalador del launcher ahora se publica como BarrilMC-Launcher.exe, sin version en el nombre."
+    "sha256":  "ff0c2fcb0232d96ed1e59dd206c9f1f2c0055392818667051cbc2e9461cf556d",
+    "notes":  "Cofre diario de cartas: nuevo boton y animacion de cofre abriendose con la carta saliendo de dentro."
 }
