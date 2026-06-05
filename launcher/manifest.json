@@ -59,10 +59,10 @@
                       "required":  true
                   },
                   {
-                      "path":  "mods/barrilcomplements-1dejunio.jar",
-                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/barrilcomplements-1dejunio.jar",
-                      "sha256":  "65a59d3eff7c1d86b4f0d8248e003a9a1789d6be9f999a8255f640a287d952de",
-                      "size":  365987,
+                      "path":  "mods/barrilcomplements-5dejunio.jar",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/barrilcomplements-5dejunio.jar",
+                      "sha256":  "5e09203bf765b7ec0a37b15415abd1236206d0031bc47fec20cc0574c9941ebe",
+                      "size":  617645,
                       "required":  true
                   },
                   {
@@ -1137,10 +1137,10 @@
                       "required":  true
                   },
                   {
-                      "path":  "resourcepacks/golurk_barriliano_pack.zip",
-                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/golurk_barriliano_pack.zip",
-                      "sha256":  "e9490fc853c0baa10d60142d356a9d44c75168694f230afe9001e0d54a508b72",
-                      "size":  531579,
+                      "path":  "resourcepacks/texturepackbarriliano5dejunio.zip",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/texturepackbarriliano5dejunio.zip",
+                      "sha256":  "ddd17a2323c45d4425a8213cfd7539f3d72e080bee5eec2538c0b49ecb7fa3a9",
+                      "size":  556272,
                       "required":  true
                   },
                   {
@@ -1243,13 +1243,23 @@
                    "resourcepacks/golurk_barriliano_pack (1).zip",
                    "resourcepacks/golurk barriliano pack.zip",
                    "mods/barrilcomplements-31demayo.jar",
-                   "mods/barrilcomplements-31demayo.jar.disabled"
+                   "mods/barrilcomplements-31demayo.jar.disabled",
+                   "mods/barrilcomplements-1dejunio.jar",
+                   "mods/barrilcomplements-1dejunio.jar.disabled",
+                   "mods/barrilcomplements-5dejunio.jar.disabled",
+                   "resourcepacks/golurk_barriliano_pack.zip.disabled",
+                   "resourcepacks/golurkbarriliano.zip",
+                   "resourcepacks/golurkbarriliano_pack.zip",
+                   "resourcepacks/texturepackbarriliano.zip",
+                   "resourcepacks/texturepackbarriliano.zip.disabled",
+                   "resourcepacks/texturepackbarriliano (1).zip",
+                   "resourcepacks/texturepackbarriliano4dejunio.zip"
                ],
     "news":  [
                  {
-                     "title":  "Barrilcomplements actualizado",
-                     "body":  "Se instala barrilcomplements-1dejunio.jar y se elimina barrilcomplements-31demayo.jar al actualizar.",
-                     "date":  "2026-06-01"
+                     "title":  "Pack actualizado 5 de junio",
+                     "body":  "Se instala barrilcomplements-5dejunio.jar y texturepackbarriliano5dejunio.zip; se eliminan las versiones antiguas.",
+                     "date":  "2026-06-05"
                  }
              ]
 }
