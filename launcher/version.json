@@ -1,6 +1,6 @@
 {
-    "latest":  "1.0.4",
-    "downloadUrl":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/BarrilMC-Launcher-1.0.4.exe",
-    "sha256":  "71e7dc9aee02495a5964c5a06d9cddc5f65bd3e81ed933348c679eb796b778d5",
-    "notes":  "Actualizacion automatica del launcher: al detectar una version nueva se descarga, se abre y se cierra la anterior."
+    "latest":  "1.0.5",
+    "downloadUrl":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/BarrilMC-Launcher-1.0.5.exe",
+    "sha256":  "8ea99dd91ccb0ab318e3e42df8fcc9aa2311e4ee224db91e150a01885533fb2b",
+    "notes":  "Actualizacion automatica mejorada: la nueva version sustituye el exe antiguo en la misma ruta y conserva accesos directos/anclajes."
 }
