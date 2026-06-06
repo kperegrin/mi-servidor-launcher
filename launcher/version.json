@@ -1,6 +1,6 @@
 {
-    "latest":  "1.0.13",
-    "downloadUrl":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/BarrilMC-Launcher.exe?v=113",
-    "sha256":  "cd43e5674f516007ceff5c1a8faa500771f0c2a0633bf9eae9a93d087d990340",
-    "notes":  "Las cartas nuevas que se publican en cards.json ya no tardan 5 minutos en aparecer: cache-bust al fetch del catalogo para puentear el CDN de GitHub."
+    "latest":  "1.0.14",
+    "downloadUrl":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/BarrilMC-Launcher.exe?v=114",
+    "sha256":  "aa5f0a155563122c551c4799a5500be4dc141ff0c68b7cfd1cc40532d7829e13",
+    "notes":  "Cartas nuevas aparecen al instante: el catalogo se sirve via jsdelivr CDN en vez de raw.githubusercontent (que cacheaba commits hasta 15 min)."
 }
