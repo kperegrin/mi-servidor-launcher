@@ -1,6 +1,6 @@
 {
-    "latest":  "1.0.19",
-    "downloadUrl":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/BarrilMC-Launcher.exe?v=119",
-    "sha256":  "dc18e1079e4a86d710ea277e9bea12215ea3538f033c07f86608ecb6585c47c1",
-    "notes":  "Herramientas de admin para los VIP: boton \"Regalar cofre a todos\" que da +1 tirada a la comunidad entera, y boton \"Reiniciar mi inventario\" para testing. Los regalos llegan al resto la proxima vez que abran el cofre."
+    "latest":  "1.0.20",
+    "downloadUrl":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/BarrilMC-Launcher.exe?v=120",
+    "sha256":  "62795e4c9e98e7d1cc2f6fd2323a75591b0b6f63cb9ec8f8a2b2b316d5b1827f",
+    "notes":  "Vuelta al login Microsoft manual (Ctrl+L Ctrl+C) mientras Microsoft aprueba el client ID de Azure. Mantiene los regalos comunitarios y el reset admin de la 1.0.19."
 }
