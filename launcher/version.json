@@ -1,6 +1,6 @@
 {
-    "latest":  "1.0.9",
-    "downloadUrl":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/BarrilMC-Launcher.exe?v=109",
-    "sha256":  "f91a7d8d2b9140d521939a0d1961614d5d0d035cdb1cd5b36de39dfcdca9b0a5",
-    "notes":  "Tiradas infinitas en el cofre para los VIP (ElKimiZG y Barrilmc): el contador queda en \"Disponible ya\" y podeis reclamar sin esperar."
+    "latest":  "1.0.10",
+    "downloadUrl":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/BarrilMC-Launcher.exe?v=110",
+    "sha256":  "a6eb79721920f2585ed07834c9da8d77a6aca3405027976ea5dc9dff5d9ea848",
+    "notes":  "Imagenes de cartas mucho mas rapidas: cache en disco (cada PNG se descarga una sola vez), cache en memoria (no se recarga al refrescar), precarga del catalogo al abrir el cofre y render incremental del inventario sin parpadeos."
 }
