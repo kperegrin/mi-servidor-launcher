@@ -1,6 +1,6 @@
 {
-    "latest":  "1.0.18",
-    "downloadUrl":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/BarrilMC-Launcher.exe?v=118",
-    "sha256":  "4da3ed8a86c4ff3b9c9239ae3e36c1a86a99b6ecb11c75884a8faf9f4d4b52a0",
-    "notes":  "Login Microsoft con flujo manual (Ctrl+L Ctrl+C) como antes. El flujo automatico daba invalid_request por un problema con los redirect URIs."
+    "latest":  "1.0.19",
+    "downloadUrl":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/BarrilMC-Launcher.exe?v=119",
+    "sha256":  "dc18e1079e4a86d710ea277e9bea12215ea3538f033c07f86608ecb6585c47c1",
+    "notes":  "Herramientas de admin para los VIP: boton \"Regalar cofre a todos\" que da +1 tirada a la comunidad entera, y boton \"Reiniciar mi inventario\" para testing. Los regalos llegan al resto la proxima vez que abran el cofre."
 }
