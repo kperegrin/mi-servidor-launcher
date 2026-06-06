@@ -1,6 +1,6 @@
 {
-    "latest":  "1.0.16",
-    "downloadUrl":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/BarrilMC-Launcher.exe?v=116",
-    "sha256":  "87f63bc3e8fb1cf0ffd2bad9dea106876ae572bae09c8d2583985157a87811e0",
-    "notes":  "Login Microsoft automatico tambien desde el menu de Cuentas (antes solo lo hacia el boton de la home). Adios Ctrl+L Ctrl+C."
+    "latest":  "1.0.17",
+    "downloadUrl":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/BarrilMC-Launcher.exe?v=117",
+    "sha256":  "5102f7936cfede3f0b88c4fb90aa9bf6afc457c070ffc7f839f8aa55ec6b76b5",
+    "notes":  "Login Microsoft 100% automatico: nuevo client id de Azure registrado para BarrilMC con los redirect URIs correctos. Adios definitivo a Ctrl+L Ctrl+C."
 }
