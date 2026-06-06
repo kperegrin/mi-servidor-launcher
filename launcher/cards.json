@@ -253,6 +253,56 @@
                                     "rarity":  "comun",
                                     "rarityName":  "Comun",
                                     "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/5tomatito.png"
-                                }
+                                },
+                  "chukimori":  {
+                                    "id":  "chukimori",
+                                    "name":  "Chukimori",
+                                    "rarity":  "comun",
+                                    "rarityName":  "Comun",
+                                    "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/Chukimori.png"
+                  },
+                  "crazmozddd":  {
+                                    "id":  "crazmozddd",
+                                    "name":  "Crazmozddd",
+                                    "rarity":  "comun",
+                                    "rarityName":  "Comun",
+                                    "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/Crazmozddd.png"
+                  },
+                  "lordmarciano":  {
+                                    "id":  "lordmarciano",
+                                    "name":  "LordMarciano",
+                                    "rarity":  "comun",
+                                    "rarityName":  "Comun",
+                                    "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/LordMarciano.png"
+                  },
+                  "abdel":  {
+                                    "id":  "abdel",
+                                    "name":  "abdel",
+                                    "rarity":  "comun",
+                                    "rarityName":  "Comun",
+                                    "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/abdel.png"
+                  },
+                  "ducan999":  {
+                                    "id":  "ducan999",
+                                    "name":  "ducan999",
+                                    "rarity":  "comun",
+                                    "rarityName":  "Comun",
+                                    "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/ducan999.png"
+                  },
+                  "joanesoll":  {
+                                    "id":  "joanesoll",
+                                    "name":  "joanesoll",
+                                    "rarity":  "comun",
+                                    "rarityName":  "Comun",
+                                    "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/joanesoll.png"
+                  },
+                  "lunnn":  {
+                                    "id":  "lunnn",
+                                    "name":  "lunnn",
+                                    "rarity":  "comun",
+                                    "rarityName":  "Comun",
+                                    "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/lunnn.png"
+                  }
+
               }
 }
