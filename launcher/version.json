@@ -1,6 +1,6 @@
 {
-    "latest":  "1.0.10",
-    "downloadUrl":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/BarrilMC-Launcher.exe?v=110",
-    "sha256":  "a6eb79721920f2585ed07834c9da8d77a6aca3405027976ea5dc9dff5d9ea848",
-    "notes":  "Imagenes de cartas mucho mas rapidas: cache en disco (cada PNG se descarga una sola vez), cache en memoria (no se recarga al refrescar), precarga del catalogo al abrir el cofre y render incremental del inventario sin parpadeos."
+    "latest":  "1.0.11",
+    "downloadUrl":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/BarrilMC-Launcher.exe?v=111",
+    "sha256":  "7040c501923764eae1c8e8a4ec56c1f1083ee9291a80136c93bbaa5fbd5054e1",
+    "notes":  "Arranque mas rapido (musica carga en segundo plano), volumen de musica persistente, inventario ordenado por rareza, y 7 cartas comunes nuevas en el catalogo."
 }
