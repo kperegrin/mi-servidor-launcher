@@ -1,6 +1,6 @@
 {
-    "latest":  "1.0.15",
-    "downloadUrl":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/BarrilMC-Launcher.exe?v=115",
-    "sha256":  "2224e28862ce48f5a79f268b271ba650db1b717c98983d0331e1923ff0318506",
-    "notes":  "Sistema de tiradas acumulativas: ganas una tirada cada 2h hasta un maximo de 12. No hace falta tener el launcher abierto, el tiempo corre solo. El boton del cofre muestra cuantas tiradas tienes."
+    "latest":  "1.0.16",
+    "downloadUrl":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/BarrilMC-Launcher.exe?v=116",
+    "sha256":  "87f63bc3e8fb1cf0ffd2bad9dea106876ae572bae09c8d2583985157a87811e0",
+    "notes":  "Login Microsoft automatico tambien desde el menu de Cuentas (antes solo lo hacia el boton de la home). Adios Ctrl+L Ctrl+C."
 }
