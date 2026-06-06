@@ -1,6 +1,6 @@
 {
     "latest":  "1.0.9",
-    "downloadUrl":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/BarrilMC-Launcher.exe",
+    "downloadUrl":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/BarrilMC-Launcher-1.0.9.exe",
     "sha256":  "f91a7d8d2b9140d521939a0d1961614d5d0d035cdb1cd5b36de39dfcdca9b0a5",
     "notes":  "Tiradas infinitas en el cofre para los VIP (ElKimiZG y Barrilmc): el contador queda en \"Disponible ya\" y podeis reclamar sin esperar."
 }
