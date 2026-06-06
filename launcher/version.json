@@ -1,6 +1,6 @@
 {
-    "latest":  "1.0.12",
-    "downloadUrl":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/BarrilMC-Launcher.exe?v=112",
-    "sha256":  "5accdff4fe030ecf702c25d062383a6b1a9fbe4be49cb965df2ffe0a4c209bde",
-    "notes":  "Nueva Pokedex en el cofre: ve todas las cartas obtenibles. Las que has conseguido aparecen a color; las que no, en silueta gris con el nombre oculto."
+    "latest":  "1.0.13",
+    "downloadUrl":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/BarrilMC-Launcher.exe?v=113",
+    "sha256":  "cd43e5674f516007ceff5c1a8faa500771f0c2a0633bf9eae9a93d087d990340",
+    "notes":  "Las cartas nuevas que se publican en cards.json ya no tardan 5 minutos en aparecer: cache-bust al fetch del catalogo para puentear el CDN de GitHub."
 }
