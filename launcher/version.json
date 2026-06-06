@@ -1,6 +1,6 @@
 {
-    "latest":  "1.0.14",
-    "downloadUrl":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/BarrilMC-Launcher.exe?v=114",
-    "sha256":  "aa5f0a155563122c551c4799a5500be4dc141ff0c68b7cfd1cc40532d7829e13",
-    "notes":  "Cartas nuevas aparecen al instante: el catalogo se sirve via jsdelivr CDN en vez de raw.githubusercontent (que cacheaba commits hasta 15 min)."
+    "latest":  "1.0.15",
+    "downloadUrl":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/BarrilMC-Launcher.exe?v=115",
+    "sha256":  "2224e28862ce48f5a79f268b271ba650db1b717c98983d0331e1923ff0318506",
+    "notes":  "Sistema de tiradas acumulativas: ganas una tirada cada 2h hasta un maximo de 12. No hace falta tener el launcher abierto, el tiempo corre solo. El boton del cofre muestra cuantas tiradas tienes."
 }
