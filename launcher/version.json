@@ -1,6 +1,6 @@
 {
-    "latest":  "1.0.17",
-    "downloadUrl":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/BarrilMC-Launcher.exe?v=117",
-    "sha256":  "5102f7936cfede3f0b88c4fb90aa9bf6afc457c070ffc7f839f8aa55ec6b76b5",
-    "notes":  "Login Microsoft 100% automatico: nuevo client id de Azure registrado para BarrilMC con los redirect URIs correctos. Adios definitivo a Ctrl+L Ctrl+C."
+    "latest":  "1.0.18",
+    "downloadUrl":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/BarrilMC-Launcher.exe?v=118",
+    "sha256":  "4da3ed8a86c4ff3b9c9239ae3e36c1a86a99b6ecb11c75884a8faf9f4d4b52a0",
+    "notes":  "Login Microsoft con flujo manual (Ctrl+L Ctrl+C) como antes. El flujo automatico daba invalid_request por un problema con los redirect URIs."
 }
