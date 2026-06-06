@@ -1,6 +1,6 @@
 {
-    "latest":  "1.0.11",
-    "downloadUrl":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/BarrilMC-Launcher.exe?v=111",
-    "sha256":  "7040c501923764eae1c8e8a4ec56c1f1083ee9291a80136c93bbaa5fbd5054e1",
-    "notes":  "Arranque mas rapido (musica carga en segundo plano), volumen de musica persistente, inventario ordenado por rareza, y 7 cartas comunes nuevas en el catalogo."
+    "latest":  "1.0.12",
+    "downloadUrl":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/BarrilMC-Launcher.exe?v=112",
+    "sha256":  "5accdff4fe030ecf702c25d062383a6b1a9fbe4be49cb965df2ffe0a4c209bde",
+    "notes":  "Nueva Pokedex en el cofre: ve todas las cartas obtenibles. Las que has conseguido aparecen a color; las que no, en silueta gris con el nombre oculto."
 }
