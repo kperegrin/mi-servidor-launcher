@@ -302,6 +302,13 @@
                                     "rarity":  "comun",
                                     "rarityName":  "Comun",
                                     "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/lunnn.png"
+                  },
+                  "yosszr":  {
+                                    "id":  "yosszr",
+                                    "name":  "YossZR",
+                                    "rarity":  "rara",
+                                    "rarityName":  "Rara",
+                                    "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/YossZR.png"
                   }
 
               }
