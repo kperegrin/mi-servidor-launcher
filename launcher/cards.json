@@ -309,6 +309,48 @@
                                     "rarity":  "rara",
                                     "rarityName":  "Rara",
                                     "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/YossZR.png"
+                  },
+                  "dorox":  {
+                                    "id":  "dorox",
+                                    "name":  "Dorox",
+                                    "rarity":  "comun",
+                                    "rarityName":  "Comun",
+                                    "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/Dorox.png"
+                  },
+                  "volknara":  {
+                                    "id":  "volknara",
+                                    "name":  "Volknara",
+                                    "rarity":  "comun",
+                                    "rarityName":  "Comun",
+                                    "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/Volknara.png"
+                  },
+                  "imanduu":  {
+                                    "id":  "imanduu",
+                                    "name":  "imanduu",
+                                    "rarity":  "comun",
+                                    "rarityName":  "Comun",
+                                    "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/imanduu.png"
+                  },
+                  "socram":  {
+                                    "id":  "socram",
+                                    "name":  "socram",
+                                    "rarity":  "comun",
+                                    "rarityName":  "Comun",
+                                    "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/socram.png"
+                  },
+                  "soldeo7":  {
+                                    "id":  "soldeo7",
+                                    "name":  "soldeo7",
+                                    "rarity":  "rara",
+                                    "rarityName":  "Rara",
+                                    "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/soldeo7.png"
+                  },
+                  "gerrardo":  {
+                                    "id":  "gerrardo",
+                                    "name":  "gerrardo",
+                                    "rarity":  "rara",
+                                    "rarityName":  "Rara",
+                                    "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/gerrardo.jpg"
                   }
 
               }
