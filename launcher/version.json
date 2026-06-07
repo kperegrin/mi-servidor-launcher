@@ -1,6 +1,6 @@
 {
-    "latest":  "1.0.21",
-    "downloadUrl":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/BarrilMC-Launcher.exe?v=121",
-    "sha256":  "8ed5cd35161c7f93ff0f95406af9a0143a307e0365e899ab34c307c2e935e8ed",
-    "notes":  "Mas tiradas: ahora ganas 3 cada 2 horas (1 cada 40 min) hasta el maximo de 12 acumuladas. 6 cartas nuevas: Dorox, Volknara, imanduu, socram (comunes); soldeo7 y gerrardo (raras)."
+    "latest":  "1.0.22",
+    "downloadUrl":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/BarrilMC-Launcher.exe?v=122",
+    "sha256":  "5e4064a9085e03aecce396df16de3f3f3a906c6941caf3b6f0a94646b6bcff97",
+    "notes":  "Tiradas en bloque: cada 2h ganas 3 tiradas de golpe (no goteo continuo). El contador muestra \"+3 en HH:MM:SS\" hasta el siguiente tick. Maximo sigue siendo 12 acumuladas."
 }
