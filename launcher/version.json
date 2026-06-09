@@ -1,6 +1,6 @@
 {
-    "latest":  "1.0.23",
-    "downloadUrl":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/BarrilMC-Launcher.exe?v=123",
-    "sha256":  "9e21d410f66e28ed3ee6efbdbf64da1e0a1e49fa951cc8f3d46e541dbd68be63",
-    "notes":  "Quitamos las webs chinas: ahora si no tienes Java te enviamos a Adoptium (open-source) y el acuerdo de inicio enseña el EULA oficial de Minecraft. Ambas URLs son configurables en ServerLauncherConfig."
+    "latest":  "1.0.24",
+    "downloadUrl":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/BarrilMC-Launcher.exe?v=124",
+    "sha256":  "6c1185ef214709f0df862a4c962e61c639b81866378c5888eec7f165fb95ff9c",
+    "notes":  "Nueva rareza INFINITO (0.001% de probabilidad, secreta, fuera de la Pokedex). MascaraMC2 y MJpardo ahora son leyendas; cat_lorey2 mitica; 12 cartas nuevas. Animacion tope cuando toca un INFINITO: cofre se transmuta por todas las rarezas, implosiona y se abre un agujero negro que escupe la carta con sparkles arcoiris."
 }

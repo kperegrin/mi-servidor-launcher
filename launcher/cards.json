@@ -33,8 +33,8 @@
                   "2MJpardo":  {
                                    "id":  "2MJpardo",
                                    "name":  "MJpardo",
-                                   "rarity":  "mitica",
-                                   "rarityName":  "Mitica",
+                                   "rarity":  "leyenda",
+                                   "rarityName":  "Leyenda",
                                    "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/2MJpardo.png"
                                },
                   "2yrvyyyy":  {
@@ -351,6 +351,91 @@
                                     "rarity":  "rara",
                                     "rarityName":  "Rara",
                                     "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/gerrardo.jpg"
+                  },
+                  "mascaramc2":  {
+                                    "id":  "mascaramc2",
+                                    "name":  "MascaraMC2",
+                                    "rarity":  "leyenda",
+                                    "rarityName":  "Leyenda",
+                                    "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/MascaraMC2.png"
+                  },
+                  "cat_lorey2":  {
+                                    "id":  "cat_lorey2",
+                                    "name":  "cat_lorey2",
+                                    "rarity":  "mitica",
+                                    "rarityName":  "Mitica",
+                                    "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/cat_lorey2.png"
+                  },
+                  "prissent":  {
+                                    "id":  "prissent",
+                                    "name":  "Prissent",
+                                    "rarity":  "comun",
+                                    "rarityName":  "Comun",
+                                    "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/Prissent.png"
+                  },
+                  "stakameier":  {
+                                    "id":  "stakameier",
+                                    "name":  "Stakameier",
+                                    "rarity":  "comun",
+                                    "rarityName":  "Comun",
+                                    "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/Stakameier.png"
+                  },
+                  "agustin189i1":  {
+                                    "id":  "agustin189i1",
+                                    "name":  "agustin189i1",
+                                    "rarity":  "comun",
+                                    "rarityName":  "Comun",
+                                    "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/agustin189i1.png"
+                  },
+                  "chosnon":  {
+                                    "id":  "chosnon",
+                                    "name":  "chosnon",
+                                    "rarity":  "comun",
+                                    "rarityName":  "Comun",
+                                    "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/chosnon.png"
+                  },
+                  "crebocrac":  {
+                                    "id":  "crebocrac",
+                                    "name":  "crebocrac",
+                                    "rarity":  "comun",
+                                    "rarityName":  "Comun",
+                                    "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/crebocrac.png"
+                  },
+                  "dylan16":  {
+                                    "id":  "dylan16",
+                                    "name":  "dylan16",
+                                    "rarity":  "comun",
+                                    "rarityName":  "Comun",
+                                    "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/dylan16.png"
+                  },
+                  "tadeo":  {
+                                    "id":  "tadeo",
+                                    "name":  "tadeo",
+                                    "rarity":  "comun",
+                                    "rarityName":  "Comun",
+                                    "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/tadeo.png"
+                  },
+                  "xnato":  {
+                                    "id":  "xnato",
+                                    "name":  "xnato",
+                                    "rarity":  "comun",
+                                    "rarityName":  "Comun",
+                                    "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/xnato.png"
+                  },
+                  "ylenia":  {
+                                    "id":  "ylenia",
+                                    "name":  "ylenia",
+                                    "rarity":  "comun",
+                                    "rarityName":  "Comun",
+                                    "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/ylenia.png"
+                  },
+                  "juan_el_pro":  {
+                                    "id":  "juan_el_pro",
+                                    "name":  "Juan el Pro",
+                                    "rarity":  "infinito",
+                                    "rarityName":  "Infinito",
+                                    "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/juan_el_pro.png",
+                                    "secret":  true
                   }
 
               }
