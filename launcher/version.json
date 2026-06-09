@@ -1,6 +1,6 @@
 {
-    "latest":  "1.0.24",
-    "downloadUrl":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/BarrilMC-Launcher.exe?v=124",
-    "sha256":  "6c1185ef214709f0df862a4c962e61c639b81866378c5888eec7f165fb95ff9c",
-    "notes":  "Nueva rareza INFINITO (0.001% de probabilidad, secreta, fuera de la Pokedex). MascaraMC2 y MJpardo ahora son leyendas; cat_lorey2 mitica; 12 cartas nuevas. Animacion tope cuando toca un INFINITO: cofre se transmuta por todas las rarezas, implosiona y se abre un agujero negro que escupe la carta con sparkles arcoiris."
+    "latest":  "1.0.25",
+    "downloadUrl":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/BarrilMC-Launcher.exe?v=125",
+    "sha256":  "3f779d15c1fa70c99175da26c8356566abd04c08fb2bb030f9f8e7f5d2989fa9",
+    "notes":  "Fix critico: ya no se puede conseguir INFINITO fusionando 3 leyendas. La leyenda es el tope de fusion; INFINITO solo se consigue por suerte (1/100.000)."
 }
