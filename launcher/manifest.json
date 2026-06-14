@@ -1137,10 +1137,10 @@
                       "required":  true
                   },
                   {
-                      "path":  "resourcepacks/texturepackbarriliano13dejunio.zip",
-                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/texturepackbarriliano13dejunio.zip?v=2",
-                      "sha256":  "a3eeddb36ac27d3a07e247b09f12dc86e7b4f16c4b78c55cc0a751a10d1396dc",
-                      "size":  674898,
+                      "path":  "resourcepacks/texturepackbarriliano14dejunio.zip",
+                      "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/texturepackbarriliano14dejunio.zip",
+                      "sha256":  "dffc09766688753bafda26b1f212eb8fc1a2866aa4855c91d532391770dcc680",
+                      "size":  674840,
                       "required":  true
                   },
                   {
@@ -1250,6 +1250,8 @@
                    "mods/barrilcomplements-5dejunio.jar.disabled",
                    "resourcepacks/texturepackbarriliano5dejunio.zip",
                    "resourcepacks/texturepackbarriliano5dejunio.zip.disabled",
+                   "resourcepacks/texturepackbarriliano13dejunio.zip",
+                   "resourcepacks/texturepackbarriliano13dejunio.zip.disabled",
                    "resourcepacks/golurk_barriliano_pack.zip.disabled",
                    "resourcepacks/golurkbarriliano.zip",
                    "resourcepacks/golurkbarriliano_pack.zip",
@@ -1260,9 +1262,9 @@
                ],
     "news":  [
                  {
-                     "title":  "Pack actualizado 13 de junio",
-                     "body":  "Se instala barrilcomplements-13dejunio.jar y texturepackbarriliano13dejunio.zip; se eliminan las versiones antiguas.",
-                     "date":  "2026-06-13"
+                     "title":  "Pack actualizado 14 de junio",
+                     "body":  "Se instala texturepackbarriliano14dejunio.zip; se elimina el del 13 de junio.",
+                     "date":  "2026-06-14"
                  }
              ]
 }
