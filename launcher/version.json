@@ -1,6 +1,6 @@
 {
-    "latest":  "1.0.26",
-    "downloadUrl":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/BarrilMC-Launcher.exe?v=126",
-    "sha256":  "7be5c820981658030340a77952cbe4b18c400f0bc676a2f37f80d6fd841eea8d",
-    "notes":  "Fallback automatico a jsdelivr cuando raw.githubusercontent esta bloqueado por DNS (algunas redes corporativas o ISPs lo capan). Antes daba UnknownHostException al actualizar mods; ahora se reintenta solo por el CDN alternativo."
+    "latest":  "1.0.27",
+    "downloadUrl":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/BarrilMC-Launcher.exe?v=127",
+    "sha256":  "5d6d26467a5a975022283768cfa2505fbafd126b4df0a63d421938cb84280b3f",
+    "notes":  "¡Login Microsoft automatico activado! Mojang ha aprobado nuestro client ID de Azure. Adios definitivo al Ctrl+L Ctrl+C: pulsas el boton, eliges cuenta en el navegador, y el launcher captura el login solo."
 }
