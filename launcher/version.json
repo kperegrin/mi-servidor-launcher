@@ -1,6 +1,6 @@
 {
-    "latest":  "1.0.27",
-    "downloadUrl":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/BarrilMC-Launcher.exe?v=127",
-    "sha256":  "5d6d26467a5a975022283768cfa2505fbafd126b4df0a63d421938cb84280b3f",
-    "notes":  "¡Login Microsoft automatico activado! Mojang ha aprobado nuestro client ID de Azure. Adios definitivo al Ctrl+L Ctrl+C: pulsas el boton, eliges cuenta en el navegador, y el launcher captura el login solo."
+    "latest":  "1.0.28",
+    "downloadUrl":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/BarrilMC-Launcher.exe?v=128",
+    "sha256":  "c93b2bfdd9116b52ed1176659320103452dfd65d56ab1929a421fa0f92ef31dc",
+    "notes":  "Look & feel renovado: rediseño inspirado en la landing oficial. Botones primarios con gradient naranja diagonal y glow más vivo, cards con borde naranja y hover-lift, hero con resplandor sutil, metric tiles más finos, sidebar selección naranja, scrollbar discreto."
 }

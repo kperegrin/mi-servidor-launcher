@@ -122,13 +122,109 @@
    ================================================================= */
 
 .server-home,
-.server-news-panel {
-    -fx-background-color: rgba(7, 11, 22, 0.80);
-    -fx-background-radius: 12;
-    -fx-border-color: rgba(255, 255, 255, 0.13);
-    -fx-border-radius: 12;
+.server-news-panel,
+.server-chat-panel,
+.server-votes-panel {
+    -fx-background-color: rgba(7, 7, 12, 0.88);
+    -fx-background-radius: 14;
+    -fx-border-color: rgba(255, 255, 255, 0.09);
+    -fx-border-radius: 14;
     -fx-border-width: 1;
-    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.55), 28, 0.10, 0, 8);
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.65), 32, 0.10, 0, 12);
+}
+
+/* Chat + votes inline panels share the glass look but get an orange accent edge. */
+.server-chat-panel,
+.server-votes-panel {
+    -fx-border-color: rgba(255, 170, 34, 0.28);
+}
+
+/* "EN VIVO" pill on the chat header */
+.server-live-dot {
+    -fx-fill: #34d058;
+    -fx-effect: dropshadow(gaussian, rgba(52, 208, 88, 0.9), 8, 0.4, 0, 0);
+}
+
+.server-live-label {
+    -fx-font-size: 10px;
+    -fx-font-weight: bold;
+    -fx-text-fill: rgba(120, 230, 150, 0.92);
+}
+
+/* One chat line: head + name + text */
+.server-chat-row {
+    -fx-padding: 5 8 5 6;
+    -fx-background-color: rgba(255, 255, 255, 0.045);
+    -fx-background-radius: 8;
+}
+
+.server-chat-row:hover {
+    -fx-background-color: rgba(255, 255, 255, 0.09);
+}
+
+.server-chat-avatar {
+    -fx-background-color: rgba(0, 0, 0, 0.30);
+    -fx-background-radius: 6;
+    -fx-border-color: rgba(255, 255, 255, 0.14);
+    -fx-border-radius: 6;
+    -fx-border-width: 1;
+}
+
+.server-chat-input {
+    -fx-background-color: rgba(255, 255, 255, 0.08);
+    -fx-background-radius: 8;
+    -fx-border-color: rgba(255, 255, 255, 0.16);
+    -fx-border-radius: 8;
+    -fx-border-width: 1;
+    -fx-text-fill: white;
+    -fx-prompt-text-fill: rgba(200, 210, 255, 0.45);
+    -fx-padding: 8 12 8 12;
+}
+
+.server-chat-input:focused {
+    -fx-border-color: rgba(255, 170, 34, 0.65);
+    -fx-background-color: rgba(255, 255, 255, 0.12);
+}
+
+/* =================================================================
+   Card chest tiles
+   ================================================================= */
+
+.server-card-tile {
+    -fx-cursor: hand;
+}
+
+.server-card-tile:hover {
+    -fx-effect: dropshadow(gaussian, rgba(255, 170, 34, 0.55), 18, 0.15, 0, 0);
+    -fx-translate-y: -2;
+}
+
+.server-card-name {
+    -fx-text-fill: white;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+}
+
+.server-card-countdown {
+    -fx-font-size: 28px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #ffaa22;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.55), 4, 0.5, 0, 1);
+}
+
+.server-audio-panel {
+    -fx-padding: 8 10 8 10;
+    -fx-background-color: rgba(255, 255, 255, 0.06);
+    -fx-background-radius: 10;
+    -fx-border-color: rgba(255, 255, 255, 0.12);
+    -fx-border-radius: 10;
+    -fx-border-width: 1;
+}
+
+.server-audio-label {
+    -fx-text-fill: white;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
 }
 
 .server-news-scroll,
@@ -146,19 +242,20 @@
 
 /* Hero banner */
 .server-home-hero {
-    -fx-padding: 14 16 14 16;
-    -fx-background-color: rgba(255, 255, 255, 0.07);
-    -fx-background-radius: 10;
-    -fx-border-color: rgba(255, 140, 0, 0.24);
-    -fx-border-radius: 10;
+    -fx-padding: 18 22 18 22;
+    -fx-background-color: linear-gradient(to bottom right, rgba(255, 170, 34, 0.10), rgba(255, 122, 24, 0.04));
+    -fx-background-radius: 12;
+    -fx-border-color: rgba(255, 170, 34, 0.32);
+    -fx-border-radius: 12;
     -fx-border-width: 1;
+    -fx-effect: dropshadow(gaussian, rgba(255, 122, 24, 0.18), 24, 0.12, 0, 2);
 }
 
 .server-home-title {
-    -fx-font-size: 28px;
+    -fx-font-size: 30px;
     -fx-font-weight: bold;
     -fx-text-fill: white;
-    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.75), 4, 0.5, 0, 1);
+    -fx-effect: dropshadow(gaussian, rgba(255, 170, 34, 0.45), 18, 0.30, 0, 0);
 }
 
 .server-home-subtitle,
@@ -206,40 +303,44 @@
 .server-secondary-button,
 .server-login-button {
     -jfx-button-type: RAISED;
-    -fx-min-height: 38;
-    -fx-padding: 8 18 8 18;
-    -fx-background-radius: 8;
+    -fx-min-height: 40;
+    -fx-padding: 10 22 10 22;
+    -fx-background-radius: 999;
     -fx-font-weight: bold;
 }
 
-/* Play — orange branded gradient */
+/* Play — orange branded gradient (sintonizado con la landing web) */
 .server-primary-button {
-    -fx-background-color: linear-gradient(to bottom right, #ffaa22, #e05500);
-    -fx-effect: dropshadow(gaussian, rgba(255, 120, 0, 0.50), 16, 0.12, 0, 2);
+    -fx-background-color: linear-gradient(to bottom right, #ffaa22 0%, #ff7a18 100%);
+    -fx-effect: dropshadow(gaussian, rgba(255, 122, 24, 0.55), 22, 0.15, 0, 4);
 }
 
 .server-primary-button:hover {
-    -fx-background-color: linear-gradient(to bottom right, #ffbc44, #f06820);
-    -fx-effect: dropshadow(gaussian, rgba(255, 155, 0, 0.72), 24, 0.18, 0, 3);
+    -fx-background-color: linear-gradient(to bottom right, #ffbc44 0%, #ff8a20 100%);
+    -fx-effect: dropshadow(gaussian, rgba(255, 122, 24, 0.78), 32, 0.22, 0, 5);
+    -fx-translate-y: -1;
 }
 
 .server-primary-button:armed {
     -fx-background-color: linear-gradient(to bottom right, #dd8800, #c04000);
     -fx-effect: dropshadow(gaussian, rgba(200, 90, 0, 0.30), 8, 0.0, 0, 1);
+    -fx-translate-y: 0;
 }
 
 /* Secondary / login */
 .server-secondary-button,
 .server-login-button {
-    -fx-background-color: rgba(255, 255, 255, 0.10);
-    -fx-border-color: rgba(255, 255, 255, 0.17);
-    -fx-border-radius: 8;
+    -fx-background-color: rgba(255, 255, 255, 0.06);
+    -fx-border-color: rgba(255, 255, 255, 0.18);
+    -fx-border-radius: 999;
+    -fx-border-width: 1;
 }
 
 .server-secondary-button:hover,
 .server-login-button:hover {
-    -fx-background-color: rgba(255, 255, 255, 0.18);
-    -fx-border-color: rgba(255, 255, 255, 0.32);
+    -fx-background-color: rgba(255, 255, 255, 0.12);
+    -fx-border-color: rgba(255, 255, 255, 0.36);
+    -fx-translate-y: -1;
 }
 
 .server-secondary-button:armed,
@@ -301,17 +402,18 @@
 .server-news-item,
 .server-rights-card {
     -fx-padding: 10 0 12 0;
-    -fx-background-color: rgba(255, 255, 255, 0.08);
-    -fx-background-radius: 9;
+    -fx-background-color: rgba(255, 255, 255, 0.04);
+    -fx-background-radius: 10;
     -fx-border-color: rgba(255, 255, 255, 0.10);
-    -fx-border-radius: 9;
+    -fx-border-radius: 10;
     -fx-border-width: 1;
 }
 
 .server-news-item:hover {
-    -fx-background-color: rgba(255, 255, 255, 0.14);
-    -fx-border-color: rgba(255, 255, 255, 0.22);
-    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.42), 14, 0.10, 0, 5);
+    -fx-background-color: rgba(255, 170, 34, 0.10);
+    -fx-border-color: rgba(255, 170, 34, 0.40);
+    -fx-effect: dropshadow(gaussian, rgba(255, 170, 34, 0.30), 22, 0.15, 0, 6);
+    -fx-translate-y: -2;
 }
 
 .server-rights-card {
@@ -2339,4 +2441,106 @@
 
 .update-pane:active .subtitle-label {
     -fx-text-fill: -monet-tertiary;
+}
+
+/* =================================================================
+   BarrilMC premium polish — landing-page parity
+   Estilos extra para que la home se sienta como la landing en Vercel:
+   eyebrow badges, metric tiles más finos, sidebar items más vivos.
+   ================================================================= */
+
+/* Badge tipo "CARACTERÍSTICAS" / "DESCARGA" como el de la web */
+.server-eyebrow {
+    -fx-padding: 4 12 4 12;
+    -fx-background-color: rgba(255, 170, 34, 0.14);
+    -fx-text-fill: #ffaa22;
+    -fx-border-color: rgba(255, 170, 34, 0.32);
+    -fx-border-radius: 999;
+    -fx-background-radius: 999;
+    -fx-border-width: 1;
+    -fx-font-size: 10px;
+    -fx-font-weight: bold;
+}
+
+/* Tiles de metrica más planas y elegantes, en linea con la landing */
+.server-metric {
+    -fx-min-width: 130;
+    -fx-padding: 14 14 14 14;
+    -fx-background-color: rgba(255, 255, 255, 0.04);
+    -fx-background-radius: 12;
+    -fx-border-color: rgba(255, 255, 255, 0.08);
+    -fx-border-radius: 12;
+    -fx-border-width: 1;
+}
+
+.server-metric:hover {
+    -fx-background-color: rgba(255, 170, 34, 0.06);
+    -fx-border-color: rgba(255, 170, 34, 0.30);
+    -fx-effect: dropshadow(gaussian, rgba(255, 170, 34, 0.22), 16, 0.10, 0, 4);
+    -fx-translate-y: -1;
+}
+
+.server-metric-value {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #ffaa22;
+    -fx-effect: dropshadow(gaussian, rgba(255, 170, 34, 0.35), 8, 0.20, 0, 0);
+}
+
+.server-metric-title {
+    -fx-font-size: 11px;
+    -fx-text-fill: rgba(200, 210, 255, 0.55);
+}
+
+/* Sidebar: item seleccionado con barra naranja viva */
+.server-sidebar .advanced-list-item:selected > .rippler-container > .container {
+    -fx-background-color: linear-gradient(to right, rgba(255, 170, 34, 0.18) 0%, rgba(255, 170, 34, 0.04) 100%);
+    -fx-border-color: rgba(255, 170, 34, 0.45) transparent transparent transparent;
+}
+
+/* Live dot (chat) con bounce/glow más intenso */
+.server-live-dot {
+    -fx-fill: #34d058;
+    -fx-effect: dropshadow(gaussian, rgba(52, 208, 88, 1.0), 14, 0.55, 0, 0);
+}
+
+/* Texto link tipo "ver más" con underline sutil */
+.server-link {
+    -fx-text-fill: #ffaa22;
+    -fx-underline: false;
+    -fx-cursor: hand;
+}
+
+.server-link:hover {
+    -fx-underline: true;
+    -fx-effect: dropshadow(gaussian, rgba(255, 170, 34, 0.45), 8, 0.40, 0, 0);
+}
+
+/* Pulido visual de los rights-card del side panel para que vibren un poco */
+.server-rights-card {
+    -fx-background-color: linear-gradient(to bottom right, rgba(255, 170, 34, 0.06), rgba(255, 255, 255, 0.02));
+    -fx-border-color: rgba(255, 170, 34, 0.18);
+}
+
+.server-rights-title {
+    -fx-font-weight: bold;
+    -fx-text-fill: #ffaa22;
+}
+
+/* Scrollbar más fino y oscuro, en línea con la estética de la web */
+.server-news-scroll .scroll-bar:vertical,
+.server-home-scroll .scroll-bar:vertical {
+    -fx-pref-width: 8;
+    -fx-padding: 0 2 0 2;
+}
+
+.server-news-scroll .scroll-bar:vertical .thumb,
+.server-home-scroll .scroll-bar:vertical .thumb {
+    -fx-background-color: rgba(255, 170, 34, 0.30);
+    -fx-background-radius: 4;
+}
+
+.server-news-scroll .scroll-bar:vertical .thumb:hover,
+.server-home-scroll .scroll-bar:vertical .thumb:hover {
+    -fx-background-color: rgba(255, 170, 34, 0.55);
 }
