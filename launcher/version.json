@@ -1,6 +1,6 @@
 {
-    "latest":  "1.0.28",
-    "downloadUrl":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/BarrilMC-Launcher.exe?v=128",
-    "sha256":  "c93b2bfdd9116b52ed1176659320103452dfd65d56ab1929a421fa0f92ef31dc",
-    "notes":  "Look & feel renovado: rediseño inspirado en la landing oficial. Botones primarios con gradient naranja diagonal y glow más vivo, cards con borde naranja y hover-lift, hero con resplandor sutil, metric tiles más finos, sidebar selección naranja, scrollbar discreto."
+    "latest":  "1.0.29",
+    "downloadUrl":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/BarrilMC-Launcher.exe?v=129",
+    "sha256":  "ef04c01a8103a48fbbffe7d76b07fdc7fe117f67c64069d0d548808ba609b97c",
+    "notes":  "Recuperación de cromos perdidos: si tu inventario aún está en disco pero la firma se rompió en una migración, ahora se rescata automáticamente al abrir el cofre (cards + pokédex de vuelta). Además se hace un backup .bak antes de cada cambio, para evitar pérdidas futuras."
 }
