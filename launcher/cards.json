@@ -37,13 +37,6 @@
                                    "rarityName":  "Leyenda",
                                    "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/2MJpardo.png"
                                },
-                  "2yrvyyyy":  {
-                                   "id":  "2yrvyyyy",
-                                   "name":  "yrvyyyy",
-                                   "rarity":  "mitica",
-                                   "rarityName":  "Mitica",
-                                   "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/2yrvyyyy.png"
-                               },
                   "3alexpa":  {
                                   "id":  "3alexpa",
                                   "name":  "alexpa",
@@ -597,6 +590,55 @@
                                     "rarity":  "mitica",
                                     "rarityName":  "Mitica",
                                     "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/bananin.png"
+                  },
+                  "bautiwiki":  {
+                                    "id":  "bautiwiki",
+                                    "name":  "Bautiwiki",
+                                    "rarity":  "comun",
+                                    "rarityName":  "Comun",
+                                    "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/Bautiwiki.png"
+                  },
+                  "gian":  {
+                                    "id":  "gian",
+                                    "name":  "gian",
+                                    "rarity":  "comun",
+                                    "rarityName":  "Comun",
+                                    "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/gian.png"
+                  },
+                  "kongui_chan":  {
+                                    "id":  "kongui_chan",
+                                    "name":  "kongui_chan",
+                                    "rarity":  "comun",
+                                    "rarityName":  "Comun",
+                                    "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/kongui_chan.png"
+                  },
+                  "mr_herrero":  {
+                                    "id":  "mr_herrero",
+                                    "name":  "Mr_herrero",
+                                    "rarity":  "comun",
+                                    "rarityName":  "Comun",
+                                    "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/Mr_herrero.png"
+                  },
+                  "gaeluchi":  {
+                                    "id":  "gaeluchi",
+                                    "name":  "gaeluchi",
+                                    "rarity":  "poco_comun",
+                                    "rarityName":  "Poco comun",
+                                    "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/gaeluchi.png"
+                  },
+                  "rexdereyee":  {
+                                    "id":  "rexdereyee",
+                                    "name":  "Rexdereyee",
+                                    "rarity":  "poco_comun",
+                                    "rarityName":  "Poco comun",
+                                    "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/Rexdereyee.png"
+                  },
+                  "yvry":  {
+                                    "id":  "yvry",
+                                    "name":  "Yvry",
+                                    "rarity":  "mitica",
+                                    "rarityName":  "Mitica",
+                                    "url":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/Yvry.png"
                   }
 
               }
