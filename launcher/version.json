@@ -1,6 +1,6 @@
 {
-    "latest":  "1.0.30",
-    "downloadUrl":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/BarrilMC-Launcher.exe?v=130",
-    "sha256":  "931681de6c52570578bdef2cd075545d94ceb8a8f934275bd544eabfc02bc83e",
-    "notes":  "Catálogo de cartas más fiable: ahora se intenta primero raw.githubusercontent (suele estar más fresco) y jsdelivr como fallback. Antes era al revés y los jugadores veían las cartas viejas cuando jsdelivr tardaba en propagar commits."
+    "latest":  "1.0.31",
+    "downloadUrl":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/BarrilMC-Launcher.exe?v=131",
+    "sha256":  "20191483192dcd961d449c25e5a38b1c150a6d9e179d7ceafcf92e9c4a3c0431",
+    "notes":  "Nuevo campo \"wipe\" en el manifest: vacía carpetas (mods, resourcepacks…) antes de instalar archivos nuevos, conservando los que el manifest declara y borrando cualquier otro residual. Soluciona casos en los que mods viejos no entran en la lista delete."
 }

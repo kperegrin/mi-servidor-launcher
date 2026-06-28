@@ -29,8 +29,10 @@ import java.nio.file.AtomicMoveNotSupportedException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
+import java.util.Set;
 import java.util.zip.GZIPOutputStream;
 
 /// Synchronizes the local server instance with the remote manifest.
@@ -160,11 +162,40 @@ public final class LauncherUpdater {
     private static void syncFiles(Path runDirectory, ServerManifest manifest, ProgressListener listener) throws IOException {
         int totalFiles = Math.max(manifest.getFiles().size(), 1);
 
-        for (String deletePath : manifest.getDelete()) {
-            Path relative = HashUtils.requireSafeRelativePath(deletePath);
-            Files.deleteIfExists(runDirectory.resolve(relative));
+        // Build the set of "protected" relative paths: everything that the new manifest declares.
+        // Used by the wipe step so que un mod/textura que el cliente ya tiene con el sha correcto
+        // no se borre y luego se redescargue innecesariamente.
+        Set<Path> protectedFiles = new HashSet<>();
+        for (ServerFileEntry file : manifest.getFiles()) {
+            protectedFiles.add(HashUtils.requireSafeRelativePath(file.getPath()).normalize());
         }
 
+        // WIPE step (optional): para actualizaciones donde el set de mods/resourcepacks cambia
+        // por completo, el manifest puede listar carpetas a vaciar antes de descargar. Borra todo
+        // lo que NO está declarado en files[], evitando descargas redundantes.
+        for (String folderPath : manifest.getWipe()) {
+            Path folder = runDirectory.resolve(HashUtils.requireSafeRelativePath(folderPath)).normalize();
+            if (!Files.isDirectory(folder)) {
+                continue;
+            }
+            listener.update("Limpiando carpeta " + folderPath, 0.05);
+            try (java.util.stream.Stream<Path> stream = Files.list(folder)) {
+                List<Path> children = stream.collect(java.util.stream.Collectors.toList());
+                for (Path child : children) {
+                    Path relative = runDirectory.relativize(child);
+                    if (protectedFiles.contains(relative)) {
+                        continue; // se conserva: lo declara el manifest y ya tiene el sha correcto
+                    }
+                    // Solo borramos archivos; subcarpetas se dejan para no romper p.ej. config/.
+                    if (Files.isRegularFile(child)) {
+                        Files.deleteIfExists(child);
+                    }
+                }
+            }
+        }
+
+        // Download/verify everything FIRST. The cleanup of obsolete files runs afterwards so that a
+        // failed required download never strands the user with neither the old nor the new file.
         int index = 0;
         for (ServerFileEntry file : manifest.getFiles()) {
             index++;
@@ -187,6 +218,12 @@ public final class LauncherUpdater {
                 }
                 listener.update("Opcional omitido: " + file.getPath(), 0.08 + currentIndex * 0.70 / totalFiles);
             }
+        }
+
+        // Now that the new files are in place, remove the obsolete ones listed for deletion.
+        for (String deletePath : manifest.getDelete()) {
+            Path relative = HashUtils.requireSafeRelativePath(deletePath);
+            Files.deleteIfExists(runDirectory.resolve(relative));
         }
     }
 
@@ -234,7 +271,53 @@ public final class LauncherUpdater {
         }
     }
 
+    /// Abre una conexión HTTPS. Si la URL es de {@code raw.githubusercontent.com} y falla
+    /// con un error de DNS / red (host bloqueado, sin internet a ese dominio…) reintenta
+    /// automáticamente a través de jsdelivr.net (CDN que sirve los mismos archivos del repo
+    /// y suele estar accesible en redes donde raw.githubusercontent.com está bloqueado).
     static InputStream openHttps(String url) throws IOException {
+        try {
+            return openHttpsDirect(url);
+        } catch (java.net.UnknownHostException | java.net.NoRouteToHostException
+                 | java.net.ConnectException netErr) {
+            String fallback = jsdelivrEquivalent(url);
+            if (fallback != null && !fallback.equals(url)) {
+                try {
+                    return openHttpsDirect(fallback);
+                } catch (IOException nestedErr) {
+                    // Si el fallback también revienta, lanzamos el error ORIGINAL (más útil
+                    // para diagnóstico — al usuario le importa más que raw no fuera accesible
+                    // que el detalle del segundo intento).
+                    throw netErr;
+                }
+            }
+            throw netErr;
+        }
+    }
+
+    /// Traduce una URL de raw.githubusercontent.com a su equivalente en jsdelivr.net.
+    /// Devuelve null si la URL no encaja con el patrón conocido.
+    private static @org.jetbrains.annotations.Nullable String jsdelivrEquivalent(String rawUrl) {
+        if (rawUrl == null) return null;
+        String prefix = "https://raw.githubusercontent.com/";
+        String lc = rawUrl.toLowerCase(Locale.ROOT);
+        if (!lc.startsWith(prefix)) return null;
+        // Conservamos el query string (cache-busts ?t=, ?v= se respetan).
+        String query = "";
+        int q = rawUrl.indexOf('?');
+        String pathPart = rawUrl;
+        if (q >= 0) {
+            query = rawUrl.substring(q);
+            pathPart = rawUrl.substring(0, q);
+        }
+        // Esperamos: raw.githubusercontent.com/<owner>/<repo>/<branch>/<path...>
+        String[] parts = pathPart.substring(prefix.length()).split("/", 4);
+        if (parts.length < 4) return null;
+        return "https://cdn.jsdelivr.net/gh/" + parts[0] + "/" + parts[1]
+                + "@" + parts[2] + "/" + parts[3] + query;
+    }
+
+    private static InputStream openHttpsDirect(String url) throws IOException {
         String lc = url.toLowerCase(Locale.ROOT);
         if (!lc.startsWith("https://") && !lc.startsWith("http://")) {
             throw new IOException("Only HTTP/HTTPS URLs are allowed: " + url);

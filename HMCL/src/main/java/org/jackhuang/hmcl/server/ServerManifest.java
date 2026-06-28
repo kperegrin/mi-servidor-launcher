@@ -33,6 +33,7 @@ public final class ServerManifest {
     private ServerInfo server = new ServerInfo();
     private List<ServerFileEntry> files = new ArrayList<>();
     private List<String> delete = new ArrayList<>();
+    private List<String> wipe = new ArrayList<>();
     private List<NewsEntry> news = new ArrayList<>();
 
     /// Reads and normalizes a manifest from JSON.
@@ -77,6 +78,9 @@ public final class ServerManifest {
         }
         if (delete == null) {
             delete = new ArrayList<>();
+        }
+        if (wipe == null) {
+            wipe = new ArrayList<>();
         }
         if (news == null) {
             news = new ArrayList<>();
@@ -128,6 +132,12 @@ public final class ServerManifest {
     /// Relative paths to delete from the instance.
     public List<String> getDelete() {
         return Collections.unmodifiableList(delete);
+    }
+
+    /// Folders whose contents are wiped before downloading new files. Files declared in
+    /// {@link #getFiles()} are preserved if they still match (no redundant download).
+    public List<String> getWipe() {
+        return Collections.unmodifiableList(wipe);
     }
 
     /// News shown on the custom home screen.
