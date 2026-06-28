@@ -123,7 +123,7 @@
         },
         {
             "path": "mods/Carved Wood-fabric-1.21.1-1.8.2.jar",
-            "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/Carved%20Wood-fabric-1.21.1-1.8.2.jar",
+            "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/Carved.Wood-fabric-1.21.1-1.8.2.jar",
             "sha256": "c181a942368dd84df78a4ec79e790b32915d63d4b793331fac6ac7fd32c0f396",
             "size": 2458227,
             "required": true
@@ -340,7 +340,7 @@
         },
         {
             "path": "mods/Explorify v1.6.4 f15-88.mod.jar",
-            "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/Explorify%20v1.6.4%20f15-88.mod.jar",
+            "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/Explorify.v1.6.4.f15-88.mod.jar",
             "sha256": "dcc5340dc771c61358f53b9818594e9e588d9af81c0a1e906c373fb14d9be7a3",
             "size": 951495,
             "required": true
@@ -662,21 +662,21 @@
         },
         {
             "path": "mods/Oh-The-Biomes-Weve-Gone-Fabric-2.6.0 (1).jar",
-            "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/Oh-The-Biomes-Weve-Gone-Fabric-2.6.0%20%281%29.jar",
+            "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/Oh-The-Biomes-Weve-Gone-Fabric-2.6.0.1.jar",
             "sha256": "a9d30f20483107681eebc5f6550940bf318cd1bf031154e5598ab38701246984",
             "size": 20450060,
             "required": true
         },
         {
             "path": "mods/Oh-The-Trees-Youll-Grow-fabric-1.21.1-5.3.2 (1).jar",
-            "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/Oh-The-Trees-Youll-Grow-fabric-1.21.1-5.3.2%20%281%29.jar",
+            "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/Oh-The-Trees-Youll-Grow-fabric-1.21.1-5.3.2.1.jar",
             "sha256": "584277ba83f9178ee123725be3156b4f51320721627216a93772ae7008620d93",
             "size": 165002,
             "required": true
         },
         {
             "path": "mods/Only Bottle Caps-1.3.0.jar",
-            "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/Only%20Bottle%20Caps-1.3.0.jar",
+            "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/Only.Bottle.Caps-1.3.0.jar",
             "sha256": "f18d5ddfaa0a77d0ef68b9db470a41095522878e25b1cc2a5282e747c784f09d",
             "size": 250451,
             "required": true
@@ -914,7 +914,7 @@
         },
         {
             "path": "mods/TerraBlender-fabric-1.21.1-4.1.0.8 (1).jar",
-            "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/TerraBlender-fabric-1.21.1-4.1.0.8%20%281%29.jar",
+            "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/TerraBlender-fabric-1.21.1-4.1.0.8.jar",
             "sha256": "5f2d25306abfed8c6c6291e8904ae1a9f6a8ab4f1bf5f3a21f7e263a5bf217a6",
             "size": 337989,
             "required": true
@@ -1019,21 +1019,21 @@
         },
         {
             "path": "resourcepacks/BottleCaps 1.1.zip",
-            "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/BottleCaps%201.1.zip",
+            "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/BottleCaps.1.1.zip",
             "sha256": "58b980a07aae01cfa915e3182adced924e5342133f8be4a1e9a9337a89701305",
             "size": 25670,
             "required": true
         },
         {
             "path": "resourcepacks/E19 Cobblemon Minimap Icons.zip",
-            "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/E19%20Cobblemon%20Minimap%20Icons.zip",
+            "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/E19.Cobblemon.Minimap.Icons.zip",
             "sha256": "8732ecb1ee0b8cceda4ad973ffcf53e0c6689f503652320107d2569c0cd7f9ba",
             "size": 19398814,
             "required": true
         },
         {
             "path": "resourcepacks/Fully Hisuian Starters 1.1.1.zip",
-            "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/Fully%20Hisuian%20Starters%201.1.1.zip",
+            "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/Fully.Hisuian.Starters.1.1.1.zip",
             "sha256": "a12cbdd26881621404bce13b7ce022aa18872067bdfefaa80d8d1c22bd6fc4b0",
             "size": 202557,
             "required": true
