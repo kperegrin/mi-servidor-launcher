@@ -311,6 +311,27 @@
             "required": true
         },
         {
+            "path": "mods/easy_npc-fabric-1.21.1-6.25.0.jar",
+            "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/easy_npc-fabric-1.21.1-6.25.0.jar",
+            "sha256": "fda23a6c84a4ef51a9e16ecd8e185cbdba74f49b38bf0c02ad809e4cfd09fa7d",
+            "size": 2190911,
+            "required": true
+        },
+        {
+            "path": "mods/easy_npc_bundle-fabric-1.21.1-6.25.0 (1).jar",
+            "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/easy_npc_bundle-fabric-1.21.1-6.25.0.1.jar",
+            "sha256": "fb03f9b81dbffdded2f8757ad0d37682e75efd34e8866af9ddcc90d9d5d0c73c",
+            "size": 25260,
+            "required": true
+        },
+        {
+            "path": "mods/easy_npc_config_ui-fabric-1.21.1-6.25.0.jar",
+            "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/easy_npc_config_ui-fabric-1.21.1-6.25.0.jar",
+            "sha256": "8c64c13e7aee50350f2ae899010856682434c46927039820a171e7a06b5dbcbb",
+            "size": 935879,
+            "required": true
+        },
+        {
             "path": "mods/entity_model_features_1.21-fabric-3.0.12.jar",
             "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/entity_model_features_1.21-fabric-3.0.12.jar",
             "sha256": "13002727f5009944b2257824c4a10f6553937c1a4e44b8a2d0950f8d991166e6",
