@@ -178,6 +178,13 @@
             "required": true
         },
         {
+            "path": "mods/cobblemonarmory-1.5.4-fabric-1.21.1.jar",
+            "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/cobblemonarmory-1.5.4-fabric-1.21.1.jar",
+            "sha256": "657e684836dc2aea6a947706a0b12eb94a99d07c1023099797d96ad12806577d",
+            "size": 920690,
+            "required": true
+        },
+        {
             "path": "mods/cobblemon-battle-extras-fabric-1.8.30.jar",
             "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/cobblemon-battle-extras-fabric-1.8.30.jar",
             "sha256": "7c58702de8d6ed966207d0797109f20358f068989d1cab45d24ca61056581c5f",
