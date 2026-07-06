@@ -59,10 +59,10 @@
             "required": true
         },
         {
-            "path": "mods/barrilcomplements-18dejunio.jar",
-            "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/barrilcomplements-18dejunio.jar",
-            "sha256": "e40c832190d5d892fdd5f017f641191606a9e01f2eee9587b1b9addc17da8aad",
-            "size": 666996,
+            "path": "mods/barrilcomplements-06dejulio.jar",
+            "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/barrilcomplements-06dejulio.jar",
+            "sha256": "8cbebf5e39ef22d929ebde96f174ce676bc2e673157e42efddb3433ef31da256",
+            "size": 4317340,
             "required": true
         },
         {
@@ -1074,10 +1074,10 @@
             "required": true
         },
         {
-            "path": "resourcepacks/texturepackbarriliano18dejunio.zip",
-            "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/texturepackbarriliano18dejunio.zip",
-            "sha256": "de69374eee60b7ac67736c22cf53ece083efc0a3519d1a90cfd7d4256b4ea7ee",
-            "size": 782022,
+            "path": "resourcepacks/texturepackbarriliano06dejulio.zip",
+            "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/texturepackbarriliano06dejulio.zip",
+            "sha256": "50876a263f985557fc9749b8b1847cff1d8cabc9440f7a551e7b1b3d0a5559bd",
+            "size": 933775,
             "required": true
         },
         {
@@ -1176,6 +1176,10 @@
         "resourcepacks/texturepackbarriliano14dejunio.zip.disabled",
         "mods/barrilcomplements-13dejunio.jar",
         "mods/barrilcomplements-13dejunio.jar.disabled",
+        "mods/barrilcomplements-18dejunio.jar",
+        "mods/barrilcomplements-18dejunio.jar.disabled",
+        "resourcepacks/texturepackbarriliano18dejunio.zip",
+        "resourcepacks/texturepackbarriliano18dejunio.zip.disabled",
         "resourcepacks/golurk_barriliano_pack.zip.disabled",
         "resourcepacks/golurkbarriliano.zip",
         "resourcepacks/golurkbarriliano_pack.zip",
