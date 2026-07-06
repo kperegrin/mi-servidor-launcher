@@ -290,13 +290,6 @@
             "required": true
         },
         {
-            "path": "mods/DistantHorizons-3.1.2-b-1.21.1-fabric-neoforge.jar",
-            "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/DistantHorizons-3.1.2-b-1.21.1-fabric-neoforge.jar",
-            "sha256": "5b6df1e412b093ece73bee8d2c7238743546b9dc70d06f5ea843af3e318e1887",
-            "size": 30140037,
-            "required": true
-        },
-        {
             "path": "mods/dungeons-and-taverns-v4.4.4.jar",
             "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/dungeons-and-taverns-v4.4.4.jar",
             "sha256": "6ba41e48f6bfec81567e1805b43c4a8f51b4ab5f360a3c211805ebfb070642da",
@@ -1046,6 +1039,13 @@
             "required": true
         },
         {
+            "path": "resourcepacks/CCCwLegendSpawns_2.1.zip",
+            "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/CCCwLegendSpawns_2.1.zip",
+            "sha256": "7b937be4b339b665959b1f4f453dec377af940e8dab49643010263e29122e239",
+            "size": 18791641,
+            "required": true
+        },
+        {
             "path": "resourcepacks/ATM x MSD [v3.6.1].zip",
             "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/ATM_x_MSD_v3.6.1.zip",
             "sha256": "71b97411052ad0139e53c1af316e60902b319cc77f84356692f2d94c3743d4ea",
@@ -1097,6 +1097,8 @@
     ],
     "delete": [
         "mods/example.jar",
+        "mods/DistantHorizons-3.1.2-b-1.21.1-fabric-neoforge.jar",
+        "mods/DistantHorizons-3.1.2-b-1.21.1-fabric-neoforge.jar.disabled",
         "mods/barrilcomplements-1.0.78.jar",
         "mods/barrilcomplements-1.0.78.jar.disabled",
         "mods/barrilcomplements-1.0.79.jar",
