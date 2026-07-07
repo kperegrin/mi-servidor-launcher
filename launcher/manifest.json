@@ -1076,8 +1076,8 @@
         {
             "path": "resourcepacks/texturepackbarriliano06dejulio.zip",
             "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/texturepackbarriliano06dejulio.zip",
-            "sha256": "50876a263f985557fc9749b8b1847cff1d8cabc9440f7a551e7b1b3d0a5559bd",
-            "size": 933775,
+            "sha256": "a6bf05041cb7f2d2a0454c1e524a22a1bba18a1c2220348756e3cc75e75ee70d",
+            "size": 938285,
             "required": true
         },
         {
