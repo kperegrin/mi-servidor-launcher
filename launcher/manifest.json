@@ -61,8 +61,8 @@
         {
             "path": "mods/barrilcomplements-06dejulio.jar",
             "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/barrilcomplements-06dejulio.jar",
-            "sha256": "20df77b732f496ee5700554e49ab660430e2a427131031bc120b8b58f9c6a54c",
-            "size": 4379886,
+            "sha256": "a2f8096df19f1fb19d468bc80850d783a007d61e0a0e813f754f0934a53c3645",
+            "size": 4380114,
             "required": true
         },
         {
