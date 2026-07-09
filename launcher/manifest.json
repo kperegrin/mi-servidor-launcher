@@ -1381,9 +1381,7 @@
         "mods/zamega-fabric-1.7.1.jar",
         "mods/zamega-fabric-1.7.1.jar.disabled"
     ],
-    "wipe": [
-        "mods"
-    ],
+    "wipe": [],
     "news": [
         {
             "title": "Actualizacion completa del 28 de junio",
