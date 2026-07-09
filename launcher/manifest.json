@@ -1046,6 +1046,48 @@
             "required": true
         },
         {
+            "path": "resourcepacks/Cobblemon 3D Poké Rods 1.0.zip",
+            "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/Cobblemon.3D.Poke.Rods.1.0.zip",
+            "sha256": "c93e9c866658bb752976c44414ca0e04fa90246060f114a183599abe1de4ca9e",
+            "size": 167546,
+            "required": true
+        },
+        {
+            "path": "resourcepacks/Cobblemon Classic Grass Pack v2.1 MC1.21.1.zip",
+            "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/Cobblemon.Classic.Grass.Pack.v2.1.MC1.21.1.zip",
+            "sha256": "4386b800db3f7710c23f5ead9c911c9f265831a02e74c704f7cc29fcd9070880",
+            "size": 7418,
+            "required": true
+        },
+        {
+            "path": "resourcepacks/Cobblemon HUD 1.0.zip",
+            "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/Cobblemon.HUD.1.0.zip",
+            "sha256": "a79258b4227e340de2fddaa2ee46a21472c89bba4976617223ab09eb4655c889",
+            "size": 192521,
+            "required": true
+        },
+        {
+            "path": "resourcepacks/Cobblemon Legends Z-A.zip",
+            "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/Cobblemon.Legends.Z-A.zip",
+            "sha256": "87cfdd9ddb6561a4ac6219039c66df5d4c6dd5c335396d95080f8f4011962abf",
+            "size": 46595072,
+            "required": true
+        },
+        {
+            "path": "resourcepacks/iB - 3D Cobblenav-FabricPatch.zip",
+            "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/iB.-.3D.Cobblenav-FabricPatch.zip",
+            "sha256": "d6763a59bdb2b220eb36e82c264202e75ae807d89719f0a9184bb219613b76e8",
+            "size": 80779,
+            "required": true
+        },
+        {
+            "path": "resourcepacks/Prominence-Custom-Lootr.zip",
+            "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/Prominence-Custom-Lootr.zip",
+            "sha256": "052adb4b912a1d73bbdec971e04130a448ff8c2586e6095c2e8ab7dc3c638202",
+            "size": 29098,
+            "required": true
+        },
+        {
             "path": "resourcepacks/ATM x MSD [v3.6.1].zip",
             "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/ATM_x_MSD_v3.6.1.zip",
             "sha256": "71b97411052ad0139e53c1af316e60902b319cc77f84356692f2d94c3743d4ea",
@@ -1135,8 +1177,6 @@
         "resourcepacks/ATM x MSD [v3.5.0].zip",
         "resourcepacks/BattleBond [V1.4].zip",
         "resourcepacks/BottleCaps 1.1.zip",
-        "resourcepacks/Cobblemon 3D PokÃ© Rods 1.0.zip",
-        "resourcepacks/Cobblemon Classic Grass Pack v2.1 MC1.21.1.zip",
         "resourcepacks/Cobblemon improvedmon v1.1.zip",
         "resourcepacks/Cobblemon Interface Modded v1.9.4.zip",
         "resourcepacks/Cobblemon Interface v1.6.0.zip",
@@ -1157,7 +1197,6 @@
         "resourcepacks/Seavls Bizarremons 1.1.0v.zip",
         "mods/StackableItems-fabric-1.21.[0-1]-v1.2.jar",
         "resourcepacks/Â§6ImmersiveÂ§8_Â§6InterfacesÂ§8.zip",
-        "resourcepacks/Cobblemon.3D.Pok.Rods.1.0.zip",
         "resourcepacks/qrafty's-capitalized-font-3.1.zip",
         "resourcepacks/Golurk Barriliano Pack.zip",
         "resourcepacks/Golurk_Barriliano_Pack.zip",
