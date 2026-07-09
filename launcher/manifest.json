@@ -1382,8 +1382,7 @@
         "mods/zamega-fabric-1.7.1.jar.disabled"
     ],
     "wipe": [
-        "mods",
-        "resourcepacks"
+        "mods"
     ],
     "news": [
         {
