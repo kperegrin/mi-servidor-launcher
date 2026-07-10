@@ -61,8 +61,8 @@
         {
             "path": "mods/barrilcomplements-06dejulio.jar",
             "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/barrilcomplements-06dejulio.jar",
-            "sha256": "1ac1e8985005e29c27350d7e7be8e8112945ae4efc619792b1471c89c9a09991",
-            "size": 4387851,
+            "sha256": "fe32364bb322e3331f5ae27e9886662c6113654dbb31ed5a9f9b09570fd5dd0c",
+            "size": 4388433,
             "required": true
         },
         {
@@ -1118,8 +1118,8 @@
         {
             "path": "resourcepacks/texturepackbarriliano06dejulio.zip",
             "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/texturepackbarriliano06dejulio.zip",
-            "sha256": "da1cee889a0897cd29f16af103eb8e1adff03988dc692ecb156d45b12b18b211",
-            "size": 937716,
+            "sha256": "67dc02c79e82c1d01965787acfc55cb890ed1f1c20928bb3479c06d6a50fa661",
+            "size": 979165,
             "required": true
         },
         {
