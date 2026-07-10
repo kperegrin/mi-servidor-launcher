@@ -254,9 +254,6 @@ public final class LauncherUpdater {
                 }
             }
 
-            if (file.getSize() >= 0 && Files.size(temporary) != file.getSize()) {
-                throw new IOException("Downloaded size mismatch for " + file.getPath());
-            }
             if (!HashUtils.matchesSha256(temporary, file.getSha256())) {
                 throw new IOException("SHA-256 mismatch for " + file.getPath());
             }
