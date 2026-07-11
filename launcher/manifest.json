@@ -61,8 +61,8 @@
         {
             "path": "mods/barrilcomplements-06dejulio.jar",
             "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/barrilcomplements-06dejulio.jar",
-            "sha256": "1ac1e8985005e29c27350d7e7be8e8112945ae4efc619792b1471c89c9a09991",
-            "size": 4387851,
+            "sha256": "b158db111c9b70eb61f9cd835034b622e3d018f2421740671d681e332d151e66",
+            "size": 4301475,
             "required": true
         },
         {
@@ -1029,6 +1029,41 @@
             "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/zamega-fabric-1.5.4.jar",
             "sha256": "0e9469a3e0d1235e88c660cbd8239c703626312e38a546ec5616d48a0b56668f",
             "size": 2390310,
+            "required": true
+        },
+        {
+            "path": "mods/LuckPerms-Fabric-5.4.140.jar",
+            "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/LuckPerms-Fabric-5.4.140.jar",
+            "sha256": "3e17d490f87761c174478f68860367610a473ff5c2a9a9daad608773bf0e81bc",
+            "size": 1574861,
+            "required": true
+        },
+        {
+            "path": "mods/sushimod-v1.0.1-fabric-1.21.jar",
+            "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/sushimod-v1.0.1-fabric-1.21.jar",
+            "sha256": "496961c9b38208025506e1dc3cc4cfe25c525f8eab465864a2c4b896876a19c4",
+            "size": 165747,
+            "required": true
+        },
+        {
+            "path": "mods/placeholder-api-2.4.2+1.21.jar",
+            "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/placeholder-api-2.4.2%2B1.21.jar",
+            "sha256": "c0187ee299527ac7a3e0b1e83601dcdc0de631e286fe41e6be1a75958ea8e443",
+            "size": 232325,
+            "required": true
+        },
+        {
+            "path": "mods/wild_battle_api-fabric-1.1.2.jar",
+            "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/wild_battle_api-fabric-1.1.2.jar",
+            "sha256": "c25fee08e90ed8d28d2a0051f892bae28e1d6d8522c523131bd7dcbef9bcd0a8",
+            "size": 253029,
+            "required": true
+        },
+        {
+            "path": "mods/cobblemon_battle_tower-fabric-1.10.22.jar",
+            "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/cobblemon_battle_tower-fabric-1.10.22.jar",
+            "sha256": "043ee6625cfdb796ee3c0d4210428fb2b93151d38a9fc97a1478488eb1f86f95",
+            "size": 52072177,
             "required": true
         },
         {
