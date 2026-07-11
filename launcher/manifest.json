@@ -1151,8 +1151,8 @@
             "required": true
         },
         {
-            "path": "resourcepacks/texturepackbarriliano06dejulio.zip",
-            "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/texturepackbarriliano06dejulio.zip",
+            "path": "resourcepacks/texturepackbarriliano10dejulio.zip",
+            "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/texturepackbarriliano10dejulio.zip",
             "sha256": "67dc02c79e82c1d01965787acfc55cb890ed1f1c20928bb3479c06d6a50fa661",
             "size": 979165,
             "required": true
@@ -1173,6 +1173,7 @@
         }
     ],
     "delete": [
+        "resourcepacks/texturepackbarriliano06dejulio.zip",
         "mods/example.jar",
         "mods/DistantHorizons-3.1.2-b-1.21.1-fabric-neoforge.jar",
         "mods/DistantHorizons-3.1.2-b-1.21.1-fabric-neoforge.jar.disabled",
