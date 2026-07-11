@@ -1,6 +1,6 @@
 {
-    "latest":  "1.0.31",
-    "downloadUrl":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/BarrilMC-Launcher.exe?v=131",
-    "sha256":  "20191483192dcd961d449c25e5a38b1c150a6d9e179d7ceafcf92e9c4a3c0431",
-    "notes":  "Nuevo campo \"wipe\" en el manifest: vacía carpetas (mods, resourcepacks…) antes de instalar archivos nuevos, conservando los que el manifest declara y borrando cualquier otro residual. Soluciona casos en los que mods viejos no entran en la lista delete."
+    "latest":  "1.0.32",
+    "downloadUrl":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/BarrilMC-Launcher-1.0.32.exe",
+    "sha256":  "d0dd2b591a71e5dede1a953f114761108210769c977ae9524e72da79fc8b6df9",
+    "notes":  "Corrección: el launcher ya no falla con 'Downloaded size mismatch' al actualizar mods. Solo se verifica SHA-256 (integridad real)."
 }
