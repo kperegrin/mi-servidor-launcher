@@ -1,6 +1,6 @@
 {
-    "latest":  "1.0.33",
-    "downloadUrl":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/BarrilMC-Launcher-1.0.33.exe",
-    "sha256":  "35e0bdd585b9907ca5294431646846c5a97003f026948b24a2c474e1828a7629",
-    "notes":  "Nueva opcion: mueve la instalacion a otro disco desde la pantalla principal (link 'Mover instalacion a otro disco...' al final de la tarjeta)."
+    "latest":  "1.0.34",
+    "downloadUrl":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/BarrilMC-Launcher-1.0.34.exe",
+    "sha256":  "d8375ab84adb9d970283ff724b86dc052e3fb0fc37813020dea4c9b44483da84",
+    "notes":  "Setup inicial: al abrir el launcher por primera vez aparece un asistente para elegir el disco de instalacion antes de descargar nada."
 }
