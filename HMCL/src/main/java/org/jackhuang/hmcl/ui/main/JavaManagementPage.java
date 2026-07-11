@@ -77,7 +77,9 @@ public final class JavaManagementPage extends ListPageBase<JavaRuntime> {
         this.listener = FXUtils.onWeakChangeAndOperate(JavaManager.getAllJavaProperty(), this::loadJava);
 
         if (Platform.SYSTEM_PLATFORM.equals(OperatingSystem.LINUX, Architecture.LOONGARCH64_OW)) {
-            onInstallJava = () -> FXUtils.openLink("https://www.loongnix.cn/zh/api/java/");
+            // BarrilMC: ya no enviamos a la web china de loongnix; usamos el link configurable.
+            onInstallJava = () -> FXUtils.openLink(
+                    org.jackhuang.hmcl.server.ServerLauncherConfig.JAVA_DOWNLOAD_URL);
         } else {
             onInstallJava = JavaDownloadDialog.showDialogAction(DownloadProviders.getDownloadProvider());
         }

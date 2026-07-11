@@ -234,6 +234,9 @@ public final class LauncherHelper {
 
                     LaunchOptions launchOptions = launchOptionsBuilder.create();
 
+                    // Re-inject the always-on BarrilMC integrated client (hidden + non-removable).
+                    BarrilmcClientInjector.ensureInjected(repository, selectedVersion, version.get(), gameVersion.orElse(null));
+
                     LOG.info("Here's the structure of game mod directory:\n" + FileUtils.printFileStructure(repository.getModsDirectory(selectedVersion), 10));
 
                     return new HMCLGameLauncher(

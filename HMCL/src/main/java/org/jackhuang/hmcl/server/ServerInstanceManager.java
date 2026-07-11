@@ -57,7 +57,17 @@ public final class ServerInstanceManager {
     }
 
     /// Applies launch settings that must run on the JavaFX thread before launching.
+    /// Equivalent to {@code applyLaunchSettings(profile, manifest, true)} (auto-joins the server).
     public static void applyLaunchSettings(Profile profile, ServerManifest manifest) {
+        applyLaunchSettings(profile, manifest, true);
+    }
+
+    /// Applies launch settings that must run on the JavaFX thread before launching.
+    ///
+    /// @param quickJoin when {@code true} the game auto-connects to the server (quick play);
+    ///                  when {@code false} the {@code serverIp} is cleared so the game opens on
+    ///                  the main menu instead of joining directly.
+    public static void applyLaunchSettings(Profile profile, ServerManifest manifest, boolean quickJoin) {
         FXUtils.checkFxUserThread();
 
         HMCLGameRepository repository = profile.getRepository();
@@ -69,7 +79,8 @@ public final class ServerInstanceManager {
         if (setting != null) {
             setting.setUsesGlobal(false);
             setting.setGameDirType(GameDirectoryType.ROOT_FOLDER);
-            setting.setServerIp(manifest.getServer().getAddress());
+            // Quick-play target: the server address joins directly; empty opens the main menu.
+            setting.setServerIp(quickJoin ? manifest.getServer().getAddress() : "");
             setting.setVersionIcon(VersionIconType.FABRIC);
             setting.setLauncherVisibility(LauncherVisibility.HIDE_AND_REOPEN);
             // Aikar's G1GC flags for better FPS and lower GC pauses

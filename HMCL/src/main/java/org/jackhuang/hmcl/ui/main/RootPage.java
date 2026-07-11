@@ -209,6 +209,13 @@ public class RootPage extends DecoratorAnimatedPage implements DecoratorPage {
                 FXUtils.prepareOnMouseEnter(launcherSettingsItem, Controllers::prepareSettingsPage);
             }
 
+            // BarrilMC card chest — new sidebar entry. Lives under "Settings" category alongside
+            // the launcher settings so it sits with the other launcher-wide tools.
+            AdvancedListItem cardsItem = new AdvancedListItem();
+            cardsItem.setLeftIcon(SVG.ARCHIVE);
+            cardsItem.setTitle("Cofre de cartas");
+            cardsItem.setOnAction(e -> Controllers.navigate(new org.jackhuang.hmcl.ui.server.CardsPage()));
+
             // sixth item in left sidebar
             AdvancedListItem terracottaItem = new AdvancedListItem();
             terracottaItem.setLeftIcon(SVG.GRAPH2);
@@ -242,6 +249,7 @@ public class RootPage extends DecoratorAnimatedPage implements DecoratorPage {
                     .add(downloadItem)
                     .startCategory(i18n("settings.launcher.general").toUpperCase(Locale.ROOT))
                     .add(launcherSettingsItem)
+                    .add(cardsItem)
                     .add(terracottaItem)
                     .addNavigationDrawerItem(i18n("contact.chat"), SVG.CHAT, () -> {
                         Controllers.getSettingsPage().showFeedback();

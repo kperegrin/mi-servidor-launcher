@@ -1,6 +1,6 @@
 {
-    "latest":  "1.0.32",
-    "downloadUrl":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/BarrilMC-Launcher-1.0.32.exe",
-    "sha256":  "d0dd2b591a71e5dede1a953f114761108210769c977ae9524e72da79fc8b6df9",
-    "notes":  "Corrección: el launcher ya no falla con 'Downloaded size mismatch' al actualizar mods. Solo se verifica SHA-256 (integridad real)."
+    "latest":  "1.0.33",
+    "downloadUrl":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/BarrilMC-Launcher-1.0.33.exe",
+    "sha256":  "35e0bdd585b9907ca5294431646846c5a97003f026948b24a2c474e1828a7629",
+    "notes":  "Nueva opcion: mueve la instalacion a otro disco desde la pantalla principal (link 'Mover instalacion a otro disco...' al final de la tarjeta)."
 }

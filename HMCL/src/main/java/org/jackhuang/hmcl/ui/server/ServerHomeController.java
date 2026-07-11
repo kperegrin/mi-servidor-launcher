@@ -17,18 +17,25 @@ import javafx.animation.Timeline;
 import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.geometry.VPos;
 import javafx.scene.Cursor;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.ProgressIndicator;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Separator;
+import javafx.scene.control.Slider;
+import javafx.stage.DirectoryChooser;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
+import javafx.scene.layout.Region;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
@@ -37,6 +44,9 @@ import javafx.util.Duration;
 import org.jackhuang.hmcl.auth.Account;
 import org.jackhuang.hmcl.auth.microsoft.MicrosoftAccount;
 import org.jackhuang.hmcl.auth.offline.OfflineAccount;
+import org.jackhuang.hmcl.server.BarrilmcInstallConfig;
+import org.jackhuang.hmcl.server.BarrilmcLauncherPrefs;
+import org.jackhuang.hmcl.server.BarrilmcVideoExporter;
 import org.jackhuang.hmcl.server.LauncherSelfUpdateService;
 import org.jackhuang.hmcl.server.LauncherUpdater;
 import org.jackhuang.hmcl.server.LauncherVersionInfo;
@@ -51,12 +61,20 @@ import org.jackhuang.hmcl.ui.Controllers;
 import org.jackhuang.hmcl.ui.FXUtils;
 import org.jackhuang.hmcl.ui.SVG;
 import org.jackhuang.hmcl.ui.account.CreateAccountPane;
+import org.jackhuang.hmcl.ui.account.MicrosoftAccountLoginPane;
 import org.jackhuang.hmcl.ui.construct.MessageDialogPane;
 import org.jackhuang.hmcl.ui.versions.Versions;
 import org.jackhuang.hmcl.util.StringUtils;
 import org.jetbrains.annotations.NotNullByDefault;
 
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.FloatControl;
 import java.io.ByteArrayInputStream;
+import java.io.BufferedInputStream;
+import java.io.File;
+import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -79,18 +97,25 @@ public final class ServerHomeController extends FlowPane {
     private final VBox videoListBox = new VBox(8);
     private final VBox postsListBox = new VBox(8);
     private final JFXButton playButton = new JFXButton("Jugar servidor");
+    private final JFXButton playMenuButton = new JFXButton("Abrir sin conectar");
     private final JFXButton updateButton = new JFXButton("Actualizar archivos");
     private final JFXButton settingsButton = new JFXButton("Configuracion");
     private final JFXButton launcherUpdateButton = new JFXButton("Actualizar launcher");
     private final JFXButton microsoftButton = new JFXButton("Microsoft");
     private final JFXButton offlineButton = new JFXButton("Offline");
+    private final Slider musicVolumeSlider = new Slider(0, 100, 50);
+    private final Label musicVolumeLabel = new Label("50%");
     private final ServerStatusService statusService = new ServerStatusService();
+    private static Clip backgroundMusicClip;
     private LauncherVersionInfo pendingLauncherUpdate;
 
     /// Creates the custom home.
     public ServerHomeController() {
         getStyleClass().add("server-home-root");
-        setAlignment(Pos.CENTER);
+        setAlignment(Pos.TOP_CENTER);
+        // Align the two columns to their top edges so the compact card doesn't
+        // float vertically centered next to the taller side panel.
+        setRowValignment(VPos.TOP);
         setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
         setHgap(18);
         setVgap(18);
@@ -134,7 +159,8 @@ public final class ServerHomeController extends FlowPane {
         status.setPrefWrapLength(720);
 
         configureButtons();
-        FlowPane actions = new FlowPane(10, 10, playButton, updateButton, settingsButton);
+        FlowPane actions = new FlowPane(10, 10,
+                playButton, playMenuButton, updateButton, settingsButton);
         actions.setAlignment(Pos.CENTER);
         actions.setPrefWrapLength(720);
 
@@ -142,9 +168,16 @@ public final class ServerHomeController extends FlowPane {
         loginActions.setAlignment(Pos.CENTER);
         loginActions.setPrefWrapLength(720);
 
+        HBox musicControls = buildMusicControls();
         progressBar.setMaxWidth(Double.MAX_VALUE);
         progressBar.getStyleClass().add("server-progress");
         progressLabel.getStyleClass().add("server-progress-label");
+        // Keep the progress row hidden while idle so the card hugs its content
+        // instead of reserving empty space. It is revealed on demand in setBusy().
+        progressBar.setVisible(false);
+        progressBar.setManaged(false);
+        progressLabel.setVisible(false);
+        progressLabel.setManaged(false);
         launcherUpdateLabel.getStyleClass().add("server-progress-label");
         launcherUpdateButton.setVisible(false);
         launcherUpdateButton.setManaged(false);
@@ -154,20 +187,50 @@ public final class ServerHomeController extends FlowPane {
         HBox launcherUpdate = new HBox(10, launcherUpdateLabel, launcherUpdateButton);
         launcherUpdate.setAlignment(Pos.CENTER);
 
-        // Main card (center) — width adapts to content, not the full window.
-        VBox mainCard = new VBox(12, hero, status, actions, loginActions, progressBar, progressLabel, launcherUpdate);
+        Hyperlink moveLink = new Hyperlink("Mover instalacion a otro disco...");
+        moveLink.getStyleClass().add("server-progress-label");
+        moveLink.setOnAction(e -> showMoveInstallDialog());
+
+        // Main card (center) — width AND height adapt to content, not the full window.
+        VBox mainCard = new VBox(12, hero, status, actions, loginActions, musicControls, progressBar, progressLabel, launcherUpdate, new Separator(), moveLink);
         mainCard.getStyleClass().add("server-home");
-        mainCard.setAlignment(Pos.CENTER);
+        mainCard.setAlignment(Pos.TOP_CENTER);
         mainCard.setPadding(new Insets(16));
         mainCard.setMinWidth(340);
-        mainCard.setPrefWidth(560);
-        mainCard.setMaxWidth(660);
+        mainCard.setMaxWidth(Double.MAX_VALUE);
+        // Hug the content vertically so the dark card doesn't stretch to fill the column.
+        mainCard.setMaxHeight(Region.USE_PREF_SIZE);
+
+        // Chat lives permanently under the main card (no dialog).
+        ChatPanel chatPanel = new ChatPanel();
+        chatPanel.setMaxWidth(Double.MAX_VALUE);
+        VBox.setVgrow(chatPanel, Priority.ALWAYS);
+
+        VBox leftColumn = new VBox(18, mainCard, chatPanel);
+        leftColumn.setAlignment(Pos.TOP_CENTER);
+        leftColumn.setFillWidth(true);
+        leftColumn.setMinWidth(340);
+        leftColumn.setPrefWidth(560);
+        leftColumn.setMaxWidth(640);
+
+        // Votes live permanently above the videos/posts side panel (no dialog).
+        VotesPanel votesPanel = new VotesPanel();
+        votesPanel.setMaxWidth(Double.MAX_VALUE);
 
         // Side panel: latest videos + posts
         VBox sidePanel = buildSidePanel();
-        HBox.setHgrow(sidePanel, Priority.SOMETIMES);
+        sidePanel.setMaxWidth(Double.MAX_VALUE);
+        VBox.setVgrow(sidePanel, Priority.ALWAYS);
 
-        getChildren().setAll(mainCard, sidePanel);
+        VBox rightColumn = new VBox(18, votesPanel, sidePanel);
+        rightColumn.setAlignment(Pos.TOP_CENTER);
+        rightColumn.setFillWidth(true);
+        rightColumn.setMinWidth(336);
+        rightColumn.setPrefWidth(380);
+        rightColumn.setMaxWidth(440);
+        HBox.setHgrow(rightColumn, Priority.SOMETIMES);
+
+        getChildren().setAll(leftColumn, rightColumn);
 
         Accounts.selectedAccountProperty().addListener((observable, oldValue, newValue) -> updateAccountLabel());
         updateAccountLabel();
@@ -179,6 +242,78 @@ public final class ServerHomeController extends FlowPane {
 
         // Start orange glow pulse on the play button
         startPlayButtonGlow();
+    }
+
+    private HBox buildMusicControls() {
+        Label title = new Label("Musica");
+        title.getStyleClass().add("server-audio-label");
+
+        // Restore the last saved volume (or 50 if this is a fresh install).
+        double savedVolume = BarrilmcLauncherPrefs.getMusicVolume(50);
+
+        musicVolumeSlider.setMaxWidth(Double.MAX_VALUE);
+        musicVolumeSlider.setValue(savedVolume);
+        musicVolumeLabel.setText(Math.round(savedVolume) + "%");
+        musicVolumeLabel.getStyleClass().add("server-progress-label");
+
+        musicVolumeSlider.valueProperty().addListener((observable, oldValue, newValue) -> {
+            double volume = Math.max(0, Math.min(100, newValue.doubleValue()));
+            musicVolumeLabel.setText(Math.round(volume) + "%");
+            setMusicVolume(volume / 100.0);
+            // Persist on every change so the next launch starts at the same level.
+            BarrilmcLauncherPrefs.setMusicVolume(volume);
+        });
+
+        HBox box = new HBox(10, title, musicVolumeSlider, musicVolumeLabel);
+        box.getStyleClass().add("server-audio-panel");
+        box.setAlignment(Pos.CENTER);
+        HBox.setHgrow(musicVolumeSlider, Priority.ALWAYS);
+
+        // Loading the background WAV takes ~1-2 seconds — do it off the UI thread so the launcher
+        // window appears immediately. The volume is applied once the clip finishes opening.
+        startBackgroundMusicAsync(savedVolume / 100.0);
+        return box;
+    }
+
+    private void startBackgroundMusicAsync(double initialVolume) {
+        Thread loader = new Thread(() -> {
+            try {
+                if (backgroundMusicClip == null) {
+                    URL music = ServerHomeController.class.getResource("/assets/barrilmc/background.wav");
+                    if (music == null) {
+                        return;
+                    }
+                    try (InputStream input = music.openStream();
+                         BufferedInputStream buffered = new BufferedInputStream(input);
+                         AudioInputStream audio = AudioSystem.getAudioInputStream(buffered)) {
+                        Clip clip = AudioSystem.getClip();
+                        clip.open(audio);
+                        backgroundMusicClip = clip;
+                    }
+                }
+                Platform.runLater(() -> {
+                    setMusicVolume(initialVolume);
+                    if (!backgroundMusicClip.isRunning()) {
+                        backgroundMusicClip.loop(Clip.LOOP_CONTINUOUSLY);
+                    }
+                });
+            } catch (Exception e) {
+                LOG.warning("Could not start background music", e);
+            }
+        }, "barrilmc-music-loader");
+        loader.setDaemon(true);
+        loader.start();
+    }
+
+    private void setMusicVolume(double linearVolume) {
+        Clip clip = backgroundMusicClip;
+        if (clip == null || !clip.isControlSupported(FloatControl.Type.MASTER_GAIN)) {
+            return;
+        }
+        FloatControl gain = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+        double safe = Math.max(0.0001, Math.min(1.0, linearVolume));
+        float decibels = (float) (20.0 * Math.log10(safe));
+        gain.setValue(Math.max(gain.getMinimum(), Math.min(gain.getMaximum(), decibels)));
     }
 
     private VBox buildSidePanel() {
@@ -267,11 +402,17 @@ public final class ServerHomeController extends FlowPane {
         playButton.getStyleClass().addAll("server-primary-button", "dialog-accept");
         playButton.setStyle("-fx-text-fill: white;");
         playButton.setGraphic(SVG.ROCKET_LAUNCH.createIcon(18));
-        playButton.setOnAction(event -> runUpdate(true));
+        playButton.setOnAction(event -> runUpdate(true, true));
+
+        playMenuButton.getStyleClass().add("server-secondary-button");
+        playMenuButton.setGraphic(SVG.HOME.createIcon(18));
+        FXUtils.installFastTooltip(playMenuButton,
+                "Abre el juego en el menu principal, sin conectarte automaticamente al servidor.");
+        playMenuButton.setOnAction(event -> runUpdate(true, false));
 
         updateButton.getStyleClass().add("server-secondary-button");
         updateButton.setGraphic(SVG.UPDATE.createIcon(18));
-        updateButton.setOnAction(event -> runUpdate(false));
+        updateButton.setOnAction(event -> runUpdate(false, false));
 
         settingsButton.getStyleClass().add("server-secondary-button");
         settingsButton.setGraphic(SVG.SETTINGS.createIcon(18));
@@ -287,17 +428,32 @@ public final class ServerHomeController extends FlowPane {
 
         microsoftButton.getStyleClass().add("server-login-button");
         microsoftButton.setGraphic(SVG.MICROSOFT.createIcon(18));
-        microsoftButton.setOnAction(event -> Controllers.dialog(new LegacyMicrosoftLoginPane()));
+        microsoftButton.setOnAction(event -> {
+            // When an Azure client ID is configured (hmcl.microsoft.auth.id), use HMCL's
+            // native flow: the browser opens, the user logs in, and the launcher captures
+            // the code automatically via its localhost callback — no Ctrl+L / Ctrl+C.
+            // Without a client ID, fall back to the manual clipboard flow so login still works.
+            if (Accounts.OAUTH_CALLBACK.getClientId().isEmpty()) {
+                Controllers.dialog(new LegacyMicrosoftLoginPane());
+            } else {
+                Controllers.dialog(new MicrosoftAccountLoginPane());
+            }
+        });
 
         offlineButton.getStyleClass().add("server-login-button");
         offlineButton.setGraphic(SVG.PERSON.createIcon(18));
         offlineButton.setOnAction(event -> Controllers.dialog(new CreateAccountPane(Accounts.FACTORY_OFFLINE)));
     }
 
-    private void runUpdate(boolean launchAfterUpdate) {
+    private void runUpdate(boolean launchAfterUpdate, boolean quickJoin) {
         Profile profile = ServerInstanceManager.getOrCreateServerProfile();
         setBusy(true);
         updateProgress("Preparando actualizacion", 0);
+
+        // Export the latest YouTube thumbnail into the instance (fire-and-forget). The in-game
+        // mod reads <instance>/barrilmc/video.png instead of decoding JPEG itself, which is
+        // unreliable inside Fabric's classloader. Runs well before the game reaches its menu.
+        CompletableFuture.runAsync(() -> BarrilmcVideoExporter.export(ServerLauncherConfig.INSTANCE_DIRECTORY));
 
         CompletableFuture
                 .supplyAsync(() -> {
@@ -320,7 +476,7 @@ public final class ServerHomeController extends FlowPane {
                         return;
                     }
 
-                    ServerInstanceManager.applyLaunchSettings(profile, manifest);
+                    ServerInstanceManager.applyLaunchSettings(profile, manifest, quickJoin);
                     versionLabel.setText(manifest.getMinecraftVersion() + " / Fabric " + manifest.getLoaderVersion());
                     progressLabel.setText("Archivos verificados");
                     refreshStatus();
@@ -349,6 +505,7 @@ public final class ServerHomeController extends FlowPane {
                     launcherUpdateLabel.setManaged(true);
                     launcherUpdateButton.setVisible(true);
                     launcherUpdateButton.setManaged(true);
+                    downloadLauncherUpdate();
                 }));
     }
 
@@ -383,12 +540,80 @@ public final class ServerHomeController extends FlowPane {
                     }
 
                     Path downloaded = path;
-                    progressLabel.setText("Launcher descargado");
-                    Controllers.dialog(
-                            "Nueva version descargada:\n" + downloaded + "\n\nCierra este launcher y ejecuta el archivo nuevo.",
-                            "Actualizacion lista",
-                            MessageDialogPane.MessageType.INFO);
+                    try {
+                        LauncherSelfUpdateService.replaceCurrentLauncherAndRestart(downloaded);
+                        Platform.exit();
+                        System.exit(0);
+                    } catch (Exception e) {
+                        LOG.warning("Could not start downloaded launcher", e);
+                        progressLabel.setText("Launcher descargado");
+                        Controllers.dialog(
+                                "Nueva version descargada:\n" + downloaded + "\n\nNo se pudo abrir automaticamente. Ejecuta ese archivo manualmente.",
+                                "Actualizacion lista",
+                                MessageDialogPane.MessageType.INFO);
+                    }
                 }));
+    }
+
+    private void showMoveInstallDialog() {
+        Path currentDir = ServerLauncherConfig.LAUNCHER_DIRECTORY;
+
+        DirectoryChooser chooser = new DirectoryChooser();
+        chooser.setTitle("Selecciona la carpeta destino para la instalacion");
+        File chosen = chooser.showDialog(getScene().getWindow());
+        if (chosen == null) return;
+
+        Path newDir = chosen.toPath().resolve("BarrilMCLauncher").toAbsolutePath().normalize();
+        if (newDir.equals(currentDir)) {
+            Alert same = new Alert(Alert.AlertType.WARNING);
+            same.setTitle("Misma ubicacion");
+            same.setHeaderText(null);
+            same.setContentText("La carpeta seleccionada es la ubicacion actual. Elige otra.");
+            same.showAndWait();
+            return;
+        }
+
+        Alert confirm = new Alert(Alert.AlertType.CONFIRMATION);
+        confirm.setTitle("Mover instalacion");
+        confirm.setHeaderText("Mover instalacion a otro disco");
+        confirm.setContentText(
+                "Se copiaran todos los archivos de:\n" + currentDir +
+                "\n\na:\n" + newDir +
+                "\n\nLa carpeta original NO se borrara — puedes eliminarla manualmente despues de comprobar que todo funciona." +
+                "\n\nEl launcher se cerrara al terminar. ¿Continuar?");
+        confirm.showAndWait().filter(b -> b == ButtonType.OK).ifPresent(b -> {
+            setBusy(true);
+            updateProgress("Moviendo instalacion...", -1);
+
+            CompletableFuture.runAsync(() -> {
+                try {
+                    BarrilmcInstallConfig.moveInstallation(currentDir, newDir, (done, total, file) ->
+                            updateProgress("Copiando " + done + "/" + total + ": " + file,
+                                    total > 0 ? (double) done / total : 0));
+                } catch (IOException ex) {
+                    throw new CompletionException(ex);
+                }
+            }).whenComplete((v, err) -> Platform.runLater(() -> {
+                setBusy(false);
+                if (err != null) {
+                    LOG.warning("Move installation failed", err);
+                    Alert error = new Alert(Alert.AlertType.ERROR);
+                    error.setTitle("Error");
+                    error.setHeaderText("Error al mover la instalacion");
+                    error.setContentText(err.getCause() != null ? err.getCause().getMessage() : err.getMessage());
+                    error.showAndWait();
+                    return;
+                }
+                Alert done = new Alert(Alert.AlertType.INFORMATION);
+                done.setTitle("Instalacion movida");
+                done.setHeaderText(null);
+                done.setContentText("Instalacion movida correctamente a:\n" + newDir +
+                        "\n\nEl launcher se cerrara ahora. Vuelve a abrirlo para usar la nueva ubicacion.");
+                done.showAndWait();
+                Platform.exit();
+                System.exit(0);
+            }));
+        });
     }
 
     private void updateProgress(String message, double progress) {
@@ -402,11 +627,19 @@ public final class ServerHomeController extends FlowPane {
 
     private void setBusy(boolean busy) {
         playButton.setDisable(busy);
+        playMenuButton.setDisable(busy);
         updateButton.setDisable(busy);
         settingsButton.setDisable(busy);
         launcherUpdateButton.setDisable(busy);
         microsoftButton.setDisable(busy);
         offlineButton.setDisable(busy);
+        // Reveal the progress row as soon as work begins (it stays hidden while idle).
+        if (busy) {
+            progressBar.setVisible(true);
+            progressBar.setManaged(true);
+            progressLabel.setVisible(true);
+            progressLabel.setManaged(true);
+        }
         progressBar.setProgress(busy ? ProgressIndicator.INDETERMINATE_PROGRESS : progressBar.getProgress());
     }
 

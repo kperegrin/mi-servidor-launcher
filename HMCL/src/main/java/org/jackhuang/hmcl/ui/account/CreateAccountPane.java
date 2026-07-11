@@ -277,7 +277,12 @@ public class CreateAccountPane extends JFXDialogLayout implements DialogAware {
         }
 
         if (factory == Accounts.FACTORY_MICROSOFT) {
-            detailsPane = new org.jackhuang.hmcl.ui.server.LegacyMicrosoftLoginPane(true);
+            // Flujo automatico (servidor local en localhost) si hay Azure Client ID; si no, manual.
+            if (Accounts.OAUTH_CALLBACK.getClientId().isEmpty()) {
+                detailsPane = new org.jackhuang.hmcl.ui.server.LegacyMicrosoftLoginPane(true);
+            } else {
+                detailsPane = new MicrosoftAccountLoginPane(true);
+            }
             setActions();
         } else {
             detailsPane = new AccountDetailsInputPane(factory, btnAccept::fire);

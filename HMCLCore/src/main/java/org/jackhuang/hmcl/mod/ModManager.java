@@ -38,6 +38,13 @@ import static org.jackhuang.hmcl.util.logging.Logger.LOG;
 public final class ModManager extends LocalAddonManager<LocalModFile> {
     public static final List<String> MOD_EXTENSIONS = List.of("jar", "litemod");
 
+    /**
+     * The BarrilMC integrated client is injected into the mods folder by the launcher on every
+     * start and is intentionally hidden from the mod manager UI so that it cannot be disabled or
+     * removed from inside the launcher. See {@code BarrilmcClientInjector}.
+     */
+    public static final String BARRILMC_CLIENT_FILE = "barrilmc-client.jar";
+
     @FunctionalInterface
     private interface ModMetadataReader {
         LocalModFile fromFile(ModManager modManager, Path modFile, ZipFileTree tree) throws IOException, JsonParseException;
@@ -100,6 +107,13 @@ public final class ModManager extends LocalAddonManager<LocalModFile> {
 
     private void addModInfo(Path file) {
         String fileName = StringUtils.removeSuffix(FileUtils.getName(file), DISABLED_EXTENSION, OLD_EXTENSION);
+
+        // Hide the launcher-managed BarrilMC client from the mod list so it cannot be
+        // disabled or removed through the UI. It is re-injected on every launch anyway.
+        if (fileName.equalsIgnoreCase(BARRILMC_CLIENT_FILE)) {
+            return;
+        }
+
         String extension = fileName.substring(fileName.lastIndexOf(".") + 1);
 
         List<Pair<ModMetadataReader, ModLoaderType>> readersMap = READERS.get(extension);

@@ -38,9 +38,11 @@ public final class YouTubeFeedService {
     private static final String FEED_URL =
             "https://www.youtube.com/feeds/videos.xml?channel_id=";
 
-    /// Regex to extract a UC… channel ID from a YouTube page's embedded JSON.
-    private static final Pattern CHANNEL_ID_PATTERN =
-            Pattern.compile("\"(?:channelId|externalId)\"\\s*:\\s*\"(UC[\\w-]{22})\"");
+    /// Regex to extract a UC… channel ID from a YouTube page's embedded JSON or HTML.
+    /// Matches channelId, externalId, browseId keys, and /channel/UC… URL patterns.
+    private static final Pattern CHANNEL_ID_PATTERN = Pattern.compile(
+            "\"(?:channelId|externalId|browseId)\"\\s*:\\s*\"(UC[\\w-]{22})\"|" +
+            "/channel/(UC[\\w-]{22})");
 
     /// A single video entry from the YouTube RSS feed.
     public static final class VideoEntry {
@@ -84,10 +86,14 @@ public final class YouTubeFeedService {
     }
 
     /// Fetches the latest videos using a channel handle like "@barrilmc".
-    /// Resolves the handle to a channel ID by scraping the channel page, then
-    /// fetches the RSS feed.
+    /// If YOUTUBE_CHANNEL_ID is set in ServerLauncherConfig, uses it directly to avoid
+    /// scraping the channel page (which breaks when YouTube changes its HTML structure).
+    /// Otherwise resolves the handle to a channel ID by scraping.
     public static List<VideoEntry> fetchVideosByHandle(String handle) throws IOException {
-        String channelId = resolveChannelId(handle);
+        String channelId = ServerLauncherConfig.YOUTUBE_CHANNEL_ID;
+        if (channelId == null || channelId.isBlank()) {
+            channelId = resolveChannelId(handle);
+        }
         return fetchVideos(channelId);
     }
 
@@ -101,21 +107,22 @@ public final class YouTubeFeedService {
     private static String resolveChannelId(String handle) throws IOException {
         String url = "https://www.youtube.com/" + handle;
         String html = HttpRequest.GET(url)
-                // Accept-Language en-US avoids GDPR consent redirects on many IPs
                 .header("Accept-Language", "en-US,en;q=0.9")
                 .header("User-Agent",
                         "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
                         + "(KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36")
-                // SOCS cookie bypasses YouTube's consent/cookie banner
-                .header("Cookie", "SOCS=CAI; CONSENT=YES+cb.20210328-17-p0.en+FX+")
+                // SOCS=CAE= bypasses YouTube's consent/cookie banner
+                .header("Cookie", "SOCS=CAE=; CONSENT=YES+cb.20210328-17-p0.en+FX+")
                 .getString();
 
         Matcher m = CHANNEL_ID_PATTERN.matcher(html);
-        if (m.find()) {
-            return m.group(1);
+        while (m.find()) {
+            // Pattern has two capture groups (JSON key and URL pattern); one will be null
+            String id = m.group(1) != null ? m.group(1) : m.group(2);
+            if (id != null) return id;
         }
         throw new IOException("Could not resolve channel ID from YouTube handle: " + handle
-                + " (consent page may have been served)");
+                + " (consent page may have been served — set YOUTUBE_CHANNEL_ID in ServerLauncherConfig)");
     }
 
     private static List<VideoEntry> parseAtomFeed(String xml) throws IOException {

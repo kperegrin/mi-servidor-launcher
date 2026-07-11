@@ -16,6 +16,7 @@ import org.jetbrains.annotations.NotNullByDefault;
 
 import java.io.IOException;
 import java.io.Reader;
+import java.io.StringReader;
 import java.net.URI;
 import java.util.Locale;
 
@@ -36,6 +37,13 @@ public final class LauncherVersionInfo {
         info.normalize();
         info.validate();
         return info;
+    }
+
+    /// Reads and validates version.json from a UTF-8 string.
+    public static LauncherVersionInfo read(String json) throws IOException {
+        try (StringReader reader = new StringReader(json)) {
+            return read(reader);
+        }
     }
 
     private void normalize() {

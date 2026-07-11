@@ -239,8 +239,14 @@ public final class YouTubePostsService {
         Deque<JsonElement> stack = new ArrayDeque<>();
         stack.push(root);
 
-        String bestUrl = null;
+        // Two candidates: the largest thumbnail whose dimensions YouTube actually
+        // reports, and a best-effort fallback (the last thumbnail URL we saw, which
+        // in YouTube's small->large ordering is typically the highest resolution).
+        // The fallback matters because YouTube frequently omits width/height on
+        // community-post attachments; without it those images were silently dropped.
+        String bestSizedUrl = null;
         int bestArea = -1;
+        String fallbackUrl = null;
 
         while (!stack.isEmpty()) {
             JsonElement element = stack.pop();
@@ -264,12 +270,15 @@ public final class YouTubePostsService {
                     JsonObject thumb = thumbElement.getAsJsonObject();
                     if (!thumb.has("url")) continue;
 
+                    String url = thumb.get("url").getAsString();
+                    fallbackUrl = url; // last-seen wins (largest in YouTube's ordering)
+
                     int width = thumb.has("width") ? thumb.get("width").getAsInt() : 0;
                     int height = thumb.has("height") ? thumb.get("height").getAsInt() : 0;
                     int area = width * height;
                     if (area > bestArea) {
                         bestArea = area;
-                        bestUrl = thumb.get("url").getAsString();
+                        bestSizedUrl = url;
                     }
                 }
             }
@@ -279,12 +288,25 @@ public final class YouTubePostsService {
             }
         }
 
-        return bestArea >= 10000 ? bestUrl : null;
+        // Prefer a properly-sized image (>= 100x100 keeps out tiny icons); otherwise
+        // fall back to any attachment image we found, even without dimensions.
+        if (bestArea >= 10000) {
+            return bestSizedUrl;
+        }
+        return fallbackUrl;
     }
 
     private static String normalizeImageUrl(String url) {
         if (url.startsWith("//")) {
-            return "https:" + url;
+            url = "https:" + url;
+        }
+        // JavaFX's Image class cannot decode WebP, but Google's image CDNs
+        // (yt3.ggpht.com / *.googleusercontent.com) serve WebP by default via the
+        // "-rw" format token in the size spec (e.g. "=s720-c-...-rw-nd-v1"). That is
+        // exactly why post thumbnails downloaded fine yet never rendered. Swapping the
+        // token to "-rj" makes the CDN return JPEG, which JavaFX can decode.
+        if (url.contains("ggpht.com") || url.contains("googleusercontent.com")) {
+            url = url.replaceAll("-rw(?=-|$)", "-rj");
         }
         return url;
     }

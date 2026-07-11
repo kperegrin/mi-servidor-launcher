@@ -36,9 +36,15 @@ import static org.jackhuang.hmcl.util.Pair.pair;
 import static org.jackhuang.hmcl.util.logging.Logger.LOG;
 
 public class OAuth {
+    // Use the Azure AD v2.0 "consumers" endpoints for ALL flows. The legacy
+    // login.live.com/oauth20_authorize.srf endpoint only knows about old MSA apps
+    // and rejects apps registered in the Entra/Azure portal ("redirect_uri not
+    // valid"). The v2.0 authorize endpoint accepts an Entra app and internally
+    // brokers personal-account sign-in to login.live.com with the right context,
+    // so the authorization-code + localhost flow works with no copy/paste.
     public static final OAuth MICROSOFT = new OAuth(
-            "https://login.live.com/oauth20_authorize.srf",
-            "https://login.live.com/oauth20_token.srf",
+            "https://login.microsoftonline.com/consumers/oauth2/v2.0/authorize",
+            "https://login.microsoftonline.com/consumers/oauth2/v2.0/token",
             "https://login.microsoftonline.com/consumers/oauth2/v2.0/devicecode",
             "https://login.microsoftonline.com/consumers/oauth2/v2.0/token");
 

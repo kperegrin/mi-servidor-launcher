@@ -131,7 +131,16 @@ public final class AccountListPage extends DecoratorAnimatedPage implements Deco
                     microsoftItem.getStyleClass().add("navigation-drawer-item");
                     microsoftItem.setTitle(i18n("account.methods.microsoft"));
                     microsoftItem.setLeftIcon(SVG.MICROSOFT);
-                    microsoftItem.setOnAction(e -> Controllers.dialog(new LegacyMicrosoftLoginPane()));
+                    // Si hay Azure Client ID, abrimos el flujo automatico (servidor local en
+                    // localhost:29111-29115 que captura el "code" de la redireccion). Si no esta
+                    // configurado, caemos al flujo manual con Ctrl+L Ctrl+C.
+                    microsoftItem.setOnAction(e -> {
+                        if (Accounts.OAUTH_CALLBACK.getClientId().isEmpty()) {
+                            Controllers.dialog(new LegacyMicrosoftLoginPane());
+                        } else {
+                            Controllers.dialog(new MicrosoftAccountLoginPane());
+                        }
+                    });
 
                     AdvancedListItem offlineItem = new AdvancedListItem();
                     offlineItem.getStyleClass().add("navigation-drawer-item");

@@ -52,7 +52,8 @@ public final class Metadata {
     public static final String DOCS_URL = "https://docs.hmcl.net";
     public static final String CONTACT_URL = DOCS_URL + "/help.html";
     public static final String CHANGELOG_URL = DOCS_URL + "/changelog/";
-    public static final String EULA_URL = DOCS_URL + "/eula/hmcl.html";
+    // BarrilMC: el acuerdo de primer arranque enseña el EULA oficial de Minecraft, no el de HMCL.
+    public static final String EULA_URL = org.jackhuang.hmcl.server.ServerLauncherConfig.EULA_URL;
     public static final String GROUPS_URL = "https://www.bilibili.com/opus/905435541874409529";
 
     public static final String BUILD_CHANNEL = JarUtils.getAttribute("hmcl.version.type", "nightly");
@@ -119,29 +120,8 @@ public final class Metadata {
     }
 
     public static @Nullable String getSuggestedJavaDownloadLink() {
-        if (OperatingSystem.CURRENT_OS == OperatingSystem.LINUX && Architecture.SYSTEM_ARCH == Architecture.LOONGARCH64_OW)
-            return "https://www.loongnix.cn/zh/api/java/downloads-jdk21/index.html";
-        else {
-            EnumSet<Architecture> supportedArchitectures;
-            if (OperatingSystem.CURRENT_OS == OperatingSystem.WINDOWS)
-                supportedArchitectures = EnumSet.of(Architecture.X86_64, Architecture.X86, Architecture.ARM64);
-            else if (OperatingSystem.CURRENT_OS == OperatingSystem.LINUX)
-                supportedArchitectures = EnumSet.of(
-                        Architecture.X86_64, Architecture.X86,
-                        Architecture.ARM64, Architecture.ARM32,
-                        Architecture.RISCV64, Architecture.LOONGARCH64
-                );
-            else if (OperatingSystem.CURRENT_OS == OperatingSystem.MACOS)
-                supportedArchitectures = EnumSet.of(Architecture.X86_64, Architecture.ARM64);
-            else
-                supportedArchitectures = EnumSet.noneOf(Architecture.class);
-            if (supportedArchitectures.contains(Architecture.SYSTEM_ARCH))
-                return String.format("https://docs.hmcl.net/downloads/%s/%s.html",
-                        OperatingSystem.CURRENT_OS.getCheckedName(),
-                        Architecture.SYSTEM_ARCH.getCheckedName()
-                );
-            else
-                return null;
-        }
+        // BarrilMC: ignoramos las webs de HMCL (en chino o irrelevantes) y enviamos a la URL
+        // configurada en ServerLauncherConfig.JAVA_DOWNLOAD_URL. Por defecto Adoptium.
+        return org.jackhuang.hmcl.server.ServerLauncherConfig.JAVA_DOWNLOAD_URL;
     }
 }
