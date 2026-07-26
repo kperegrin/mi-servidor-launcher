@@ -59,10 +59,10 @@
             "required": true
         },
         {
-            "path": "mods/barrilcomplements-18dejulio.jar",
-            "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/barrilcomplements-18dejulio.jar",
-            "sha256": "a16be20aa46dea6635be6cbfd741e217465cc6858e8c6a47b05fb0297343609f",
-            "size": 4389825,
+            "path": "mods/barrilcomplements-26dejulio.jar",
+            "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/barrilcomplements-26dejulio.jar",
+            "sha256": "2bcda5989c42465cb37c3b9f498da609871159d55437b9fcd52a60c518ca074f",
+            "size": 4740682,
             "required": true
         },
         {
@@ -1151,10 +1151,17 @@
             "required": true
         },
         {
-            "path": "resourcepacks/texturepackbarriliano18dejulio.zip",
-            "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/texturepackbarriliano18dejulio.zip",
-            "sha256": "ee6bfc9b058600be81acfd191f8f2a0b8d0f54a2f18b9411e574e9c3ad14d276",
-            "size": 1094623,
+            "path": "resourcepacks/texturepackbarriliano26dejulio.zip",
+            "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/texturepackbarriliano26dejulio.zip",
+            "sha256": "773a281e5bc06a45f417e1056ac6df5cf009674745ce05dae8be2b5b75c59b00",
+            "size": 1146824,
+            "required": true
+        },
+        {
+            "path": "mods/cobblemon_armor_sets_FABRIC-2.0.1.jar",
+            "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/cobblemon_armor_sets_FABRIC-2.0.1.jar",
+            "sha256": "83b471791b2da44f1b50b63da528f78c63ced66ef2f06740dcce8bccd2d1a71a",
+            "size": 880559,
             "required": true
         },
         {
@@ -1318,8 +1325,12 @@
         "mods/barrilcomplements-13dejunio.jar.disabled",
         "mods/barrilcomplements-06dejulio.jar",
         "mods/barrilcomplements-06dejulio.jar.disabled",
+        "mods/barrilcomplements-18dejulio.jar",
+        "mods/barrilcomplements-18dejulio.jar.disabled",
         "resourcepacks/texturepackbarriliano10dejulio.zip",
         "resourcepacks/texturepackbarriliano10dejulio.zip.disabled",
+        "resourcepacks/texturepackbarriliano18dejulio.zip",
+        "resourcepacks/texturepackbarriliano18dejulio.zip.disabled",
         "mods/barrilcomplements-18dejunio.jar",
         "mods/barrilcomplements-18dejunio.jar.disabled",
         "resourcepacks/texturepackbarriliano18dejunio.zip",
