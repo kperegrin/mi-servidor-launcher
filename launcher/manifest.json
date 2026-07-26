@@ -1158,13 +1158,6 @@
             "required": true
         },
         {
-            "path": "mods/cobblemon_armor_sets_FABRIC-2.0.1.jar",
-            "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/cobblemon_armor_sets_FABRIC-2.0.1.jar",
-            "sha256": "83b471791b2da44f1b50b63da528f78c63ced66ef2f06740dcce8bccd2d1a71a",
-            "size": 880559,
-            "required": true
-        },
-        {
             "path": "mods/cobbletcg-1.5.0.jar",
             "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/cobbletcg-1.5.0.jar",
             "sha256": "7318e3b529ded600ad83a3a20d281bc69b8fc13e75d19da124c63be9ff1936d5",
@@ -1323,6 +1316,8 @@
         "resourcepacks/texturepackbarriliano14dejunio.zip.disabled",
         "mods/barrilcomplements-13dejunio.jar",
         "mods/barrilcomplements-13dejunio.jar.disabled",
+        "mods/cobblemon_armor_sets_FABRIC-2.0.1.jar",
+        "mods/cobblemon_armor_sets_FABRIC-2.0.1.jar.disabled",
         "mods/barrilcomplements-06dejulio.jar",
         "mods/barrilcomplements-06dejulio.jar.disabled",
         "mods/barrilcomplements-18dejulio.jar",
