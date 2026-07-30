@@ -59,10 +59,10 @@
             "required": true
         },
         {
-            "path": "mods/barrilcomplements-26dejulio.jar",
-            "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/barrilcomplements-26dejulio.jar",
-            "sha256": "2bcda5989c42465cb37c3b9f498da609871159d55437b9fcd52a60c518ca074f",
-            "size": 4740682,
+            "path": "mods/barrilcomplements-30dejulio.jar",
+            "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/barrilcomplements-30dejulio.jar",
+            "sha256": "5c96b34ce46fbfa6b2f0f36bc9552dea3ac503d59185de9ca4ae9c735aea1673",
+            "size": 7136399,
             "required": true
         },
         {
@@ -1153,8 +1153,8 @@
         {
             "path": "resourcepacks/texturepackbarriliano26dejulio.zip",
             "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/texturepackbarriliano26dejulio.zip",
-            "sha256": "773a281e5bc06a45f417e1056ac6df5cf009674745ce05dae8be2b5b75c59b00",
-            "size": 1146824,
+            "sha256": "5b258f4eb8a59423f8b53bc932fb477464b1e37a55abac42e2a441b5796a4b4b",
+            "size": 1937065,
             "required": true
         },
         {
@@ -1318,6 +1318,8 @@
         "mods/barrilcomplements-13dejunio.jar.disabled",
         "mods/cobblemon_armor_sets_FABRIC-2.0.1.jar",
         "mods/cobblemon_armor_sets_FABRIC-2.0.1.jar.disabled",
+        "mods/barrilcomplements-26dejulio.jar",
+        "mods/barrilcomplements-26dejulio.jar.disabled",
         "mods/barrilcomplements-06dejulio.jar",
         "mods/barrilcomplements-06dejulio.jar.disabled",
         "mods/barrilcomplements-18dejulio.jar",
