@@ -1153,8 +1153,8 @@
         {
             "path": "resourcepacks/texturepackbarriliano1deagosto.zip",
             "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/texturepackbarriliano1deagosto.zip",
-            "sha256": "d5b2ded5de6247d5212a5929c2ba084f15d6f90821459fdd3d001e7a3998a04a",
-            "size": 2042482,
+            "sha256": "f018fd56f9aff725a4571c55798e9508526d3f3f2fa272988ef642d79b9be6ad",
+            "size": 2042828,
             "required": true
         },
         {
