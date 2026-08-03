@@ -59,10 +59,10 @@
             "required": true
         },
         {
-            "path": "mods/barrilcomplements-1deagosto.jar",
-            "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/barrilcomplements-1deagosto.jar",
-            "sha256": "315fdd8d152fa79bcc0d608f69bb01d92607bf0493d62ac77c920814fcc36fbc",
-            "size": 7193353,
+            "path": "mods/barrilcomplements-3deagosto.jar",
+            "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/barrilcomplements-3deagosto.jar",
+            "sha256": "ca0c58357b19d6af82f3fe7cdb043f360ee43876158623dfbe52f67a7a45b96c",
+            "size": 7290931,
             "required": true
         },
         {
@@ -1153,8 +1153,8 @@
         {
             "path": "resourcepacks/texturepackbarriliano1deagosto.zip",
             "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/texturepackbarriliano1deagosto.zip",
-            "sha256": "f018fd56f9aff725a4571c55798e9508526d3f3f2fa272988ef642d79b9be6ad",
-            "size": 2042828,
+            "sha256": "8537d65347c6a45fbb71e7aa25f7a123a4715f7f03a451af6efaa85e182e99ca",
+            "size": 2186897,
             "required": true
         },
         {
@@ -1494,7 +1494,9 @@
         "mods/yet_another_config_lib_v3-3.8.2+1.21.1-fabric.jar",
         "mods/yet_another_config_lib_v3-3.8.2+1.21.1-fabric.jar.disabled",
         "mods/zamega-fabric-1.7.1.jar",
-        "mods/zamega-fabric-1.7.1.jar.disabled"
+        "mods/zamega-fabric-1.7.1.jar.disabled",
+        "mods/barrilcomplements-1deagosto.jar",
+        "mods/barrilcomplements-1deagosto.jar.disabled"
     ],
     "wipe": [],
     "news": [
