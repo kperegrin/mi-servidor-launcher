@@ -39,6 +39,8 @@ import java.util.zip.GZIPOutputStream;
 @NotNullByDefault
 public final class LauncherUpdater {
     private static final int HTTP_TIMEOUT_MILLIS = 30000;
+    private static final int MAX_DOWNLOAD_RETRIES = 3;
+    private static final long RETRY_DELAY_MS = 5000;
     private static final byte TAG_END = 0;
     private static final byte TAG_BYTE = 1;
     private static final byte TAG_STRING = 8;
@@ -241,31 +243,50 @@ public final class LauncherUpdater {
         Files.createDirectories(target.getParent());
         Path temporary = target.resolveSibling(target.getFileName() + ".download");
 
-        try (InputStream input = openHttps(file.getUrl())) {
-            long total = file.getSize();
-            long done = 0L;
-            byte[] buffer = new byte[1024 * 128];
-            try (var output = Files.newOutputStream(temporary)) {
-                int read;
-                while ((read = input.read(buffer)) >= 0) {
-                    output.write(buffer, 0, read);
-                    done += read;
-                    progress.update(done, total);
+        IOException lastError = null;
+        for (int attempt = 1; attempt <= MAX_DOWNLOAD_RETRIES; attempt++) {
+            try {
+                try (InputStream input = openHttps(file.getUrl())) {
+                    long total = file.getSize();
+                    long done = 0L;
+                    byte[] buffer = new byte[1024 * 128];
+                    try (var output = Files.newOutputStream(temporary)) {
+                        int read;
+                        while ((read = input.read(buffer)) >= 0) {
+                            output.write(buffer, 0, read);
+                            done += read;
+                            progress.update(done, total);
+                        }
+                    }
+                }
+
+                if (!HashUtils.matchesSha256(temporary, file.getSha256())) {
+                    String suffix = attempt < MAX_DOWNLOAD_RETRIES ? " — reintentando (" + attempt + "/" + MAX_DOWNLOAD_RETRIES + ")..." : "";
+                    lastError = new IOException("SHA-256 no coincide para " + file.getPath() + suffix);
+                    Files.deleteIfExists(temporary);
+                    if (attempt < MAX_DOWNLOAD_RETRIES) {
+                        try { Thread.sleep(RETRY_DELAY_MS); } catch (InterruptedException ie) { Thread.currentThread().interrupt(); }
+                    }
+                    continue;
+                }
+
+                try {
+                    Files.move(temporary, target, StandardCopyOption.REPLACE_EXISTING, StandardCopyOption.ATOMIC_MOVE);
+                } catch (AtomicMoveNotSupportedException e) {
+                    Files.move(temporary, target, StandardCopyOption.REPLACE_EXISTING);
+                }
+                return;
+            } catch (IOException e) {
+                lastError = e;
+                Files.deleteIfExists(temporary);
+                if (attempt < MAX_DOWNLOAD_RETRIES) {
+                    try { Thread.sleep(RETRY_DELAY_MS); } catch (InterruptedException ie) { Thread.currentThread().interrupt(); }
                 }
             }
-
-            if (!HashUtils.matchesSha256(temporary, file.getSha256())) {
-                throw new IOException("SHA-256 mismatch for " + file.getPath());
-            }
-
-            try {
-                Files.move(temporary, target, StandardCopyOption.REPLACE_EXISTING, StandardCopyOption.ATOMIC_MOVE);
-            } catch (AtomicMoveNotSupportedException e) {
-                Files.move(temporary, target, StandardCopyOption.REPLACE_EXISTING);
-            }
-        } finally {
-            Files.deleteIfExists(temporary);
         }
+
+        Files.deleteIfExists(temporary);
+        throw lastError != null ? lastError : new IOException("Descarga fallida: " + file.getPath());
     }
 
     /// Abre una conexión HTTPS. Si la URL es de {@code raw.githubusercontent.com} y falla

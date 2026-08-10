@@ -1,6 +1,6 @@
 {
-    "latest":  "1.0.34",
-    "downloadUrl":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/BarrilMC-Launcher-1.0.34.exe",
-    "sha256":  "d8375ab84adb9d970283ff724b86dc052e3fb0fc37813020dea4c9b44483da84",
-    "notes":  "Setup inicial: al abrir el launcher por primera vez aparece un asistente para elegir el disco de instalacion antes de descargar nada."
+    "latest":  "1.0.35",
+    "downloadUrl":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/BarrilMC-Launcher-1.0.35.exe",
+    "sha256":  "e08291ea422775a749d5c198b07808ee8e5468de24416469ff927ece997e03ca",
+    "notes":  "Reintentos automaticos al sincronizar archivos: si un archivo falla la verificacion de hash se reintenta hasta 3 veces antes de mostrar error."
 }
