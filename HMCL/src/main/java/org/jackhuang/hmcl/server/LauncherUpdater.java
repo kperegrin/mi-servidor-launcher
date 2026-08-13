@@ -114,10 +114,20 @@ public final class LauncherUpdater {
             } else {
                 Version resolved = current.resolve(repository);
                 LibraryAnalyzer analyzer = LibraryAnalyzer.analyze(resolved, manifest.getMinecraftVersion());
-                installFabric = !analyzer.has(LibraryAnalyzer.LibraryType.FABRIC)
-                        || analyzer.getVersion(LibraryAnalyzer.LibraryType.FABRIC)
-                                .map(version -> !version.equals(loaderVersion))
-                                .orElse(true);
+                boolean fabricMissing = !analyzer.has(LibraryAnalyzer.LibraryType.FABRIC);
+                if (fabricMissing) {
+                    // No Fabric at all → must install.
+                    installFabric = true;
+                } else if (BarrilmcLauncherPrefs.getFabricLoaderOverride().isPresent()) {
+                    // User has an explicit override → enforce it.
+                    installFabric = analyzer.getVersion(LibraryAnalyzer.LibraryType.FABRIC)
+                            .map(v -> !v.equals(loaderVersion))
+                            .orElse(true);
+                } else {
+                    // Fabric is already installed at some version and no override is set.
+                    // Respect whatever the user has — don't revert their manual change.
+                    installFabric = false;
+                }
             }
         } else {
             rebuild = true;
