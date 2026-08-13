@@ -500,10 +500,10 @@
             "required": true
         },
         {
-            "path": "mods/iris-fabric-1.8.8+mc1.21.1.jar",
-            "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/iris-fabric-1.8.8%2Bmc1.21.1.jar",
-            "sha256": "b5ad39a6cb113ca0a1765f06689f9f4b29ccd0c81247de90b06c42f5da1092f5",
-            "size": 2690177,
+            "path": "mods/iris-fabric-1.8.14-beta.1+mc1.21.1.jar",
+            "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/iris-fabric-1.8.14-beta.1%2Bmc1.21.1.jar",
+            "sha256": "0ceb694040b4628bf3fa02286cfe5f0db833195669ab07f8caa4001359763eff",
+            "size": 2791343,
             "required": true
         },
         {
@@ -794,13 +794,6 @@
             "required": true
         },
         {
-            "path": "mods/reeses-sodium-options-fabric-1.8.3+mc1.21.4.jar",
-            "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/reeses-sodium-options-fabric-1.8.3%2Bmc1.21.4.jar",
-            "sha256": "b42fc0424050f076c8e1f77b7549e48ec6e07605fbf868ed5d0ef47848665dd2",
-            "size": 81067,
-            "required": true
-        },
-        {
             "path": "mods/repurposed_structures-7.5.18+1.21.1-fabric.jar",
             "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/repurposed_structures-7.5.18%2B1.21.1-fabric.jar",
             "sha256": "1db2c94518e5f8dc088cd0d190a16bc4cee9b43510b6c17d5b8f8d27eb91a80d",
@@ -857,24 +850,17 @@
             "required": true
         },
         {
-            "path": "mods/sodium-extra-fabric-0.6.0+mc1.21.1.jar",
-            "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/sodium-extra-fabric-0.6.0%2Bmc1.21.1.jar",
-            "sha256": "1a7434e444c851d82efbe3d5a8fd2dbb142e9bdf0012d7c6a0e4741c641b1a2d",
-            "size": 373661,
+            "path": "mods/sodium-extra-fabric-0.9.3+mc1.21.1.jar",
+            "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/sodium-extra-fabric-0.9.3%2Bmc1.21.1.jar",
+            "sha256": "c99dfbfe2fe310aa43b322f784e3d314f574f85ba1c87dc932dbfa68f349bac1",
+            "size": 469925,
             "required": true
         },
         {
-            "path": "mods/sodium-fabric-0.6.13+mc1.21.1.jar",
-            "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/sodium-fabric-0.6.13%2Bmc1.21.1.jar",
-            "sha256": "e04599514d88e41765f710eeba59e3814909833396bc11b977f48fc2e7e50353",
-            "size": 1297761,
-            "required": true
-        },
-        {
-            "path": "mods/sodiumoptionsapi-fabric-1.0.10-1.21.1.jar",
-            "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/sodiumoptionsapi-fabric-1.0.10-1.21.1.jar",
-            "sha256": "59b8de5a85b964b9fb9ff83042240ca8842ea77e430d89c69af57dfdff1acc29",
-            "size": 903592,
+            "path": "mods/sodium-fabric-0.8.12+mc1.21.1.jar",
+            "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/sodium-fabric-0.8.12%2Bmc1.21.1.jar",
+            "sha256": "9ad11a616d1ca759867de8a5bbafcde5ab50b68dbd674110c7b90aeea251b793",
+            "size": 1573180,
             "required": true
         },
         {
@@ -1507,7 +1493,17 @@
         "mods/barrilcomplements-10deagosto.jar.disabled",
         "mods/barrilcomplements-12deagosto.jar",
         "mods/barrilcomplements-12deagosto.jar.disabled",
-        "resourcepacks/texturepackbarriliano1deagosto.zip"
+        "resourcepacks/texturepackbarriliano1deagosto.zip",
+        "mods/iris-fabric-1.8.8+mc1.21.1.jar",
+        "mods/iris-fabric-1.8.8+mc1.21.1.jar.disabled",
+        "mods/sodium-extra-fabric-0.6.0+mc1.21.1.jar",
+        "mods/sodium-extra-fabric-0.6.0+mc1.21.1.jar.disabled",
+        "mods/sodium-fabric-0.6.13+mc1.21.1.jar",
+        "mods/sodium-fabric-0.6.13+mc1.21.1.jar.disabled",
+        "mods/reeses-sodium-options-fabric-1.8.3+mc1.21.4.jar",
+        "mods/reeses-sodium-options-fabric-1.8.3+mc1.21.4.jar.disabled",
+        "mods/sodiumoptionsapi-fabric-1.0.10-1.21.1.jar",
+        "mods/sodiumoptionsapi-fabric-1.0.10-1.21.1.jar.disabled"
     ],
     "wipe": [],
     "news": [
