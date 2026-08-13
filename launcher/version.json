@@ -1,6 +1,6 @@
 {
-    "latest":  "1.0.37",
-    "downloadUrl":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/BarrilMC-Launcher-1.0.37.exe",
-    "sha256":  "d3f66f0c83b6ca45fc87dcc2abd4c3ce641b9c22ebfd6d22094fc017193a5197",
-    "notes":  "Fix: el launcher ya no sobreescribe el Fabric loader si ya tienes uno instalado. Cambialo desde los settings de HMCL y se queda."
+    "latest":  "1.0.38",
+    "downloadUrl":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/BarrilMC-Launcher-1.0.38.exe",
+    "sha256":  "1a5b72dc91636aa252a3eb761e0fb94eb07b4d32948f970b448729777520b260",
+    "notes":  "Fix: argumentos JVM simplificados (sin Aikar flags). El juego ya no pre-reserva toda la RAM al inicio."
 }
