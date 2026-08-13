@@ -82,6 +82,32 @@ public final class BarrilmcLauncherPrefs {
         }
     }
 
+    /// Returns a user-specified Fabric loader version that overrides the manifest, or empty if not set.
+    public static java.util.Optional<String> getFabricLoaderOverride() {
+        JsonElement value = load().get("fabricLoaderOverride");
+        if (value != null && value.isJsonPrimitive()) {
+            String v = value.getAsString().trim();
+            if (!v.isEmpty()) return java.util.Optional.of(v);
+        }
+        return java.util.Optional.empty();
+    }
+
+    public static void setFabricLoaderOverride(String version) {
+        synchronized (LOCK) {
+            JsonObject root = load();
+            root.addProperty("fabricLoaderOverride", version.trim());
+            persist(root);
+        }
+    }
+
+    public static void clearFabricLoaderOverride() {
+        synchronized (LOCK) {
+            JsonObject root = load();
+            root.remove("fabricLoaderOverride");
+            persist(root);
+        }
+    }
+
     private static void persist(JsonObject root) {
         Path f = file();
         try {

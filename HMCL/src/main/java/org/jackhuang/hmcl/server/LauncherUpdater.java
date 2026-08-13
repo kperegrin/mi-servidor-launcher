@@ -10,6 +10,7 @@
 package org.jackhuang.hmcl.server;
 
 import org.jackhuang.hmcl.download.LibraryAnalyzer;
+import org.jackhuang.hmcl.server.BarrilmcLauncherPrefs;
 import org.jackhuang.hmcl.game.HMCLGameRepository;
 import org.jackhuang.hmcl.game.Version;
 import org.jackhuang.hmcl.setting.Profile;
@@ -101,6 +102,8 @@ public final class LauncherUpdater {
             repository.refreshVersions();
         }
 
+        String loaderVersion = BarrilmcLauncherPrefs.getFabricLoaderOverride().orElse(manifest.getLoaderVersion());
+
         boolean rebuild = false;
         boolean installFabric = true;
         if (repository.hasVersion(ServerLauncherConfig.INSTANCE_NAME)) {
@@ -113,7 +116,7 @@ public final class LauncherUpdater {
                 LibraryAnalyzer analyzer = LibraryAnalyzer.analyze(resolved, manifest.getMinecraftVersion());
                 installFabric = !analyzer.has(LibraryAnalyzer.LibraryType.FABRIC)
                         || analyzer.getVersion(LibraryAnalyzer.LibraryType.FABRIC)
-                                .map(version -> !version.equals(manifest.getLoaderVersion()))
+                                .map(version -> !version.equals(loaderVersion))
                                 .orElse(true);
             }
         } else {
@@ -127,12 +130,12 @@ public final class LauncherUpdater {
                 repository.refreshVersions();
             }
 
-            listener.update("Instalando Minecraft " + manifest.getMinecraftVersion() + " + Fabric", 0.86);
+            listener.update("Instalando Minecraft " + manifest.getMinecraftVersion() + " + Fabric " + loaderVersion, 0.86);
             Task<?> installTask = profile.getDependency()
                     .gameBuilder()
                     .name(ServerLauncherConfig.INSTANCE_NAME)
                     .gameVersion(manifest.getMinecraftVersion())
-                    .version(ServerLauncherConfig.LOADER, manifest.getLoaderVersion())
+                    .version(ServerLauncherConfig.LOADER, loaderVersion)
                     .buildAsync();
             runTask(installTask);
             repository.refreshVersions();
@@ -140,10 +143,10 @@ public final class LauncherUpdater {
         }
 
         if (installFabric) {
-            listener.update("Actualizando Fabric " + manifest.getLoaderVersion(), 0.88);
+            listener.update("Instalando Fabric " + loaderVersion, 0.88);
             Version current = repository.getVersion(ServerLauncherConfig.INSTANCE_NAME);
             Task<Version> task = profile.getDependency()
-                    .installLibraryAsync(manifest.getMinecraftVersion(), current, ServerLauncherConfig.LOADER, manifest.getLoaderVersion());
+                    .installLibraryAsync(manifest.getMinecraftVersion(), current, ServerLauncherConfig.LOADER, loaderVersion);
             runTask(task);
             Version updated = task.getResult();
             Task<?> saveTask = repository.saveAsync(updated);

@@ -20,14 +20,18 @@ import javafx.geometry.Pos;
 import javafx.geometry.VPos;
 import javafx.scene.Cursor;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonBar;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.ContextMenu;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.ProgressIndicator;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Separator;
 import javafx.scene.control.Slider;
+import javafx.scene.control.TextField;
 import javafx.stage.DirectoryChooser;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
@@ -398,6 +402,42 @@ public final class ServerHomeController extends FlowPane {
         return box;
     }
 
+    private void showFabricVersionDialog() {
+        javafx.scene.control.Dialog<ButtonType> dialog = new javafx.scene.control.Dialog<>();
+        dialog.setTitle("Version de Fabric");
+        dialog.setHeaderText("Cambia el Fabric loader que usa el servidor");
+
+        String currentOverride = BarrilmcLauncherPrefs.getFabricLoaderOverride().orElse("");
+        TextField field = new TextField(currentOverride);
+        field.setPromptText("ej: 0.16.14");
+        field.setPrefWidth(220);
+
+        Label hint = new Label("Vacio = usar la version del manifest (recomendado)");
+        hint.setStyle("-fx-font-size: 11px; -fx-text-fill: derive(-fx-text-base-color, 40%);");
+
+        VBox content = new VBox(8, field, hint);
+        content.setPadding(new javafx.geometry.Insets(12, 0, 4, 0));
+        dialog.getDialogPane().setContent(content);
+
+        ButtonType saveBtn  = new ButtonType("Guardar", ButtonBar.ButtonData.OK_DONE);
+        ButtonType resetBtn = new ButtonType("Usar manifest", ButtonBar.ButtonData.LEFT);
+        ButtonType cancelBtn = ButtonType.CANCEL;
+        dialog.getDialogPane().getButtonTypes().addAll(saveBtn, resetBtn, cancelBtn);
+
+        dialog.showAndWait().ifPresent(result -> {
+            if (result == saveBtn) {
+                String v = field.getText().trim();
+                if (v.isEmpty()) {
+                    BarrilmcLauncherPrefs.clearFabricLoaderOverride();
+                } else {
+                    BarrilmcLauncherPrefs.setFabricLoaderOverride(v);
+                }
+            } else if (result == resetBtn) {
+                BarrilmcLauncherPrefs.clearFabricLoaderOverride();
+            }
+        });
+    }
+
     private void configureButtons() {
         playButton.getStyleClass().addAll("server-primary-button", "dialog-accept");
         playButton.setStyle("-fx-text-fill: white;");
@@ -417,9 +457,20 @@ public final class ServerHomeController extends FlowPane {
         settingsButton.getStyleClass().add("server-secondary-button");
         settingsButton.setGraphic(SVG.SETTINGS.createIcon(18));
         settingsButton.setOnAction(event -> {
-            Profile profile = ServerInstanceManager.getOrCreateServerProfile();
-            Controllers.getSettingsPage().showGameSettings(profile);
-            Controllers.navigate(Controllers.getSettingsPage());
+            ContextMenu menu = new ContextMenu();
+
+            MenuItem gameSettings = new MenuItem("Configuracion del juego");
+            gameSettings.setOnAction(e -> {
+                Profile profile = ServerInstanceManager.getOrCreateServerProfile();
+                Controllers.getSettingsPage().showGameSettings(profile);
+                Controllers.navigate(Controllers.getSettingsPage());
+            });
+
+            MenuItem fabricItem = new MenuItem("Version de Fabric...");
+            fabricItem.setOnAction(e -> showFabricVersionDialog());
+
+            menu.getItems().addAll(gameSettings, fabricItem);
+            menu.show(settingsButton, javafx.geometry.Side.BOTTOM, 0, 4);
         });
 
         launcherUpdateButton.getStyleClass().add("server-secondary-button");
@@ -477,7 +528,8 @@ public final class ServerHomeController extends FlowPane {
                     }
 
                     ServerInstanceManager.applyLaunchSettings(profile, manifest, quickJoin);
-                    versionLabel.setText(manifest.getMinecraftVersion() + " / Fabric " + manifest.getLoaderVersion());
+                    String effectiveFabric = BarrilmcLauncherPrefs.getFabricLoaderOverride().orElse(manifest.getLoaderVersion());
+                    versionLabel.setText(manifest.getMinecraftVersion() + " / Fabric " + effectiveFabric);
                     progressLabel.setText("Archivos verificados");
                     refreshStatus();
                     if (launchAfterUpdate) {
