@@ -59,10 +59,10 @@
             "required": true
         },
         {
-            "path": "mods/barrilcomplements-12deagosto.jar",
-            "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/barrilcomplements-12deagosto.jar",
-            "sha256": "ce153e2407a4c1a7566e40e961cea4c9190a5cb4c957b984c6e73bf81aa859ed",
-            "size": 7539006,
+            "path": "mods/barrilcomplements-13deagosto.jar",
+            "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/barrilcomplements-13deagosto.jar",
+            "sha256": "b16ba280d9325d206b77b154b053b8c7dae3fa1c75147cba49022251d2cd33e1",
+            "size": 7541369,
             "required": true
         },
         {
@@ -1505,6 +1505,8 @@
         "mods/barrilcomplements-5deagosto.jar.disabled",
         "mods/barrilcomplements-10deagosto.jar",
         "mods/barrilcomplements-10deagosto.jar.disabled",
+        "mods/barrilcomplements-12deagosto.jar",
+        "mods/barrilcomplements-12deagosto.jar.disabled",
         "resourcepacks/texturepackbarriliano1deagosto.zip"
     ],
     "wipe": [],
