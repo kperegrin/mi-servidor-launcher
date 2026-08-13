@@ -633,10 +633,10 @@
             "required": true
         },
         {
-            "path": "mods/moreculling-fabric-1.21.1-1.0.6.jar",
-            "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/moreculling-fabric-1.21.1-1.0.6.jar",
-            "sha256": "b7cf4b2d005682b2e1999c0a6fae868b1ddf941aa08efb0ef79baa71acf8bb3a",
-            "size": 345544,
+            "path": "mods/moreculling-fabric-1.21.1-1.0.9.jar",
+            "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/moreculling-fabric-1.21.1-1.0.9.jar",
+            "sha256": "0c0d18cdb6a062c8d3b020a3a92a675ecfcd284be9317a30e045f3242c3a0b58",
+            "size": 332230,
             "required": true
         },
         {
@@ -1503,7 +1503,9 @@
         "mods/reeses-sodium-options-fabric-1.8.3+mc1.21.4.jar",
         "mods/reeses-sodium-options-fabric-1.8.3+mc1.21.4.jar.disabled",
         "mods/sodiumoptionsapi-fabric-1.0.10-1.21.1.jar",
-        "mods/sodiumoptionsapi-fabric-1.0.10-1.21.1.jar.disabled"
+        "mods/sodiumoptionsapi-fabric-1.0.10-1.21.1.jar.disabled",
+        "mods/moreculling-fabric-1.21.1-1.0.6.jar",
+        "mods/moreculling-fabric-1.21.1-1.0.6.jar.disabled"
     ],
     "wipe": [],
     "news": [
