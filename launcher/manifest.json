@@ -269,6 +269,13 @@
             "required": true
         },
         {
+            "path": "mods/CreativeCore_FABRIC_v2.13.39_mc1.21.1.jar",
+            "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/CreativeCore_FABRIC_v2.13.39_mc1.21.1.jar",
+            "sha256": "a0813d3b342fae016eaad9b11a3f153efba01a2caa1221033adb865c49140f70",
+            "size": 1247692,
+            "required": true
+        },
+        {
             "path": "mods/customsplashscreen-2.2.0.jar",
             "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/customsplashscreen-2.2.0.jar",
             "sha256": "142aacb23fc97e467ded7e279a72b00252018c43d12d803d928d07d4fe8d8678",
@@ -980,6 +987,27 @@
             "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/villagerconfig-fabric-4.5.2%2B1.21.1.jar",
             "sha256": "9d0b2c07a123f4a7643c946a30ef4fb5a23fa762735376200c1b9e797652b895",
             "size": 355221,
+            "required": true
+        },
+        {
+            "path": "mods/waterframes-FABRIC-mc1.21.1-v2.1.22.jar",
+            "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/waterframes-FABRIC-mc1.21.1-v2.1.22.jar",
+            "sha256": "7c6a79c48132f74543784dc325895ac8061fe4ff0a8712a08ec8c36516f97844",
+            "size": 266292,
+            "required": true
+        },
+        {
+            "path": "mods/watermedia-3.0.0.23.jar",
+            "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/watermedia-3.0.0.23.jar",
+            "sha256": "c3baefc8fbb005e349b3424f7df8f9d89b18524d5f7a358c6df73ca5e1d98b38",
+            "size": 3625444,
+            "required": true
+        },
+        {
+            "path": "mods/watervision-FB-mc1.21.1-v0.1.0-alpha.jar",
+            "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/watervision-FB-mc1.21.1-v0.1.0-alpha.jar",
+            "sha256": "e60f274d66309909d4fb7cb610df4a31aed76b15fd4f37aad79461abcc82ba20",
+            "size": 82210,
             "required": true
         },
         {
