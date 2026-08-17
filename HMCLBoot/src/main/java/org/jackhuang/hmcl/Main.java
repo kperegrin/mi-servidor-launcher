@@ -32,7 +32,12 @@ import java.util.ResourceBundle;
  */
 public final class Main {
     private static final int MINIMUM_JAVA_VERSION = 17;
-    private static final String DOWNLOAD_PAGE = "https://hmcl.huangyuhui.net/download/";
+    // Adoptium Temurin 21 installer for Windows x64 — direct download, no Chinese websites
+    private static final String JAVA_21_DOWNLOAD_URL =
+            "https://adoptium.net/temurin/releases/?version=21&os=windows&arch=x64&package_type=installer";
+    // GitHub releases page for the BarrilMC launcher (used in --apply-to / auto-update failure case)
+    private static final String LAUNCHER_DOWNLOAD_PAGE =
+            "https://github.com/kperegrin/mi-servidor-launcher/releases";
 
     private Main() {
     }
@@ -95,13 +100,21 @@ public final class Main {
                     JOptionPane.ERROR_MESSAGE, null, null, null);
 
             if (result == JOptionPane.YES_OPTION) {
-                System.out.println("Open " + DOWNLOAD_PAGE);
-                DesktopUtils.openLink(DOWNLOAD_PAGE);
+                System.out.println("Open " + LAUNCHER_DOWNLOAD_PAGE);
+                DesktopUtils.openLink(LAUNCHER_DOWNLOAD_PAGE);
             }
         } else {
             String errorMessage = resourceBundle.getString("boot.unsupported_java_version");
             System.err.println(errorMessage);
-            SwingUtils.showErrorDialog(errorMessage, errorTitle);
+            String btnInstall = resourceBundle.getString("boot.install_java");
+            String btnClose = resourceBundle.getString("boot.close");
+            Object[] options = {btnInstall, btnClose};
+            int result = JOptionPane.showOptionDialog(null, errorMessage, errorTitle,
+                    JOptionPane.YES_NO_OPTION, JOptionPane.ERROR_MESSAGE, null, options, options[0]);
+            if (result == JOptionPane.YES_OPTION) {
+                System.out.println("Open " + JAVA_21_DOWNLOAD_URL);
+                DesktopUtils.openLink(JAVA_21_DOWNLOAD_URL);
+            }
         }
 
         System.exit(1);
