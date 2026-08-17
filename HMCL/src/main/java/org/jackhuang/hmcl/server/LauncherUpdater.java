@@ -299,7 +299,51 @@ public final class LauncherUpdater {
         }
 
         Files.deleteIfExists(temporary);
+
+        // All GitHub retries failed — try Cloudflare R2 fallback.
+        String r2Url = r2FallbackUrl(file.getUrl());
+        if (r2Url != null) {
+            try {
+                try (InputStream input = openHttpsDirect(r2Url)) {
+                    long total = file.getSize();
+                    long done = 0L;
+                    byte[] buffer = new byte[1024 * 128];
+                    try (var output = Files.newOutputStream(temporary)) {
+                        int read;
+                        while ((read = input.read(buffer)) >= 0) {
+                            output.write(buffer, 0, read);
+                            done += read;
+                            progress.update(done, total);
+                        }
+                    }
+                }
+                if (HashUtils.matchesSha256(temporary, file.getSha256())) {
+                    try {
+                        Files.move(temporary, target, StandardCopyOption.REPLACE_EXISTING, StandardCopyOption.ATOMIC_MOVE);
+                    } catch (AtomicMoveNotSupportedException e) {
+                        Files.move(temporary, target, StandardCopyOption.REPLACE_EXISTING);
+                    }
+                    return;
+                }
+                Files.deleteIfExists(temporary);
+            } catch (IOException ignored) {
+                Files.deleteIfExists(temporary);
+            }
+        }
+
         throw lastError != null ? lastError : new IOException("Descarga fallida: " + file.getPath());
+    }
+
+    /// Construye la URL de fallback en Cloudflare R2 a partir de la URL de GitHub Releases.
+    /// Devuelve null si la URL no es de GitHub o no se puede mapear.
+    private static @org.jetbrains.annotations.Nullable String r2FallbackUrl(String githubUrl) {
+        if (githubUrl == null || ServerLauncherConfig.R2_FALLBACK_BASE_URL.isBlank()) return null;
+        String decoded = java.net.URLDecoder.decode(githubUrl, StandardCharsets.UTF_8);
+        int slash = decoded.lastIndexOf('/');
+        if (slash < 0) return null;
+        String filename = decoded.substring(slash + 1);
+        if (filename.isBlank()) return null;
+        return ServerLauncherConfig.R2_FALLBACK_BASE_URL + "/" + filename;
     }
 
     /// Abre una conexión HTTPS. Si la URL es de {@code raw.githubusercontent.com} y falla

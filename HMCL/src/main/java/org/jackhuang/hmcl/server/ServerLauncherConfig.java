@@ -72,6 +72,9 @@ public final class ServerLauncherConfig {
     /// EULA que se enseña en el primer arranque. Por defecto el oficial de Minecraft.
     public static final String EULA_URL = "https://www.minecraft.net/es-es/eula";
 
+    /// Cloudflare R2 CDN fallback — used when GitHub releases are unreachable.
+    public static final String R2_FALLBACK_BASE_URL = "https://pub-7fb67c2e17df4f2ea9abf5062bd6e7e9.r2.dev";
+
     private ServerLauncherConfig() {
     }
 
