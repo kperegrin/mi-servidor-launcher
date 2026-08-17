@@ -169,6 +169,10 @@ val hmclProperties = buildList {
     add("hmcl.curseforge.apikey" to curseForgeApiKey)
     add("hmcl.authlib-injector.version" to libs.authlib.injector.get().version!!)
     add("hmcl.lwjgl-unsafe-agent.version" to libs.lwjgl.unsafe.agent.get().version!!)
+    val manifestUrlOverride = System.getenv("BARRILMC_MANIFEST_URL") ?: ""
+    if (manifestUrlOverride.isNotBlank()) {
+        add("barrilmc.manifest.url" to manifestUrlOverride)
+    }
 }
 
 val hmclPropertiesFile = layout.buildDirectory.file("hmcl.properties")

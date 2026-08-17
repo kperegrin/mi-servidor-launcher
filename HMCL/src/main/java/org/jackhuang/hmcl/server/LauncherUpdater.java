@@ -76,11 +76,23 @@ public final class LauncherUpdater {
         return manifest;
     }
 
-    /// Downloads and parses the configured manifest URL.
+    /// Downloads and parses the configured manifest URL. Falls back to Cloudflare R2 if GitHub fails.
     public static ServerManifest fetchManifest() throws IOException {
         try (InputStream input = openHttps(ServerLauncherConfig.MANIFEST_URL);
              InputStreamReader reader = new InputStreamReader(input, StandardCharsets.UTF_8)) {
             return ServerManifest.read(reader);
+        } catch (IOException primaryError) {
+            String r2Url = ServerLauncherConfig.R2_FALLBACK_BASE_URL + "/manifest.json";
+            if (ServerLauncherConfig.R2_FALLBACK_BASE_URL.isBlank()
+                    || ServerLauncherConfig.MANIFEST_URL.startsWith(ServerLauncherConfig.R2_FALLBACK_BASE_URL)) {
+                throw primaryError;
+            }
+            try (InputStream input = openHttpsDirect(r2Url);
+                 InputStreamReader reader = new InputStreamReader(input, StandardCharsets.UTF_8)) {
+                return ServerManifest.read(reader);
+            } catch (IOException ignored) {
+                throw primaryError;
+            }
         }
     }
 

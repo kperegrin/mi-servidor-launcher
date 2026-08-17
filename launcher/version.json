@@ -1,6 +1,6 @@
 {
-    "latest":  "1.0.41",
-    "downloadUrl":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/BarrilMC-Launcher-1.0.41.exe",
-    "sha256":  "5557f64bb9a4dc976c238a49d26f0609b76f395b65626682438b6ca03adf0773",
-    "notes":  "Fix: si GitHub está caído, los mods y texturas se descargan automáticamente desde Cloudflare R2."
+    "latest":  "1.0.42",
+    "downloadUrl":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/BarrilMC-Launcher-1.0.42.exe",
+    "sha256":  "2f7aef9befb8b10edda8da16ae827449c57ba3f42478af12012cbc9196411656",
+    "notes":  "Fallback completo a Cloudflare R2: si GitHub cae, el manifest, archivos y actualizaciones se sirven desde R2 automáticamente."
 }

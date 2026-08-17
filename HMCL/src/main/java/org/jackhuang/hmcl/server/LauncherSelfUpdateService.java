@@ -27,17 +27,27 @@ public final class LauncherSelfUpdateService {
     private LauncherSelfUpdateService() {
     }
 
-    /// Fetches version.json placed next to manifest.json.
+    /// Fetches version.json placed next to manifest.json. Falls back to Cloudflare R2 if GitHub fails.
     public static LauncherVersionInfo fetchVersionInfo() throws IOException {
-        String versionUrl = URI.create(ServerLauncherConfig.MANIFEST_URL).resolve("version.json").toString();
-        versionUrl = addCacheBust(versionUrl);
+        String versionUrl = addCacheBust(
+                URI.create(ServerLauncherConfig.MANIFEST_URL).resolve("version.json").toString());
         try (InputStream input = LauncherUpdater.openHttps(versionUrl)) {
-            String json = new String(input.readAllBytes(), StandardCharsets.UTF_8);
-            if (!json.isEmpty() && json.charAt(0) == '\uFEFF') {
-                json = json.substring(1);
+            return parseVersionJson(input);
+        } catch (IOException primaryError) {
+            String r2Url = ServerLauncherConfig.R2_FALLBACK_BASE_URL + "/version.json";
+            if (ServerLauncherConfig.R2_FALLBACK_BASE_URL.isBlank()) throw primaryError;
+            try (InputStream input = LauncherUpdater.openHttps(r2Url)) {
+                return parseVersionJson(input);
+            } catch (IOException ignored) {
+                throw primaryError;
             }
-            return LauncherVersionInfo.read(json);
         }
+    }
+
+    private static LauncherVersionInfo parseVersionJson(InputStream input) throws IOException {
+        String json = new String(input.readAllBytes(), StandardCharsets.UTF_8);
+        if (!json.isEmpty() && json.charAt(0) == '\uFEFF') json = json.substring(1);
+        return LauncherVersionInfo.read(json);
     }
 
     /// Downloads the new launcher asset to a temporary exe in the current launcher directory and verifies SHA-256.

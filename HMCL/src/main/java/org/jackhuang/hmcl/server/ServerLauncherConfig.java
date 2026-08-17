@@ -9,6 +9,7 @@
  */
 package org.jackhuang.hmcl.server;
 
+import org.jackhuang.hmcl.util.io.JarUtils;
 import org.jetbrains.annotations.NotNullByDefault;
 
 import java.nio.file.Path;
@@ -36,12 +37,13 @@ public final class ServerLauncherConfig {
     public static final Path LAUNCHER_DIRECTORY = resolveLauncherDirectory();
     /// Default local game directory for this server.
     public static final Path INSTANCE_DIRECTORY = LAUNCHER_DIRECTORY.resolve(".barrilmc");
-    /// Default manifest URL. Override with -Dbarrilmc.manifest.url or BARRILMC_MANIFEST_URL.
+    /// Default manifest URL. Priority: -Dbarrilmc.manifest.url > embedded JAR attr > env var > hardcoded default.
     public static final String MANIFEST_URL = System.getProperty(
             "barrilmc.manifest.url",
-            System.getenv().getOrDefault(
-                    "BARRILMC_MANIFEST_URL",
-                    "https://raw.githubusercontent.com/kperegrin/mi-servidor-launcher/main/launcher/manifest.json"));
+            JarUtils.getAttribute("barrilmc.manifest.url",
+                    System.getenv().getOrDefault(
+                            "BARRILMC_MANIFEST_URL",
+                            "https://raw.githubusercontent.com/kperegrin/mi-servidor-launcher/main/launcher/manifest.json")));
 
     /// Firebase Realtime Database base URL backing the launcher chat + weekly votes, e.g.
     /// {@code https://barrilmc-xxxx-default-rtdb.firebaseio.com} (no trailing slash). Leave blank
