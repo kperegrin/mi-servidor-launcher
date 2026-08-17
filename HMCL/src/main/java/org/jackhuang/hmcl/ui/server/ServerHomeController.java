@@ -521,7 +521,7 @@ public final class ServerHomeController extends FlowPane {
                         LOG.warning("Server update failed", cause);
                         progressLabel.setText("Error al actualizar");
                         Controllers.dialog(
-                                "No se pudo preparar la instancia del servidor.\n\n" + StringUtils.getStackTrace(cause),
+                                "No se pudo preparar la instancia del servidor.\n\n" + friendlyError(cause),
                                 "Actualizacion fallida",
                                 MessageDialogPane.MessageType.ERROR);
                         return;
@@ -585,7 +585,7 @@ public final class ServerHomeController extends FlowPane {
                         LOG.warning("Launcher self update failed", cause);
                         progressLabel.setText("Error al actualizar launcher");
                         Controllers.dialog(
-                                "No se pudo descargar la nueva version del launcher.\n\n" + StringUtils.getStackTrace(cause),
+                                "No se pudo descargar la nueva version del launcher.\n\n" + friendlyError(cause),
                                 "Actualizacion fallida",
                                 MessageDialogPane.MessageType.ERROR);
                         return;
@@ -888,6 +888,50 @@ public final class ServerHomeController extends FlowPane {
         } else {
             accountLabel.setText(account.getCharacter());
         }
+    }
+
+    private static String friendlyError(Throwable cause) {
+        String msg = cause.getMessage() != null ? cause.getMessage() : "";
+        String cls = cause.getClass().getSimpleName();
+
+        // Network / HTTP errors
+        if (msg.contains("HTTP 429"))
+            return "GitHub tiene demasiadas peticiones en este momento.\nEspera unos minutos e inténtalo de nuevo.";
+        if (msg.contains("HTTP 503") || msg.contains("HTTP 502") || msg.contains("HTTP 500"))
+            return "El servidor de descarga está caído temporalmente.\nInténtalo de nuevo en unos minutos.";
+        if (msg.contains("HTTP 404"))
+            return "No se encontró un archivo necesario en el servidor.\nContacta con el administrador del servidor.";
+        if (msg.contains("HTTP 4"))
+            return "Error de acceso al servidor de descarga (código " + msg.replaceAll(".*HTTP (\\d+).*", "$1") + ").\nContacta con el administrador.";
+        if (cls.equals("UnknownHostException") || msg.contains("Unable to resolve host"))
+            return "No hay conexión a internet o el DNS no funciona.\nComprueba tu conexión de red e inténtalo de nuevo.";
+        if (cls.equals("SocketTimeoutException") || msg.contains("timed out") || msg.contains("timeout"))
+            return "La conexión tardó demasiado en responder.\nComprueba tu internet e inténtalo de nuevo.";
+        if (cls.equals("ConnectException") || msg.contains("Connection refused"))
+            return "No se pudo conectar con el servidor de descarga.\nComprueba tu conexión a internet.";
+        if (cls.contains("SSL") || msg.contains("SSL") || msg.contains("handshake"))
+            return "Error de conexión segura (SSL).\nActualiza Java a la versión 21 o comprueba la fecha y hora de tu PC.";
+
+        // File / hash errors
+        if (msg.contains("SHA-256") || msg.contains("sha256") || msg.contains("hash") || msg.contains("mismatch"))
+            return "Un archivo descargado está dañado o incompleto.\nVuelve a intentarlo; si el error persiste contacta al administrador.";
+        if (msg.contains("Descarga fallida") || msg.contains("download"))
+            return "No se pudo descargar uno de los archivos necesarios.\nComprueba tu conexión e inténtalo de nuevo.";
+
+        // Java version
+        if (cls.equals("UnsupportedClassVersionError") || msg.contains("class file version"))
+            return "Necesitas Java 21 para jugar.\nDescárgalo gratis en: https://adoptium.net";
+        if (msg.contains("java.lang.OutOfMemoryError") || cls.equals("OutOfMemoryError"))
+            return "No hay suficiente memoria RAM.\nReduce la RAM máxima en los ajustes del launcher.";
+
+        // Disk space
+        if (msg.contains("No space left") || msg.contains("not enough space") || msg.contains("insufficient"))
+            return "No hay espacio suficiente en el disco duro.\nLibera espacio e inténtalo de nuevo.";
+
+        // Generic fallback — at least tell them what type of error it was
+        return "Se produjo un error inesperado: " + cls + ".\n"
+                + (msg.isBlank() ? "" : msg + "\n")
+                + "\nSi el error persiste, contacta con el administrador del servidor.";
     }
 
     private static Throwable unwrap(Throwable throwable) {

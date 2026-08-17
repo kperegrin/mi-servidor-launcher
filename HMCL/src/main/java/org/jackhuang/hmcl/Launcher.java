@@ -33,6 +33,7 @@ import javafx.scene.input.DataFormat;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import org.jackhuang.hmcl.server.BarrilmcSetupWizard;
 import org.jackhuang.hmcl.server.SplashScreen;
 import org.jackhuang.hmcl.setting.ConfigHolder;
 import org.jackhuang.hmcl.setting.SambaException;
@@ -95,6 +96,16 @@ public final class Launcher extends Application {
         }
 
         try {
+            // First-run setup wizard: lets the user pick an install location before any
+            // game files are downloaded. Must run before ConfigHolder.init() so that if
+            // the user chooses a different disk we can restart cleanly.
+            if (BarrilmcSetupWizard.runIfNeeded(primaryStage)) {
+                BarrilmcSetupWizard.restart();
+                Platform.exit();
+                System.exit(0);
+                return;
+            }
+
             try {
                 ConfigHolder.init();
             } catch (SambaException e) {

@@ -1,6 +1,6 @@
 {
-    "latest":  "1.0.42",
-    "downloadUrl":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/BarrilMC-Launcher-1.0.42.exe",
-    "sha256":  "2f7aef9befb8b10edda8da16ae827449c57ba3f42478af12012cbc9196411656",
-    "notes":  "Fallback completo a Cloudflare R2: si GitHub cae, el manifest, archivos y actualizaciones se sirven desde R2 automáticamente."
+    "latest":  "1.0.43",
+    "downloadUrl":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/BarrilMC-Launcher-1.0.43.exe",
+    "sha256":  "1f29d49995b4c054582020c64620b12bc670c15533ec014fcc65285afa934be0",
+    "notes":  "Mejora: los mensajes de error ahora explican el problema en español claro en vez de mostrar código técnico."
 }
