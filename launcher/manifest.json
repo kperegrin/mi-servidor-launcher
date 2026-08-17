@@ -269,10 +269,10 @@
             "required": true
         },
         {
-            "path": "mods/CreativeCore_FABRIC_v2.13.39_mc1.21.1.jar",
-            "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/CreativeCore_FABRIC_v2.13.39_mc1.21.1.jar",
-            "sha256": "a0813d3b342fae016eaad9b11a3f153efba01a2caa1221033adb865c49140f70",
-            "size": 1247692,
+            "path": "mods/CreativeCore_FABRIC_v2.13.11_mc1.21.1.jar",
+            "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/CreativeCore_FABRIC_v2.13.11_mc1.21.1.jar",
+            "sha256": "c3297fb9fe382b0062ee35666c7f463a5963a39c082f66e75c48ccc7a5c384c1",
+            "size": 1238877,
             "required": true
         },
         {
@@ -997,10 +997,10 @@
             "required": true
         },
         {
-            "path": "mods/watermedia-3.0.0.23.jar",
-            "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/watermedia-3.0.0.23.jar",
-            "sha256": "c3baefc8fbb005e349b3424f7df8f9d89b18524d5f7a358c6df73ca5e1d98b38",
-            "size": 3625444,
+            "path": "mods/watermedia-2.1.30.jar",
+            "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/watermedia-2.1.30.jar",
+            "sha256": "4f5c80cc0f6d09e165d57d0b387a316b318dfdc84e2fd1b8d65ec6e6dd719e90",
+            "size": 37857356,
             "required": true
         },
         {
@@ -1539,7 +1539,11 @@
         "mods/webdisplay-1.2.24.jar",
         "mods/webdisplay-1.2.24.jar.disabled",
         "mods/mcef-fabric-2.1.6-1.21.1.jar",
-        "mods/mcef-fabric-2.1.6-1.21.1.jar.disabled"
+        "mods/mcef-fabric-2.1.6-1.21.1.jar.disabled",
+        "mods/watermedia-3.0.0.23.jar",
+        "mods/watermedia-3.0.0.23.jar.disabled",
+        "mods/CreativeCore_FABRIC_v2.13.39_mc1.21.1.jar",
+        "mods/CreativeCore_FABRIC_v2.13.39_mc1.21.1.jar.disabled"
     ],
     "wipe": [],
     "news": [
