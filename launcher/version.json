@@ -1,6 +1,6 @@
 {
-    "latest":  "1.0.38",
-    "downloadUrl":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/BarrilMC-Launcher-1.0.38.exe",
-    "sha256":  "1a5b72dc91636aa252a3eb761e0fb94eb07b4d32948f970b448729777520b260",
-    "notes":  "Fix: argumentos JVM simplificados (sin Aikar flags). El juego ya no pre-reserva toda la RAM al inicio."
+    "latest":  "1.0.39",
+    "downloadUrl":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/BarrilMC-Launcher-1.0.39.exe",
+    "sha256":  "02fe90727e694020f8238a9c701d94969b1111bb929e6bde409642fe170e12ed",
+    "notes":  "Fix: error 'HTTP 429' al descargar el manifest ya no bloquea la actualización (se usa CDN alternativo automáticamente)."
 }

@@ -307,23 +307,26 @@ public final class LauncherUpdater {
     /// automáticamente a través de jsdelivr.net (CDN que sirve los mismos archivos del repo
     /// y suele estar accesible en redes donde raw.githubusercontent.com está bloqueado).
     static InputStream openHttps(String url) throws IOException {
+        IOException primaryError;
         try {
             return openHttpsDirect(url);
         } catch (java.net.UnknownHostException | java.net.NoRouteToHostException
                  | java.net.ConnectException netErr) {
-            String fallback = jsdelivrEquivalent(url);
-            if (fallback != null && !fallback.equals(url)) {
-                try {
-                    return openHttpsDirect(fallback);
-                } catch (IOException nestedErr) {
-                    // Si el fallback también revienta, lanzamos el error ORIGINAL (más útil
-                    // para diagnóstico — al usuario le importa más que raw no fuera accesible
-                    // que el detalle del segundo intento).
-                    throw netErr;
-                }
-            }
-            throw netErr;
+            primaryError = netErr;
+        } catch (IOException e) {
+            // 429 Too Many Requests: GitHub raw CDN rate-limit → intentar jsDelivr
+            if (e.getMessage() == null || !e.getMessage().startsWith("HTTP 429")) throw e;
+            primaryError = e;
         }
+        String fallback = jsdelivrEquivalent(url);
+        if (fallback != null && !fallback.equals(url)) {
+            try {
+                return openHttpsDirect(fallback);
+            } catch (IOException ignored) {
+                throw primaryError;
+            }
+        }
+        throw primaryError;
     }
 
     /// Traduce una URL de raw.githubusercontent.com a su equivalente en jsdelivr.net.
