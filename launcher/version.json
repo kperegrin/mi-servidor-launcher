@@ -1,6 +1,6 @@
 {
-    "latest":  "1.0.39",
-    "downloadUrl":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/BarrilMC-Launcher-1.0.39.exe",
-    "sha256":  "02fe90727e694020f8238a9c701d94969b1111bb929e6bde409642fe170e12ed",
-    "notes":  "Fix: error 'HTTP 429' al descargar el manifest ya no bloquea la actualización (se usa CDN alternativo automáticamente)."
+    "latest":  "1.0.40",
+    "downloadUrl":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/BarrilMC-Launcher-1.0.40.exe",
+    "sha256":  "6894a0bc5e463fc0b6d5a2f088f9e7e737cbf53fe9ee2d197590b631c598b641",
+    "notes":  "Fix: si GitHub está caído (429, 503, etc.) el manifest se descarga automáticamente desde CDN alternativo."
 }

@@ -314,8 +314,10 @@ public final class LauncherUpdater {
                  | java.net.ConnectException netErr) {
             primaryError = netErr;
         } catch (IOException e) {
-            // 429 Too Many Requests: GitHub raw CDN rate-limit → intentar jsDelivr
-            if (e.getMessage() == null || !e.getMessage().startsWith("HTTP 429")) throw e;
+            // 429 rate-limit o 5xx (GitHub caído) → intentar jsDelivr como fallback
+            String msg = e.getMessage();
+            boolean fallbackable = msg != null && (msg.startsWith("HTTP 429") || msg.startsWith("HTTP 5"));
+            if (!fallbackable) throw e;
             primaryError = e;
         }
         String fallback = jsdelivrEquivalent(url);
