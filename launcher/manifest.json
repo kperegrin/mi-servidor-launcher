@@ -59,10 +59,10 @@
             "required": true
         },
         {
-            "path": "mods/barrilcomplements-13deagosto.jar",
-            "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/barrilcomplements-13deagosto.jar",
-            "sha256": "b16ba280d9325d206b77b154b053b8c7dae3fa1c75147cba49022251d2cd33e1",
-            "size": 7541369,
+            "path": "mods/barrilcomplements-17deagosto.jar",
+            "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/barrilcomplements-17deagosto.jar",
+            "sha256": "6e8df293c3649b24a2a7af45fcb5e37624c5a8f7ff128749a6def0f7909a52fd",
+            "size": 7553984,
             "required": true
         },
         {
@@ -1139,8 +1139,8 @@
         {
             "path": "resourcepacks/texturepackbarriliano11deagosto.zip",
             "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/texturepackbarriliano11deagosto.zip",
-            "sha256": "25c13898efc26633f14c9480d304ab10685ec7fff74376882a99564ec845ab62",
-            "size": 3088482,
+            "sha256": "b42eb64869acfacdf85659ba0bca94577e97c9fcda8c2589058fa95e2c6c1bd6",
+            "size": 3111852,
             "required": true
         },
         {
@@ -1505,7 +1505,9 @@
         "mods/sodiumoptionsapi-fabric-1.0.10-1.21.1.jar",
         "mods/sodiumoptionsapi-fabric-1.0.10-1.21.1.jar.disabled",
         "mods/moreculling-fabric-1.21.1-1.0.6.jar",
-        "mods/moreculling-fabric-1.21.1-1.0.6.jar.disabled"
+        "mods/moreculling-fabric-1.21.1-1.0.6.jar.disabled",
+        "mods/barrilcomplements-13deagosto.jar",
+        "mods/barrilcomplements-13deagosto.jar.disabled"
     ],
     "wipe": [],
     "news": [
