@@ -997,10 +997,10 @@
             "required": true
         },
         {
-            "path": "mods/watermedia-2.1.30.jar",
-            "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/watermedia-2.1.30.jar",
-            "sha256": "4f5c80cc0f6d09e165d57d0b387a316b318dfdc84e2fd1b8d65ec6e6dd719e90",
-            "size": 37857356,
+            "path": "mods/watermedia-2.1.37.jar",
+            "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/watermedia-2.1.37.jar",
+            "sha256": "cdd8e1b50e4dee0892c5ed02724cea6b1a74d2b718c7e974c9cfc0efa8c10389",
+            "size": 37046674,
             "required": true
         },
         {
@@ -1543,7 +1543,9 @@
         "mods/watermedia-3.0.0.23.jar",
         "mods/watermedia-3.0.0.23.jar.disabled",
         "mods/CreativeCore_FABRIC_v2.13.39_mc1.21.1.jar",
-        "mods/CreativeCore_FABRIC_v2.13.39_mc1.21.1.jar.disabled"
+        "mods/CreativeCore_FABRIC_v2.13.39_mc1.21.1.jar.disabled",
+        "mods/watermedia-2.1.30.jar",
+        "mods/watermedia-2.1.30.jar.disabled"
     ],
     "wipe": [],
     "news": [
