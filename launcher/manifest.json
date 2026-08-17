@@ -61,8 +61,8 @@
         {
             "path": "mods/barrilcomplements-17deagosto.jar",
             "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/barrilcomplements-17deagosto.jar",
-            "sha256": "51c0f00d34771af73207be0cbd7bd5e48dd7c4cdfe3c2878592c1e800de8b2c0",
-            "size": 7563314,
+            "sha256": "0bce7238cd7b68152d442abe8df5efed4eae99e2018623afc920b212e5481dab",
+            "size": 7564736,
             "required": true
         },
         {
@@ -987,6 +987,13 @@
             "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/waystones-fabric-1.21.1-21.1.28.jar",
             "sha256": "8902f6b01ae45ea210bd09ae78db67c5be6bdb2854fdcac71d6eac3d48feedf9",
             "size": 898196,
+            "required": true
+        },
+        {
+            "path": "mods/webdisplay-1.2.24.jar",
+            "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/webdisplay-1.2.24.jar",
+            "sha256": "98ad0154974278d8661d9c941c9aa1359784cfbeba8aaf083ce5299deb83db21",
+            "size": 230896,
             "required": true
         },
         {
