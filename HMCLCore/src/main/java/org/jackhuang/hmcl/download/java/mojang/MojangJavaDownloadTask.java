@@ -138,7 +138,16 @@ public final class MojangJavaDownloadTask extends Task<MojangJavaDownloadTask.Re
                             LOG.warning("Failed to delete temporary file: " + tempFile, e);
                         }
 
-                        Files.move(decompressed, dest, StandardCopyOption.REPLACE_EXISTING);
+                        try {
+                            Files.move(decompressed, dest, StandardCopyOption.REPLACE_EXISTING);
+                        } catch (java.nio.file.AccessDeniedException e) {
+                            // Windows AV/security software may hold a shared lock on the existing DLL,
+                            // preventing an atomic rename. Fall back to copy+delete which can succeed
+                            // when only a shared-read lock is held.
+                            LOG.warning("Failed to move " + decompressed + " to " + dest + ", falling back to copy", e);
+                            Files.copy(decompressed, dest, StandardCopyOption.REPLACE_EXISTING);
+                            try { Files.deleteIfExists(decompressed); } catch (IOException ignored) {}
+                        }
                         if (file.isExecutable()) {
                             FileUtils.setExecutable(dest);
                         }

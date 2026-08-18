@@ -146,6 +146,8 @@ public final class DownloadProviders {
             return i18n("exception.artifact_malformed");
         } else if (exception instanceof CancellationException) {
             return i18n("message.cancelled");
+        } else if (exception instanceof AccessDeniedException) {
+            return i18n("exception.access_denied", ((AccessDeniedException) exception).getFile());
         }
         return StringUtils.getStackTrace(exception);
     }
