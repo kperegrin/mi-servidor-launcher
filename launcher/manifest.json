@@ -871,13 +871,6 @@
             "required": true
         },
         {
-            "path": "mods/sophisticatedbackpacks-1.21.1-3.23.4.3.106.jar",
-            "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/sophisticatedbackpacks-1.21.1-3.23.4.3.106.jar",
-            "sha256": "bbcd0d01b204efa0d51d7426d9ff08db2d2206017782c21306c500a9c294967e",
-            "size": 988478,
-            "required": true
-        },
-        {
             "path": "mods/sophisticatedcore-1.21.1-1.2.9.21.168.jar",
             "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/sophisticatedcore-1.21.1-1.2.9.21.168.jar",
             "sha256": "48e99847012a2319fa76b9ae9f277b675d6e60008a5e587c6b966126c092e914",
@@ -1549,7 +1542,9 @@
         "mods/barrilcomplements-17deagosto.jar",
         "mods/barrilcomplements-17deagosto.jar.disabled",
         "mods/barrilcomplements-19deagosto.jar",
-        "mods/barrilcomplements-19deagosto.jar.disabled"
+        "mods/barrilcomplements-19deagosto.jar.disabled",
+        "mods/sophisticatedbackpacks-1.21.1-3.23.4.3.106.jar",
+        "mods/sophisticatedbackpacks-1.21.1-3.23.4.3.106.jar.disabled"
     ],
     "wipe": [],
     "news": [
