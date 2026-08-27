@@ -59,10 +59,17 @@
             "required": true
         },
         {
-            "path": "mods/barrilcomplements-22deagosto.jar",
-            "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/barrilcomplements-22deagosto.jar",
-            "sha256": "4df3d381472662c24899e63d3e9482b929e2888ce9fefbafded2512d8e18b4fa",
-            "size": 7680799,
+            "path": "mods/barrilceguera-1.0.0.jar",
+            "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/barrilceguera-1.0.0.jar",
+            "sha256": "b18b36a1d3720a14263b5246cb32d8b249d9d41e82b5042e3a8a2fe2528d3443",
+            "size": 19772,
+            "required": true
+        },
+        {
+            "path": "mods/barrilcomplements-27deagosto.jar",
+            "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/barrilcomplements-27deagosto.jar",
+            "sha256": "90208be6dd8a1f46e8369b31b5b97d377e8af2d79d80384b09b7e284841a8a1a",
+            "size": 7782021,
             "required": true
         },
         {
@@ -1160,8 +1167,8 @@
         {
             "path": "resourcepacks/texturepackbarriliano11deagosto.zip",
             "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/texturepackbarriliano11deagosto.zip",
-            "sha256": "847723b51d8807fec8c56b399357053a5da8fc4543e499dcc94d210a1930fd2e",
-            "size": 3311766,
+            "sha256": "912d6eb1f5b7049235548b144c2f70038e43bac6ef9ecbfe3536f7a6314ae491",
+            "size": 3184289,
             "required": true
         },
         {
@@ -1543,6 +1550,8 @@
         "mods/barrilcomplements-17deagosto.jar.disabled",
         "mods/barrilcomplements-19deagosto.jar",
         "mods/barrilcomplements-19deagosto.jar.disabled",
+        "mods/barrilcomplements-22deagosto.jar",
+        "mods/barrilcomplements-22deagosto.jar.disabled",
         "mods/sophisticatedbackpacks-1.21.1-3.23.4.3.106.jar",
         "mods/sophisticatedbackpacks-1.21.1-3.23.4.3.106.jar.disabled"
     ],
