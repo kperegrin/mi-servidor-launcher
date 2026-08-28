@@ -61,15 +61,15 @@
         {
             "path": "mods/barrilceguera-1.0.0.jar",
             "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/barrilceguera-1.0.0.jar",
-            "sha256": "b18b36a1d3720a14263b5246cb32d8b249d9d41e82b5042e3a8a2fe2528d3443",
-            "size": 19772,
+            "sha256": "a87d09fa0c66bb4fb25d0506e37f88cc1650b01246715b27af61686e909e45fe",
+            "size": 21961,
             "required": true
         },
         {
-            "path": "mods/barrilcomplements-27deagosto.jar",
-            "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/barrilcomplements-27deagosto.jar",
-            "sha256": "90208be6dd8a1f46e8369b31b5b97d377e8af2d79d80384b09b7e284841a8a1a",
-            "size": 7782021,
+            "path": "mods/barrilcomplements-28deagosto.jar",
+            "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/barrilcomplements-28deagosto.jar",
+            "sha256": "80523901d8068aa1b37977daab157b5e34cd00f6919e468d16c0260d1119db0a",
+            "size": 7791128,
             "required": true
         },
         {
@@ -1552,6 +1552,8 @@
         "mods/barrilcomplements-19deagosto.jar.disabled",
         "mods/barrilcomplements-22deagosto.jar",
         "mods/barrilcomplements-22deagosto.jar.disabled",
+        "mods/barrilcomplements-27deagosto.jar",
+        "mods/barrilcomplements-27deagosto.jar.disabled",
         "mods/sophisticatedbackpacks-1.21.1-3.23.4.3.106.jar",
         "mods/sophisticatedbackpacks-1.21.1-3.23.4.3.106.jar.disabled"
     ],
