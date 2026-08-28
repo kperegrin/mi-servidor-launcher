@@ -61,8 +61,8 @@
         {
             "path": "mods/barrilceguera-1.0.0.jar",
             "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/barrilceguera-1.0.0.jar",
-            "sha256": "a87d09fa0c66bb4fb25d0506e37f88cc1650b01246715b27af61686e909e45fe",
-            "size": 21961,
+            "sha256": "4f0dca6112dc813c2216e9e67ee4e3470a5d29c1fe972823edd342864245819f",
+            "size": 20142,
             "required": true
         },
         {
