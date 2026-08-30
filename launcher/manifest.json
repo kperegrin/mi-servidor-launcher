@@ -150,6 +150,13 @@
             "required": true
         },
         {
+            "path": "mods/chipped-fabric-1.21.1-4.0.2.jar",
+            "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/chipped-fabric-1.21.1-4.0.2.jar",
+            "sha256": "1721c94365fd8d2d3c3fdcac7efbfd7e605daa7dfb8adc4c126c5bbde2820c79",
+            "size": 15016830,
+            "required": true
+        },
+        {
             "path": "mods/cloth-config-15.0.140-fabric.jar",
             "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/cloth-config-15.0.140-fabric.jar",
             "sha256": "33894e95da3af59014b39d126586d5241e07ea39f8618763e30dab637405f95f",
@@ -535,10 +542,10 @@
             "required": true
         },
         {
-            "path": "mods/LegendaryMonuments-Cobbleverse.jar",
-            "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/LegendaryMonuments-Cobbleverse.jar",
-            "sha256": "34901d7c95bff58242384c44abc6acc50c2e06310b85f7e80bcd70f7c7e5b0b6",
-            "size": 5736792,
+            "path": "mods/legendarymonuments-fabric-1.21.1-8.1-Love_for_All.jar",
+            "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/legendarymonuments-fabric-1.21.1-8.1-Love_for_All.jar",
+            "sha256": "64c04db1d9757c52d2cc805cdc242688db8c3d837a17500593c5095b666783b3",
+            "size": 16611506,
             "required": true
         },
         {
@@ -560,6 +567,13 @@
             "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/lithium-fabric-0.15.2%2Bmc1.21.1.jar",
             "sha256": "537bc45224e81dd1cbae25c1a972f14dac2456f0f8725ced3ca88ae41d0156d3",
             "size": 797184,
+            "required": true
+        },
+        {
+            "path": "mods/lithostitched-1.7.13-fabric-21.1.jar",
+            "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/lithostitched-1.7.13-fabric-21.1.jar",
+            "sha256": "206c086604bcfea5b2862e90069470352cbf4b4d7088b55cdfa8f3452bedc270",
+            "size": 827470,
             "required": true
         },
         {
@@ -1555,7 +1569,9 @@
         "mods/barrilcomplements-27deagosto.jar",
         "mods/barrilcomplements-27deagosto.jar.disabled",
         "mods/sophisticatedbackpacks-1.21.1-3.23.4.3.106.jar",
-        "mods/sophisticatedbackpacks-1.21.1-3.23.4.3.106.jar.disabled"
+        "mods/sophisticatedbackpacks-1.21.1-3.23.4.3.106.jar.disabled",
+        "mods/LegendaryMonuments-Cobbleverse.jar",
+        "mods/LegendaryMonuments-Cobbleverse.jar.disabled"
     ],
     "wipe": [],
     "news": [
