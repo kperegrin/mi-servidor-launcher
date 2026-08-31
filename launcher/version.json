@@ -1,6 +1,6 @@
 {
-    "latest":  "1.0.48",
-    "downloadUrl":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/BarrilMC-Launcher-1.0.48.exe",
-    "sha256":  "47cbc3b203914bfed54384d7e5d5d7f7e0944308895245b12dc8cfbae83a1baf",
-    "notes":  "Fix: el zoom de la carta ya no se cierra solo al abrirse."
+    "latest":  "1.0.49",
+    "downloadUrl":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/BarrilMC-Launcher-1.0.49.exe",
+    "sha256":  "4bb1ba4f18f1e9c653b5599a0e046bf22b1a6897356a59646d8ee9ea66a63b76",
+    "notes":  "Fix: zoom de carta funciona correctamente. Color epica cambiado a rosa."
 }

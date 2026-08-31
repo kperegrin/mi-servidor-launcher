@@ -86,7 +86,7 @@ public final class CardCollectionService {
         COMUN("comun", "Comun", "#9aa3b8", 50),
         POCO_COMUN("poco_comun", "Poco comun", "#45d483", 25),
         RARA("rara", "Rara", "#4ea6ff", 15),
-        EPICA("epica", "Epica", "#ff7700", 7),
+        EPICA("epica", "Epica", "#f72585", 7),
         MITICA("mitica", "Mitica", "#b66cff", 2),
         LEYENDA("leyenda", "Leyenda", "#ffaa22", 1),
         // INFINITO: rareza secreta. weight=0 → nunca sale en el roll de rarezas estándar;

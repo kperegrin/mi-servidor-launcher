@@ -711,17 +711,19 @@ public final class CardsPage extends DecoratorAnimatedPage implements DecoratorP
         zoom.fitWidthProperty().bind(pane.widthProperty().multiply(0.78));
         zoom.fitHeightProperty().bind(pane.heightProperty().multiply(0.82));
 
-        Label hint = new Label("Rueda del ratón para hacer zoom  ·  Clic para cerrar");
+        Label hint = new Label("Rueda del ratón para zoom  ·  Clic para cerrar");
         hint.setStyle("-fx-text-fill: rgba(255,255,255,0.45); -fx-font-size: 11; -fx-padding: 10 0 0 0;");
 
         VBox container = new VBox(6, zoom, hint);
         container.setAlignment(Pos.CENTER);
+        container.setMouseTransparent(true);
 
         StackPane overlay = new StackPane(container);
         overlay.setStyle("-fx-background-color: rgba(0,0,0,0.88);");
         overlay.prefWidthProperty().bind(pane.widthProperty());
         overlay.prefHeightProperty().bind(pane.heightProperty());
         overlay.setCursor(Cursor.DEFAULT);
+        overlay.setPickOnBounds(true);
 
         Runnable close = () -> {
             overlay.prefWidthProperty().unbind();
@@ -731,15 +733,24 @@ public final class CardsPage extends DecoratorAnimatedPage implements DecoratorP
             pane.getChildren().remove(overlay);
         };
 
+        // Scroll zoom — event filter (capture phase) so children never intercept it
         final double[] scale = {1.0};
-        overlay.setOnScroll(e -> {
+        overlay.addEventFilter(javafx.scene.input.ScrollEvent.SCROLL, e -> {
             double factor = e.getDeltaY() > 0 ? 1.12 : 1.0 / 1.12;
             scale[0] = Math.max(0.15, Math.min(10.0, scale[0] * factor));
             zoom.setScaleX(scale[0]);
             zoom.setScaleY(scale[0]);
             e.consume();
         });
-        overlay.setOnMouseClicked(e -> close.run());
+
+        // Time guard: ignore clicks that arrive within 300 ms of creation — these are
+        // the tail of the same click that opened the overlay.
+        final long createdAt = System.currentTimeMillis();
+        overlay.addEventFilter(javafx.scene.input.MouseEvent.MOUSE_CLICKED, e -> {
+            if (System.currentTimeMillis() - createdAt > 300) close.run();
+            e.consume();
+        });
+
         overlay.setOnKeyPressed(e -> { if (e.getCode() == KeyCode.ESCAPE) close.run(); });
 
         pane.getChildren().add(overlay);
