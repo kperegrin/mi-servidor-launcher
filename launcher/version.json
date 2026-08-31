@@ -1,6 +1,6 @@
 {
-    "latest":  "1.0.49",
-    "downloadUrl":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/BarrilMC-Launcher-1.0.49.exe",
-    "sha256":  "4bb1ba4f18f1e9c653b5599a0e046bf22b1a6897356a59646d8ee9ea66a63b76",
-    "notes":  "Fix: zoom de carta funciona correctamente. Color epica cambiado a rosa."
+    "latest":  "1.0.50",
+    "downloadUrl":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/BarrilMC-Launcher-1.0.50.exe",
+    "sha256":  "23a69ea4d19a725cf1ab2acd9e9cb72837872b52f00fc704c42441b61d79b4e5",
+    "notes":  "Zoom de carta rediseñado: abre dialogo grande con scroll para zoom. Color epica rosa."
 }

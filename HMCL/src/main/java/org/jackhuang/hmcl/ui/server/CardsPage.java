@@ -24,7 +24,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.KeyCode;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
@@ -612,8 +611,7 @@ public final class CardsPage extends DecoratorAnimatedPage implements DecoratorP
                 + " -fx-background-color: rgba(255,255,255,0.05);");
         frame.setCursor(Cursor.HAND);
         frame.setOnMouseClicked(e -> {
-            dialog.fireEvent(new DialogCloseEvent());
-            javafx.application.Platform.runLater(() -> openZoomView(card));
+            openZoomView(card);
             e.consume();
         });
 
@@ -699,62 +697,48 @@ public final class CardsPage extends DecoratorAnimatedPage implements DecoratorP
     }
 
     private void openZoomView(Card card) {
-        if (getScene() == null) return;
-        javafx.scene.Parent root = getScene().getRoot();
-        if (!(root instanceof javafx.scene.layout.Pane)) return;
-        javafx.scene.layout.Pane pane = (javafx.scene.layout.Pane) root;
+        JFXDialogLayout layout = new JFXDialogLayout();
+        layout.setPrefWidth(560);
+
+        Label heading = new Label(card.getName());
+        heading.getStyleClass().add("header-label");
+        layout.setHeading(heading);
 
         ImageView zoom = new ImageView();
         try { zoom.setImage(CardImageCache.getImage(card)); } catch (RuntimeException ignored) {}
         zoom.setPreserveRatio(true);
         zoom.setSmooth(true);
-        zoom.fitWidthProperty().bind(pane.widthProperty().multiply(0.78));
-        zoom.fitHeightProperty().bind(pane.heightProperty().multiply(0.82));
+        zoom.setFitWidth(460);
+        zoom.setFitHeight(644);
 
-        Label hint = new Label("Rueda del ratón para zoom  ·  Clic para cerrar");
-        hint.setStyle("-fx-text-fill: rgba(255,255,255,0.45); -fx-font-size: 11; -fx-padding: 10 0 0 0;");
+        StackPane imagePane = new StackPane(zoom);
+        imagePane.setStyle("-fx-border-color: " + card.getRarity().getColor() + ";"
+                + " -fx-border-width: 3; -fx-border-radius: 12; -fx-background-radius: 12;"
+                + " -fx-background-color: rgba(255,255,255,0.05);");
 
-        VBox container = new VBox(6, zoom, hint);
-        container.setAlignment(Pos.CENTER);
-        container.setMouseTransparent(true);
-
-        StackPane overlay = new StackPane(container);
-        overlay.setStyle("-fx-background-color: rgba(0,0,0,0.88);");
-        overlay.prefWidthProperty().bind(pane.widthProperty());
-        overlay.prefHeightProperty().bind(pane.heightProperty());
-        overlay.setCursor(Cursor.DEFAULT);
-        overlay.setPickOnBounds(true);
-
-        Runnable close = () -> {
-            overlay.prefWidthProperty().unbind();
-            overlay.prefHeightProperty().unbind();
-            zoom.fitWidthProperty().unbind();
-            zoom.fitHeightProperty().unbind();
-            pane.getChildren().remove(overlay);
-        };
-
-        // Scroll zoom — event filter (capture phase) so children never intercept it
         final double[] scale = {1.0};
-        overlay.addEventFilter(javafx.scene.input.ScrollEvent.SCROLL, e -> {
+        imagePane.addEventFilter(javafx.scene.input.ScrollEvent.SCROLL, e -> {
             double factor = e.getDeltaY() > 0 ? 1.12 : 1.0 / 1.12;
-            scale[0] = Math.max(0.15, Math.min(10.0, scale[0] * factor));
+            scale[0] = Math.max(0.1, Math.min(10.0, scale[0] * factor));
             zoom.setScaleX(scale[0]);
             zoom.setScaleY(scale[0]);
             e.consume();
         });
 
-        // Time guard: ignore clicks that arrive within 300 ms of creation — these are
-        // the tail of the same click that opened the overlay.
-        final long createdAt = System.currentTimeMillis();
-        overlay.addEventFilter(javafx.scene.input.MouseEvent.MOUSE_CLICKED, e -> {
-            if (System.currentTimeMillis() - createdAt > 300) close.run();
-            e.consume();
-        });
+        Label hint = new Label("Rueda del ratón para hacer zoom");
+        hint.setStyle("-fx-text-fill: rgba(255,255,255,0.45); -fx-font-size: 11;");
 
-        overlay.setOnKeyPressed(e -> { if (e.getCode() == KeyCode.ESCAPE) close.run(); });
+        VBox body = new VBox(10, imagePane, hint);
+        body.setAlignment(Pos.CENTER);
+        body.setPadding(new Insets(4));
+        layout.setBody(body);
 
-        pane.getChildren().add(overlay);
-        overlay.requestFocus();
+        JFXButton close = new JFXButton("Cerrar");
+        close.getStyleClass().add("dialog-cancel");
+        close.setOnAction(e -> layout.fireEvent(new DialogCloseEvent()));
+        layout.setActions(close);
+
+        Controllers.dialog(layout);
     }
 
     private void addFusionPick(String cardId) {
