@@ -1,6 +1,6 @@
 {
-    "latest":  "1.0.47",
-    "downloadUrl":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/BarrilMC-Launcher-1.0.47.exe",
-    "sha256":  "33c0277ec51dc90b4ab181b84eb7375d1ca1fd127eda503d7216a14c0a0f2117",
-    "notes":  "Nuevo: zoom de carta en el inspector (clic en la imagen, rueda para hacer zoom, clic para cerrar)."
+    "latest":  "1.0.48",
+    "downloadUrl":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/BarrilMC-Launcher-1.0.48.exe",
+    "sha256":  "47cbc3b203914bfed54384d7e5d5d7f7e0944308895245b12dc8cfbae83a1baf",
+    "notes":  "Fix: el zoom de la carta ya no se cierra solo al abrirse."
 }

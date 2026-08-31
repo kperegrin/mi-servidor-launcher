@@ -613,7 +613,7 @@ public final class CardsPage extends DecoratorAnimatedPage implements DecoratorP
         frame.setCursor(Cursor.HAND);
         frame.setOnMouseClicked(e -> {
             dialog.fireEvent(new DialogCloseEvent());
-            openZoomView(card);
+            javafx.application.Platform.runLater(() -> openZoomView(card));
             e.consume();
         });
 
