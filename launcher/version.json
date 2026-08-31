@@ -1,6 +1,6 @@
 {
-    "latest":  "1.0.46",
-    "downloadUrl":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/BarrilMC-Launcher-1.0.46.exe",
-    "sha256":  "67add4a98185d35c1a3a5cc76fdd6b1177b81d6df97cd4f993b686d03a2309fa",
-    "notes":  "Nuevo: rareza Epica anadida entre Rara y Mitica. Cartas DROP1 con sus rangos correctos."
+    "latest":  "1.0.47",
+    "downloadUrl":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/BarrilMC-Launcher-1.0.47.exe",
+    "sha256":  "33c0277ec51dc90b4ab181b84eb7375d1ca1fd127eda503d7216a14c0a0f2117",
+    "notes":  "Nuevo: zoom de carta en el inspector (clic en la imagen, rueda para hacer zoom, clic para cerrar)."
 }

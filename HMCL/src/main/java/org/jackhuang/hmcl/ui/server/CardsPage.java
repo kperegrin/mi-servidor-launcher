@@ -24,6 +24,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
@@ -609,6 +610,12 @@ public final class CardsPage extends DecoratorAnimatedPage implements DecoratorP
         frame.setStyle("-fx-border-color: " + card.getRarity().getColor() + ";"
                 + " -fx-border-width: 3; -fx-border-radius: 12; -fx-background-radius: 12;"
                 + " -fx-background-color: rgba(255,255,255,0.05);");
+        frame.setCursor(Cursor.HAND);
+        frame.setOnMouseClicked(e -> {
+            dialog.fireEvent(new DialogCloseEvent());
+            openZoomView(card);
+            e.consume();
+        });
 
         Label rarity = new Label("Rareza: " + card.getRarity().getDisplayName());
         rarity.setStyle("-fx-text-fill: " + card.getRarity().getColor() + "; -fx-font-weight: bold;");
@@ -689,6 +696,54 @@ public final class CardsPage extends DecoratorAnimatedPage implements DecoratorP
 
         dialog.setActions(close, removeBtn, addBtn);
         Controllers.dialog(dialog);
+    }
+
+    private void openZoomView(Card card) {
+        if (getScene() == null) return;
+        javafx.scene.Parent root = getScene().getRoot();
+        if (!(root instanceof javafx.scene.layout.Pane)) return;
+        javafx.scene.layout.Pane pane = (javafx.scene.layout.Pane) root;
+
+        ImageView zoom = new ImageView();
+        try { zoom.setImage(CardImageCache.getImage(card)); } catch (RuntimeException ignored) {}
+        zoom.setPreserveRatio(true);
+        zoom.setSmooth(true);
+        zoom.fitWidthProperty().bind(pane.widthProperty().multiply(0.78));
+        zoom.fitHeightProperty().bind(pane.heightProperty().multiply(0.82));
+
+        Label hint = new Label("Rueda del ratón para hacer zoom  ·  Clic para cerrar");
+        hint.setStyle("-fx-text-fill: rgba(255,255,255,0.45); -fx-font-size: 11; -fx-padding: 10 0 0 0;");
+
+        VBox container = new VBox(6, zoom, hint);
+        container.setAlignment(Pos.CENTER);
+
+        StackPane overlay = new StackPane(container);
+        overlay.setStyle("-fx-background-color: rgba(0,0,0,0.88);");
+        overlay.prefWidthProperty().bind(pane.widthProperty());
+        overlay.prefHeightProperty().bind(pane.heightProperty());
+        overlay.setCursor(Cursor.DEFAULT);
+
+        Runnable close = () -> {
+            overlay.prefWidthProperty().unbind();
+            overlay.prefHeightProperty().unbind();
+            zoom.fitWidthProperty().unbind();
+            zoom.fitHeightProperty().unbind();
+            pane.getChildren().remove(overlay);
+        };
+
+        final double[] scale = {1.0};
+        overlay.setOnScroll(e -> {
+            double factor = e.getDeltaY() > 0 ? 1.12 : 1.0 / 1.12;
+            scale[0] = Math.max(0.15, Math.min(10.0, scale[0] * factor));
+            zoom.setScaleX(scale[0]);
+            zoom.setScaleY(scale[0]);
+            e.consume();
+        });
+        overlay.setOnMouseClicked(e -> close.run());
+        overlay.setOnKeyPressed(e -> { if (e.getCode() == KeyCode.ESCAPE) close.run(); });
+
+        pane.getChildren().add(overlay);
+        overlay.requestFocus();
     }
 
     private void addFusionPick(String cardId) {
