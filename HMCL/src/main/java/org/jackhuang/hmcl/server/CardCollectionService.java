@@ -84,9 +84,10 @@ public final class CardCollectionService {
 
     public enum Rarity {
         COMUN("comun", "Comun", "#9aa3b8", 50),
-        POCO_COMUN("poco_comun", "Poco comun", "#45d483", 30),
+        POCO_COMUN("poco_comun", "Poco comun", "#45d483", 25),
         RARA("rara", "Rara", "#4ea6ff", 15),
-        MITICA("mitica", "Mitica", "#b66cff", 4),
+        EPICA("epica", "Epica", "#ff7700", 7),
+        MITICA("mitica", "Mitica", "#b66cff", 2),
         LEYENDA("leyenda", "Leyenda", "#ffaa22", 1),
         // INFINITO: rareza secreta. weight=0 → nunca sale en el roll de rarezas estándar;
         // tirada aparte de 1 entre 100.000 en pickWeightedRandom. No se muestra en la Pokédex.
@@ -140,9 +141,11 @@ public final class CardCollectionService {
                 case "mitica":
                 case "miticas":
                 case "mythic":
+                    return MITICA;
                 case "epica":
                 case "epicas":
-                    return MITICA;
+                case "epic":
+                    return EPICA;
                 case "3":
                     return RARA;
                 case "4":
@@ -649,7 +652,7 @@ public final class CardCollectionService {
             byRarity.computeIfAbsent(card.getRarity(), k -> new ArrayList<>()).add(card);
         }
 
-        Rarity[] order = { Rarity.LEYENDA, Rarity.MITICA, Rarity.RARA, Rarity.POCO_COMUN, Rarity.COMUN };
+        Rarity[] order = { Rarity.LEYENDA, Rarity.MITICA, Rarity.EPICA, Rarity.RARA, Rarity.POCO_COMUN, Rarity.COMUN };
         int totalWeight = 0;
         for (Rarity r : order) totalWeight += r.getWeight();
         int roll = RANDOM.nextInt(totalWeight);
@@ -659,7 +662,7 @@ public final class CardCollectionService {
             if (roll < 0) { picked = r; break; }
         }
 
-        Rarity[] fallback = { picked, Rarity.COMUN, Rarity.POCO_COMUN, Rarity.RARA, Rarity.MITICA, Rarity.LEYENDA };
+        Rarity[] fallback = { picked, Rarity.COMUN, Rarity.POCO_COMUN, Rarity.RARA, Rarity.EPICA, Rarity.MITICA, Rarity.LEYENDA };
         for (Rarity r : fallback) {
             List<Card> pool = byRarity.get(r);
             if (pool != null && !pool.isEmpty()) {

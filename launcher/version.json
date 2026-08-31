@@ -1,6 +1,6 @@
 {
-    "latest":  "1.0.45",
-    "downloadUrl":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/BarrilMC-Launcher-1.0.45.exe",
-    "sha256":  "591aee1fef7b76e2eb202887072f458b99de23f6c44ea9257ef45329dfba1cda",
-    "notes":  "Correccion: error 'Fallo en la instalacion' con ucrtbase.dll al instalar Java de Mojang. El launcher ahora usa una copia de seguridad si Windows bloquea el archivo, y muestra un mensaje amigable si el problema persiste."
+    "latest":  "1.0.46",
+    "downloadUrl":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/BarrilMC-Launcher-1.0.46.exe",
+    "sha256":  "67add4a98185d35c1a3a5cc76fdd6b1177b81d6df97cd4f993b686d03a2309fa",
+    "notes":  "Nuevo: rareza Epica anadida entre Rara y Mitica. Cartas DROP1 con sus rangos correctos."
 }
