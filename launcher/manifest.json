@@ -66,8 +66,8 @@
             "required": true
         },
         {
-            "path": "mods/barrilcomplements-28deagosto.jar",
-            "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/barrilcomplements-28deagosto.jar",
+            "path": "mods/barrilcomplements-1deseptiembre.jar",
+            "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/barrilcomplements-1deseptiembre.jar",
             "sha256": "63e275dfacaa15c513fbb8f68b7d72b58d7b8d6c0ea10a693f73bc754ba16861",
             "size": 7819670,
             "required": true
@@ -1570,7 +1570,9 @@
         "mods/sophisticatedbackpacks-1.21.1-3.23.4.3.106.jar",
         "mods/sophisticatedbackpacks-1.21.1-3.23.4.3.106.jar.disabled",
         "mods/LegendaryMonuments-Cobbleverse.jar",
-        "mods/LegendaryMonuments-Cobbleverse.jar.disabled"
+        "mods/LegendaryMonuments-Cobbleverse.jar.disabled",
+        "mods/barrilcomplements-28deagosto.jar",
+        "mods/barrilcomplements-28deagosto.jar.disabled"
     ],
     "wipe": [],
     "news": [
