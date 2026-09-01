@@ -68,8 +68,8 @@
         {
             "path": "mods/barrilcomplements-2deseptiembre.jar",
             "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/barrilcomplements-2deseptiembre.jar",
-            "sha256": "521dac6a7a5d618eca984e1dc6b7d6d8299f3e9b238eb2c3f9775db4d53ff756",
-            "size": 7833424,
+            "sha256": "c52e935ce17b95977c89224cdf43975bbaa150499f0f6ba1e553cebb080678d3",
+            "size": 7835203,
             "required": true
         },
         {
