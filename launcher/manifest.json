@@ -68,8 +68,8 @@
         {
             "path": "mods/barrilcomplements-28deagosto.jar",
             "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/barrilcomplements-28deagosto.jar",
-            "sha256": "80523901d8068aa1b37977daab157b5e34cd00f6919e468d16c0260d1119db0a",
-            "size": 7791128,
+            "sha256": "63e275dfacaa15c513fbb8f68b7d72b58d7b8d6c0ea10a693f73bc754ba16861",
+            "size": 7819670,
             "required": true
         },
         {
