@@ -1,6 +1,6 @@
 {
-    "latest":  "1.0.50",
-    "downloadUrl":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/BarrilMC-Launcher-1.0.50.exe",
-    "sha256":  "23a69ea4d19a725cf1ab2acd9e9cb72837872b52f00fc704c42441b61d79b4e5",
-    "notes":  "Zoom de carta rediseñado: abre dialogo grande con scroll para zoom. Color epica rosa."
+    "latest":  "1.0.51",
+    "downloadUrl":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/BarrilMC-Launcher-1.0.51.exe",
+    "sha256":  "9117b64758dfaf68c22c2ca340d450c99c30117d0b20aa9e233344e05071a9cd",
+    "notes":  "Fix crashes por falta de RAM: heap fijo segun tu RAM (10 GB en maquinas de 32 GB), limites de Metaspace y memoria de video."
 }

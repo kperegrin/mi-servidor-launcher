@@ -17,6 +17,9 @@ import org.jackhuang.hmcl.setting.Profiles;
 import org.jackhuang.hmcl.setting.VersionIconType;
 import org.jackhuang.hmcl.setting.VersionSetting;
 import org.jackhuang.hmcl.ui.FXUtils;
+import org.jackhuang.hmcl.util.platform.SystemInfo;
+
+import static org.jackhuang.hmcl.util.DataSizeUnit.MEGABYTES;
 import org.jetbrains.annotations.NotNullByDefault;
 
 import java.nio.file.Path;
@@ -83,7 +86,20 @@ public final class ServerInstanceManager {
             setting.setServerIp(quickJoin ? manifest.getServer().getAddress() : "");
             setting.setVersionIcon(VersionIconType.FABRIC);
             setting.setLauncherVisibility(LauncherVisibility.HIDE_AND_REOPEN);
-            setting.setJavaArgs("");
+
+            // Scale heap to total RAM: Cobblemon + CobbleTCG packs are very heavy.
+            long totalMB = (long) MEGABYTES.convertFromBytes(SystemInfo.getTotalMemorySize());
+            int heapMB = totalMB >= 32768 ? 10240   // 32 GB → 10 GB
+                       : totalMB >= 16384 ? 7168    // 16 GB → 7 GB
+                       : totalMB >= 8192  ? 4096    // 8 GB  → 4 GB
+                       : 2048;                       // <8 GB → 2 GB
+            setting.setMaxMemory(heapMB);
+            setting.setAutoMemory(false); // fixed value; no surprises from low available-RAM at launch
+
+            // Cap Metaspace (100+ mods with many classes) and direct memory (watermedia/waterframes
+            // video buffers) so native OOM cannot happen outside the heap limit.
+            setting.setJavaArgs("-XX:MaxMetaspaceSize=512m -XX:MaxDirectMemorySize=1g");
+
             repository.saveVersionSetting(ServerLauncherConfig.INSTANCE_NAME);
         }
 
