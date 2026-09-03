@@ -92,8 +92,7 @@ public final class ServerInstanceManager {
             // can commit them at startup without issues.
             long totalMB = (long) MEGABYTES.convertFromBytes(SystemInfo.getTotalMemorySize());
             int heapMB = totalMB >= 16384 ? 6144   // 16+ GB → 6 GB
-                       : totalMB >= 8192  ? 4096   //  8+ GB → 4 GB
-                       : 2048;                      //  <8 GB → 2 GB
+                       : 4096;                      // <16 GB → 4 GB (minimum)
             setting.setMaxMemory(heapMB);
             setting.setAutoMemory(false);
             setting.setJavaArgs("");

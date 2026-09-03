@@ -1,6 +1,6 @@
 {
-    "latest":  "1.0.55",
-    "downloadUrl":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/BarrilMC-Launcher-1.0.55.exe",
-    "sha256":  "ad285cc3b49d682993afd0b4b1e0999595857086c07c35ec823c692c4670a475",
-    "notes":  "Fix: memoria fija segun tu RAM (6 GB en maquinas de 16+ GB, 4 GB en 8 GB) para evitar el error de memoria insuficiente."
+    "latest":  "1.0.56",
+    "downloadUrl":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/BarrilMC-Launcher-1.0.56.exe",
+    "sha256":  "2c33a7064cfa4711211851443fb0aa242fe78074ac7c753358d22cf62561fae9",
+    "notes":  "Memoria minima de 4 GB aunque tengas menos de 8 GB de RAM. 16+ GB reciben 6 GB."
 }
