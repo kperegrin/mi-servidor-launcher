@@ -1,6 +1,6 @@
 {
-    "latest":  "1.0.51",
-    "downloadUrl":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/BarrilMC-Launcher-1.0.51.exe",
-    "sha256":  "9117b64758dfaf68c22c2ca340d450c99c30117d0b20aa9e233344e05071a9cd",
-    "notes":  "Fix crashes por falta de RAM: heap fijo segun tu RAM (10 GB en maquinas de 32 GB), limites de Metaspace y memoria de video."
+    "latest":  "1.0.52",
+    "downloadUrl":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/BarrilMC-Launcher-1.0.52.exe",
+    "sha256":  "1cefc46b1fc0719515eb550940ccbb99a985cff93c63cd47e8d9093f64436ee7",
+    "notes":  "Fix: el juego se quedaba colgado en el logo de Mojang. Se ha quitado el limite de memoria directa que bloqueaba los mods de video al arrancar."
 }

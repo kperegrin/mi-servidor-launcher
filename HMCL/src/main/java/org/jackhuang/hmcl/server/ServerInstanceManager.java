@@ -96,9 +96,10 @@ public final class ServerInstanceManager {
             setting.setMaxMemory(heapMB);
             setting.setAutoMemory(false); // fixed value; no surprises from low available-RAM at launch
 
-            // Cap Metaspace (100+ mods with many classes) and direct memory (watermedia/waterframes
-            // video buffers) so native OOM cannot happen outside the heap limit.
-            setting.setJavaArgs("-XX:MaxMetaspaceSize=512m -XX:MaxDirectMemorySize=1g");
+            // Cap Metaspace so 100+ mods loading many classes don't OOM outside the heap.
+            // MaxDirectMemorySize is intentionally omitted: watermedia/waterframes video buffers
+            // can exceed 1 GB at startup and capping it causes a hang on the Mojang screen.
+            setting.setJavaArgs("-XX:MaxMetaspaceSize=512m");
 
             repository.saveVersionSetting(ServerLauncherConfig.INSTANCE_NAME);
         }
