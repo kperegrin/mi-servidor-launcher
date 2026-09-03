@@ -17,6 +17,9 @@ import org.jackhuang.hmcl.setting.Profiles;
 import org.jackhuang.hmcl.setting.VersionIconType;
 import org.jackhuang.hmcl.setting.VersionSetting;
 import org.jackhuang.hmcl.ui.FXUtils;
+import org.jackhuang.hmcl.util.platform.SystemInfo;
+
+import static org.jackhuang.hmcl.util.DataSizeUnit.MEGABYTES;
 import org.jetbrains.annotations.NotNullByDefault;
 
 import java.nio.file.Path;
@@ -84,6 +87,15 @@ public final class ServerInstanceManager {
             setting.setVersionIcon(VersionIconType.FABRIC);
             setting.setLauncherVisibility(LauncherVisibility.HIDE_AND_REOPEN);
 
+            // Fixed heap avoids HMCL's "not enough memory" dialog (autoMemory reads current free
+            // RAM which drops when Discord/Chrome are open). Values are conservative so the JVM
+            // can commit them at startup without issues.
+            long totalMB = (long) MEGABYTES.convertFromBytes(SystemInfo.getTotalMemorySize());
+            int heapMB = totalMB >= 16384 ? 6144   // 16+ GB → 6 GB
+                       : totalMB >= 8192  ? 4096   //  8+ GB → 4 GB
+                       : 2048;                      //  <8 GB → 2 GB
+            setting.setMaxMemory(heapMB);
+            setting.setAutoMemory(false);
             setting.setJavaArgs("");
 
             repository.saveVersionSetting(ServerLauncherConfig.INSTANCE_NAME);

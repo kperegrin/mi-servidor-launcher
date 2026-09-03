@@ -1,6 +1,6 @@
 {
-    "latest":  "1.0.54",
-    "downloadUrl":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/BarrilMC-Launcher-1.0.54.exe",
-    "sha256":  "417823ae6a3412d1411bec6e06a089c673321fd9da3f5bf096b414230d51b8f3",
-    "notes":  "Fix urgente: revertidos los cambios de RAM que impedian entrar al juego (pantalla Mojang blanca)."
+    "latest":  "1.0.55",
+    "downloadUrl":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/BarrilMC-Launcher-1.0.55.exe",
+    "sha256":  "ad285cc3b49d682993afd0b4b1e0999595857086c07c35ec823c692c4670a475",
+    "notes":  "Fix: memoria fija segun tu RAM (6 GB en maquinas de 16+ GB, 4 GB en 8 GB) para evitar el error de memoria insuficiente."
 }
