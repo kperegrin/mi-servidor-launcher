@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-08-31T15:48:31+00:00",
-  "source": "DROP1",
+  "updatedAt": "2026-09-03T00:00:00+00:00",
+  "source": "DROP1+DROP2",
   "odds": {
     "comun": 50,
     "poco_comun": 25,
@@ -184,6 +184,132 @@
       "rarity": "epica",
       "rarityName": "Epica",
       "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/THEGREATMAXIEPICA.png"
+    },
+    "circ": {
+      "id": "circ",
+      "name": "CIRC",
+      "rarity": "comun",
+      "rarityName": "Comun",
+      "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/CIRC.png"
+    },
+    "elfurro": {
+      "id": "elfurro",
+      "name": "ELFURRO",
+      "rarity": "comun",
+      "rarityName": "Comun",
+      "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/ELFURRO.png"
+    },
+    "mariouribe": {
+      "id": "mariouribe",
+      "name": "MARIOURIBE",
+      "rarity": "comun",
+      "rarityName": "Comun",
+      "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/MARIOURIBE.png"
+    },
+    "mauricius": {
+      "id": "mauricius",
+      "name": "MAURICIUS",
+      "rarity": "comun",
+      "rarityName": "Comun",
+      "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/MAURICIUS.png"
+    },
+    "duki": {
+      "id": "duki",
+      "name": "DUKI",
+      "rarity": "poco_comun",
+      "rarityName": "Poco Comun",
+      "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/DUKI.png"
+    },
+    "grenusita": {
+      "id": "grenusita",
+      "name": "GRENUSITA",
+      "rarity": "poco_comun",
+      "rarityName": "Poco Comun",
+      "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/GRENUSITA.png"
+    },
+    "haru": {
+      "id": "haru",
+      "name": "HARU",
+      "rarity": "poco_comun",
+      "rarityName": "Poco Comun",
+      "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/HARU.png"
+    },
+    "imanduu": {
+      "id": "imanduu",
+      "name": "IMANDUU",
+      "rarity": "poco_comun",
+      "rarityName": "Poco Comun",
+      "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/IMANDUU.png"
+    },
+    "ziro": {
+      "id": "ziro",
+      "name": "ZIRO",
+      "rarity": "poco_comun",
+      "rarityName": "Poco Comun",
+      "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/ZIRO.png"
+    },
+    "cramozd": {
+      "id": "cramozd",
+      "name": "CRAMOZD",
+      "rarity": "rara",
+      "rarityName": "Rara",
+      "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/CRAMOZD.png"
+    },
+    "gripe": {
+      "id": "gripe",
+      "name": "GRIPE",
+      "rarity": "rara",
+      "rarityName": "Rara",
+      "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/GRIPE.png"
+    },
+    "reysantee": {
+      "id": "reysantee",
+      "name": "REYSANTEE",
+      "rarity": "rara",
+      "rarityName": "Rara",
+      "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/REYSANTEE.png"
+    },
+    "folagor": {
+      "id": "folagor",
+      "name": "FOLAGOR",
+      "rarity": "epica",
+      "rarityName": "Epica",
+      "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/FOLAGOR.png"
+    },
+    "mjpardo": {
+      "id": "mjpardo",
+      "name": "MJPARDO",
+      "rarity": "epica",
+      "rarityName": "Epica",
+      "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/MJPARDO.png"
+    },
+    "tato": {
+      "id": "tato",
+      "name": "TATO",
+      "rarity": "epica",
+      "rarityName": "Epica",
+      "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/TATO.png"
+    },
+    "chambianeito": {
+      "id": "chambianeito",
+      "name": "CHAMBIANEITO",
+      "rarity": "mitica",
+      "rarityName": "Mitica",
+      "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/CHAMBIANEITO.png"
+    },
+    "yael": {
+      "id": "yael",
+      "name": "YAEL",
+      "rarity": "mitica",
+      "rarityName": "Mitica",
+      "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/YAEL.png"
+    },
+    "karpatronic": {
+      "id": "karpatronic",
+      "name": "KARPATRONIC",
+      "rarity": "leyenda",
+      "rarityName": "Leyenda",
+      "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/KARPATRONIC.png"
     }
   }
 }
