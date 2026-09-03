@@ -84,10 +84,7 @@ public final class ServerInstanceManager {
             setting.setVersionIcon(VersionIconType.FABRIC);
             setting.setLauncherVisibility(LauncherVisibility.HIDE_AND_REOPEN);
 
-            // Let HMCL auto-manage the heap (autoMemory=true is the default).
-            // Only cap Metaspace: 100+ mods loading many classes can exhaust it outside the heap.
-            setting.setAutoMemory(true);
-            setting.setJavaArgs("-XX:MaxMetaspaceSize=512m");
+            setting.setJavaArgs("");
 
             repository.saveVersionSetting(ServerLauncherConfig.INSTANCE_NAME);
         }

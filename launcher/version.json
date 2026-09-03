@@ -1,6 +1,6 @@
 {
-    "latest":  "1.0.53",
-    "downloadUrl":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/BarrilMC-Launcher-1.0.53.exe",
-    "sha256":  "cc459d99d45aa98bd3889359283d4992306e618a8efec46cef87a3f4664d406f",
-    "notes":  "Fix: el juego no arrancaba. Se ha dejado que el launcher gestione la RAM automaticamente para evitar problemas de inicio."
+    "latest":  "1.0.54",
+    "downloadUrl":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/BarrilMC-Launcher-1.0.54.exe",
+    "sha256":  "417823ae6a3412d1411bec6e06a089c673321fd9da3f5bf096b414230d51b8f3",
+    "notes":  "Fix urgente: revertidos los cambios de RAM que impedian entrar al juego (pantalla Mojang blanca)."
 }
