@@ -310,6 +310,55 @@
       "rarity": "leyenda",
       "rarityName": "Leyenda",
       "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/KARPATRONIC.png"
+    },
+    "donphan": {
+      "id": "donphan",
+      "name": "DONPHAN",
+      "rarity": "comun",
+      "rarityName": "Comun",
+      "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/DONPHAN.png"
+    },
+    "gamarra": {
+      "id": "gamarra",
+      "name": "GAMARRA",
+      "rarity": "comun",
+      "rarityName": "Comun",
+      "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/GAMARRA.png"
+    },
+    "huevadas": {
+      "id": "huevadas",
+      "name": "HUEVADAS",
+      "rarity": "comun",
+      "rarityName": "Comun",
+      "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/HUEVADAS.png"
+    },
+    "maldonado": {
+      "id": "maldonado",
+      "name": "MALDONADO",
+      "rarity": "comun",
+      "rarityName": "Comun",
+      "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/MALDONADO.png"
+    },
+    "mentox": {
+      "id": "mentox",
+      "name": "MENTOX",
+      "rarity": "comun",
+      "rarityName": "Comun",
+      "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/MENTOX.png"
+    },
+    "orellana": {
+      "id": "orellana",
+      "name": "ORELLANA",
+      "rarity": "comun",
+      "rarityName": "Comun",
+      "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/ORELLANA.png"
+    },
+    "zuleika": {
+      "id": "zuleika",
+      "name": "ZULEIKA",
+      "rarity": "comun",
+      "rarityName": "Comun",
+      "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/ZULEIKA.png"
     }
   }
 }
