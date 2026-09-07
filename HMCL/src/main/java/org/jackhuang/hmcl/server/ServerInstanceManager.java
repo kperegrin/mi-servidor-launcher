@@ -97,7 +97,7 @@ public final class ServerInstanceManager {
                 setting.setAutoMemory(false);
             }
 
-            setting.setJavaArgs(withMemoryLimits(setting.getJavaArgs(), setting.getMaxMemory()));
+            setting.setJavaArgs(withMemoryLimits(setting.getJavaArgs()));
 
             repository.saveVersionSetting(ServerLauncherConfig.INSTANCE_NAME);
         }
@@ -110,16 +110,20 @@ public final class ServerInstanceManager {
             Pattern.compile("\\s*-XX:(?:MaxMetaspaceSize|MaxDirectMemorySize)=\\S+");
 
     /// Bounds the memory regions that live outside the heap, so the process stays near the
-    /// player's `-Xmx` instead of several times it. Direct memory otherwise defaults to the heap
-    /// size (the video mods fill it) and Metaspace has no ceiling at all.
+    /// player's `-Xmx` instead of several times it. Direct memory otherwise defaults to the whole
+    /// heap size and Metaspace has no ceiling at all.
     ///
-    /// Both limits are deliberately generous: a 512m Metaspace cap is too small for 100+ mods and
-    /// hangs class loading on the Mojang screen. Previously written values are stripped first, so
-    /// re-running this on every launch neither duplicates nor drifts, and any other argument the
-    /// player added by hand is preserved.
-    private static String withMemoryLimits(String javaArgs, int heapMB) {
+    /// Neither limit scales with the heap: what they hold depends on the mod set, not on how much
+    /// heap the player granted. 1.5 GB of direct memory covers Sodium's off-heap chunk geometry at
+    /// a high render distance plus the video mods' decode buffers; Metaspace is the one to keep
+    /// slack on, since a 512m cap is too small for 100+ mods and hangs class loading on the Mojang
+    /// screen, so it sits at 2.5x that.
+    ///
+    /// Previously written values are stripped first, so re-running this on every launch neither
+    /// duplicates nor drifts, and any other argument the player added by hand is preserved.
+    private static String withMemoryLimits(String javaArgs) {
         String custom = MANAGED_MEMORY_FLAGS.matcher(javaArgs != null ? javaArgs : "").replaceAll("").trim();
-        String managed = "-XX:MaxMetaspaceSize=1536m -XX:MaxDirectMemorySize=" + Math.max(1024, heapMB / 2) + "m";
+        String managed = "-XX:MaxMetaspaceSize=1280m -XX:MaxDirectMemorySize=1536m";
         return custom.isEmpty() ? managed : managed + " " + custom;
     }
 }

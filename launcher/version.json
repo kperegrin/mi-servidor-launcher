@@ -1,6 +1,6 @@
 {
-    "latest":  "1.0.57",
-    "downloadUrl":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/BarrilMC-Launcher-1.0.57.exe",
-    "sha256":  "975729ab48891d33fe2b50292b46d4e2e912be8b981d6a8fa2ffe544b1d9c5f9",
-    "notes":  "La RAM que elijas en ajustes ya se respeta (antes se reescribia en cada arranque) y se limita la memoria fuera del heap, asi el juego deja de llegar al doble de lo que tienes puesto."
+    "latest":  "1.0.58",
+    "downloadUrl":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/BarrilMC-Launcher-1.0.58.exe",
+    "sha256":  "497a75e082341a1c23f2c5e950b15b5561df41ee31fa80d213b4270f001522c6",
+    "notes":  "Se recorta mucho mas la memoria de fuera del heap: la memoria directa pasa de valer lo mismo que tu -Xmx a un tope fijo de 1,5 GB."
 }
