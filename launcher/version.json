@@ -1,6 +1,6 @@
 {
-    "latest":  "1.0.56",
-    "downloadUrl":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/BarrilMC-Launcher-1.0.56.exe",
-    "sha256":  "2c33a7064cfa4711211851443fb0aa242fe78074ac7c753358d22cf62561fae9",
-    "notes":  "Memoria minima de 4 GB aunque tengas menos de 8 GB de RAM. 16+ GB reciben 6 GB."
+    "latest":  "1.0.57",
+    "downloadUrl":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/BarrilMC-Launcher-1.0.57.exe",
+    "sha256":  "975729ab48891d33fe2b50292b46d4e2e912be8b981d6a8fa2ffe544b1d9c5f9",
+    "notes":  "La RAM que elijas en ajustes ya se respeta (antes se reescribia en cada arranque) y se limita la memoria fuera del heap, asi el juego deja de llegar al doble de lo que tienes puesto."
 }

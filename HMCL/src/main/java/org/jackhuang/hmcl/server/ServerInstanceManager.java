@@ -24,6 +24,7 @@ import org.jetbrains.annotations.NotNullByDefault;
 
 import java.nio.file.Path;
 import java.util.Optional;
+import java.util.regex.Pattern;
 
 /// Creates and configures the dedicated BarrilMC profile and instance.
 @NotNullByDefault
@@ -87,20 +88,38 @@ public final class ServerInstanceManager {
             setting.setVersionIcon(VersionIconType.FABRIC);
             setting.setLauncherVisibility(LauncherVisibility.HIDE_AND_REOPEN);
 
-            // Fixed heap avoids HMCL's "not enough memory" dialog (autoMemory reads current free
-            // RAM which drops when Discord/Chrome are open). Values are conservative so the JVM
-            // can commit them at startup without issues.
-            long totalMB = (long) MEGABYTES.convertFromBytes(SystemInfo.getTotalMemorySize());
-            int heapMB = totalMB >= 16384 ? 6144   // 16+ GB → 6 GB
-                       : 4096;                      // <16 GB → 4 GB (minimum)
-            setting.setMaxMemory(heapMB);
-            setting.setAutoMemory(false);
-            setting.setJavaArgs("");
+            // Seed a heap only on first launch, while the setting is still untouched. After that
+            // the player's own value wins: this method runs on every launch and must not overwrite
+            // what they picked in the settings screen.
+            if (setting.isAutoMemory()) {
+                long totalMB = (long) MEGABYTES.convertFromBytes(SystemInfo.getTotalMemorySize());
+                setting.setMaxMemory(totalMB >= 16384 ? 6144 : 4096);
+                setting.setAutoMemory(false);
+            }
+
+            setting.setJavaArgs(withMemoryLimits(setting.getJavaArgs(), setting.getMaxMemory()));
 
             repository.saveVersionSetting(ServerLauncherConfig.INSTANCE_NAME);
         }
 
         profile.setSelectedVersion(ServerLauncherConfig.INSTANCE_NAME);
         Profiles.setSelectedProfile(profile);
+    }
+
+    private static final Pattern MANAGED_MEMORY_FLAGS =
+            Pattern.compile("\\s*-XX:(?:MaxMetaspaceSize|MaxDirectMemorySize)=\\S+");
+
+    /// Bounds the memory regions that live outside the heap, so the process stays near the
+    /// player's `-Xmx` instead of several times it. Direct memory otherwise defaults to the heap
+    /// size (the video mods fill it) and Metaspace has no ceiling at all.
+    ///
+    /// Both limits are deliberately generous: a 512m Metaspace cap is too small for 100+ mods and
+    /// hangs class loading on the Mojang screen. Previously written values are stripped first, so
+    /// re-running this on every launch neither duplicates nor drifts, and any other argument the
+    /// player added by hand is preserved.
+    private static String withMemoryLimits(String javaArgs, int heapMB) {
+        String custom = MANAGED_MEMORY_FLAGS.matcher(javaArgs != null ? javaArgs : "").replaceAll("").trim();
+        String managed = "-XX:MaxMetaspaceSize=1536m -XX:MaxDirectMemorySize=" + Math.max(1024, heapMB / 2) + "m";
+        return custom.isEmpty() ? managed : managed + " " + custom;
     }
 }
