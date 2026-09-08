@@ -661,13 +661,6 @@
             "required": true
         },
         {
-            "path": "mods/moreculling-fabric-1.21.1-1.0.9.jar",
-            "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/moreculling-fabric-1.21.1-1.0.9.jar",
-            "sha256": "0c0d18cdb6a062c8d3b020a3a92a675ecfcd284be9317a30e045f3242c3a0b58",
-            "size": 332230,
-            "required": true
-        },
-        {
             "path": "mods/MouseTweaks-fabric-mc1.21-2.26.jar",
             "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/MouseTweaks-fabric-mc1.21-2.26.jar",
             "sha256": "3e9fa4800fafef616fbf1545d62f5898f55c83fbd4126ce2b48b5e0077243fc0",
@@ -1532,6 +1525,8 @@
         "mods/sodiumoptionsapi-fabric-1.0.10-1.21.1.jar.disabled",
         "mods/moreculling-fabric-1.21.1-1.0.6.jar",
         "mods/moreculling-fabric-1.21.1-1.0.6.jar.disabled",
+        "mods/moreculling-fabric-1.21.1-1.0.9.jar",
+        "mods/moreculling-fabric-1.21.1-1.0.9.jar.disabled",
         "mods/barrilcomplements-13deagosto.jar",
         "mods/barrilcomplements-13deagosto.jar.disabled",
         "mods/webdisplay-1.2.24.jar",
