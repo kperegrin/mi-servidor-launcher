@@ -1,6 +1,6 @@
 {
-    "latest":  "1.0.58",
-    "downloadUrl":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/BarrilMC-Launcher-1.0.58.exe",
-    "sha256":  "497a75e082341a1c23f2c5e950b15b5561df41ee31fa80d213b4270f001522c6",
-    "notes":  "Se recorta mucho mas la memoria de fuera del heap: la memoria directa pasa de valer lo mismo que tu -Xmx a un tope fijo de 1,5 GB."
+    "latest":  "1.0.59",
+    "downloadUrl":  "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/BarrilMC-Launcher-1.0.59.exe",
+    "sha256":  "573051a8f41343100d9305fde7ffdae0b8e1269aa081ea02133dd727d862dde2",
+    "notes":  "Credito del autor original (KimiZG) en el titulo de la ventana y en la pantalla principal."
 }

@@ -37,8 +37,14 @@ public final class Metadata {
     public static final String FULL_NAME = "BarrilMC Launcher";
     public static final String VERSION = System.getProperty("hmcl.version.override", JarUtils.getAttribute("hmcl.version", "@develop@"));
 
+    /// Original author of this launcher. Shown in the window title and on the home screen.
+    public static final String AUTHOR = "KimiZG";
+    public static final String CREDIT = "Creado por " + AUTHOR;
+
+    /// Careful: TITLE is passed to the game as `versionType` and `profileName`, so the credit is
+    /// deliberately kept out of it. FULL_TITLE is display-only (window title and home header).
     public static final String TITLE = NAME + " " + VERSION;
-    public static final String FULL_TITLE = FULL_NAME + " v" + VERSION;
+    public static final String FULL_TITLE = FULL_NAME + " v" + VERSION + " - " + CREDIT;
 
     public static final int MINIMUM_REQUIRED_JAVA_VERSION = 17;
     public static final int MINIMUM_SUPPORTED_JAVA_VERSION = 17;

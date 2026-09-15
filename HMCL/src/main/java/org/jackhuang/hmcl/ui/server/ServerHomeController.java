@@ -48,6 +48,7 @@ import javafx.util.Duration;
 import org.jackhuang.hmcl.auth.Account;
 import org.jackhuang.hmcl.auth.microsoft.MicrosoftAccount;
 import org.jackhuang.hmcl.auth.offline.OfflineAccount;
+import org.jackhuang.hmcl.Metadata;
 import org.jackhuang.hmcl.server.BarrilmcInstallConfig;
 import org.jackhuang.hmcl.server.BarrilmcLauncherPrefs;
 import org.jackhuang.hmcl.server.BarrilmcVideoExporter;
@@ -147,7 +148,11 @@ public final class ServerHomeController extends FlowPane {
         subtitle.getStyleClass().add("server-home-subtitle");
         subtitle.setWrapText(true);
 
-        VBox titleBox = new VBox(4, title, subtitle);
+        Label credit = new Label(Metadata.CREDIT);
+        credit.getStyleClass().add("server-home-subtitle");
+        credit.setWrapText(true);
+
+        VBox titleBox = new VBox(4, title, subtitle, credit);
         titleBox.setAlignment(Pos.CENTER_LEFT);
 
         HBox hero = new HBox(14, logoWrapper, titleBox);
