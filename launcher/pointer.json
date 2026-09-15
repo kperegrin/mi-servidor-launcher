@@ -1,0 +1,5 @@
+{
+    "_leeme": "Este archivo decide de que repositorio leen los mods, las cartas y las noticias TODOS los launchers instalados. Cambia la linea 'manifest' y el cambio es inmediato: no hay que compilar ni publicar nada. Si borras este archivo o lo dejas mal escrito, el launcher vuelve solo al repositorio por defecto, asi que no se rompe nada.",
+    "_ojo": "El autoactualizador del launcher (version.json) NO se controla desde aqui. Los .exe se publican siempre desde kperegrin/mi-servidor-launcher.",
+    "manifest": "https://raw.githubusercontent.com/kperegrin/mi-servidor-launcher/main/launcher/manifest.json"
+}

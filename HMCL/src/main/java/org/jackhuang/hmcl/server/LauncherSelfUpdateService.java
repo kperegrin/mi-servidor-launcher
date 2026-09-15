@@ -27,10 +27,12 @@ public final class LauncherSelfUpdateService {
     private LauncherSelfUpdateService() {
     }
 
-    /// Fetches version.json placed next to manifest.json. Falls back to Cloudflare R2 if GitHub fails.
+    /// Fetches version.json from the owner's repository. Falls back to Cloudflare R2 if GitHub fails.
+    ///
+    /// Note this deliberately ignores the content pointer: whoever holds the content repository
+    /// publishes mods and cards, but not the binaries players run.
     public static LauncherVersionInfo fetchVersionInfo() throws IOException {
-        String versionUrl = addCacheBust(
-                URI.create(ServerLauncherConfig.MANIFEST_URL).resolve("version.json").toString());
+        String versionUrl = addCacheBust(ServerLauncherConfig.launcherVersionUrl());
         try (InputStream input = LauncherUpdater.openHttps(versionUrl)) {
             return parseVersionJson(input);
         } catch (IOException primaryError) {

@@ -284,7 +284,7 @@ public final class CardCollectionService {
         //      bloqueado por DNS o saturado, jsdelivr suele estar disponible \u2014 pero ojo: su
         //      cache de @branch se queda atr\u00E1s cuando su API de purga falla, por eso NO es la
         //      primera opci\u00F3n.
-        String base = ServerLauncherConfig.MANIFEST_URL;
+        String base = ServerLauncherConfig.contentManifestUrl();
         String rawUrl = URI.create(base).resolve("cards.json").toString();
         List<Card> result = tryFetch(rawUrl);
         if (!result.isEmpty()) return result;

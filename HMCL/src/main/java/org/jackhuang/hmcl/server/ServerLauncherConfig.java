@@ -9,9 +9,16 @@
  */
 package org.jackhuang.hmcl.server;
 
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import org.jackhuang.hmcl.util.io.JarUtils;
 import org.jetbrains.annotations.NotNullByDefault;
 
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.URI;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Path;
 
 /// Central configuration for the server-specific launcher build.
@@ -37,13 +44,75 @@ public final class ServerLauncherConfig {
     public static final Path LAUNCHER_DIRECTORY = resolveLauncherDirectory();
     /// Default local game directory for this server.
     public static final Path INSTANCE_DIRECTORY = LAUNCHER_DIRECTORY.resolve(".barrilmc");
-    /// Default manifest URL. Priority: -Dbarrilmc.manifest.url > embedded JAR attr > env var > hardcoded default.
-    public static final String MANIFEST_URL = System.getProperty(
+    /// Repository the launcher falls back to when nothing else says otherwise.
+    private static final String DEFAULT_MANIFEST_URL =
+            "https://raw.githubusercontent.com/kperegrin/mi-servidor-launcher/main/launcher/manifest.json";
+
+    /// Explicit pin from -Dbarrilmc.manifest.url, the embedded JAR attribute or
+    /// BARRILMC_MANIFEST_URL. Blank when none was given.
+    private static final String PINNED_MANIFEST_URL = System.getProperty(
             "barrilmc.manifest.url",
             JarUtils.getAttribute("barrilmc.manifest.url",
-                    System.getenv().getOrDefault(
-                            "BARRILMC_MANIFEST_URL",
-                            "https://raw.githubusercontent.com/kperegrin/mi-servidor-launcher/main/launcher/manifest.json")));
+                    System.getenv().getOrDefault("BARRILMC_MANIFEST_URL", "")));
+
+    private static final boolean MANIFEST_URL_PINNED = !PINNED_MANIFEST_URL.isBlank();
+
+    /// Default manifest URL. Priority: -Dbarrilmc.manifest.url > embedded JAR attr > env var > hardcoded default.
+    public static final String MANIFEST_URL =
+            MANIFEST_URL_PINNED ? PINNED_MANIFEST_URL : DEFAULT_MANIFEST_URL;
+
+    /// Stable address declaring which repository currently holds the content (mods, cards, news).
+    ///
+    /// It lives in the owner's repository on purpose. Whoever controls this one file decides which
+    /// repository every installed launcher follows, so handing the content over to someone else —
+    /// or taking it back — is a one-line edit here rather than a rebuild plus a migration that
+    /// strands any player who doesn't happen to open the launcher during the changeover.
+    public static final String POINTER_URL =
+            "https://raw.githubusercontent.com/kperegrin/mi-servidor-launcher/main/launcher/pointer.json";
+
+    private static volatile String resolvedContentUrl;
+
+    /// Where mods, cards and news are read from.
+    ///
+    /// Resolved from [#POINTER_URL] once per run and cached. Any failure — no network, missing or
+    /// malformed pointer — falls back to [#MANIFEST_URL], so a broken pointer can never leave the
+    /// launcher without a content source. An explicit pin skips the lookup entirely, which is what
+    /// you want when testing against a local manifest.
+    ///
+    /// Performs network I/O on first call, so never call it from the JavaFX thread.
+    public static String contentManifestUrl() {
+        if (MANIFEST_URL_PINNED) return MANIFEST_URL;
+        String cached = resolvedContentUrl;
+        if (cached == null) {
+            cached = readPointer();
+            resolvedContentUrl = cached;
+        }
+        return cached;
+    }
+
+    /// Where the launcher looks for its own updates.
+    ///
+    /// Deliberately tied to [#MANIFEST_URL] instead of the pointer: the content repository may
+    /// change hands, but the binaries players actually receive stay published from the owner's
+    /// repository.
+    public static String launcherVersionUrl() {
+        return URI.create(MANIFEST_URL).resolve("version.json").toString();
+    }
+
+    private static String readPointer() {
+        try (InputStream input = LauncherUpdater.openHttps(POINTER_URL);
+             InputStreamReader reader = new InputStreamReader(input, StandardCharsets.UTF_8)) {
+            JsonObject root = JsonParser.parseReader(reader).getAsJsonObject();
+            JsonElement manifest = root.get("manifest");
+            if (manifest != null && manifest.isJsonPrimitive()) {
+                String url = manifest.getAsString().trim();
+                if (url.startsWith("https://")) return url;
+            }
+        } catch (Exception ignored) {
+            // Sin red, puntero ausente o malformado: seguimos con el repositorio por defecto.
+        }
+        return MANIFEST_URL;
+    }
 
     /// Firebase Realtime Database base URL backing the launcher chat + weekly votes, e.g.
     /// {@code https://barrilmc-xxxx-default-rtdb.firebaseio.com} (no trailing slash). Leave blank

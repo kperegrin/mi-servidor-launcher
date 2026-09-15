@@ -78,13 +78,14 @@ public final class LauncherUpdater {
 
     /// Downloads and parses the configured manifest URL. Falls back to Cloudflare R2 if GitHub fails.
     public static ServerManifest fetchManifest() throws IOException {
-        try (InputStream input = openHttps(ServerLauncherConfig.MANIFEST_URL);
+        String manifestUrl = ServerLauncherConfig.contentManifestUrl();
+        try (InputStream input = openHttps(manifestUrl);
              InputStreamReader reader = new InputStreamReader(input, StandardCharsets.UTF_8)) {
             return ServerManifest.read(reader);
         } catch (IOException primaryError) {
             String r2Url = ServerLauncherConfig.R2_FALLBACK_BASE_URL + "/manifest.json";
             if (ServerLauncherConfig.R2_FALLBACK_BASE_URL.isBlank()
-                    || ServerLauncherConfig.MANIFEST_URL.startsWith(ServerLauncherConfig.R2_FALLBACK_BASE_URL)) {
+                    || manifestUrl.startsWith(ServerLauncherConfig.R2_FALLBACK_BASE_URL)) {
                 throw primaryError;
             }
             try (InputStream input = openHttpsDirect(r2Url);
@@ -97,7 +98,7 @@ public final class LauncherUpdater {
     }
 
     private static void fetchStandaloneNews(ServerManifest manifest, ProgressListener listener) {
-        String newsUrl = URI.create(ServerLauncherConfig.MANIFEST_URL).resolve("news.json").toString();
+        String newsUrl = URI.create(ServerLauncherConfig.contentManifestUrl()).resolve("news.json").toString();
         try (InputStream input = openHttps(newsUrl);
              InputStreamReader reader = new InputStreamReader(input, StandardCharsets.UTF_8)) {
             List<ServerManifest.NewsEntry> news = ServerManifest.readNews(reader);
