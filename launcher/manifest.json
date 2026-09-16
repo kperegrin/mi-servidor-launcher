@@ -66,10 +66,10 @@
             "required": true
         },
         {
-            "path": "mods/barrilcomplements-15deseptiembre.jar",
-            "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/barrilcomplements-15deseptiembre.jar",
-            "sha256": "1c9ebc3488d8a2b43a4962be78e86c22e58a8470d0fca71931a92d86a8b5d834",
-            "size": 7974841,
+            "path": "mods/barrilcomplements-16deseptiembre.jar",
+            "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/barrilcomplements-16deseptiembre.jar",
+            "sha256": "cc98b0712d8958b898ad3d080ca90137af086728e176b570d5568b8776790130",
+            "size": 7976789,
             "required": true
         },
         {
@@ -1153,8 +1153,8 @@
         {
             "path": "resourcepacks/texturepackbarriliano15deseptiembre.zip",
             "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/texturepackbarriliano15deseptiembre.zip",
-            "sha256": "5bb029008866402dbd4b06217477a2468f72ac9eed0e17fb95a2985af970ab77",
-            "size": 3882755,
+            "sha256": "ad1d17bda5584496b9a40418b691732d30886804a17beef023c929fc394953ec",
+            "size": 3883120,
             "required": true
         },
         {
@@ -1263,6 +1263,8 @@
         "mods/barrilcomplements-4deseptiembre.jar.disabled",
         "mods/barrilcomplements-8deseptiembre.jar",
         "mods/barrilcomplements-8deseptiembre.jar.disabled",
+        "mods/barrilcomplements-15deseptiembre.jar",
+        "mods/barrilcomplements-15deseptiembre.jar.disabled",
         "mods/cobble_ranked-0.1.0.jar",
         "mods/cobble_ranked-0.1.0.jar.disabled",
         "mods/HMI 4.3 - 1.21.(1).jar",
