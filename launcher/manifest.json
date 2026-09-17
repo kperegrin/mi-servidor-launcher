@@ -1151,10 +1151,10 @@
             "required": true
         },
         {
-            "path": "resourcepacks/texturepackbarriliano15deseptiembre.zip",
-            "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/texturepackbarriliano15deseptiembre.zip",
-            "sha256": "ad1d17bda5584496b9a40418b691732d30886804a17beef023c929fc394953ec",
-            "size": 3883120,
+            "path": "resourcepacks/texturepackbarriliano16deseptiembre.zip",
+            "url": "https://github.com/kperegrin/mi-servidor-launcher/releases/download/v1.0/texturepackbarriliano16deseptiembre.zip",
+            "sha256": "26debff13bb009c716bdb43c7346e8214800b6f9401cbc1268fea61e2299e1a8",
+            "size": 3894263,
             "required": true
         },
         {
@@ -1238,6 +1238,7 @@
     "delete": [
         "resourcepacks/texturepackbarriliano06dejulio.zip",
         "resourcepacks/texturepackbarriliano11deagosto.zip",
+        "resourcepacks/texturepackbarriliano15deseptiembre.zip",
         "mods/example.jar",
         "mods/DistantHorizons-3.1.2-b-1.21.1-fabric-neoforge.jar",
         "mods/DistantHorizons-3.1.2-b-1.21.1-fabric-neoforge.jar.disabled",
